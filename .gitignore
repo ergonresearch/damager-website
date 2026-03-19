@@ -1,0 +1,24 @@
+# Hugo build output
+/public/
+/resources/_gen/
+hugo_stats.json
+
+# Temp files
+.hugo_build.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/settings.json
+*.swp
+*.swo
+
+# Node (per tool ausiliari eventuali)
+node_modules/
+npm-debug.log
+
+# Netlify
+.netlify/
