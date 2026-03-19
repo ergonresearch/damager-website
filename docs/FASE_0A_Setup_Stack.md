@@ -13,9 +13,11 @@
 
 - [x] F0A.2 — Account Netlify e collegamento GitHub ✅
 
-- [ ] F0A.3 — Verifica disponibilità dominio `damager.eu` *(acquisto differito alla FASE 8)*
-- [ ] F0A.4 — Installazione Hugo Extended
-- [ ] Verifica finale
+- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+
+- [x] F0A.4 — Installazione Hugo Extended ✅ (`v0.158.0+extended`)
+- [x] Verifica finale ✅
+
 
 ---
 
@@ -475,7 +477,8 @@ hugo version
 
 **4. Annotare il numero di versione**
 
-Il numero di versione (es. `0.144.0`) sarà inserito in `netlify.toml` nella FASE 1 per garantire build identiche in locale e su Netlify.
+Il numero di versione annotato è **`0.158.0`** — sarà inserito in `netlify.toml` nella FASE 1 per garantire build identiche in locale e su Netlify.
+
 
 ---
 
@@ -510,9 +513,10 @@ Per controllo preciso della versione (consigliato per stabilità a lungo termine
 - [x] Account Netlify creato e collegato al repository ✅
 - [x] URL staging Netlify: `https://damager-website.netlify.app` ✅
 - [x] Netlify Identity abilitato in modalità "Invite only" ✅
-- [ ] Disponibilità `damager.eu` verificata su EURID Whois
-- [ ] Hugo Extended installato: `hugo version` mostra `extended`
-- [ ] Numero di versione Hugo annotato
+- [x] Disponibilità `damager.eu` verificata ✅ *(dominio disponibile)*
+- [x] Hugo Extended installato: `hugo v0.158.0+extended windows/amd64` ✅
+- [x] Versione Hugo annotata: **0.158.0** ✅
+
 
 
 ---

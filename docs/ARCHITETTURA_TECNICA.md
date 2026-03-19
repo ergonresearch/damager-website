@@ -313,7 +313,8 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.144.0"   # ← sostituire con la versione installata
+  HUGO_VERSION = "0.158.0"   # ← versione installata: v0.158.0+extended (marzo 2026)
+
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 
@@ -343,7 +344,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 | Variabile | Contenuto | Note |
 |-----------|-----------|------|
-| `HUGO_VERSION` | `0.144.0` | Versione Hugo da usare in build |
+| `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build |
 | `GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` | Google Analytics 4 tracking ID |
 
 > Le chiavi API non devono mai essere committate nel repository.

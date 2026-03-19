@@ -74,8 +74,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0A.1** Repository GitHub creato (`ergonresearch/damager-website`, pubblico) ✅
 - [x] **F0A.2** Account Netlify + URL staging (`damager-website.netlify.app`) ✅
 
-- [ ] **F0A.3** Verifica disponibilità `damager.eu` *(acquisto differito alla FASE 8)*
-- [ ] **F0A.4** Hugo Extended installato
+- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+- [x] **F0A.4** Hugo Extended installato ✅ (`v0.158.0+extended`)
+
 
 ### FASE 0B — Raccolta Asset
 
