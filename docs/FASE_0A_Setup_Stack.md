@@ -426,7 +426,8 @@ Account Netlify creato e collegato al repository `ergonresearch/damager-website`
 
 Verificare subito la disponibilità per evitare sorprese al momento del go-live:
 
-- EURID Whois: https://www.eurid.eu/it/ottieni-un-dominio-eu/controlla-la-disponibilita-del-tuo-dominio-eu/
+- EURID: https://www.eurid.eu/it/ottieni-il-tuo-eu/
+
 
 Alternative se `damager.eu` fosse occupato: `damager-project.eu`, `damager-edf.eu`, `project-damager.eu`.
 
@@ -522,8 +523,9 @@ Per controllo preciso della versione (consigliato per stabilità a lungo termine
 |---------|-----|
 | Hugo releases | https://github.com/gohugoio/hugo/releases |
 | Netlify | https://www.netlify.com |
-| EURID Whois .eu | https://www.eurid.eu/it/ottieni-un-dominio-eu/ |
+| EURID .eu | https://www.eurid.eu/it/ottieni-il-tuo-eu/ |
 | GitHub repository | https://github.com/ergonresearch/damager-website |
+
 
 ---
 

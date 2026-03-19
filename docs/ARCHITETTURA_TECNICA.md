@@ -369,7 +369,8 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 - Registrante: **HIT09 SRL** (coordinatore del progetto, sede in Italia ✅)
 - Registrar consigliato: **OVH** (~9-11€/anno) o **Aruba** (~10-13€/anno, supporto IT)
-- Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-un-dominio-eu/
+- Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-il-tuo-eu/
+
 
 ### 4.2 Record DNS → Netlify
 
