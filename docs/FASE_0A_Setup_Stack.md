@@ -8,12 +8,16 @@
 
 ## Checklist di fase
 
-- [x] F0A.1 — Configurazione repository GitHub e Git locale *(Passi 1-4 completati)*
+- [x] F0A.1 — Configurazione repository GitHub e Git locale ✅ *(10/10 passi completati)*
 
-- [ ] F0A.2 — Account Netlify e collegamento GitHub
-- [ ] F0A.3 — Verifica disponibilità dominio `damager.eu` *(acquisto differito alla FASE 8)*
-- [ ] F0A.4 — Installazione Hugo Extended
-- [ ] Verifica finale
+
+- [x] F0A.2 — Account Netlify e collegamento GitHub ✅
+
+- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+
+- [x] F0A.4 — Installazione Hugo Extended ✅ (`v0.158.0+extended`)
+- [x] Verifica finale ✅
+
 
 ---
 
@@ -343,8 +347,9 @@ Pannello Netlify → "Site settings" → "Build & deploy" → "Branches" → "Pr
 | Ambiente | URL | Quando si usa |
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano |
-| **Staging** | `https://damager-staging.netlify.app` | Test CMS, form, Identity |
+| **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity |
 | **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 8) |
+
 
 > Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify, non in locale.
 
@@ -381,8 +386,9 @@ Netlify assegna automaticamente un URL tipo `random-name-123456.netlify.app`:
 **5. Rinominare il sito di staging**
 
 - "Site settings" → "General" → "Site details" → "Change site name"
-- Impostare `damager-staging`
-- Risultato: `https://damager-staging.netlify.app`
+- Impostare `damager-website`
+- Risultato: `https://damager-website.netlify.app`
+
 
 **6. Attivare Netlify Identity**
 
@@ -397,11 +403,12 @@ Si attiva automaticamente al primo deploy con form HTML annotati con `data-netli
 
 ### ⚠️ Punti aperti F0A.2
 
-**[APERTO] Email per account Netlify**
-- Email personale del responsabile tecnico (semplice ma legata alla persona)
-- Email di progetto condivisa (consigliato per longevità)
+**[✅ RISOLTO] Email per account Netlify**
+
+Account Netlify creato e collegato al repository `ergonresearch/damager-website`.
 
 **[INFORMATIVO] Limiti piano gratuito Netlify**
+
 
 | Risorsa | Limite free |
 |---------|-------------|
@@ -421,7 +428,8 @@ Si attiva automaticamente al primo deploy con form HTML annotati con `data-netli
 
 Verificare subito la disponibilità per evitare sorprese al momento del go-live:
 
-- EURID Whois: https://www.eurid.eu/it/ottieni-un-dominio-eu/controlla-la-disponibilita-del-tuo-dominio-eu/
+- EURID: https://www.eurid.eu/it/ottieni-il-tuo-eu/
+
 
 Alternative se `damager.eu` fosse occupato: `damager-project.eu`, `damager-edf.eu`, `project-damager.eu`.
 
@@ -469,7 +477,8 @@ hugo version
 
 **4. Annotare il numero di versione**
 
-Il numero di versione (es. `0.144.0`) sarà inserito in `netlify.toml` nella FASE 1 per garantire build identiche in locale e su Netlify.
+Il numero di versione annotato è **`0.158.0`** — sarà inserito in `netlify.toml` nella FASE 1 per garantire build identiche in locale e su Netlify.
+
 
 ---
 
@@ -498,16 +507,17 @@ Per controllo preciso della versione (consigliato per stabilità a lungo termine
 - [x] `git init` eseguito — repository locale inizializzato ✅
 - [x] Credenziali locali configurate *(aggiornare con noreply GitHub — vedi Passo 4)* ✅
 
-- [ ] `git status` non mostra errori — tutto committato su `main`
-- [ ] Branch `develop` creata e pubblicata su GitHub
-- [ ] `git remote -v` mostra `origin` → `ergonresearch/damager-website`
+- [x] `git status` — tutto committato su `main` ✅ (commit `1372568`)
+- [x] Branch `develop` creata e pubblicata su GitHub ✅
+- [x] `git remote -v` mostra `origin` → `ergonresearch/damager-website` ✅
+- [x] Account Netlify creato e collegato al repository ✅
+- [x] URL staging Netlify: `https://damager-website.netlify.app` ✅
+- [x] Netlify Identity abilitato in modalità "Invite only" ✅
+- [x] Disponibilità `damager.eu` verificata ✅ *(dominio disponibile)*
+- [x] Hugo Extended installato: `hugo v0.158.0+extended windows/amd64` ✅
+- [x] Versione Hugo annotata: **0.158.0** ✅
 
-- [ ] Account Netlify creato e collegato al repository
-- [ ] URL staging Netlify ottenuto (es. `damager-staging.netlify.app`)
-- [ ] Netlify Identity abilitato in modalità "Invite only"
-- [ ] Disponibilità `damager.eu` verificata su EURID Whois
-- [ ] Hugo Extended installato: `hugo version` mostra `extended`
-- [ ] Numero di versione Hugo annotato
+
 
 ---
 
@@ -517,8 +527,9 @@ Per controllo preciso della versione (consigliato per stabilità a lungo termine
 |---------|-----|
 | Hugo releases | https://github.com/gohugoio/hugo/releases |
 | Netlify | https://www.netlify.com |
-| EURID Whois .eu | https://www.eurid.eu/it/ottieni-un-dominio-eu/ |
+| EURID .eu | https://www.eurid.eu/it/ottieni-il-tuo-eu/ |
 | GitHub repository | https://github.com/ergonresearch/damager-website |
+
 
 ---
 

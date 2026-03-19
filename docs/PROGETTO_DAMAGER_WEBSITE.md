@@ -26,8 +26,9 @@ Realizzare il sito web ufficiale del progetto di ricerca DAMAGER, gestibile da p
 | Ambiente | URL | Stato |
 |----------|-----|-------|
 | Locale | `http://localhost:1313` | Sviluppo quotidiano |
-| Staging | `https://damager-staging.netlify.app` | Test e validazione |
+| Staging | `https://damager-website.netlify.app` | Test e validazione ✅ |
 | Produzione | `https://damager.eu` | Go-live dopo stabilizzazione |
+
 
 ---
 
@@ -70,10 +71,12 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ### FASE 0A — Setup Stack Tecnologico
 
-- [x] **F0A.1** Repository GitHub creato (`ergonresearch/damager-website`, pubblico)
-- [ ] **F0A.2** Account Netlify + URL staging (`damager-staging.netlify.app`)
-- [ ] **F0A.3** Verifica disponibilità `damager.eu` *(acquisto differito alla FASE 8)*
-- [ ] **F0A.4** Hugo Extended installato
+- [x] **F0A.1** Repository GitHub creato (`ergonresearch/damager-website`, pubblico) ✅
+- [x] **F0A.2** Account Netlify + URL staging (`damager-website.netlify.app`) ✅
+
+- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+- [x] **F0A.4** Hugo Extended installato ✅ (`v0.158.0+extended`)
+
 
 ### FASE 0B — Raccolta Asset
 

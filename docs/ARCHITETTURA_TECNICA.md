@@ -132,8 +132,9 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 | Ambiente | URL | Quando si usa |
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano (hugo server) |
-| **Staging** | `https://damager-staging.netlify.app` | Test CMS, form, Identity, Maps |
+| **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity, Maps |
 | **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 8) |
+
 
 Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify (non in locale).  
 Il passaggio da staging a produzione richiede solo la configurazione DNS — il sito rimane identico.
@@ -312,7 +313,8 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.144.0"   # ← sostituire con la versione installata
+  HUGO_VERSION = "0.158.0"   # ← versione installata: v0.158.0+extended (marzo 2026)
+
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
 
@@ -332,8 +334,9 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
 
 | Branch | Deploy | URL |
 |--------|--------|-----|
-| `main` | Produzione automatica | `damager-staging.netlify.app` (poi `damager.eu`) |
+| `main` | Produzione automatica | `damager-website.netlify.app` (poi `damager.eu`) |
 | `develop` | No deploy automatico | Solo locale |
+
 
 ### 3.3 Variabili d'ambiente Netlify
 
@@ -341,7 +344,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 | Variabile | Contenuto | Note |
 |-----------|-----------|------|
-| `HUGO_VERSION` | `0.144.0` | Versione Hugo da usare in build |
+| `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build |
 | `GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` | Google Analytics 4 tracking ID |
 
 > Le chiavi API non devono mai essere committate nel repository.
@@ -360,20 +363,23 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 ## 4. CONFIGURAZIONE DOMINIO E DNS
 
-> ⏸️ **Acquisto differito alla FASE 8.** Il sito si sviluppa e testa su `damager-staging.netlify.app`.
+> ⏸️ **Acquisto differito alla FASE 8.** Il sito si sviluppa e testa su `damager-website.netlify.app`.
+
 
 ### 4.1 Registrazione `damager.eu`
 
 - Registrante: **HIT09 SRL** (coordinatore del progetto, sede in Italia ✅)
 - Registrar consigliato: **OVH** (~9-11€/anno) o **Aruba** (~10-13€/anno, supporto IT)
-- Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-un-dominio-eu/
+- Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-il-tuo-eu/
+
 
 ### 4.2 Record DNS → Netlify
 
 ```
 Tipo    Nome    Valore
 A       @       75.2.60.5
-CNAME   www     damager-staging.netlify.app
+CNAME   www     damager-website.netlify.app
+
 ```
 
 ### 4.3 HTTPS
@@ -483,7 +489,8 @@ git checkout develop          # tornare su develop
 
 ### Editor non tecnico (inserimento contenuti)
 
-1. Aprire `https://damager-staging.netlify.app/admin` (o `damager.eu/admin`)
+1. Aprire `https://damager-website.netlify.app/admin` (o `damager.eu/admin`)
+
 2. Accedere con email e password (invitati dal coordinatore)
 3. Selezionare la collezione: News & Events / Documents / Papers
 4. Cliccare "New entry" → compilare il form → salvare
