@@ -132,8 +132,9 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 | Ambiente | URL | Quando si usa |
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano (hugo server) |
-| **Staging** | `https://damager-staging.netlify.app` | Test CMS, form, Identity, Maps |
+| **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity, Maps |
 | **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 8) |
+
 
 Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify (non in locale).  
 Il passaggio da staging a produzione richiede solo la configurazione DNS — il sito rimane identico.
@@ -332,8 +333,9 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
 
 | Branch | Deploy | URL |
 |--------|--------|-----|
-| `main` | Produzione automatica | `damager-staging.netlify.app` (poi `damager.eu`) |
+| `main` | Produzione automatica | `damager-website.netlify.app` (poi `damager.eu`) |
 | `develop` | No deploy automatico | Solo locale |
+
 
 ### 3.3 Variabili d'ambiente Netlify
 
@@ -360,7 +362,8 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 ## 4. CONFIGURAZIONE DOMINIO E DNS
 
-> ⏸️ **Acquisto differito alla FASE 8.** Il sito si sviluppa e testa su `damager-staging.netlify.app`.
+> ⏸️ **Acquisto differito alla FASE 8.** Il sito si sviluppa e testa su `damager-website.netlify.app`.
+
 
 ### 4.1 Registrazione `damager.eu`
 
@@ -373,7 +376,8 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 ```
 Tipo    Nome    Valore
 A       @       75.2.60.5
-CNAME   www     damager-staging.netlify.app
+CNAME   www     damager-website.netlify.app
+
 ```
 
 ### 4.3 HTTPS
@@ -483,7 +487,8 @@ git checkout develop          # tornare su develop
 
 ### Editor non tecnico (inserimento contenuti)
 
-1. Aprire `https://damager-staging.netlify.app/admin` (o `damager.eu/admin`)
+1. Aprire `https://damager-website.netlify.app/admin` (o `damager.eu/admin`)
+
 2. Accedere con email e password (invitati dal coordinatore)
 3. Selezionare la collezione: News & Events / Documents / Papers
 4. Cliccare "New entry" → compilare il form → salvare
