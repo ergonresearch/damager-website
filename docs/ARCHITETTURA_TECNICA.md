@@ -113,7 +113,7 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Repository           │ GitHub (pubblico)                            │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Cookie Consent       │ Osano Cookie Consent (open source)           │
+│ Cookie Consent       │ Vanilla Cookie Consent (open source)         │
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Analytics            │ Google Analytics 4 (gratuito)                │
 ├──────────────────────┼──────────────────────────────────────────────┤
@@ -193,13 +193,15 @@ damager-website/
 │   │   └── ...
 │   └── index.html             # Template Home page
 ├── assets/
-│   └── scss/
-│       ├── _variables.scss    # Palette colori, font
-│       ├── _base.scss         # Reset e stili globali
-│       ├── _header.scss
-│       ├── _footer.scss
-│       ├── _components.scss   # Card, bottoni, form
-│       └── main.scss          # Entry point SCSS
+│   ├── scss/
+│   │   ├── _variables.scss    # Palette colori, font
+│   │   ├── _base.scss         # Reset e stili globali
+│   │   ├── _header.scss
+│   │   ├── _footer.scss
+│   │   ├── _components.scss   # Card, bottoni, form
+│   │   └── main.scss          # Entry point SCSS
+│   └── js/
+│       └── cookie-init.js     # Configurazione Vanilla Cookie Consent + GA4 condizionale
 ├── static/
 │   ├── admin/
 │   │   ├── index.html         # Pannello Decap CMS
@@ -300,6 +302,10 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
 - Decap CMS chiama Git Gateway (un servizio Netlify) che ha accesso al repository GitHub
 - Il contenuto viene salvato come commit nel branch `main`
 - Netlify fa il build automaticamente e pubblica il sito aggiornato
+
+> **Nota importante sul flusso dei contenuti CMS:**  
+> La configurazione `branch: main` nel `config.yml` fa sì che ogni salvataggio dal pannello CMS produca un commit direttamente su `main`, bypassando il branch `develop`. Questo comportamento è **intenzionale e standard** per Decap CMS: gli editor non tecnici pubblicano su produzione direttamente dal pannello web, senza interazione con Git.  
+> Il flusso `develop → main` riguarda esclusivamente lo **sviluppatore tecnico** che lavora su layout, template e SCSS. I due flussi sono indipendenti e non si sovrappongono.
 
 ---
 
@@ -405,7 +411,7 @@ Automatico via **Let's Encrypt** — Netlify gestisce il certificato SSL senza c
 
 ## 6. IMPLEMENTAZIONE COOKIE CONSENT
 
-### 6.1 Integrazione Osano
+### 6.1 Integrazione Vanilla Cookie Consent
 
 ```html
 <!-- In layouts/partials/cookie-banner.html -->

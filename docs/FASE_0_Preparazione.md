@@ -48,7 +48,7 @@ FASE 0B (Raccolta Asset)   ← può procedere in parallelo con parte della 0A
 FASE 1 — Setup progetto Hugo + CMS
 ```
 
-> La FASE 0B può essere avviata non appena Inkscape è installato (F0A.4), anche prima di completare la configurazione di Netlify.
+> La FASE 0B può essere avviata non appena Inkscape è installato (primo passo di F0B.1), anche prima di completare la configurazione di Netlify. Inkscape non fa parte della FASE 0A — va scaricato separatamente come da istruzioni in F0B.1.
 
 ---
 

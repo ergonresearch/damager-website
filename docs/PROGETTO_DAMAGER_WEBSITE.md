@@ -1,4 +1,4 @@
-# 📋 PROGETTO DAMAGER WEBSITE — Documento Master
+ 📋 PROGETTO DAMAGER WEBSITE — Documento Master
 **Versione:** 3.0 | **Data:** Marzo 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
@@ -17,7 +17,7 @@ Realizzare il sito web ufficiale del progetto di ricerca DAMAGER, gestibile da p
 |-----------|-------------------|
 | Hosting gratuito | Netlify (piano free) |
 | Gestione contenuti senza codice | Decap CMS (pannello web `/admin`) |
-| Conformità GDPR cookie | Osano Cookie Consent (open source) |
+| Conformità GDPR cookie | Vanilla Cookie Consent (open source) |
 | Sviluppo locale + GitHub | Hugo + Git (branch `main`/`develop`) |
 | Costo massimo annuo | ~10-15€ (solo dominio `damager.eu`) |
 
@@ -221,7 +221,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 5 | Indirizzo fisico HIT09 SRL | Partners (mappa) | ⏳ Da fornire |
 | 6 | Indirizzo fisico Ergon Research SRL | Partners (mappa) | ⏳ Da fornire |
 | 7 | P.IVA/CF HIT09 SRL | Privacy Policy | ⏳ Da fornire |
-| 8 | Email contatto pubblico progetto | Privacy Policy | ⏳ Da fornire |
+| 8 | Email contatto pubblico progetto | Form contatto + Privacy Policy | ⏳ Da fornire |
 | 9 | LinkedIn progetto DAMAGER | Header/Footer | ✅ https://www.linkedin.com/company/damager-edf-project/posts/ |
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
 | 11 | Paper scientifici già disponibili | Media → Papers | ⏳ Da fornire |

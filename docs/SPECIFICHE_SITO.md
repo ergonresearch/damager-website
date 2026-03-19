@@ -163,7 +163,7 @@ Form di contatto con i campi:
 | Message | Textarea | ✅ |
 | [SEND] | Button | — |
 
-- I messaggi vengono inviati a: **r.ponza@hit09.com**
+- I messaggi vengono inviati a: **r.ponza@hit09.com** *(da confermare con HIT09 — vedi item #8 in PROGETTO_DAMAGER_WEBSITE.md)*
 - Implementazione: Netlify Forms (nessun server necessario)
 - Anti-spam: campo honeypot nascosto
 - Messaggio di conferma: *"Thank you! Your message has been sent to the project coordinator."*
@@ -412,7 +412,7 @@ Inizialmente vuota: *"Academic papers will be published here as they are accepte
 
 ### 7.3 Comportamento del banner cookie
 
-**Strumento:** Osano Cookie Consent (open source, gratuito)
+**Strumento:** Vanilla Cookie Consent (open source, gratuito — https://cookieconsent.orestbida.com/)
 
 1. Al primo accesso → banner in basso con: **"Accept All"** / **"Reject Non-Essential"** / **"Preferences"**
 2. Google Analytics si carica **solo dopo** consenso analitici

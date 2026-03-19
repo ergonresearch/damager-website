@@ -445,6 +445,28 @@ Questo evita problemi legali e garantisce informazioni accurate.
 
 ---
 
+## Nota per la FASE 1 — Migrazione degli asset nel progetto Hugo
+
+Al termine di questa fase, gli asset si trovano in `resources/` (cartella sorgente, esterna al progetto Hugo).
+
+Quando nella **FASE 1** verrà inizializzato il progetto Hugo con `hugo new site .`, gli asset elaborati dovranno essere copiati in `static/images/`, che è la directory pubblica di Hugo (tutto ciò che si trova in `static/` viene servito direttamente dal sito).
+
+La corrispondenza tra le cartelle è la seguente:
+
+| Cartella sorgente (FASE 0B) | Destinazione nel progetto Hugo (FASE 1) |
+|-----------------------------|------------------------------------------|
+| `resources/logo/` | `static/images/logo/` |
+| `resources/eu-logo/` | `static/images/eu-logo/` |
+| `resources/backgrounds/` | `static/images/backgrounds/` |
+| `resources/partners/` | `static/images/partners/` |
+| `resources/turbojet.png` | `static/images/turbojet.png` |
+| `resources/foto_kickoff.jpg` | `static/images/uploads/foto_kickoff.jpg` |
+| `resources/FACTSHEET_EDF_...pdf` | `static/documents/` |
+
+> La cartella `resources/` nella root del repository rimane come archivio dei file sorgente originali (PDF, ecc.). Le sottocartelle con gli asset elaborati vengono copiate in `static/images/` durante la FASE 1.
+
+---
+
 **File correlato:** `docs/FASE_0A_Setup_Stack.md` — configurazione Git, Netlify, Hugo  
 **Fase successiva:** `docs/FASE_1_Setup_Hugo_CMS.md`
 
