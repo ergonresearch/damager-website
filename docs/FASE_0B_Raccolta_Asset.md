@@ -14,6 +14,9 @@
 - [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
 - [ ] F0B.3 — Sostituzione logo EU placeholder con logo ufficiale "Funded by the European Union"
 - [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
+- [ ] F0B.5 — Copia `resources/turbojet.png` → `static/images/turbojet.png` (hero Home page)
+- [ ] F0B.6 — Copia `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + aggiornare campo `image:` nel file `content/media/news/2025-12-01-kickoff-meeting.md`
+- [ ] F0B.7 — Copia `resources/FACTSHEET_EDF_2024_...pdf` → `static/documents/` (il percorso è già configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
 - [ ] Verifica finale struttura cartelle
 
 ---

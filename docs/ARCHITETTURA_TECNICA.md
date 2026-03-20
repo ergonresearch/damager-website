@@ -168,53 +168,83 @@ damager.eu  ←─── Sito aggiornato live
 
 ```
 damager-website/
-├── config/
-│   └── hugo.toml              # Configurazione principale Hugo
+├── hugo.toml                  # Configurazione Hugo (baseURL, menu, params)
+├── netlify.toml               # Configurazione build Netlify + redirects
+├── .gitignore
 ├── content/
-│   ├── _index.md              # Home page
+│   ├── _index.md              # Home page (front matter)
+│   ├── contact-success.md     # Pagina conferma form di contatto
 │   ├── project/
 │   │   └── _index.md          # Project page
 │   ├── partners/
 │   │   └── _index.md          # Partners page
 │   └── media/
-│       ├── news/              # News & Events (gestiti da CMS)
-│       ├── documents/         # Documents (gestiti da CMS)
-│       └── papers/            # Academic Papers (gestiti da CMS)
+│       ├── _index.md          # Media page
+│       ├── news/
+│       │   ├── _index.md
+│       │   └── 2025-12-01-kickoff-meeting.md  # Primo news item
+│       ├── documents/
+│       │   ├── _index.md
+│       │   └── factsheet-2024.md              # Factsheet EDF 2024
+│       └── papers/
+│           └── _index.md
 ├── layouts/
 │   ├── _default/
-│   │   ├── baseof.html        # Template base (html, head, body, header, footer)
-│   │   ├── single.html        # Template pagina singola
-│   │   └── list.html          # Template lista
+│   │   ├── baseof.html        # Template base HTML (head, header, footer, JS)
+│   │   ├── single.html        # Template pagina singola generica
+│   │   └── list.html          # Template lista generica
 │   ├── partials/
-│   │   ├── header.html        # Header sticky con menu
-│   │   ├── footer.html        # Footer con EU disclaimer + cookie link
-│   │   ├── cookie-banner.html # Banner cookie (Osano)
-│   │   ├── progress-bar.html  # Project progress bar
-│   │   └── ...
-│   └── index.html             # Template Home page
+│   │   ├── header.html        # Header sticky con menu + hamburger mobile
+│   │   ├── footer.html        # Footer con EU disclaimer + link legali
+│   │   └── timeline.html      # Partial timeline con aeroplano SVG
+│   ├── index.html             # Template Home page (5 sezioni)
+│   ├── project/
+│   │   └── list.html          # Template Project page (4 sezioni)
+│   ├── partners/
+│   │   └── list.html          # Template Partners page (3 sezioni)
+│   └── media/
+│       ├── list.html          # Template Media page (tab navigation)
+│       └── news/
+│           └── single.html    # Template articolo singolo news
 ├── assets/
 │   ├── scss/
-│   │   ├── _variables.scss    # Palette colori, font
-│   │   ├── _base.scss         # Reset e stili globali
-│   │   ├── _header.scss
-│   │   ├── _footer.scss
-│   │   ├── _components.scss   # Card, bottoni, form
-│   │   └── main.scss          # Entry point SCSS
+│   │   ├── main.scss          # Entry point — importa tutti i partial
+│   │   ├── _variables.scss    # Palette colori, font, spacing, breakpoints
+│   │   ├── _base.scss         # Reset, tipografia, container, helper
+│   │   ├── _header.scss       # Header sticky, menu desktop, hamburger mobile
+│   │   ├── _footer.scss       # Footer EU disclaimer, link legali
+│   │   ├── _components.scss   # Card (news, doc, partner), bottoni, form, progress bar, tab nav
+│   │   ├── _timeline.scss     # Timeline animata con aeroplano SVG
+│   │   ├── _home.scss         # Stili specifici Home page (hero, eu-disclaimer)
+│   │   ├── _project.scss      # Stili specifici Project page (tabella, intro, quote)
+│   │   ├── _partners.scss     # Stili specifici Partners page (stat box, coordinator badge, mappa)
+│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, paper entries)
 │   └── js/
-│       └── cookie-init.js     # Configurazione Vanilla Cookie Consent + GA4 condizionale
+│       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation
 ├── static/
 │   ├── admin/
 │   │   ├── index.html         # Pannello Decap CMS
-│   │   └── config.yml         # Configurazione CMS (collezioni)
+│   │   └── config.yml         # Configurazione CMS (3 collezioni: news, documents, papers)
 │   ├── images/
-│   │   ├── logo/
-│   │   ├── backgrounds/
-│   │   ├── eu-logo/
-│   │   └── partners/
-│   └── documents/             # PDF scaricabili
-├── netlify.toml               # Configurazione build Netlify
-├── .gitignore
-└── README.md
+│   │   ├── logo/              # Logo DAMAGER (placeholder — file definitivi in FASE 0B)
+│   │   ├── backgrounds/       # Sfondi blueprint (placeholder — file definitivi in FASE 0B)
+│   │   ├── eu-logo/           # Logo EU (placeholder — file definitivi in FASE 0B)
+│   │   ├── partners/          # Loghi partner (placeholder — file definitivi in FASE 0B)
+│   │   └── uploads/           # Immagini caricate da CMS (foto news, ecc.)
+│   └── documents/             # PDF scaricabili (factsheet, deliverable, ecc.)
+└── docs/                      # Documentazione di progetto
+    ├── PROGETTO_DAMAGER_WEBSITE.md
+    ├── SPECIFICHE_SITO.md
+    ├── ARCHITETTURA_TECNICA.md
+    ├── FASE_0_Preparazione.md
+    ├── FASE_0A_Setup_Stack.md
+    ├── FASE_0B_Raccolta_Asset.md
+    ├── FASE_1_Setup_Hugo_CMS.md
+    ├── FASE_2_Template.md
+    ├── FASE_3_Home.md
+    ├── FASE_4_Project.md
+    ├── FASE_5_Partners.md
+    └── FASE_6_Media.md
 ```
 
 ---
@@ -431,7 +461,7 @@ Automatico via **Let's Encrypt** — Netlify gestisce il certificato SSL senza c
 ### 6.1 Integrazione Vanilla Cookie Consent
 
 ```html
-<!-- In layouts/partials/cookie-banner.html -->
+<!-- Da inserire in layouts/_default/baseof.html o in un partial dedicato -->
 <!-- Inserire nel <head> di baseof.html -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent/dist/cookieconsent.css"/>
 <script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent/dist/cookieconsent.umd.js"></script>
@@ -528,7 +558,7 @@ git checkout develop          # tornare su develop
 | Documentazione Hugo | https://gohugo.io/documentation/ |
 | Decap CMS docs | https://decapcms.org/docs/ |
 | Netlify docs | https://docs.netlify.com/ |
-| Osano Cookie Consent | https://cookieconsent.orestbida.com/ |
+| Vanilla Cookie Consent | https://cookieconsent.orestbida.com/ |
 | Google Analytics 4 | https://analytics.google.com/ |
 | Google Maps Embed | https://developers.google.com/maps/documentation/embed/ |
 

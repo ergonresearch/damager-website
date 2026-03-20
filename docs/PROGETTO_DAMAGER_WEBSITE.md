@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 3.0 | **Data:** Marzo 2026  
+**Versione:** 4.0 | **Data:** Marzo 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -55,15 +55,15 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 | File | Contenuto | Stato |
 |------|-----------|-------|
-| [`FASE_1_Setup_Hugo_CMS.md`](FASE_1_Setup_Hugo_CMS.md) | Inizializzazione progetto Hugo + Decap CMS | In lavorazione |
-| `FASE_2_Template.md` | Tema grafico bianco/nero | Da creare |
-| `FASE_3_Home.md` | Home page *(con asset placeholder)* | Da creare |
-| `FASE_4_Project.md` | Project page *(con asset placeholder)* | Da creare |
-| `FASE_5_Partners.md` | Partners page + mappa *(con loghi placeholder)* | Da creare |
-| `FASE_6_Media.md` | Media page + CMS integration | Da creare |
-| `FASE_7_Cookie.md` | Cookie consent + Privacy policy | Da creare |
-| `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | Da creare |
-| `FASE_9_Formazione.md` | Guida utente CMS per editor | Da creare |
+| [`FASE_1_Setup_Hugo_CMS.md`](FASE_1_Setup_Hugo_CMS.md) | Inizializzazione progetto Hugo + Decap CMS | ✅ Completata |
+| [`FASE_2_Template.md`](FASE_2_Template.md) | Tema grafico bianco/nero | ✅ Completata |
+| [`FASE_3_Home.md`](FASE_3_Home.md) | Home page (hero, EU disclaimer, progress bar, eventi, form) | ✅ Completata |
+| [`FASE_4_Project.md`](FASE_4_Project.md) | Project page (intro, dettagli, timeline, research areas) | ✅ Completata |
+| [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
+| [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Papers + CMS) | ✅ Completata |
+| `FASE_7_Cookie.md` | Cookie consent + Privacy policy | ⏳ Da creare |
+| `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
+| `FASE_9_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
 > **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali.
 
@@ -202,7 +202,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 |------|-------------|
 | Hugo, Decap CMS, GitHub | **Gratuito** |
 | Netlify (hosting + forms + Identity) | **Gratuito** |
-| Osano Cookie Consent | **Gratuito** |
+| Vanilla Cookie Consent | **Gratuito** |
 | Google Analytics 4, Maps, Fonts | **Gratuito** |
 | SSL/HTTPS (Let's Encrypt) | **Gratuito** |
 | **Dominio `damager.eu`** | **~10-15€/anno** |
@@ -242,5 +242,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v3.0 | Marzo 2026*  
+*Progetto DAMAGER Website — Documento Master v4.0 | Marzo 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*
