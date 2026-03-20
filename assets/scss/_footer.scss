@@ -26,27 +26,24 @@
 .footer-eu-logo {
   flex-shrink: 0;
 
-  // SVG logo (FASE 0B)
-  img {
+  // Official "Funded by the EU" combined SVG logo
+  .eu-funded-logo {
     width: 200px;
     height: auto;
   }
 
-  // Text placeholder used during development (replaced in FASE 0B)
-  .eu-logo-placeholder {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-3;
-    padding: $space-3 $space-5;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: $radius-sm;
-    color: $white;
-    font-size: $font-size-sm;
-    font-weight: 600;
-    white-space: nowrap;
-    line-height: 1.4;
+  // EU flag PNG — shown alongside the text block in footer-eu-text
+  .eu-flag-logo {
+    width: 80px;
+    height: auto;
+    display: block;
+  }
 
-    .flag { font-size: 1.4rem; }
+  // Emoji fallback
+  .eu-logo-placeholder {
+    font-size: 2.5rem;
+    line-height: 1;
+    display: block;
   }
 }
 

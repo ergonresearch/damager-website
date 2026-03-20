@@ -145,7 +145,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0B.1** Logo DAMAGER SVG + font Ethnocentric + favicon ✅
 - [x] **F0B.5** `turbojet_half.png` in `static/images/` (hero Home) ✅
 - [ ] **F0B.2** Immagini di sfondo create da `resources/background_template.pdf`
-- [ ] **F0B.3** Logo EU "Funded by the European Union" scaricato
+- [x] **F0B.3** Logo EU: bandiera europea nel footer ✅
 - [ ] **F0B.4** Loghi definitivi dei 5 partner raccolti e sostituiti ai placeholder
 
 ---

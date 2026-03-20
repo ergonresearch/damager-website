@@ -4,15 +4,12 @@
     {{/* EU Funding disclaimer — required by EDF Grant Agreement */}}
     <div class="footer-eu">
       <div class="footer-eu-logo">
-        {{- $euLogo := "static/images/eu-logo/funded-by-eu-en.svg" -}}
-        {{- if fileExists $euLogo -}}
-          <img src="/images/eu-logo/funded-by-eu-en.svg" alt="Funded by the European Union" width="200">
+        {{- if fileExists "static/images/eu-logo/funded-by-eu-en.svg" -}}
+          <img src="/images/eu-logo/funded-by-eu-en.svg" alt="Funded by the European Union" class="eu-funded-logo">
+        {{- else if fileExists "static/images/eu-logo/flag-of-europe.png" -}}
+          <img src="/images/eu-logo/flag-of-europe.png" alt="European Union flag" class="eu-flag-logo">
         {{- else -}}
-          {{/* Text placeholder — replaced with official EU SVG logo in FASE 0B */}}
-          <span class="eu-logo-placeholder">
-            <span class="flag">🇪🇺</span>
-            Funded by the<br>European Union
-          </span>
+          <span class="eu-logo-placeholder">🇪🇺</span>
         {{- end -}}
       </div>
       <div class="footer-eu-text">

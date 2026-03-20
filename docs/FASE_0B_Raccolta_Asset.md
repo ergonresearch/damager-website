@@ -12,7 +12,7 @@
 
 - [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
 - [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
-- [ ] F0B.3 — Sostituzione logo EU placeholder con logo ufficiale "Funded by the European Union"
+- [x] F0B.3 — Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` (footer)
 - [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
 - [ ] F0B.6 — Copia `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + aggiornare campo `image:` nel file `content/media/news/2025-12-01-kickoff-meeting.md`
