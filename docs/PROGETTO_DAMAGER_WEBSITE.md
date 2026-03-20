@@ -233,7 +233,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 5 | Indirizzo fisico HIT09 SRL | Partners (mappa) | ⏳ Da fornire |
 | 6 | Indirizzo fisico Ergon Research SRL | Partners (mappa) | ⏳ Da fornire |
 | 7 | P.IVA/CF HIT09 SRL | Privacy Policy | ⏳ Da fornire |
-| 8 | Email contatto pubblico progetto | Form contatto + Privacy Policy | ⏳ Da fornire |
+| 8 | Email contatto pubblico progetto | Form contatto + Privacy Policy | ✅ info@hit09.com *(configurare in Netlify dashboard → Form notifications)* |
 | 9 | LinkedIn progetto DAMAGER | Header/Footer | ✅ https://www.linkedin.com/company/damager-edf-project/posts/ |
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
 | 11 | Paper scientifici già disponibili | Media → Papers | ⏳ Da fornire |

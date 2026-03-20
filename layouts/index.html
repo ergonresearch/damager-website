@@ -85,47 +85,94 @@
   </div>
 </section>
 
-{{/* ── E) Contact the Project Coordinator ──────────────────────────────── */}}
+{{/* ── E) Contact ──────────────────────────────────────────────────────── */}}
 <section class="section bg-blueprint" id="contact">
   <div class="container">
     <span class="section-eyebrow">Get in touch</span>
-    <h2 class="section-title">Contact the Project Coordinator</h2>
+    <h2 class="section-title">Contact us</h2>
 
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      action="/contact-success/"
-      class="contact-form"
-    >
-      <input type="hidden" name="form-name" value="contact">
-      <div hidden>
-        <input name="bot-field">
+    <div class="contact-layout">
+
+      {{/* ── Form ─────────────────────────────────────── */}}
+      <div class="contact-layout__form">
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/contact-success/"
+          class="contact-form"
+        >
+          <input type="hidden" name="form-name" value="contact">
+          {{/*
+            Netlify Forms — notification email (info@hit09.com) must be configured
+            in Netlify dashboard → Site settings → Forms → Form notifications.
+            The _subject field sets the subject line of the notification email.
+          */}}
+          <input type="hidden" name="_subject" value="DAMAGER Website — New message from contact form">
+          <div hidden>
+            <input name="bot-field">
+          </div>
+
+          <div class="form-group">
+            <label for="f-name">Name <abbr title="required">*</abbr></label>
+            <input type="text" id="f-name" name="name" required placeholder="Your full name">
+          </div>
+
+          <div class="form-group">
+            <label for="f-email">Email <abbr title="required">*</abbr></label>
+            <input type="email" id="f-email" name="email" required placeholder="your.email@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="f-subject">Subject <abbr title="required">*</abbr></label>
+            <input type="text" id="f-subject" name="subject" required placeholder="How can we help?">
+          </div>
+
+          <div class="form-group">
+            <label for="f-message">Message <abbr title="required">*</abbr></label>
+            <textarea id="f-message" name="message" required placeholder="Your message…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
       </div>
 
-      <div class="form-group">
-        <label for="f-name">Name <abbr title="required">*</abbr></label>
-        <input type="text" id="f-name" name="name" required placeholder="Your full name">
+      {{/* ── Coordinator info card ─────────────────────── */}}
+      <div class="contact-layout__coordinator">
+        <div class="coordinator-card">
+
+          <div class="coordinator-card__logo">
+            {{ if fileExists "static/images/partners/hit09.svg" }}
+              <img src="/images/partners/hit09.svg" alt="HIT09 SRL logo">
+            {{ else }}
+              <div class="coordinator-card__logo-placeholder">HIT09</div>
+            {{ end }}
+          </div>
+
+          <div class="coordinator-card__info">
+            <p class="coordinator-card__name">Rita Ponza</p>
+            <p class="coordinator-card__role">Project Coordinator</p>
+          </div>
+
+          <hr class="coordinator-card__divider">
+
+          <a
+            href="https://www.linkedin.com/company/hit09-srl"
+            class="coordinator-card__linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            HIT09 SRL on LinkedIn
+          </a>
+
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="f-email">Email <abbr title="required">*</abbr></label>
-        <input type="email" id="f-email" name="email" required placeholder="your.email@example.com">
-      </div>
-
-      <div class="form-group">
-        <label for="f-subject">Subject <abbr title="required">*</abbr></label>
-        <input type="text" id="f-subject" name="subject" required placeholder="How can we help?">
-      </div>
-
-      <div class="form-group">
-        <label for="f-message">Message <abbr title="required">*</abbr></label>
-        <textarea id="f-message" name="message" required placeholder="Your message…"></textarea>
-      </div>
-
-      <button type="submit" class="btn btn--primary">Send Message</button>
-    </form>
+    </div>
   </div>
 </section>
 

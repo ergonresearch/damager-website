@@ -119,12 +119,16 @@ Link **"View all events"** → `/media/#events`
 
 ---
 
-## F3.5 — Contact Form (Netlify Forms)
+## F3.5 — Contact Form (Netlify Forms) + Coordinator Info
 
 **File:** `layouts/index.html` — section `#contact`  
-**SCSS:** `.contact-form` in `assets/scss/_components.scss`
+**Layout:** due colonne su desktop — form a sinistra, coordinator card a destra  
+**SCSS:** `.contact-layout`, `.coordinator-card` in `assets/scss/_home.scss`; `.contact-form` in `assets/scss/_components.scss`
 
-Campi:
+### Titolo sezione
+`Contact us` (in precedenza "Contact the Project Coordinator")
+
+### Form — Campi
 
 | Campo | Tipo | Required |
 |-------|------|---------|
@@ -141,14 +145,26 @@ Attributi Netlify Forms:
       data-netlify-honeypot="bot-field"
       action="/contact-success/">
   <input type="hidden" name="form-name" value="contact">
+  <input type="hidden" name="_subject" value="DAMAGER Website — New message from contact form">
   <div hidden><input name="bot-field"></div>
   <!-- campi ... -->
 </form>
 ```
 
-> **Nota:** Netlify legge le form statiche durante il deploy. Il campo `form-name` è necessario per inviare correttamente i dati via POST standard. Il campo `bot-field` nascosto funge da honeypot anti-spam.
+> **Email destinatario:** `info@hit09.com` — da configurare in **Netlify dashboard → Site settings → Forms → Form notifications** (non è impostabile direttamente nell'HTML con Netlify Forms). Il campo `_subject` imposta l'oggetto dell'email di notifica.
 
 Dopo l'invio Netlify redirige a `/contact-success/`.
+
+### Coordinator Card (colonna destra)
+
+Card `.coordinator-card` con sfondo bianco e bordo:
+
+| Elemento | Valore |
+|----------|--------|
+| Logo | Placeholder "HIT09" (→ `static/images/partners/hit09.svg` in FASE 0B) |
+| Nome | Rita Ponza |
+| Ruolo | Project Coordinator |
+| LinkedIn | https://www.linkedin.com/company/hit09-srl |
 
 ---
 

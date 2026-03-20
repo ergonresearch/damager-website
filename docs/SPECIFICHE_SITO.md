@@ -151,7 +151,7 @@ Project Progress
 
 ---
 
-### E) Contact the Project Coordinator
+### E) Contact us
 
 Form di contatto con i campi:
 
@@ -163,7 +163,9 @@ Form di contatto con i campi:
 | Message | Textarea | ✅ |
 | [SEND] | Button | — |
 
-- I messaggi vengono inviati a: **r.ponza@hit09.com** *(da confermare con HIT09 — vedi item #8 in PROGETTO_DAMAGER_WEBSITE.md)*
+- I messaggi vengono inviati a: **info@hit09.com** (Netlify Forms — configurare notifica in dashboard Netlify → Form notifications)
+- **Referente:** Rita Ponza — Project Coordinator
+- **LinkedIn coordinatore:** https://www.linkedin.com/company/hit09-srl
 - Implementazione: Netlify Forms (nessun server necessario)
 - Anti-spam: campo honeypot nascosto
 - Messaggio di conferma: *"Thank you! Your message has been sent to the project coordinator."*

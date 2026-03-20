@@ -123,3 +123,106 @@ abbr[title="required"] {
   text-decoration: none;
   color: $gray-600;
 }
+
+// ────────────────────────────────────
+// Contact section two-column layout
+// ────────────────────────────────────
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-10;
+  align-items: start;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 260px;
+    gap: $space-12;
+  }
+
+  // Override max-width set on .contact-form globally
+  .contact-form { max-width: none; }
+}
+
+// ────────────────────────────────────
+// Coordinator info card
+// ────────────────────────────────────
+.coordinator-card {
+  background: $white;
+  border: $border;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+
+    img {
+      max-height: 56px;
+      max-width: 160px;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__logo-placeholder {
+    height: 56px;
+    min-width: 100px;
+    background: $gray-100;
+    border: $border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: $gray-600;
+    text-transform: uppercase;
+    padding: 0 $space-4;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__role {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $gray-600;
+  }
+
+  &__divider {
+    border: none;
+    border-top: $border;
+    margin: 0;
+  }
+
+  &__linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $black;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    &:hover { opacity: 0.65; }
+  }
+}
