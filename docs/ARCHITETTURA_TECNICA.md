@@ -307,6 +307,23 @@ Decap CMS usa **Netlify Identity + Git Gateway** per scrivere nel repository:
 > La configurazione `branch: main` nel `config.yml` fa sì che ogni salvataggio dal pannello CMS produca un commit direttamente su `main`, bypassando il branch `develop`. Questo comportamento è **intenzionale e standard** per Decap CMS: gli editor non tecnici pubblicano su produzione direttamente dal pannello web, senza interazione con Git.  
 > Il flusso `develop → main` riguarda esclusivamente lo **sviluppatore tecnico** che lavora su layout, template e SCSS. I due flussi sono indipendenti e non si sovrappongono.
 
+### Problema noto — Git Gateway e ordine di attivazione
+
+Dopo aver abilitato Git Gateway nel pannello Netlify (Identity → Services → Enable Git Gateway), il pannello CMS (`/admin`) può mostrare l'errore:
+
+> *"Your Git Gateway backend is not returning valid settings. Please make sure it is enabled."*
+
+La console del browser riporta: `GET /.netlify/git/settings → 404 (Not Found)`
+
+**Causa:** Git Gateway viene abilitato a livello di configurazione, ma le rotte interne `/.netlify/git/` vengono registrate sul CDN di Netlify soltanto al **deploy successivo** all'attivazione.
+
+**Soluzione:** eseguire un nuovo deploy manuale del sito senza modifiche al codice:
+- Pannello Netlify → **Deploys** → **"Trigger deploy"** → **"Deploy site"**
+- Attendere che il deploy raggiunga lo stato "Published"
+- Ricaricare `/admin` — il CMS sarà pienamente operativo
+
+> Nota: questo problema si manifesta solo la prima volta che Git Gateway viene abilitato, oppure dopo una sua disattivazione e riattivazione. Non si ripresenta nei deploy ordinari.
+
 ---
 
 ## 3. CONFIGURAZIONE NETLIFY

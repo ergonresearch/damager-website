@@ -417,13 +417,36 @@ Aggiungere questo script nel `<head>` di `layouts/_default/baseof.html` (dopo il
 
 ---
 
-## F1.5 — Netlify Identity
+## F1.5 — Netlify Identity e Git Gateway
 
-Netlify Identity è già stato abilitato in FASE 0A in modalità "Invite only". Nessuna azione aggiuntiva necessaria.
+Netlify Identity è già stato abilitato in FASE 0A in modalità "Invite only".
 
 Verificare che sia attivo:
 - Pannello Netlify → "Site settings" → "Identity" → stato: **Enabled**
 - Registration: **Invite only** ✅
+
+### Abilitare Git Gateway
+
+Git Gateway è il servizio Netlify che fa da ponte tra Decap CMS e il repository GitHub, permettendo al CMS di creare commit per conto degli utenti autenticati. Va abilitato separatamente da Netlify Identity:
+
+- Pannello Netlify → "Site settings" → "Identity" → sezione **"Services"** → **"Enable Git Gateway"**
+
+Dopo l'attivazione, il pannello mostra:
+- Repository: `https://github.com/ergonresearch/damager-website`
+- GitHub API access token: generato automaticamente
+
+> **Attenzione — problema noto:** Git Gateway viene abilitato a livello di configurazione, ma le rotte interne `/.netlify/git/` vengono registrate sul CDN di Netlify **solo al deploy successivo**. Se si accede a `/admin` subito dopo l'attivazione, il CMS mostra l'errore *"Your Git Gateway backend is not returning valid settings"* e la console del browser riporta `GET /.netlify/git/settings → 404 (Not Found)`.
+>
+> **Soluzione:** eseguire un nuovo deploy del sito (Netlify → Deploys → "Trigger deploy" → "Deploy site") senza modifiche al codice. Dopo che il deploy raggiunge lo stato "Published", il pannello CMS diventa pienamente operativo.
+
+### Invitare gli utenti CMS
+
+L'accesso al pannello `/admin` non usa le credenziali dell'account Netlify, ma un sistema di autenticazione separato (Netlify Identity). Ogni utente che deve accedere al CMS deve ricevere un invito esplicito:
+
+- Pannello Netlify → "Identity" → **"Invite users"** → inserire l'indirizzo email
+- L'utente riceve un'email con un link di accettazione (`/#invite_token=...`)
+- Aprendo quel link nel browser, l'utente imposta la propria password per il pannello CMS
+- Da quel momento può accedere a `/admin` con email e password impostata
 
 ---
 
@@ -493,7 +516,7 @@ Netlify fa il build automaticamente. Dopo 1-2 minuti:
 - [x] Tutte e 4 le pagine del menu sono raggiungibili ✅
 - [x] Build Netlify completata senza errori ✅
 - [x] Sito raggiungibile su `damager-website.netlify.app` ✅
-- [ ] Pannello CMS raggiungibile su `/admin` *(da verificare manualmente nel browser)*
+- [x] Pannello CMS raggiungibile su `/admin` ✅
 
 ---
 
