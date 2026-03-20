@@ -17,18 +17,17 @@
     </div>
   </section>
 
-  {{/* ── Optional featured image ──────────────────────────────────────── */}}
-  {{ with .Params.image }}
-  <div class="article-image">
-    <div class="container">
-      <img src="{{ . }}" alt="{{ $.Title }}">
-    </div>
-  </div>
-  {{ end }}
-
   {{/* ── Article body ─────────────────────────────────────────────────── */}}
   <section class="section">
     <div class="container">
+
+      {{/* ── Featured image — between title and body text ────────────── */}}
+      {{ with .Params.image }}
+      <div class="article-image">
+        <img src="{{ . }}" alt="{{ $.Title }}">
+      </div>
+      {{ end }}
+
       <div class="article-body">
         {{ .Content }}
       </div>
