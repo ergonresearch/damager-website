@@ -1,6 +1,7 @@
 baseURL = "https://damager.eu/"
 languageCode = "en-us"
 title = "DAMAGER"
+favicon = "/images/logo/favicon.svg"
 
 [params]
   description = "stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines"

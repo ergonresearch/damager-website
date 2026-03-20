@@ -9,13 +9,13 @@
 
 ## Checklist
 
-- [x] F3.1 — Hero section (immagine/placeholder + titolo + sottotitolo)
-- [x] F3.2 — EU Funding Disclaimer section
+- [x] F3.1 — Hero section (turbojet_half.png + logo DAMAGER SVG + sottotitolo)
+- [x] ~~F3.2 — EU Funding Disclaimer section~~ *(rimossa dalla Home — contenuto spostato nel footer)*
 - [x] F3.3 — Project Progress Bar (dinamica via JS)
 - [x] F3.4 — Upcoming Events (prima card: M06 Meeting)
-- [x] F3.5 — Contact the Project Coordinator (Netlify Forms)
+- [x] F3.5 — Contact us (Netlify Forms + coordinator card)
 - [x] F3.6 — Pagina di conferma invio form (`/contact-success/`)
-- [x] F3.7 — SCSS home page (`_home.scss`: hero, eu-disclaimer)
+- [x] F3.7 — SCSS home page (`_home.scss`)
 - [x] F3.8 — Build, verifica e deploy
 
 ---
@@ -26,11 +26,11 @@
 
 | Sezione | Classe CSS | Note |
 |---------|-----------|------|
-| A — Hero | `.hero` | Immagine placeholder dark; `turbojet.png` in `static/images/` in FASE 0B |
-| B — EU Disclaimer | `.eu-disclaimer` | Logo EU placeholder; SVG in `static/images/eu-logo/` in FASE 0B |
+| A — Hero | `.hero` | `turbojet_half.png` flush al fondo; logo DAMAGER SVG inline come `<h1>` |
+| ~~B — EU Disclaimer~~ | ~~`.eu-disclaimer`~~ | *Rimossa — testo regolatorio spostato nel footer* |
 | C — Progress Bar | `[data-progress-bar]` | Calcolata da `main.js` su date 01/12/2025–30/11/2029 |
 | D — Upcoming Events | `.event-card` | M06 Meeting — Polonia — giugno 2026 |
-| E — Contact Form | `.contact-form` | Netlify Forms, honeypot anti-spam, redirect a `/contact-success/` |
+| E — Contact us | `.contact-form` + `.coordinator-card` | Netlify Forms, layout bicolonna con card coordinatrice |
 
 ---
 
@@ -41,18 +41,21 @@
 La hero section occupa almeno l'88% dell'altezza visibile (88vh) con:
 
 - **Sfondo:** `#111111` (nero) come fallback CSS
-- **Immagine:** `<img src="/images/turbojet.png">` con `opacity: 0.28` — se il file è assente il CSS black rimane visibile *(immagine da aggiungere in FASE 0B)*
-- **Titolo:** `DAMAGER` — font extra-large, peso 900, letterspacing ampio
+- **Immagine di sfondo:** `turbojet_half.png` — immagine pre-ritagliata (metà superiore del turbojet), `width: 100%`, `height: auto`, ancorata al fondo dell'hero (`bottom: 0`) senza spazio nero prima della sezione successiva. Gradiente sovrapposto per leggibilità del testo in alto.
+- **Logo/Titolo:** `<h1 class="hero__logo">` con SVG DAMAGER inline (`damager-logo-white.svg`) — font Ethnocentric caricato via `@font-face`. Dimensione: `max-width: 520px`, scalabile su mobile.
 - **Sottotitolo:** acronimo espanso in corsivo, bianco a ridotta opacità
 
 ```html
 <section class="hero">
   <div class="hero__bg">
-    <img src="/images/turbojet.png" alt="" aria-hidden="true">
+    <img class="hero__bg-img" src="/images/turbojet_half.png" alt="" aria-hidden="true">
+    <div class="hero__bg-gradient" aria-hidden="true"></div>
   </div>
   <div class="container">
     <div class="hero__content">
-      <h1 class="hero__title">DAMAGER</h1>
+      <h1 class="hero__logo" aria-label="DAMAGER">
+        <!-- damager-logo-white.svg inline via resources.Get -->
+      </h1>
       <p class="hero__subtitle">stuDy of Additive ManufActuring ...</p>
     </div>
   </div>
@@ -61,17 +64,9 @@ La hero section occupa almeno l'88% dell'altezza visibile (88vh) con:
 
 ---
 
-## F3.2 — EU Funding Disclaimer
+## F3.2 — EU Funding Disclaimer *(rimossa dalla Home)*
 
-**File:** `layouts/index.html` — section `.section--alt.section--sm`
-
-Layout bicolonna (logo sx, testo dx) su desktop; colonna singola su mobile.
-
-Il logo EU è condizionale tramite `fileExists`:
-- Se `static/images/eu-logo/eu-funded.svg` è presente → `<img>` reale
-- Altrimenti → box placeholder con testo "Funded by the European Union"
-
-Testo obbligatorio (parola per parola da regolamento EDF):
+La sezione EU Disclaimer è stata rimossa dalla Home page su richiesta. Il testo regolatorio obbligatorio (EDF) è riportato nel footer del sito, visibile su tutte le pagine.
 
 > *"Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or DG DEFIS. Neither the European Union nor the granting authority can be held responsible for them."*
 

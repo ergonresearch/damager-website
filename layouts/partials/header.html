@@ -1,11 +1,11 @@
 <header class="site-header">
   <div class="container header-inner">
 
-    {{/* Logo — text placeholder until SVG is available (FASE 0B) */}}
+    {{/* Logo — inline SVG so @font-face (Ethnocentric) applies correctly */}}
     <a href="/" class="logo" aria-label="DAMAGER — Home">
       {{- $logo := resources.Get "images/logo/damager-logo-white.svg" -}}
       {{- if $logo -}}
-        <img src="{{ $logo.RelPermalink }}" alt="DAMAGER" width="140" height="36">
+        {{- $logo.Content | safeHTML -}}
       {{- else -}}
         DAMAGER
       {{- end -}}

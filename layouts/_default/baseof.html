@@ -6,6 +6,9 @@
   <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.description | truncate 60 }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
+  <!-- Favicon -->
+  <link rel="icon" href="{{ .Site.Params.favicon | default "/images/logo/favicon.svg" }}" type="image/svg+xml">
+
   <!-- Google Fonts — Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -3,42 +3,26 @@
 {{/* ── A) Hero ────────────────────────────────────────────────────────── */}}
 <section class="hero">
   <div class="hero__bg">
-    {{/*
-      turbojet.png will be placed in static/images/ during FASE 0B.
-      Until then the CSS background ($dark) acts as a visible fallback.
-    */}}
-    <img src="/images/turbojet.png" alt="" aria-hidden="true">
+    {{/* turbojet_half.png: pre-cropped top half, full-width, bottom flush with hero */}}
+    <img class="hero__bg-img" src="/images/turbojet_half.png" alt="" aria-hidden="true">
+    <div class="hero__bg-gradient" aria-hidden="true"></div>
   </div>
   <div class="container">
     <div class="hero__content">
-      <h1 class="hero__title">DAMAGER</h1>
+      {{/* DAMAGER SVG logo as hero title */}}
+      <h1 class="hero__logo" aria-label="DAMAGER">
+        {{- $heroLogo := resources.Get "images/logo/damager-logo-white.svg" -}}
+        {{- if $heroLogo -}}
+          {{- $heroLogo.Content | safeHTML -}}
+        {{- else -}}
+          DAMAGER
+        {{- end -}}
+      </h1>
       <p class="hero__subtitle">stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines</p>
     </div>
   </div>
 </section>
 
-{{/* ── B) EU Funding Disclaimer ────────────────────────────────────────── */}}
-<section class="section section--alt section--sm">
-  <div class="container">
-    <div class="eu-disclaimer">
-
-      <div class="eu-disclaimer__logo">
-        {{ if fileExists "static/images/eu-logo/eu-funded.svg" }}
-          <img src="/images/eu-logo/eu-funded.svg" alt="Funded by the European Union" width="140">
-        {{ else }}
-          <div class="eu-disclaimer__logo--placeholder" aria-hidden="true">
-            Funded by the<br>European Union
-          </div>
-        {{ end }}
-      </div>
-
-      <div class="eu-disclaimer__text">
-        <p><strong>Funded by the European Union.</strong> Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or DG DEFIS. Neither the European Union nor the granting authority can be held responsible for them.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 {{/* ── C) Project Progress Bar ─────────────────────────────────────────── */}}
 <section class="section section--sm">

@@ -106,8 +106,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 3 — Home Page
 
-- [x] **F3.1** Hero section (turbojet.png + titolo) ✅
-- [x] **F3.2** EU Disclaimer (logo + testo obbligatorio) ✅
+- [x] **F3.1** Hero section (turbojet_half.png + logo DAMAGER SVG inline) ✅
+- [x] **F3.2** ~~EU Disclaimer~~ *(rimossa dalla Home, spostata nel footer)* ✅
 - [x] **F3.3** Project progress bar (dinamica, calcolo JS) ✅
 - [x] **F3.4** Upcoming Events (DAMAGER M06 Meeting) ✅
 - [x] **F3.5** Form di contatto (Netlify Forms) ✅
@@ -142,7 +142,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > A questo punto il sito ha la struttura completa con placeholder. Si sostituiscono i materiali definitivi prima del go-live.
 
-- [ ] **F0B.1** Logo DAMAGER convertito in SVG/PNG/favicon (da `resources/DAMAGER_logo.pdf`)
+- [x] **F0B.1** Logo DAMAGER SVG + font Ethnocentric + favicon ✅
+- [x] **F0B.5** `turbojet_half.png` in `static/images/` (hero Home) ✅
 - [ ] **F0B.2** Immagini di sfondo create da `resources/background_template.pdf`
 - [ ] **F0B.3** Logo EU "Funded by the European Union" scaricato
 - [ ] **F0B.4** Loghi definitivi dei 5 partner raccolti e sostituiti ai placeholder

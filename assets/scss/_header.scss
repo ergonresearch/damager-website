@@ -27,14 +27,17 @@
   text-decoration: none;
   flex-shrink: 0;
   line-height: 1;
+  display: flex;
+  align-items: center;
 
   &:hover { opacity: 0.85; }
 
-  // When SVG logo is available (FASE 0B), target the img
-  img {
-    height: 36px;
+  // Inline SVG logo (FASE 0B)
+  svg {
+    height: 50px;
     width: auto;
-    filter: brightness(0) invert(1); // white version via CSS filter
+    display: block;
+    // viewBox 1890×591 → aspect ratio ≈ 3.2:1 → at 50px height → ~160px wide
   }
 }
 

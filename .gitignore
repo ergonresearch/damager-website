@@ -22,3 +22,6 @@ npm-debug.log
 
 # Netlify
 .netlify/
+
+# Extracted font archive (source kept in resources/ethnocentric.zip)
+resources/ethnocentric_extracted/

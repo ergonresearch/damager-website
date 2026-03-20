@@ -2,6 +2,31 @@
 // DAMAGER — Base / Reset / Typography
 // ─────────────────────────────────────────────
 
+// ────────────────────────────────────
+// Ethnocentric font (logo DAMAGER)
+// ────────────────────────────────────
+@font-face {
+  font-family: 'EthnocentricRg-Italic';
+  src: url('/fonts/ethnocentric-italic.otf') format('opentype');
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/ethnocentric-italic.otf') format('opentype');
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/ethnocentric-regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {

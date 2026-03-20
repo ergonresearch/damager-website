@@ -10,11 +10,11 @@
 
 ## Checklist di fase
 
-- [ ] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
+- [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
 - [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
 - [ ] F0B.3 — Sostituzione logo EU placeholder con logo ufficiale "Funded by the European Union"
 - [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
-- [ ] F0B.5 — Copia `resources/turbojet.png` → `static/images/turbojet.png` (hero Home page)
+- [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
 - [ ] F0B.6 — Copia `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + aggiornare campo `image:` nel file `content/media/news/2025-12-01-kickoff-meeting.md`
 - [ ] F0B.7 — Copia `resources/FACTSHEET_EDF_2024_...pdf` → `static/documents/` (il percorso è già configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
 - [ ] Verifica finale struttura cartelle
@@ -87,19 +87,35 @@ resources/
 
 ---
 
-## F0B.1 — Estrazione e conversione logo DAMAGER da PDF
+## F0B.1 — Logo DAMAGER definitivo ✅ Completata
 
-**File sorgente:** `resources/DAMAGER_logo.pdf`
+**File sorgente fornito:** `resources/DAMAGER.svg` (SVG vettoriale con testo, font Ethnocentric)  
+**Font fornito:** `resources/ethnocentric.zip` → `ethnocentric-italic.otf` + `Ethnocentric-Regular.otf`
 
-**Formati da produrre:**
+**Soluzione adottata — SVG inline + @font-face:**  
+Il file SVG usa testo reale con `font-family: 'EthnocentricRg-Italic', 'Ethnocentric'` (non convertito in path). Per garantire la corretta visualizzazione, il logo viene inserito come SVG inline nel template (non come `<img>`), così il CSS `@font-face` si applica al testo.
 
-| File da creare | Formato | Utilizzo |
-|----------------|---------|----------|
-| `resources/logo/damager-logo.svg` | Vettoriale SVG | Header, documenti |
-| `resources/logo/damager-logo-white.svg` | Vettoriale SVG bianco | Header su sfondo nero |
-| `resources/logo/damager-logo-512.png` | PNG 512×512 px | Favicon grande, PWA |
-| `resources/logo/damager-logo-192.png` | PNG 192×192 px | PWA manifest |
-| `resources/logo/favicon.ico` | ICO 32+16 px | Tab del browser |
+**File prodotti:**
+
+| File | Percorso | Utilizzo |
+|------|----------|----------|
+| Logo bianco (sfondo trasparente) | `assets/images/logo/damager-logo-white.svg` | Header (sfondo nero) |
+| Logo nero (sfondo trasparente) | `assets/images/logo/damager-logo.svg` | Sfondi chiari |
+| Copia statica bianco | `static/images/logo/damager-logo-white.svg` | Riferimenti diretti |
+| Copia statica nero | `static/images/logo/damager-logo.svg` | Riferimenti diretti |
+| Favicon SVG | `static/images/logo/favicon.svg` | Tab del browser |
+| Font italic | `static/fonts/ethnocentric-italic.otf` | @font-face |
+| Font regular | `static/fonts/ethnocentric-regular.otf` | @font-face |
+
+**Modifiche tecniche:**
+
+- `assets/scss/_base.scss`: aggiunto `@font-face` per `EthnocentricRg-Italic` e `Ethnocentric` (italic + regular)
+- `layouts/partials/header.html`: logo reso con `resources.Get ... .Content | safeHTML` (SVG inline)
+- `assets/scss/_header.scss`: `.logo svg` con `height: 36px; width: auto`
+- `layouts/_default/baseof.html`: aggiunto `<link rel="icon" href="/images/logo/favicon.svg" type="image/svg+xml">`
+- `hugo.toml`: aggiunto `favicon = "/images/logo/favicon.svg"`
+
+> **Nota:** I PNG (512×512, 192×192) e il `.ico` tradizionale sono opzionali e possono essere generati in un secondo momento tramite https://favicon.io/favicon-converter/ se necessario per PWA o compatibilità browser datati.
 
 ---
 
