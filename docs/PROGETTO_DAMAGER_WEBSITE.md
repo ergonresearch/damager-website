@@ -148,7 +148,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0B.3** Logo EU: bandiera europea nel footer ✅
 - [x] **F0B.6** `foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` (news article) ✅
 - [x] **F0B.7** Factsheet PDF in `static/documents/` ✅
-- [ ] **F0B.4** Loghi definitivi dei 5 partner raccolti e sostituiti ai placeholder
+- [x] **F0B.4** Loghi definitivi dei 5 partner integrati (`static/images/partners/`) ✅
 
 ---
 

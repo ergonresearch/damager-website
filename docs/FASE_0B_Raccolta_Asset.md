@@ -13,7 +13,7 @@
 - [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
 - [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
 - [x] F0B.3 — Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` (footer)
-- [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
+- [x] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner ✅
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
 - [x] F0B.6 — `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + `image:` aggiornato in `content/media/news/2025-12-01-kickoff-meeting.md`
 - [x] F0B.7 — Factsheet PDF copiato in `static/documents/` (percorso configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
@@ -317,18 +317,25 @@ Il programma EDF usa ufficialmente: `@defis_eu` su Twitter/X, hashtag `#Stronger
 
 ---
 
-## F0B.4 — Raccolta loghi e descrizioni dei 5 partner
+## F0B.4 — Loghi definitivi dei 5 partner ✅ Completata
 
-**Per ogni partner servono:** logo (PNG/SVG), indirizzo fisico per la mappa, descrizione approvata in inglese.
+**File sorgente forniti:** 5 immagini aggiunte in `resources/` dal cliente.
 
-### Come scaricare i loghi
+**File prodotti:**
 
-**Metodo manuale consigliato** (rispetto dei termini d'uso dei siti):
+| Partner | File sorgente | File destinazione | Formato |
+|---------|--------------|-------------------|---------|
+| HIT09 SRL | `resources/logo hit09.png` | `static/images/partners/hit09.png` | PNG |
+| LITHOZ GMBH | `resources/zlithoz_logo_cut-out-scaled.jpg` | `static/images/partners/lithoz.jpg` | JPG |
+| AENIUM ENGINEERING SL | `resources/Aenium-2048x649.png` | `static/images/partners/aenium.png` | PNG |
+| ERGON RESEARCH SRL | `resources/Logo Ergon_highres.jpg` | `static/images/partners/ergon.jpg` | JPG |
+| COMOTI | `resources/COMOTI-Logo-PNG-EN-3.png` | `static/images/partners/comoti.png` | PNG |
 
-1. Aprire il sito del partner nel browser
-2. Tasto destro sul logo → "Salva immagine" se è un PNG/JPG visibile
-3. Oppure: `F12` → Inspector → trovare il tag `<img>` o `<svg>` del logo → copiare l'URL → scaricare
-4. Salvare in `resources/partners/`
+**Modifiche tecniche:**
+
+- `layouts/partners/list.html`: rimossi i blocchi `fileExists`/`logo-placeholder` — ogni `.card-partner__logo` usa direttamente `<img>` con il percorso definitivo.
+- `layouts/index.html`: rimosso il blocco `fileExists`/`coordinator-card__logo-placeholder` — la coordinator card nella Home Page usa ora direttamente `hit09.png`.
+- Lo SCSS in `_components.scss` (`.card-partner__logo img`) gestisce il sizing: `max-height: 60px; max-width: 200px; object-fit: contain;`
 
 ---
 
@@ -424,7 +431,7 @@ Il programma EDF usa ufficialmente: `@defis_eu` su Twitter/X, hashtag `#Stronger
 
 ---
 
-### Tabella riepilogativa
+### Tabella riepilogativa ✅
 
 | Partner | Logo | Indirizzo | Descrizione EN | Stato |
 |---------|------|-----------|----------------|-------|
@@ -439,14 +446,9 @@ Il programma EDF usa ufficialmente: `@defis_eu` su Twitter/X, hashtag `#Stronger
 
 ### ⚠️ Punto aperto generale F0B.4
 
-**[APERTO] Autorizzazione uso loghi**
+**[CHIUSO] Loghi integrati nel sito**
 
-I loghi sono di proprietà delle rispettive aziende. È buona pratica inviare a ciascun partner una breve email con:
-- Richiesta di utilizzare il logo sul sito DAMAGER
-- La descrizione placeholder per revisione/approvazione
-- La conferma dell'indirizzo fisico per la mappa
-
-Questo evita problemi legali e garantisce informazioni accurate.
+I loghi sono stati forniti direttamente dal cliente. Gli indirizzi fisici per la mappa interattiva saranno raccolti in **FASE 7** (Google Maps con cookie consent). Le descrizioni placeholder sono già visibili sul sito — i partner potranno richiedere modifiche prima del go-live.
 
 ---
 
@@ -454,22 +456,22 @@ Questo evita problemi legali e garantisce informazioni accurate.
 
 ### Struttura cartelle
 
-- [ ] Cartelle create: `resources/logo/`, `resources/eu-logo/`, `resources/backgrounds/`, `resources/partners/`
-- [ ] Logo DAMAGER convertito in SVG (`damager-logo.svg`)
-- [ ] Logo DAMAGER versione bianca (`damager-logo-white.svg`)
-- [ ] Logo DAMAGER in PNG 512px (`damager-logo-512.png`)
-- [ ] Favicon generato (`favicon.ico`)
-- [ ] Immagini di sfondo create (`compressor-bg.svg`, `turbine-bg.svg`)
-- [ ] Logo EU scaricato in SVG e PNG
-- [ ] Loghi dei 5 partner scaricati in `resources/partners/`
+- [x] Cartelle `static/images/logo/`, `static/images/eu-logo/`, `static/images/partners/`, `static/images/uploads/`, `static/documents/` create ✅
+- [x] Logo DAMAGER SVG (`assets/images/logo/damager-logo.svg` + copia in `static/`) ✅
+- [x] Logo DAMAGER versione bianca (`assets/images/logo/damager-logo-white.svg`) ✅
+- [ ] Logo DAMAGER in PNG 512px (opzionale, da generare se necessario per PWA)
+- [x] Favicon SVG generato (`static/images/logo/favicon.svg`) ✅
+- [ ] Immagini di sfondo create (`compressor-bg.svg`, `turbine-bg.svg`) — da fare in FASE futura
+- [x] Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` ✅
+- [x] Loghi dei 5 partner in `static/images/partners/` ✅
 
 ### Informazioni da raccogliere
 
-- [ ] Indirizzo fisico HIT09 SRL (per mappa consorzio)
-- [ ] Indirizzo fisico Ergon Research SRL (per mappa consorzio)
-- [ ] Indirizzi Lithoz, Aenium e COMOTI (da verificare online)
+- [ ] Indirizzo fisico HIT09 SRL (per mappa consorzio — FASE 7)
+- [ ] Indirizzo fisico Ergon Research SRL (per mappa consorzio — FASE 7)
+- [ ] Indirizzi Lithoz, Aenium e COMOTI (per mappa consorzio — FASE 7)
 - [x] URL ufficiale COMOTI → https://comoti.ro/en/home-2/ ✅
-- [ ] Descrizioni partner approvate (o conferma di usare i placeholder)
+- [ ] Descrizioni partner approvate dai partner (i placeholder sono attivi, da confermare prima del go-live)
 - [x] LinkedIn DAMAGER → https://www.linkedin.com/company/damager-edf-project/posts/ ✅
 - [ ] Twitter/X DAMAGER (verificare se esiste)
 - [ ] Linee guida di comunicazione EDF da HIT09
