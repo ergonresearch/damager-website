@@ -117,6 +117,14 @@ Prima card preconfigurata:
 
 Link **"View all events"** → `/media/#events`
 
+**Struttura date block (`.event-card__date-block`):**
+
+| Elemento | Classe | Note |
+|----------|--------|------|
+| Mese | `.event-card__month` | Sempre presente (testo breve, uppercase) |
+| Giorno | `.event-card__day` | Opzionale — da aggiungere solo se il giorno è noto (es. `<span class="event-card__day">15</span>`) |
+| Anno | `.event-card__year` | Sempre presente — dimensionato per stare nel box (72px) |
+
 ---
 
 ## F3.5 — Contact Form (Netlify Forms) + Coordinator Info

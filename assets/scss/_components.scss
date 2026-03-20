@@ -456,7 +456,7 @@
 
   &__date-block {
     flex-shrink: 0;
-    width: 64px;
+    width: 72px;
     text-align: center;
     border: 2px solid $black;
     padding: $space-3 $space-2;
@@ -471,12 +471,24 @@
     color: $gray-600;
   }
 
+  // Large numeric day — only rendered when a specific day is known
   &__day {
     display: block;
     font-size: $font-size-2xl;
     font-weight: 900;
     line-height: 1;
     margin-top: $space-1;
+  }
+
+  // Four-digit year — always shown, sized to fit inside the box
+  &__year {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-top: $space-1;
+    color: $black;
   }
 
   &__body { flex: 1; }
@@ -507,10 +519,16 @@
   border-bottom: 2px solid $gray-200;
   margin-bottom: $space-10;
   gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; // Firefox
+  &::-webkit-scrollbar { display: none; } // Chrome/Safari
 
   &__item {
-    padding: $space-3 $space-6;
-    font-size: $font-size-sm;
+    flex-shrink: 0; // prevent tabs from squishing or wrapping
+    white-space: nowrap;
+    padding: $space-3 $space-4;
+    font-size: $font-size-xs;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -520,6 +538,11 @@
     margin-bottom: -2px;
     cursor: pointer;
     transition: color $ease, border-color $ease;
+
+    @media (min-width: $bp-sm) {
+      padding: $space-3 $space-6;
+      font-size: $font-size-sm;
+    }
 
     &:hover { color: $black; opacity: 1; }
 

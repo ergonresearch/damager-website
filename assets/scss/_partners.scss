@@ -24,7 +24,7 @@
 
 .consortium-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr; // mobile: stacked
   gap: $space-4;
 
   @media (min-width: $bp-lg) {

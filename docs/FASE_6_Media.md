@@ -71,6 +71,8 @@ In `layouts/media/list.html`, le pagine vengono caricate per sottosezione:
 
 Ogni tab ha un badge con il conteggio degli elementi. Il tab attivo mostra il suo pannello `.tab-panel.is-active`; gli altri hanno `display: none`.
 
+**Responsive (mobile):** la `.tab-nav` ha `overflow-x: auto` con scrollbar nascosta — i tab scorrono orizzontalmente senza wrapping. Ogni `.tab-nav__item` ha `white-space: nowrap` e padding ridotto sotto i 576px.
+
 ---
 
 ## F6.2–F6.3 — News & Events

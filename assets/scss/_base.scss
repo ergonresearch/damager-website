@@ -56,9 +56,14 @@ h1, h2, h3, h4, h5, h6 {
 
 // ── Section wrappers
 .section {
-  padding: $space-20 0;
+  padding: $space-12 0; // mobile-first: tighter vertical rhythm
 
-  &--sm  { padding: $space-12 0; }
+  @media (min-width: $bp-md) { padding: $space-20 0; }
+
+  &--sm  {
+    padding: $space-8 0;
+    @media (min-width: $bp-md) { padding: $space-12 0; }
+  }
   &--alt { background: $gray-100; }
   &--dark {
     background: $dark;

@@ -93,7 +93,7 @@ Classi definite:
 | Classe | Descrizione |
 |--------|-------------|
 | `.consortium-intro` | Layout intro + stat boxes |
-| `.consortium-stats` | Griglia 3 stat boxes |
+| `.consortium-stats` | Griglia stat boxes: 1 colonna su mobile, 3 colonne da 576px, 1 colonna (sidebar) da 1024px |
 | `.stat-box` | Box singola statistica (numero grande + label) |
 | `.card-partner--coordinator` | Override: bordo nero, badge "Coordinator" |
 | `.coordinator-badge` | Label "Coordinator" in alto a destra sulla card |
