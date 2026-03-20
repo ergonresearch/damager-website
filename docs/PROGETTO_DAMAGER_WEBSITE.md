@@ -92,13 +92,13 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ### FASE 2 — Template grafico
 
-- [ ] **F2.1** Palette bianco/nero in SCSS
-- [ ] **F2.2** Header sticky con logo + menu
-- [ ] **F2.3** Footer con EU disclaimer + link legali
-- [ ] **F2.4** Componenti: card news, card documento, card partner
-- [ ] **F2.5** Sfondi decorativi blueprint (compressore/turbina)
-- [ ] **F2.6** Layout responsive mobile-first
-- [ ] **F2.7** Timeline animata con aeroplano SVG
+- [x] **F2.1** Palette bianco/nero in SCSS ✅
+- [x] **F2.2** Header sticky con logo + menu ✅
+- [x] **F2.3** Footer con EU disclaimer + link legali ✅
+- [x] **F2.4** Componenti: card news, card documento, card partner ✅
+- [x] **F2.5** Sfondi decorativi blueprint (compressore/turbina) ✅
+- [x] **F2.6** Layout responsive mobile-first ✅
+- [x] **F2.7** Timeline animata con aeroplano SVG ✅
 
 ### BLOCCO FASI 3-6 — Struttura iniziale sito *(con asset placeholder)*
 
@@ -106,11 +106,11 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 3 — Home Page
 
-- [ ] **F3.1** Hero section (turbojet.png + titolo)
-- [ ] **F3.2** EU Disclaimer (logo + testo obbligatorio)
-- [ ] **F3.3** Project progress bar (dinamica, calcolo JS)
-- [ ] **F3.4** Upcoming Events (DAMAGER M06 Meeting)
-- [ ] **F3.5** Form di contatto (Netlify Forms)
+- [x] **F3.1** Hero section (turbojet.png + titolo) ✅
+- [x] **F3.2** EU Disclaimer (logo + testo obbligatorio) ✅
+- [x] **F3.3** Project progress bar (dinamica, calcolo JS) ✅
+- [x] **F3.4** Upcoming Events (DAMAGER M06 Meeting) ✅
+- [x] **F3.5** Form di contatto (Netlify Forms) ✅
 
 #### FASE 4 — Project Page
 
