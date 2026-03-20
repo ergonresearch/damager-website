@@ -88,7 +88,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F1.4** Decap CMS configurato (`static/admin/config.yml`) ✅
 - [x] **F1.5** Netlify Identity abilitato ✅ *(fatto in FASE 0A)*
 - [x] **F1.6** `netlify.toml` configurato ✅
-- [ ] **F1.7** Primo deploy su Netlify verificato
+- [x] **F1.7** Primo deploy su Netlify verificato ✅
 
 ### FASE 2 — Template grafico
 

@@ -14,7 +14,7 @@
 - [x] F1.4 — Decap CMS configurato (`static/admin/config.yml`) ✅
 - [x] F1.5 — Netlify Identity verificato *(già abilitato in FASE 0A)* ✅
 - [x] F1.6 — `netlify.toml` configurato ✅
-- [ ] F1.7 — Primo deploy su Netlify verificato (sito raggiungibile su staging)
+- [x] F1.7 — Primo deploy su Netlify verificato (sito raggiungibile su staging) ✅
 
 ---
 
@@ -489,11 +489,11 @@ Netlify fa il build automaticamente. Dopo 1-2 minuti:
 ### Verifica finale FASE 1
 
 - [x] `hugo` compila senza errori (9 pagine, 223 ms) ✅
-- [ ] Home page visibile su `localhost:1313`
-- [ ] Tutte e 4 le pagine del menu sono raggiungibili
-- [ ] Build Netlify completata senza errori
-- [ ] Sito raggiungibile su `damager-website.netlify.app`
-- [ ] Pannello CMS raggiungibile su `/admin`
+- [x] Home page visibile su `localhost:1313` ✅
+- [x] Tutte e 4 le pagine del menu sono raggiungibili ✅
+- [x] Build Netlify completata senza errori ✅
+- [x] Sito raggiungibile su `damager-website.netlify.app` ✅
+- [ ] Pannello CMS raggiungibile su `/admin` *(da verificare manualmente nel browser)*
 
 ---
 
