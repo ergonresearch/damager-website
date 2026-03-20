@@ -1,18 +1,43 @@
 # 🗂️ FASE 0B — Raccolta e Preparazione degli Asset
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
-**Prerequisiti:** FASE 0A completata (Git, Netlify, Hugo installati)  
-**Obiettivo:** Raccogliere e convertire tutti i materiali grafici e testuali necessari al sito prima di iniziare lo sviluppo
+**Versione:** 2.0 | **Data:** Marzo 2026  
+**Prerequisiti:** FASE 1-6 completate (struttura Hugo e tutte le pagine con placeholder)  
+**Obiettivo:** Raccogliere e convertire i materiali grafici e testuali definitivi, sostituendo i placeholder inseriti durante il blocco FASI 3-6
+
+> **Nota sull'ordine:** questa fase è stata spostata dopo il completamento della struttura del sito (ex FASE 3-6). Il sito viene costruito prima con asset placeholder per accelerare lo sviluppo; i materiali definitivi vengono integrati in questa fase.
 
 ---
 
 ## Checklist di fase
 
-- [ ] F0B.1 — Estrazione e conversione logo DAMAGER da PDF
-- [ ] F0B.2 — Creazione immagini di sfondo da `background_template.pdf`
-- [ ] F0B.3 — Download logo ufficiale EU "Funded by the European Union"
-- [ ] F0B.4 — Raccolta loghi e descrizioni dei 5 partner del consorzio
+- [ ] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
+- [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
+- [ ] F0B.3 — Sostituzione logo EU placeholder con logo ufficiale "Funded by the European Union"
+- [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
 - [ ] Verifica finale struttura cartelle
+
+---
+
+## Asset placeholder usati nel blocco FASI 3-6
+
+Durante lo sviluppo delle pagine (FASI 3-6) vengono usati i seguenti placeholder, che questa fase andrà a sostituire:
+
+| Asset | Placeholder usato durante sviluppo | File definitivo da creare |
+|-------|------------------------------------|--------------------------|
+| Logo DAMAGER (header) | SVG inline con testo "DAMAGER" | `static/images/logo/damager-logo.svg` |
+| Logo DAMAGER (versione bianca) | CSS `filter: invert(1)` sul placeholder | `static/images/logo/damager-logo-white.svg` |
+| Favicon | Emoji ✈ o lettera "D" | `static/images/logo/favicon.ico` |
+| Logo EU "Funded by the EU" | Testo semplice con link | `static/images/eu-logo/funded-by-eu-en.svg` |
+| Sfondi decorativi | Assenti (sezioni senza sfondo) | `static/images/backgrounds/compressor-bg.svg`, `turbine-bg.svg` |
+| Logo HIT09 | Box grigio con testo "HIT09" | `static/images/partners/hit09-logo.png` |
+| Logo Lithoz | Box grigio con testo "LITHOZ" | `static/images/partners/lithoz-logo.png` |
+| Logo Aenium | Box grigio con testo "AENIUM" | `static/images/partners/aenium-logo.png` |
+| Logo Ergon Research | Box grigio con testo "ERGON" | `static/images/partners/ergon-logo.png` |
+| Logo COMOTI | Box grigio con testo "COMOTI" | `static/images/partners/comoti-logo.png` |
+
+> `turbojet.png` è già disponibile in `resources/` e viene usato direttamente nella hero section — non richiede placeholder.
+
+---
 
 ---
 

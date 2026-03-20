@@ -1,0 +1,37 @@
+baseURL = "https://damager.eu/"
+languageCode = "en-us"
+title = "DAMAGER"
+
+[params]
+  description = "stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines"
+  projectStart = "2025-12-01"
+  projectEnd   = "2029-11-30"
+  linkedin     = "https://www.linkedin.com/company/damager-edf-project/posts/"
+
+[menu]
+  [[menu.main]]
+    name   = "Home"
+    url    = "/"
+    weight = 1
+  [[menu.main]]
+    name   = "Project"
+    url    = "/project/"
+    weight = 2
+  [[menu.main]]
+    name   = "Partners"
+    url    = "/partners/"
+    weight = 3
+  [[menu.main]]
+    name   = "Media"
+    url    = "/media/"
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home    = ["HTML"]
+  page    = ["HTML"]
+  section = ["HTML"]

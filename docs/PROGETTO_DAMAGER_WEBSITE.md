@@ -40,9 +40,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 | File | Contenuto |
 |------|-----------|
-| [`FASE_0_Preparazione.md`](FASE_0_Preparazione.md) | Indice FASE 0 |
-| [`FASE_0A_Setup_Stack.md`](FASE_0A_Setup_Stack.md) | Git, Netlify, Hugo, dominio |
-| [`FASE_0B_Raccolta_Asset.md`](FASE_0B_Raccolta_Asset.md) | Logo, sfondi, EU logo, loghi partner |
+| [`FASE_0_Preparazione.md`](FASE_0_Preparazione.md) | Indice FASE 0 — ordine di esecuzione aggiornato |
+| [`FASE_0A_Setup_Stack.md`](FASE_0A_Setup_Stack.md) | Git, Netlify, Hugo, dominio ✅ |
+| [`FASE_0B_Raccolta_Asset.md`](FASE_0B_Raccolta_Asset.md) | Logo, sfondi, EU logo, loghi partner *(eseguita dopo FASE 6)* |
 
 ### Specifiche e Architettura
 
@@ -51,19 +51,21 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) | Identità visiva, struttura pagine, contenuti, cookie |
 | [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) | Stack, CMS, Netlify config, sicurezza, workflow |
 
-### Fasi di sviluppo *(documenti da creare)*
+### Fasi di sviluppo
 
-| File | Contenuto |
-|------|-----------|
-| `FASE_1_Setup_Hugo_CMS.md` | Inizializzazione progetto Hugo + Decap CMS |
-| `FASE_2_Template.md` | Tema grafico bianco/nero |
-| `FASE_3_Home.md` | Home page |
-| `FASE_4_Project.md` | Project page |
-| `FASE_5_Partners.md` | Partners page + mappa |
-| `FASE_6_Media.md` | Media page + CMS integration |
-| `FASE_7_Cookie.md` | Cookie consent + Privacy policy |
-| `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing |
-| `FASE_9_Formazione.md` | Guida utente CMS per editor |
+| File | Contenuto | Stato |
+|------|-----------|-------|
+| [`FASE_1_Setup_Hugo_CMS.md`](FASE_1_Setup_Hugo_CMS.md) | Inizializzazione progetto Hugo + Decap CMS | In lavorazione |
+| `FASE_2_Template.md` | Tema grafico bianco/nero | Da creare |
+| `FASE_3_Home.md` | Home page *(con asset placeholder)* | Da creare |
+| `FASE_4_Project.md` | Project page *(con asset placeholder)* | Da creare |
+| `FASE_5_Partners.md` | Partners page + mappa *(con loghi placeholder)* | Da creare |
+| `FASE_6_Media.md` | Media page + CMS integration | Da creare |
+| `FASE_7_Cookie.md` | Cookie consent + Privacy policy | Da creare |
+| `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | Da creare |
+| `FASE_9_Formazione.md` | Guida utente CMS per editor | Da creare |
+
+> **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali.
 
 ---
 
@@ -78,21 +80,14 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0A.4** Hugo Extended installato ✅ (`v0.158.0+extended`)
 
 
-### FASE 0B — Raccolta Asset
-
-- [ ] **F0B.1** Logo DAMAGER convertito in SVG/PNG/favicon
-- [ ] **F0B.2** Immagini di sfondo create da `background_template.pdf`
-- [ ] **F0B.3** Logo EU "Funded by the European Union" scaricato
-- [ ] **F0B.4** Loghi e descrizioni dei 5 partner raccolti
-
 ### FASE 1 — Setup Hugo + CMS
 
-- [ ] **F1.1** Progetto Hugo inizializzato (`hugo new site .`)
-- [ ] **F1.2** `hugo.toml` configurato
-- [ ] **F1.3** Tema custom creato (layouts, assets, static)
-- [ ] **F1.4** Decap CMS configurato (`static/admin/config.yml`)
-- [ ] **F1.5** Netlify Identity abilitato
-- [ ] **F1.6** `netlify.toml` configurato
+- [x] **F1.1** Progetto Hugo inizializzato (`hugo new site . --force`) ✅
+- [x] **F1.2** `hugo.toml` configurato ✅
+- [x] **F1.3** Tema custom creato (layouts, assets, static) ✅
+- [x] **F1.4** Decap CMS configurato (`static/admin/config.yml`) ✅
+- [x] **F1.5** Netlify Identity abilitato ✅ *(fatto in FASE 0A)*
+- [x] **F1.6** `netlify.toml` configurato ✅
 - [ ] **F1.7** Primo deploy su Netlify verificato
 
 ### FASE 2 — Template grafico
@@ -105,7 +100,11 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [ ] **F2.6** Layout responsive mobile-first
 - [ ] **F2.7** Timeline animata con aeroplano SVG
 
-### FASE 3 — Home Page
+### BLOCCO FASI 3-6 — Struttura iniziale sito *(con asset placeholder)*
+
+> Le quattro pagine vengono sviluppate in sequenza come un unico blocco. I materiali grafici non ancora disponibili (logo definitivo, loghi partner, sfondi) vengono sostituiti da placeholder. Gli asset reali saranno inseriti nella fase successiva (Raccolta Asset).
+
+#### FASE 3 — Home Page
 
 - [ ] **F3.1** Hero section (turbojet.png + titolo)
 - [ ] **F3.2** EU Disclaimer (logo + testo obbligatorio)
@@ -113,21 +112,21 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [ ] **F3.4** Upcoming Events (DAMAGER M06 Meeting)
 - [ ] **F3.5** Form di contatto (Netlify Forms)
 
-### FASE 4 — Project Page
+#### FASE 4 — Project Page
 
 - [ ] **F4.1** Intro/context (testo factsheet EDF)
 - [ ] **F4.2** Project Details (tabella dati chiave)
 - [ ] **F4.3** Timeline animata con milestone M06–M48
 - [ ] **F4.4** Research Areas (4 card tecnologiche)
 
-### FASE 5 — Partners Page
+#### FASE 5 — Partners Page
 
 - [ ] **F5.1** Card per i 5 partner (logo, nome, paese, ruolo)
 - [ ] **F5.2** Loghi partner inseriti
 - [ ] **F5.3** Mappa Google Maps con marker consorzio
 - [ ] **F5.4** Stile mappa monocromatico
 
-### FASE 6 — Media Page
+#### FASE 6 — Media Page
 
 - [ ] **F6.1** Layout tab: News&Events / Documents / Papers
 - [ ] **F6.2** Sezione News & Events con card
@@ -137,9 +136,22 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [ ] **F6.6** Sezione Academic Papers
 - [ ] **F6.7** CMS collegato a tutte le collezioni
 
+---
+
+### Raccolta Asset — FASE 0B *(eseguita dopo il blocco 3-6)*
+
+> A questo punto il sito ha la struttura completa con placeholder. Si sostituiscono i materiali definitivi prima del go-live.
+
+- [ ] **F0B.1** Logo DAMAGER convertito in SVG/PNG/favicon (da `resources/DAMAGER_logo.pdf`)
+- [ ] **F0B.2** Immagini di sfondo create da `resources/background_template.pdf`
+- [ ] **F0B.3** Logo EU "Funded by the European Union" scaricato
+- [ ] **F0B.4** Loghi definitivi dei 5 partner raccolti e sostituiti ai placeholder
+
+---
+
 ### FASE 7 — Cookie Consent e Privacy
 
-- [ ] **F7.1** Osano Cookie Consent integrato
+- [ ] **F7.1** Vanilla Cookie Consent integrato
 - [ ] **F7.2** Categorie: necessari / analitici / funzionali
 - [ ] **F7.3** Google Analytics 4 condizionale
 - [ ] **F7.4** Google Maps condizionale (placeholder se non accettato)

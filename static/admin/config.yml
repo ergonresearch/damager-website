@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "news"
+    label: "News & Events"
+    folder: "content/media/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Type", name: "type", widget: "select", options: ["News", "Event"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "External Link", name: "link", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+
+  - name: "documents"
+    label: "Documents"
+    folder: "content/media/documents"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select",
+         options: ["Fact Sheet", "Public Deliverable", "Press Release"]}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "PDF File", name: "pdf", widget: "file"}
+      - {label: "Date", name: "date", widget: "datetime"}
+
+  - name: "papers"
+    label: "Academic Papers"
+    folder: "content/media/papers"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Authors", name: "authors", widget: "string"}
+      - {label: "Conference/Journal", name: "venue", widget: "string"}
+      - {label: "Year", name: "year", widget: "number"}
+      - {label: "Abstract", name: "abstract", widget: "text"}
+      - {label: "PDF File", name: "pdf", widget: "file", required: false}
+      - {label: "DOI Link", name: "doi", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}

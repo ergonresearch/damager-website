@@ -1,0 +1,10 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">DAMAGER</a>
+    <nav class="main-nav">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" {{ if eq $.RelPermalink .URL }}class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
