@@ -151,7 +151,9 @@ Attributi Netlify Forms:
 </form>
 ```
 
-> **Email destinatario:** `info@hit09.com` — da configurare in **Netlify dashboard → Site settings → Forms → Form notifications** (non è impostabile direttamente nell'HTML con Netlify Forms). Il campo `_subject` imposta l'oggetto dell'email di notifica.
+> **Email destinatario:** `info@hit09.com` — configurata in **Netlify dashboard → Site configuration → Notifications → Form submission notifications → Add notification → Email notification**. Il campo `_subject` imposta l'oggetto dell'email di notifica.
+
+> **Nota configurazione:** al momento della prima configurazione, il dropdown "Form" mostrava solo l'opzione **"Any form"** (il form viene registrato per nome da Netlify solo dopo la prima submission reale). Selezionare "Any form" è sufficiente: funziona correttamente poiché sul sito è presente un solo form. Dopo la prima submission il form `contact` comparirà nell'elenco e potrà essere selezionato specificatamente se necessario. ✅ Configurato.
 
 Dopo l'invio Netlify redirige a `/contact-success/`.
 
