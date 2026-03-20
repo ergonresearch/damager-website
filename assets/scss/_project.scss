@@ -1,0 +1,130 @@
+// ─────────────────────────────────────────────
+// DAMAGER — Project Page Styles
+// ─────────────────────────────────────────────
+
+// ────────────────────────────────────
+// Intro two-column layout
+// ────────────────────────────────────
+.project-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+  align-items: center;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 360px;
+    gap: $space-16;
+  }
+
+  &__text {
+    max-width: 680px;
+  }
+}
+
+// ── Pull quote from factsheet
+.project-quote {
+  margin-top: $space-8;
+  padding: $space-6 $space-8;
+  border-left: 4px solid $black;
+  font-size: $font-size-base;
+  font-style: italic;
+  color: $gray-800;
+  line-height: 1.75;
+
+  @media (min-width: $bp-md) { font-size: $font-size-lg; }
+}
+
+// ── Blueprint visual placeholder (right column)
+// Replaced with real SVG in FASE 0B
+.blueprint-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: $border;
+  background: $white;
+  color: $gray-400;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: $space-8;
+  gap: $space-4;
+
+  svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.2;
+  }
+}
+
+// ────────────────────────────────────
+// Project Details table
+// ────────────────────────────────────
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+
+  th,
+  td {
+    text-align: left;
+    padding: $space-4 $space-5;
+    border-bottom: $border;
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  th {
+    font-weight: 700;
+    color: $gray-800;
+    background: $white;
+    white-space: nowrap;
+    width: 30%;
+
+    @media (min-width: $bp-md) { width: 25%; }
+  }
+
+  td {
+    color: $black;
+  }
+
+  tr:last-child th,
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: $gray-50;
+  }
+
+  tr:nth-child(even) th {
+    background: $gray-50;
+  }
+}
+
+// ────────────────────────────────────
+// Research area cards on alt bg — ensure white card bg
+// ────────────────────────────────────
+.section--alt .card-research {
+  background: $white;
+}
+
+// ── Icon styling within research cards
+.card-research__icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    stroke: $black;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}

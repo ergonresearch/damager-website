@@ -1,0 +1,164 @@
+{{ define "main" }}
+
+{{/* ── A) Intro & Context ────────────────────────────────────────────────── */}}
+<section class="section bg-blueprint">
+  <div class="container">
+    <div class="project-intro">
+
+      <div class="project-intro__text">
+        <span class="section-eyebrow">About the Project</span>
+        <h1 class="section-title">DAMAGER</h1>
+        <p class="section-intro">stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines</p>
+
+        <blockquote class="project-quote">
+          "The aim of the project is validating and de-risking of some fundamental technological bricks for the rapid deployment of turbojet-propelled small to medium size, expendable uncrewed aerial vehicles (UAV). Key to reducing the cost and time of manufacturing and deployment of large numbers of UAVs is the development of a low-cost yet high-performance, scalable propulsion system that can be manufactured rapidly in large quantities. Turbojet engines are the ideal candidates, due to their high specific thrust and ease of integration into multiple platforms. Several enabling technologies for highly efficient and low-cost small turbojet engines will be investigated."
+        </blockquote>
+      </div>
+
+      <div class="project-intro__visual">
+        {{/*
+          Blueprint visual placeholder — will be replaced with an SVG
+          extracted from resources/background_template.pdf in FASE 0B.
+        */}}
+        <div class="blueprint-visual">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="2" fill="none"/>
+            <circle cx="40" cy="40" r="26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <circle cx="40" cy="40" r="16" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="40" cy="40" r="4" fill="currentColor"/>
+            <line x1="4"  y1="40" x2="76" y2="40" stroke="currentColor" stroke-width="1"/>
+            <line x1="40" y1="4"  x2="40" y2="76" stroke="currentColor" stroke-width="1"/>
+            <line x1="14.5" y1="14.5" x2="65.5" y2="65.5" stroke="currentColor" stroke-width="0.75"/>
+            <line x1="65.5" y1="14.5" x2="14.5" y2="65.5" stroke="currentColor" stroke-width="0.75"/>
+          </svg>
+          <span>Blueprint Visual<br>(FASE 0B)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{/* ── B) Project Details ───────────────────────────────────────────────── */}}
+<section class="section section--alt">
+  <div class="container">
+    <span class="section-eyebrow">Project Details</span>
+    <h2 class="section-title">Key Facts</h2>
+
+    <table class="project-table">
+      <tbody>
+        <tr>
+          <th scope="row">Full title</th>
+          <td>stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines</td>
+        </tr>
+        <tr>
+          <th scope="row">Acronym</th>
+          <td>DAMAGER</td>
+        </tr>
+        <tr>
+          <th scope="row">Programme</th>
+          <td>European Defence Fund (EDF) 2024</td>
+        </tr>
+        <tr>
+          <th scope="row">Call type</th>
+          <td>Research actions focused on SMEs and research organisations</td>
+        </tr>
+        <tr>
+          <th scope="row">Duration</th>
+          <td>48 months (01/12/2025 – 30/11/2029)</td>
+        </tr>
+        <tr>
+          <th scope="row">Total cost</th>
+          <td>€3,994,444.98</td>
+        </tr>
+        <tr>
+          <th scope="row">EU Contribution</th>
+          <td>€3,994,444.98 (100%)</td>
+        </tr>
+        <tr>
+          <th scope="row">Activities</th>
+          <td>Generating knowledge, Integrating knowledge, Studies, Design</td>
+        </tr>
+        <tr>
+          <th scope="row">Coordinator</th>
+          <td>HIT09 SRL (Italy)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{{/* ── C) Timeline ──────────────────────────────────────────────────────── */}}
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">Project Timeline</span>
+    <h2 class="section-title">Milestones</h2>
+    {{ partial "timeline.html" . }}
+  </div>
+</section>
+
+{{/* ── D) Research Areas ────────────────────────────────────────────────── */}}
+<section class="section section--alt">
+  <div class="container">
+    <span class="section-eyebrow">Technology Focus</span>
+    <h2 class="section-title">Research Areas</h2>
+
+    <div class="card-grid">
+
+      {{/* Card 1 — Additive Manufacturing */}}
+      <div class="card-research">
+        <div class="card-research__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3 class="card-research__title">Additive Manufacturing</h3>
+        <p class="card-research__desc">Produzione additiva per componenti turbojet ad alte prestazioni con geometrie complesse non ottenibili con metodi di lavorazione tradizionali.</p>
+      </div>
+
+      {{/* Card 2 — Low-Cost Propulsion */}}
+      <div class="card-research">
+        <div class="card-research__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M19.07 4.93l-2.83 2.83M7.76 16.24l-2.83 2.83"/>
+          </svg>
+        </div>
+        <h3 class="card-research__title">Low-Cost Propulsion</h3>
+        <p class="card-research__desc">Sviluppo di sistemi propulsivi economici ma ad alte prestazioni, per la produzione rapida di grandi quantità di UAV a basso costo unitario.</p>
+      </div>
+
+      {{/* Card 3 — Low-Observable Design */}}
+      <div class="card-research">
+        <div class="card-research__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </div>
+        <h3 class="card-research__title">Low-Observable Design</h3>
+        <p class="card-research__desc">Riduzione della segnatura radar e termica tramite design integrato di materiali avanzati, geometrie ottimizzate e rivestimenti selettivi.</p>
+      </div>
+
+      {{/* Card 4 — Scalable Manufacturing */}}
+      <div class="card-research">
+        <div class="card-research__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="3" width="7" height="7" rx="1"/>
+            <rect x="15" y="3" width="7" height="7" rx="1"/>
+            <rect x="2" y="14" width="7" height="7" rx="1"/>
+            <rect x="15" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <h3 class="card-research__title">Scalable Manufacturing</h3>
+        <p class="card-research__desc">Processi produttivi scalabili per la realizzazione rapida di propulsori in grandi quantità con qualità controllata e costi ridotti.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{ end }}

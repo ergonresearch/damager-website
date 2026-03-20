@@ -114,10 +114,10 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 4 — Project Page
 
-- [ ] **F4.1** Intro/context (testo factsheet EDF)
-- [ ] **F4.2** Project Details (tabella dati chiave)
-- [ ] **F4.3** Timeline animata con milestone M06–M48
-- [ ] **F4.4** Research Areas (4 card tecnologiche)
+- [x] **F4.1** Intro/context (testo factsheet EDF) ✅
+- [x] **F4.2** Project Details (tabella dati chiave) ✅
+- [x] **F4.3** Timeline animata con milestone M06–M48 ✅
+- [x] **F4.4** Research Areas (4 card tecnologiche) ✅
 
 #### FASE 5 — Partners Page
 
