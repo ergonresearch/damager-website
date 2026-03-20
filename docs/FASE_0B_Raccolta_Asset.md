@@ -15,7 +15,7 @@
 - [x] F0B.3 — Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` (footer)
 - [ ] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
-- [ ] F0B.6 — Copia `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + aggiornare campo `image:` nel file `content/media/news/2025-12-01-kickoff-meeting.md`
+- [x] F0B.6 — `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + `image:` aggiornato in `content/media/news/2025-12-01-kickoff-meeting.md`
 - [ ] F0B.7 — Copia `resources/FACTSHEET_EDF_2024_...pdf` → `static/documents/` (il percorso è già configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
 - [ ] Verifica finale struttura cartelle
 
