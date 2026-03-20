@@ -15,7 +15,7 @@
 {{ $pressrels    := where $docs ".Params.category" "Press Release"      }}
 
 {{/* ── Page header ──────────────────────────────────────────────────────── */}}
-<section class="section section--sm bg-blueprint">
+<section class="section section--sm bg-blueprint media-page-header">
   <div class="container">
     <span class="section-eyebrow">Media</span>
     <h1 class="section-title">Media &amp; Resources</h1>
@@ -58,8 +58,8 @@
 
             <div class="news-item__body">
               <div class="news-item__meta">
-                <span class="news-item__type{{ if eq .Params.type "Event" }} news-item__type--event{{ end }}">
-                  {{ .Params.type | default "News" }}
+                <span class="news-item__type{{ if eq .Params.news_type "Event" }} news-item__type--event{{ end }}">
+                  {{ .Params.news_type | default "News" }}
                 </span>
                 <time class="news-item__date" datetime="{{ .Date.Format "2006-01-02" }}">
                   {{ .Date.Format "2 January 2006" }}

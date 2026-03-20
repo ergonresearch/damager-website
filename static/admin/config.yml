@@ -14,7 +14,7 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Type", name: "type", widget: "select", options: ["News", "Event"]}
+      - {label: "Type", name: "news_type", widget: "select", options: ["News", "Event"]}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Featured Image", name: "image", widget: "image", required: false}
       - {label: "External Link", name: "link", widget: "string", required: false}

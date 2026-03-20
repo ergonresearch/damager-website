@@ -69,6 +69,15 @@
 }
 
 // ────────────────────────────────────
+// Reduce gap between Overview and Partner Cards sections
+// ────────────────────────────────────
+.partners-cards-section {
+  padding-top: $space-8;
+
+  @media (min-width: $bp-md) { padding-top: $space-10; }
+}
+
+// ────────────────────────────────────
 // Country flag images (replaces emoji for cross-OS compatibility)
 // ────────────────────────────────────
 .country-flag {

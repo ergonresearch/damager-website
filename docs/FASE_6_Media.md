@@ -137,7 +137,7 @@ Le tre collezioni CMS erano già configurate in `static/admin/config.yml` da FAS
 
 | Collezione | Cartella content | Campi |
 |------------|-----------------|-------|
-| `news` | `content/media/news/` | title, date, type, body, image, link, tags |
+| `news` | `content/media/news/` | title, date, news_type, body, image, link, tags |
 | `documents` | `content/media/documents/` | title, category, description, pdf, date |
 | `papers` | `content/media/papers/` | title, authors, venue, year, abstract, pdf, doi, tags |
 
@@ -150,11 +150,12 @@ L'editor non tecnico può aggiungere/modificare tutti i contenuti dal pannello C
 **File:** `layouts/media/news/single.html`
 
 Struttura:
-- Header grigio con breadcrumb "← Back to Media", badge tipo, data
-- Immagine featured opzionale (full-width dentro container)
-- Body articolo (Hugo `.Content`) con font aumentato e spaziatura generosa
+- Header con sfondo scuro (`article-header-section`): breadcrumb "← Back to Media", badge tipo, data, titolo. Padding-bottom ridotto per minimizzare il gap con il contenuto.
+- Sezione body (`article-body-section`): immagine featured opzionale (full-width, con gap ridotto rispetto al titolo), poi Hugo `.Content` con tipografia aumentata.
 - Footer con "← All News & Events" e "View on LinkedIn →" (se link presente)
 - Tags in fondo come chip
+
+> **Fix campo `type` (Hugo reserved word):** il campo front-matter `type` è riservato da Hugo per la risoluzione del layout. Era impostato a `type: "Event"` nel file `content/media/news/2025-12-01-kickoff-meeting.md`, causando il fallback al layout generico `_default/single.html` (senza immagini né header personalizzato). Rinominato in `news_type` in tutti i file interessati: content, template (`layouts/media/news/single.html`, `layouts/media/list.html`) e CMS config (`static/admin/config.yml`). ✅
 
 ---
 
@@ -179,18 +180,21 @@ Classi definite:
 | `.paper-entry__abstract` | `<details>` espandibile |
 | `.empty-state` | Placeholder centrato con icona, titolo, testo |
 | `.article-header` | Header articolo singolo |
+| `.article-header-section` | Modificatore sulla section header: riduce `padding-bottom` per minimizzare il gap verso il body |
 | `.article-image` | Immagine featured full-width |
 | `.article-body` | Corpo articolo con tipografia aumentata |
+| `.article-body-section` | Modificatore sulla section body: riduce `padding-top` per avvicinare l'immagine al titolo |
 | `.article-footer` | Footer con link navigazione |
+| `.media-page-header` | Modificatore sulla section header della pagina lista Media: riduce `padding-bottom` per accorciare il gap sopra i tab |
 
 ---
 
-## F6.10 — Asset da aggiungere in FASE 0B
+## F6.10 — Asset (FASE 0B)
 
-| File da aggiungere | Cartella destinazione | Riferimento nel content |
-|--------------------|-----------------------|------------------------|
-| `foto_kickoff.jpg` | `static/images/uploads/` | `image:` in kickoff-meeting.md |
-| `FACTSHEET_EDF_2024_...pdf` | `static/documents/` | `pdf:` in factsheet-2024.md |
+| File | Cartella destinazione | Stato |
+|------|-----------------------|-------|
+| `foto_kickoff.jpg` → `kickoff.jpg` | `static/images/uploads/` | ✅ Completato (F0B.6) |
+| `FACTSHEET_EDF_2024_...pdf` | `static/documents/` | ✅ Completato (F0B.7) |
 
 ---
 

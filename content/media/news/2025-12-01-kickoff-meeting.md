@@ -1,7 +1,7 @@
 ---
 title: "DAMAGER Kickoff Meeting"
 date: 2025-12-01T00:00:00Z
-type: "Event"
+news_type: "Event"
 image: "/images/uploads/kickoff.jpg"
 link: "https://www.linkedin.com/posts/damager-edf-project_edf-europeandefencefund-damager-activity-7429165736457162752-bi3g"
 tags:

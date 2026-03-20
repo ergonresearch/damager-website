@@ -3,6 +3,18 @@
 // ─────────────────────────────────────────────
 
 // ────────────────────────────────────
+// Media page header — tighter bottom spacing
+// ────────────────────────────────────
+.media-page-header {
+  // Remove the large default margin-bottom from .section-intro
+  // so the gap between intro text and tab nav is minimal
+  .section-intro { margin-bottom: 0; }
+  padding-bottom: $space-6;
+
+  @media (min-width: $bp-md) { padding-bottom: $space-8; }
+}
+
+// ────────────────────────────────────
 // Tab badge (item count)
 // ────────────────────────────────────
 .tab-badge {
@@ -294,6 +306,21 @@
 // ────────────────────────────────────
 // Individual news article
 // ────────────────────────────────────
+
+// Tighter bottom padding on header section + top padding on body section
+// — reduces gap between title area and featured image
+.article-header-section {
+  padding-bottom: $space-4;
+
+  @media (min-width: $bp-md) { padding-bottom: $space-6; }
+}
+
+.article-body-section {
+  padding-top: $space-6;
+
+  @media (min-width: $bp-md) { padding-top: $space-8; }
+}
+
 .article-header {
   padding-bottom: $space-8;
   border-bottom: $border;

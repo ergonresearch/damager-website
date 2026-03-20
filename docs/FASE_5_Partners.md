@@ -105,6 +105,7 @@ Classi definite:
 | `.map-overlay` | Overlay semi-trasparente con pulsante "Enable Map" |
 | `.map-locations` | Lista dei Paesi partner con bandiere SVG |
 | `.country-flag` | Immagine SVG bandiera (20px, bordo sottile) — sostituisce emoji per compatibilità Windows |
+| `.partners-cards-section` | Modificatore sulla section "Consortium Members": riduce `padding-top` (`$space-8` mobile, `$space-10` desktop) per accorciare il gap visivo tra la sezione Overview e quella dei partner |
 
 ---
 

@@ -2,13 +2,13 @@
 <article>
 
   {{/* ── Article header ───────────────────────────────────────────────── */}}
-  <section class="section section--sm section--alt">
+  <section class="section section--sm section--alt article-header-section">
     <div class="container">
       <div class="article-header">
         <div class="article-header__meta">
           <a href="/media/" class="article-header__back">← Back to Media</a>
-          <span class="news-item__type{{ if eq .Params.type "Event" }} news-item__type--event{{ end }}">
-            {{ .Params.type | default "News" }}
+          <span class="news-item__type{{ if eq .Params.news_type "Event" }} news-item__type--event{{ end }}">
+            {{ .Params.news_type | default "News" }}
           </span>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
         </div>
@@ -18,7 +18,7 @@
   </section>
 
   {{/* ── Article body ─────────────────────────────────────────────────── */}}
-  <section class="section">
+  <section class="section article-body-section">
     <div class="container">
 
       {{/* ── Featured image — between title and body text ────────────── */}}
