@@ -37,8 +37,7 @@
 
 Layout bicolonna (testo sx, visual dx) su desktop. Il testo include:
 
-- **Titolo:** "DAMAGER" con eyebrow "About the Project"
-- **Sottotitolo:** acronimo completo espanso
+- **Titolo:** `<h1>About the Project</h1>` — il titolo "DAMAGER" e il sottotitolo con acronimo espanso sono stati rimossi da questa sezione (già presenti nell'hero della Home e nella tabella F4.2).
 - **Corpo:** estratto ufficiale dal factsheet EDF in forma di `<blockquote>`
 
 Il pannello visivo destro è un **placeholder blueprint** (bordo + sfondo grigio chiaro + label "Blueprint Visual") che in FASE 0B verrà sostituito con un'immagine SVG estratta da `resources/background_template.pdf`.
@@ -82,7 +81,13 @@ Milestone:
 | M36 | Dec 2028 | M36 Review |
 | M48 | Nov 2029 | Project End |
 
-L'aeroplano SVG viene posizionato dinamicamente da `initTimeline()` in base alla data corrente.
+Il marcatore SVG viene posizionato dinamicamente da `initTimeline()` in base alla data corrente.
+
+**Aggiornamenti al marcatore:**
+- L'icona aeroplano è stata sostituita con il drone SVG DAMAGER (`resources/DAMAGER_drone.svg` → `assets/images/damager_drone.svg`), incluso inline nel partial tramite `resources.Get`.
+- Il drone è ruotato a 90° tramite CSS (`@keyframes plane-float` con `rotate(90deg)`).
+- L'animazione di galleggiamento usa `translateX` nel frame ruotato per ottenere un movimento verticale sullo schermo.
+- Il pallino della milestone `is-past` più vicina al drone (l'ultima in ordine cronologico) viene nascosto automaticamente da JS (`is-drone-at` class) per evitare la sovrapposizione visiva con l'icona.
 
 ---
 
@@ -91,14 +96,15 @@ L'aeroplano SVG viene posizionato dinamicamente da `initTimeline()` in base alla
 **File:** `layouts/project/list.html`  
 **SCSS:** `.card-research` in `assets/scss/_components.scss`
 
-4 card con icone SVG inline (24×24 viewBox, stroke monocromatico):
+4 card con icone SVG inline (24×24 viewBox, stroke monocromatico). Le descrizioni sono in inglese:
+
 
 | # | Titolo | Descrizione |
 |---|--------|-------------|
-| 1 | Additive Manufacturing | Produzione additiva per componenti turbojet ad alte prestazioni con geometrie complesse non ottenibili con metodi tradizionali. |
-| 2 | Low-Cost Propulsion | Sviluppo di sistemi propulsivi economici ma ad alte prestazioni, per la produzione rapida di grandi quantità di UAV. |
-| 3 | Low-Observable Design | Riduzione della segnatura radar e termica tramite design integrato di materiali e geometrie avanzate. |
-| 4 | Scalable Manufacturing | Processi produttivi scalabili per la realizzazione rapida di propulsori in grandi quantità con qualità controllata. |
+| 1 | Additive Manufacturing | Additive manufacturing of high-performance turbojet components with complex geometries that cannot be achieved through conventional machining methods. |
+| 2 | Low-Cost Propulsion | Development of affordable yet high-performance propulsion systems enabling rapid production of large quantities of UAVs at low unit cost. |
+| 3 | Low-Observable Design | Reduction of radar and thermal signature through integrated design of advanced materials, optimised geometries and selective coatings. |
+| 4 | Scalable Manufacturing | Scalable production processes for the rapid manufacturing of propulsion units in large quantities with controlled quality and reduced costs. |
 
 ---
 

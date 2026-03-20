@@ -84,7 +84,7 @@
     // Position airplane
     if (plane) { plane.style.left = pct + '%'; }
 
-    // Mark milestones as past/current
+    // Mark milestones as past/current; hide dot when drone is directly over it
     var totalMonths = 48;
     dots.forEach(function (dot) {
       var month = parseInt(dot.getAttribute('data-milestone-month'), 10);
@@ -96,7 +96,14 @@
       } else if (milestonePct <= pct + 3) {
         milestone.classList.add('is-current');
       }
+
     });
+
+    // Hide the last black dot (closest past milestone to the drone)
+    var pastDots = timeline.querySelectorAll('.timeline__milestone.is-past .timeline__dot');
+    if (pastDots.length > 0) {
+      pastDots[pastDots.length - 1].classList.add('is-drone-at');
+    }
   }
 
   // ── Tab navigation (Media page)

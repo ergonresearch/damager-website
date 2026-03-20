@@ -43,7 +43,7 @@ La hero section occupa almeno l'88% dell'altezza visibile (88vh) con:
 - **Sfondo:** `#111111` (nero) come fallback CSS
 - **Immagine di sfondo:** `turbojet_half.png` — immagine pre-ritagliata (metà superiore del turbojet), `width: 100%`, `height: auto`, ancorata al fondo dell'hero (`bottom: 0`) senza spazio nero prima della sezione successiva. Gradiente sovrapposto per leggibilità del testo in alto.
 - **Logo/Titolo:** `<h1 class="hero__logo">` con SVG DAMAGER inline (`damager-logo-white.svg`) — font Ethnocentric caricato via `@font-face`. Dimensione: `max-width: 520px`, scalabile su mobile.
-- **Sottotitolo:** acronimo espanso in corsivo, bianco a ridotta opacità
+- **Sottotitolo:** acronimo espanso in corsivo, bianco a ridotta opacità (`$font-size-xl`). Le lettere che compongono l'acronimo DAMAGER (D, A, M, A, G, E, R) sono marcate con `<strong>` — rese in bianco pieno (`$white`) e grassetto 800, non corsivo, per risaltare sul testo circostante.
 
 ```html
 <section class="hero">
@@ -198,7 +198,7 @@ Classi definite:
 | `.hero__bg` | Contenitore assoluto per l'immagine di sfondo |
 | `.hero__content` | Contenuto testuale relativo, sopra l'immagine |
 | `.hero__title` | Titolo extra-large con `clamp()` responsive |
-| `.hero__subtitle` | Testo in corsivo, bianco semitrasparente |
+| `.hero__subtitle` | Testo in corsivo, bianco semitrasparente (`$font-size-xl`); `strong` interno: bianco pieno, `font-weight: 800`, non corsivo |
 | `.eu-disclaimer` | Layout flex per logo + testo |
 | `.eu-disclaimer__logo` | Contenitore logo (o placeholder) |
 | `.eu-disclaimer__logo--placeholder` | Box testuale quando SVG non disponibile |

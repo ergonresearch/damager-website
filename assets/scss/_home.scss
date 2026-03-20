@@ -64,11 +64,17 @@
   }
 
   &__subtitle {
-    font-size: $font-size-lg;
+    font-size: $font-size-xl;
     color: rgba(255, 255, 255, 0.72);
     max-width: 660px;
     line-height: 1.7;
     font-style: italic;
+
+    strong {
+      color: $white;
+      font-weight: 800;
+      font-style: normal;
+    }
   }
 }
 

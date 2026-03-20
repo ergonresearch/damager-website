@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
+  {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
   <!-- Netlify Identity Widget -->
@@ -42,7 +42,7 @@
   {{ partial "footer.html" . }}
 
   <!-- Main JS -->
-  {{ $js := resources.Get "js/main.js" | minify }}
+  {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" defer></script>
 </body>
 </html>
