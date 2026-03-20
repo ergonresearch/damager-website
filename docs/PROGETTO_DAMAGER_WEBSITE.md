@@ -128,13 +128,13 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 6 — Media Page
 
-- [ ] **F6.1** Layout tab: News&Events / Documents / Papers
-- [ ] **F6.2** Sezione News & Events con card
-- [ ] **F6.3** Kickoff Meeting inserito come prima news
-- [ ] **F6.4** Sezione Documents (3 categorie)
-- [ ] **F6.5** Factsheet PDF caricato
-- [ ] **F6.6** Sezione Academic Papers
-- [ ] **F6.7** CMS collegato a tutte le collezioni
+- [x] **F6.1** Layout tab: News&Events / Documents / Papers ✅
+- [x] **F6.2** Sezione News & Events con card ✅
+- [x] **F6.3** Kickoff Meeting inserito come prima news ✅
+- [x] **F6.4** Sezione Documents (3 categorie) ✅
+- [x] **F6.5** Factsheet document entry (PDF in static/documents/ in FASE 0B) ✅
+- [x] **F6.6** Sezione Academic Papers ✅
+- [x] **F6.7** CMS collegato a tutte le collezioni ✅
 
 ---
 

@@ -1,0 +1,278 @@
+{{ define "main" }}
+
+{{/* Gather pages from each subsection */}}
+{{ $news    := slice }}
+{{ $docs    := slice }}
+{{ $papers  := slice }}
+
+{{ with .Site.GetPage "/media/news"      }}{{ $news   = .RegularPages.ByDate.Reverse }}{{ end }}
+{{ with .Site.GetPage "/media/documents" }}{{ $docs   = .RegularPages.ByDate.Reverse }}{{ end }}
+{{ with .Site.GetPage "/media/papers"    }}{{ $papers = .RegularPages.ByDate.Reverse }}{{ end }}
+
+{{/* Categorise documents */}}
+{{ $factsheets   := where $docs ".Params.category" "Fact Sheet"        }}
+{{ $deliverables := where $docs ".Params.category" "Public Deliverable" }}
+{{ $pressrels    := where $docs ".Params.category" "Press Release"      }}
+
+{{/* ── Page header ──────────────────────────────────────────────────────── */}}
+<section class="section section--sm bg-blueprint">
+  <div class="container">
+    <span class="section-eyebrow">Media</span>
+    <h1 class="section-title">Media &amp; Resources</h1>
+    <p class="section-intro">News, official documents and academic publications from the DAMAGER project.</p>
+  </div>
+</section>
+
+{{/* ── Tab navigation ───────────────────────────────────────────────────── */}}
+<section class="section">
+  <div class="container">
+
+    <div class="tab-nav" role="tablist" aria-label="Media sections">
+      <button class="tab-nav__item is-active" data-tab="news"      role="tab" aria-selected="true"  aria-controls="panel-news">
+        News &amp; Events
+        {{ if gt (len $news) 0 }}<span class="tab-badge">{{ len $news }}</span>{{ end }}
+      </button>
+      <button class="tab-nav__item" data-tab="documents"  role="tab" aria-selected="false" aria-controls="panel-documents">
+        Documents
+        {{ if gt (len $docs) 0 }}<span class="tab-badge">{{ len $docs }}</span>{{ end }}
+      </button>
+      <button class="tab-nav__item" data-tab="papers"     role="tab" aria-selected="false" aria-controls="panel-papers">
+        Academic Papers
+        {{ if gt (len $papers) 0 }}<span class="tab-badge">{{ len $papers }}</span>{{ end }}
+      </button>
+    </div>
+
+    {{/* ─────────────── TAB: News & Events ─────────────────────────────── */}}
+    <div id="panel-news" class="tab-panel is-active" data-tab-panel="news" role="tabpanel" aria-labelledby="tab-news">
+
+      {{ if $news }}
+        <div class="news-list">
+          {{ range $news }}
+          <article class="news-item">
+
+            {{ if .Params.image }}
+            <div class="news-item__image">
+              <img src="{{ .Params.image }}" alt="{{ .Title }}">
+            </div>
+            {{ end }}
+
+            <div class="news-item__body">
+              <div class="news-item__meta">
+                <span class="news-item__type{{ if eq .Params.type "Event" }} news-item__type--event{{ end }}">
+                  {{ .Params.type | default "News" }}
+                </span>
+                <time class="news-item__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "2 January 2006" }}
+                </time>
+              </div>
+
+              <h2 class="news-item__title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </h2>
+
+              <p class="news-item__excerpt">{{ .Summary | plainify | truncate 220 }}</p>
+
+              <div class="news-item__actions">
+                <a href="{{ .RelPermalink }}" class="btn btn--outline">Read more</a>
+                {{ with .Params.link }}
+                <a href="{{ . }}" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+                  External link →
+                </a>
+                {{ end }}
+              </div>
+            </div>
+
+          </article>
+          {{ end }}
+        </div>
+
+      {{ else }}
+        <div class="empty-state">
+          <span class="empty-state__icon" aria-hidden="true">📰</span>
+          <p class="empty-state__title">No news yet</p>
+          <p class="empty-state__text">News and events will appear here as the project progresses.</p>
+        </div>
+      {{ end }}
+
+    </div>
+
+    {{/* ─────────────── TAB: Documents ──────────────────────────────────── */}}
+    <div id="panel-documents" class="tab-panel" data-tab-panel="documents" role="tabpanel" aria-labelledby="tab-documents">
+
+      {{ if $docs }}
+
+        {{/* Fact Sheets */}}
+        {{ if $factsheets }}
+        <div class="doc-group">
+          <div class="doc-group-header">
+            <span class="doc-group-header__icon" aria-hidden="true">📋</span>
+            <span class="doc-group-header__title">Fact Sheets</span>
+            <span class="doc-group-header__count">{{ len $factsheets }}</span>
+          </div>
+          {{ range $factsheets }}
+          <div class="card-doc">
+            <div class="card-doc__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <div class="card-doc__body">
+              <span class="card-doc__category">{{ .Params.category }}</span>
+              <p class="card-doc__title">{{ .Title }}</p>
+              <p class="card-doc__date">{{ .Date.Format "January 2006" }}{{ with .Params.description }} — {{ . }}{{ end }}</p>
+            </div>
+            {{ with .Params.pdf }}
+            <a href="{{ . }}" class="card-doc__action" target="_blank" rel="noopener noreferrer" title="Download PDF" aria-label="Download {{ $.Title }}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        {{/* Public Deliverables */}}
+        <div class="doc-group">
+          <div class="doc-group-header">
+            <span class="doc-group-header__icon" aria-hidden="true">📦</span>
+            <span class="doc-group-header__title">Public Deliverables</span>
+            <span class="doc-group-header__count">{{ len $deliverables }}</span>
+          </div>
+          {{ if $deliverables }}
+            {{ range $deliverables }}
+            <div class="card-doc">
+              <div class="card-doc__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div class="card-doc__body">
+                <span class="card-doc__category">{{ .Params.category }}</span>
+                <p class="card-doc__title">{{ .Title }}</p>
+                <p class="card-doc__date">{{ .Date.Format "January 2006" }}</p>
+              </div>
+              {{ with .Params.pdf }}
+              <a href="{{ . }}" class="card-doc__action" target="_blank" rel="noopener noreferrer" title="Download PDF">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </a>
+              {{ end }}
+            </div>
+            {{ end }}
+          {{ else }}
+            <p class="doc-empty-note">Public deliverables will be published here as they become available.</p>
+          {{ end }}
+        </div>
+
+        {{/* Press Releases */}}
+        <div class="doc-group">
+          <div class="doc-group-header">
+            <span class="doc-group-header__icon" aria-hidden="true">📰</span>
+            <span class="doc-group-header__title">Press Releases</span>
+            <span class="doc-group-header__count">{{ len $pressrels }}</span>
+          </div>
+          {{ if $pressrels }}
+            {{ range $pressrels }}
+            <div class="card-doc">
+              <div class="card-doc__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div class="card-doc__body">
+                <span class="card-doc__category">{{ .Params.category }}</span>
+                <p class="card-doc__title">{{ .Title }}</p>
+                <p class="card-doc__date">{{ .Date.Format "January 2006" }}</p>
+              </div>
+              {{ with .Params.pdf }}
+              <a href="{{ . }}" class="card-doc__action" target="_blank" rel="noopener noreferrer" title="Download PDF">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              </a>
+              {{ end }}
+            </div>
+            {{ end }}
+          {{ else }}
+            <p class="doc-empty-note">Press releases will be published here when available.</p>
+          {{ end }}
+        </div>
+
+      {{ else }}
+        <div class="empty-state">
+          <span class="empty-state__icon" aria-hidden="true">📁</span>
+          <p class="empty-state__title">No documents yet</p>
+          <p class="empty-state__text">Official project documents will be published here as they become available.</p>
+        </div>
+      {{ end }}
+
+    </div>
+
+    {{/* ─────────────── TAB: Academic Papers ───────────────────────────── */}}
+    <div id="panel-papers" class="tab-panel" data-tab-panel="papers" role="tabpanel" aria-labelledby="tab-papers">
+
+      {{ if $papers }}
+        <div class="paper-list">
+          {{ range $papers }}
+          <article class="paper-entry">
+            <div class="paper-entry__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <div class="paper-entry__body">
+              <h3 class="paper-entry__title">{{ .Title }}</h3>
+              <p class="paper-entry__authors">{{ .Params.authors }}</p>
+              <p class="paper-entry__venue">{{ .Params.venue }}{{ with .Params.year }} — {{ . }}{{ end }}</p>
+              {{ with .Params.abstract }}
+              <details class="paper-entry__abstract">
+                <summary>Abstract</summary>
+                <p>{{ . }}</p>
+              </details>
+              {{ end }}
+              <div class="paper-entry__actions">
+                {{ with .Params.pdf }}
+                <a href="{{ . }}" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Download PDF</a>
+                {{ end }}
+                {{ with .Params.doi }}
+                <a href="{{ . }}" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">DOI →</a>
+                {{ end }}
+              </div>
+            </div>
+          </article>
+          {{ end }}
+        </div>
+
+      {{ else }}
+        <div class="empty-state">
+          <span class="empty-state__icon" aria-hidden="true">🎓</span>
+          <p class="empty-state__title">No papers yet</p>
+          <p class="empty-state__text">Academic papers will be published here as they are accepted and cleared for public release.</p>
+        </div>
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

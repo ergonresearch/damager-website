@@ -1,0 +1,60 @@
+{{ define "main" }}
+<article>
+
+  {{/* ── Article header ───────────────────────────────────────────────── */}}
+  <section class="section section--sm section--alt">
+    <div class="container">
+      <div class="article-header">
+        <div class="article-header__meta">
+          <a href="/media/" class="article-header__back">← Back to Media</a>
+          <span class="news-item__type{{ if eq .Params.type "Event" }} news-item__type--event{{ end }}">
+            {{ .Params.type | default "News" }}
+          </span>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+        </div>
+        <h1 class="section-title" style="margin-bottom: 0;">{{ .Title }}</h1>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── Optional featured image ──────────────────────────────────────── */}}
+  {{ with .Params.image }}
+  <div class="article-image">
+    <div class="container">
+      <img src="{{ . }}" alt="{{ $.Title }}">
+    </div>
+  </div>
+  {{ end }}
+
+  {{/* ── Article body ─────────────────────────────────────────────────── */}}
+  <section class="section">
+    <div class="container">
+      <div class="article-body">
+        {{ .Content }}
+      </div>
+
+      {{/* ── Article footer ─────────────────────────────────────────── */}}
+      <div class="article-footer">
+        <a href="/media/" class="btn btn--outline">← All News &amp; Events</a>
+        {{ with .Params.link }}
+        <a href="{{ . }}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          View on LinkedIn →
+        </a>
+        {{ end }}
+      </div>
+
+      {{/* ── Tags ──────────────────────────────────────────────────── */}}
+      {{ with .Params.tags }}
+      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e8e8e8;">
+        <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #666;">Tags: </span>
+        {{ range . }}
+        <span style="display: inline-block; font-size: 0.75rem; font-weight: 600; color: #666; background: #f5f5f5; padding: 2px 8px; margin: 2px;">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+    </div>
+  </section>
+
+</article>
+{{ end }}
