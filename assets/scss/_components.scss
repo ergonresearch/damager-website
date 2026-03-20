@@ -1,0 +1,536 @@
+// ─────────────────────────────────────────────
+// DAMAGER — Components
+// ─────────────────────────────────────────────
+
+// ── Card base mixin
+@mixin card-base {
+  background: $white;
+  border: $border;
+  transition: box-shadow $ease, transform $ease;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+    transform: translateY(-1px);
+  }
+}
+
+// ── Card grid layouts
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @media (min-width: $bp-md) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: $bp-lg) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card-grid--2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+
+  @media (min-width: $bp-md) { grid-template-columns: repeat(2, 1fr); }
+}
+
+// ────────────────────────────────────
+// Card News
+// ────────────────────────────────────
+.card-news {
+  @include card-base;
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: $gray-100;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $ease-slow;
+    }
+
+    &:hover img { transform: scale(1.03); }
+  }
+
+  &__body {
+    padding: $space-6;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-3;
+  }
+
+  &__tag {
+    display: inline-block;
+    padding: 2px $space-2;
+    background: $black;
+    color: $white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__date {
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: $space-3;
+
+    a {
+      text-decoration: none;
+      color: $black;
+      &:hover { text-decoration: underline; opacity: 1; }
+    }
+  }
+
+  &__excerpt {
+    font-size: $font-size-sm;
+    color: $gray-800;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  &__footer {
+    margin-top: $space-5;
+    padding-top: $space-4;
+    border-top: $border;
+  }
+}
+
+// ────────────────────────────────────
+// Card Document
+// ────────────────────────────────────
+.card-doc {
+  @include card-base;
+  display: flex;
+  align-items: center;
+  gap: $space-5;
+  padding: $space-5 $space-6;
+
+  &__icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: $gray-100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray-600;
+
+    svg { width: 22px; height: 22px; }
+  }
+
+  &__body { flex: 1; min-width: 0; }
+
+  &__category {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $gray-600;
+    margin-bottom: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-base;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a {
+      text-decoration: none;
+      color: $black;
+      &:hover { text-decoration: underline; opacity: 1; }
+    }
+  }
+
+  &__date {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-top: $space-1;
+  }
+
+  &__action {
+    flex-shrink: 0;
+    color: $gray-600;
+    transition: color $ease;
+    &:hover { color: $black; opacity: 1; }
+    svg { width: 20px; height: 20px; }
+  }
+}
+
+// ────────────────────────────────────
+// Card Partner
+// ────────────────────────────────────
+.card-partner {
+  @include card-base;
+  padding: $space-8;
+  display: flex;
+  flex-direction: column;
+
+  &__logo {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    margin-bottom: $space-6;
+
+    img {
+      max-height: 60px;
+      max-width: 200px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    // Placeholder box — replaced with real logo in FASE 0B
+    .logo-placeholder {
+      height: 60px;
+      min-width: 130px;
+      max-width: 200px;
+      background: $gray-100;
+      border: $border;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-size-sm;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: $gray-600;
+      text-transform: uppercase;
+    }
+  }
+
+  &__country {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-bottom: $space-1;
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: $space-2;
+  }
+
+  &__role {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $gray-600;
+    padding-bottom: $space-4;
+    margin-bottom: $space-4;
+    border-bottom: $border;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: $gray-800;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: $space-6;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    text-decoration: none;
+    color: $black;
+    border-bottom: 2px solid $black;
+    padding-bottom: 1px;
+
+    &:hover { opacity: 0.65; }
+  }
+}
+
+// ────────────────────────────────────
+// Buttons
+// ────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-6;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background $ease, color $ease, border-color $ease;
+  line-height: 1;
+
+  &--primary {
+    background: $black;
+    color: $white;
+    border-color: $black;
+
+    &:hover { background: $gray-800; border-color: $gray-800; opacity: 1; }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $black;
+    border-color: $black;
+
+    &:hover { background: $black; color: $white; opacity: 1; }
+  }
+
+  &--white {
+    background: $white;
+    color: $black;
+    border-color: $white;
+
+    &:hover { background: $gray-100; opacity: 1; }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $white;
+    border-color: rgba(255,255,255,0.4);
+
+    &:hover { border-color: $white; opacity: 1; }
+  }
+}
+
+// ────────────────────────────────────
+// Contact Form
+// ────────────────────────────────────
+.contact-form {
+  max-width: 620px;
+
+  .form-group {
+    margin-bottom: $space-6;
+
+    label {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: 600;
+      margin-bottom: $space-2;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: $space-3 $space-4;
+      font-family: $font-primary;
+      font-size: $font-size-base;
+      color: $black;
+      background: $white;
+      border: 2px solid $gray-200;
+      border-radius: 0;
+      outline: none;
+      transition: border-color $ease;
+      appearance: none;
+
+      &:focus { border-color: $black; }
+      &::placeholder { color: $gray-400; }
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: $line-height;
+    }
+  }
+
+  .form-success {
+    padding: $space-4 $space-6;
+    background: $gray-100;
+    border-left: 4px solid $black;
+    font-size: $font-size-sm;
+    font-weight: 600;
+  }
+}
+
+// ────────────────────────────────────
+// Progress bar (Project)
+// ────────────────────────────────────
+.progress-section {
+  padding: $space-8 0;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $space-3;
+
+  h3 {
+    font-size: $font-size-sm;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $gray-600;
+  }
+
+  .progress-pct {
+    font-size: $font-size-2xl;
+    font-weight: 900;
+  }
+}
+
+.progress-bar {
+  height: 6px;
+  background: $gray-200;
+  position: relative;
+  overflow: hidden;
+
+  &__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: $black;
+    transition: width 1.2s ease;
+  }
+}
+
+.progress-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $space-3;
+  font-size: $font-size-xs;
+  color: $gray-600;
+  font-weight: 600;
+}
+
+// ────────────────────────────────────
+// Research area cards (Project page)
+// ────────────────────────────────────
+.card-research {
+  padding: $space-8;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    color: $black;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: $gray-800;
+    line-height: 1.6;
+  }
+}
+
+// ────────────────────────────────────
+// Upcoming events
+// ────────────────────────────────────
+.event-card {
+  @include card-base;
+  display: flex;
+  gap: $space-6;
+  padding: $space-6;
+  align-items: flex-start;
+
+  &__date-block {
+    flex-shrink: 0;
+    width: 64px;
+    text-align: center;
+    border: 2px solid $black;
+    padding: $space-3 $space-2;
+  }
+
+  &__month {
+    display: block;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $gray-600;
+  }
+
+  &__day {
+    display: block;
+    font-size: $font-size-2xl;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: $space-1;
+  }
+
+  &__body { flex: 1; }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    margin-bottom: $space-2;
+  }
+
+  &__location {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-bottom: $space-3;
+  }
+
+  &__desc {
+    font-size: $font-size-sm;
+    color: $gray-800;
+  }
+}
+
+// ────────────────────────────────────
+// Tab navigation (Media page)
+// ────────────────────────────────────
+.tab-nav {
+  display: flex;
+  border-bottom: 2px solid $gray-200;
+  margin-bottom: $space-10;
+  gap: 0;
+
+  &__item {
+    padding: $space-3 $space-6;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $gray-600;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color $ease, border-color $ease;
+
+    &:hover { color: $black; opacity: 1; }
+
+    &.is-active {
+      color: $black;
+      border-bottom-color: $black;
+    }
+  }
+}
+
+.tab-panel {
+  display: none;
+  &.is-active { display: block; }
+}

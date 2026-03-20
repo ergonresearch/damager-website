@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.description | truncate 60 }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  <!-- Google Fonts — Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
   {{ $style := resources.Get "scss/main.scss" | toCSS | minify }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
@@ -22,9 +31,15 @@
 </head>
 <body>
   {{ partial "header.html" . }}
-  <main>
+
+  <main id="main-content">
     {{ block "main" . }}{{ end }}
   </main>
+
   {{ partial "footer.html" . }}
+
+  <!-- Main JS -->
+  {{ $js := resources.Get "js/main.js" | minify }}
+  <script src="{{ $js.RelPermalink }}" defer></script>
 </body>
 </html>

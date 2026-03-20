@@ -1,13 +1,38 @@
 <footer class="site-footer">
   <div class="container">
-    <p class="eu-disclaimer">
-      Funded by the European Union — European Defence Fund (EDF) 2024
-    </p>
-    <p class="eu-disclaimer-text">
-      <em>Views and opinions expressed are however those of the author(s) only and do not necessarily
-      reflect those of the European Union or DG DEFIS. Neither the European Union nor the granting
-      authority can be held responsible for them.</em>
-    </p>
-    <p class="footer-copy">&copy; {{ now.Year }} DAMAGER Consortium</p>
+
+    {{/* EU Funding disclaimer — required by EDF Grant Agreement */}}
+    <div class="footer-eu">
+      <div class="footer-eu-logo">
+        {{- $euLogo := "static/images/eu-logo/funded-by-eu-en.svg" -}}
+        {{- if fileExists $euLogo -}}
+          <img src="/images/eu-logo/funded-by-eu-en.svg" alt="Funded by the European Union" width="200">
+        {{- else -}}
+          {{/* Text placeholder — replaced with official EU SVG logo in FASE 0B */}}
+          <span class="eu-logo-placeholder">
+            <span class="flag">🇪🇺</span>
+            Funded by the<br>European Union
+          </span>
+        {{- end -}}
+      </div>
+      <div class="footer-eu-text">
+        <p><strong>Funded by the European Union — European Defence Fund (EDF) 2024</strong></p>
+        <p>Views and opinions expressed are however those of the author(s) only and do not
+           necessarily reflect those of the European Union or DG DEFIS. Neither the European
+           Union nor the granting authority can be held responsible for them.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/cookie-policy/">Cookie Policy</a>
+        {{ with .Site.Params.linkedin }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {{ end }}
+      </div>
+      <p class="footer-copy">&copy; {{ now.Year }} DAMAGER Consortium</p>
+    </div>
+
   </div>
 </footer>

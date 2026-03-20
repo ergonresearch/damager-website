@@ -1,0 +1,49 @@
+{{/*
+  Timeline partial — DAMAGER project milestones
+  Usage: {{ partial "timeline.html" . }}
+
+  Renders a horizontal timeline with:
+  - 6 milestones (M00 → M48)
+  - An animated SVG airplane positioned at current progress (set by main.js)
+  - Past milestones highlighted in black
+*/}}
+
+{{- $milestones := slice
+  (dict "month" 0  "date" "Dec 2025" "name" "Kickoff Meeting")
+  (dict "month" 6  "date" "Jun 2026" "name" "M06 Review")
+  (dict "month" 12 "date" "Dec 2026" "name" "M12 Review")
+  (dict "month" 24 "date" "Dec 2027" "name" "M24 Review")
+  (dict "month" 36 "date" "Dec 2028" "name" "M36 Review")
+  (dict "month" 48 "date" "Nov 2029" "name" "Project End")
+-}}
+
+<div class="timeline-wrapper">
+  <div class="timeline" data-timeline aria-label="Project timeline">
+
+    {{/* Baseline + animated progress line */}}
+    <div class="timeline__line">
+      <div class="timeline__line-progress" data-timeline-progress></div>
+    </div>
+
+    {{/* Airplane marker — positioned by JS */}}
+    <div class="timeline__plane" data-timeline-plane aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 16v-2l-8-5V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+    </div>
+
+    {{/* Milestones */}}
+    <div class="timeline__milestones">
+      {{- range $milestones }}
+        <div class="timeline__milestone">
+          <div class="timeline__dot" data-milestone-month="{{ .month }}"></div>
+          <div class="timeline__label">
+            <span class="timeline__label-date">{{ .date }}</span>
+            <span class="timeline__label-name">{{ .name }}</span>
+          </div>
+        </div>
+      {{- end }}
+    </div>
+
+  </div>
+</div>

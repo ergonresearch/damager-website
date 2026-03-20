@@ -1,0 +1,109 @@
+// ─────────────────────────────────────────────
+// DAMAGER — Footer
+// ─────────────────────────────────────────────
+
+.site-footer {
+  background: $dark;
+  padding: $space-12 0;
+  font-size: $font-size-sm;
+}
+
+// ── EU funding disclaimer
+.footer-eu {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-8;
+  padding-bottom: $space-8;
+  margin-bottom: $space-8;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+    gap: $space-5;
+  }
+}
+
+.footer-eu-logo {
+  flex-shrink: 0;
+
+  // SVG logo (FASE 0B)
+  img {
+    width: 200px;
+    height: auto;
+  }
+
+  // Text placeholder used during development (replaced in FASE 0B)
+  .eu-logo-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3 $space-5;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: $radius-sm;
+    color: $white;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.4;
+
+    .flag { font-size: 1.4rem; }
+  }
+}
+
+.footer-eu-text {
+  p {
+    color: rgba(255,255,255,0.55);
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    & + p { margin-top: $space-3; }
+  }
+
+  strong {
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+}
+
+// ── Bottom bar
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-4;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+
+  a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    padding: $space-1 $space-3;
+    font-size: $font-size-sm;
+    transition: color $ease;
+
+    &:hover {
+      color: $white;
+      opacity: 1;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 0.75em;
+      background: rgba(255,255,255,0.2);
+      margin-left: $space-3;
+      vertical-align: middle;
+    }
+  }
+}
+
+.footer-copy {
+  color: rgba(255,255,255,0.25);
+  font-size: $font-size-sm;
+}
