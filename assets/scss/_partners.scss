@@ -69,6 +69,18 @@
 }
 
 // ────────────────────────────────────
+// Country flag images (replaces emoji for cross-OS compatibility)
+// ────────────────────────────────────
+.country-flag {
+  width: 20px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: $space-1;
+  border: 1px solid $gray-200; // thin border for flags with white edges (e.g. Austria)
+  display: inline-block;
+}
+
+// ────────────────────────────────────
 // Coordinator card variant
 // ────────────────────────────────────
 .card-partner {

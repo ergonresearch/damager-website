@@ -246,7 +246,7 @@ Ogni card: icona tecnica SVG, titolo, breve descrizione.
 
 ### B) Partner Cards
 
-Per ogni partner: logo, nome, paese (con bandiera emoji), ruolo, descrizione, link al sito ufficiale.
+Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`), ruolo, descrizione, link al sito ufficiale. Le emoji di bandiera non vengono renderizzate su browser desktop Windows.
 
 ---
 

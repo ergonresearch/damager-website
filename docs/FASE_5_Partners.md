@@ -56,11 +56,13 @@ Il partner coordinatore (HIT09) ha un badge "Coordinator" e bordo nero più spes
 
 | # | Partner | Paese | Ruolo | Sito |
 |---|---------|-------|-------|------|
-| 1 | HIT09 SRL *(coordinator)* | 🇮🇹 Italia | Project Coordinator | https://www.hit09.com/advanced-design |
+| 1 | HIT09 SRL *(coordinator)* | 🇮🇹 Italy | Project Coordinator | https://www.hit09.com/advanced-design |
 | 2 | LITHOZ GMBH | 🇦🇹 Austria | Expert in ceramic additive manufacturing | https://www.lithoz.com/en/ |
-| 3 | AENIUM ENGINEERING SL | 🇪🇸 Spagna | Expert in metal additive manufacturing | https://aenium.es/ |
-| 4 | ERGON RESEARCH SRL | 🇮🇹 Italia | Research — CFD and thermal analysis | https://www.ergonresearch.it/it/ |
+| 3 | AENIUM ENGINEERING SL | 🇪🇸 Spain | Expert in metal additive manufacturing | https://aenium.es/ |
+| 4 | ERGON RESEARCH SRL | 🇮🇹 Italy | Research — CFD and thermal analysis | https://www.ergonresearch.it/it/ |
 | 5 | COMOTI | 🇷🇴 Romania | National R&D institute — testing and validation | https://comoti.ro/en/home-2/ |
+
+> **Bandiere:** le emoji delle bandiere nazionali non vengono renderizzate nei browser desktop Windows. Sostituite con `<img>` SVG locali (`static/images/flags/it.svg`, `at.svg`, `es.svg`, `ro.svg`) scaricati da [flagcdn.com](https://flagcdn.com). Stilizzate con classe `.country-flag` (20px larghezza, bordo sottile).
 
 > **Loghi placeholder:** tutti i loghi sono box `.logo-placeholder` con il nome del partner. I loghi reali verranno inseriti in FASE 0B da `resources/partners/`.  
 > **Descrizioni:** testi placeholder dalle specifiche; le descrizioni ufficiali per HIT09 e Ergon Research sono ancora da fornire internamente.
@@ -101,7 +103,8 @@ Classi definite:
 | `.map-wrapper` | Contenitore con posizionamento relativo per overlay |
 | `.map-placeholder` | Box placeholder visuale con altezza fissa |
 | `.map-overlay` | Overlay semi-trasparente con pulsante "Enable Map" |
-| `.map-locations` | Lista dei Paesi partner con bandiere |
+| `.map-locations` | Lista dei Paesi partner con bandiere SVG |
+| `.country-flag` | Immagine SVG bandiera (20px, bordo sottile) — sostituisce emoji per compatibilità Windows |
 
 ---
 
