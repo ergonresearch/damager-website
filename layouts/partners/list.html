@@ -1,0 +1,168 @@
+{{ define "main" }}
+
+{{/* ── A) Consortium Overview ──────────────────────────────────────────── */}}
+<section class="section bg-blueprint">
+  <div class="container">
+    <div class="consortium-intro">
+
+      <div class="consortium-intro__text">
+        <span class="section-eyebrow">European Research Consortium</span>
+        <h1 class="section-title">The DAMAGER Consortium</h1>
+        <p class="section-intro">Five organisations from four European countries joined forces to advance the next generation of turbojet propulsion technologies under the European Defence Fund (EDF) 2024 programme.</p>
+      </div>
+
+      <div class="consortium-stats">
+        <div class="stat-box">
+          <span class="stat-box__value">5</span>
+          <span class="stat-box__label">Partner organisations</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__value">4</span>
+          <span class="stat-box__label">European countries</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-box__value">€3.99M</span>
+          <span class="stat-box__label">Total project budget</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{/* ── B) Partner Cards ─────────────────────────────────────────────────── */}}
+<section class="section">
+  <div class="container">
+    <span class="section-eyebrow">Consortium Members</span>
+    <h2 class="section-title">Our Partners</h2>
+
+    <div class="card-grid">
+
+      {{/* Partner 1 — HIT09 SRL (Coordinator) */}}
+      <div class="card-partner card-partner--coordinator">
+        <span class="coordinator-badge">Coordinator</span>
+
+        <div class="card-partner__logo">
+          {{ if fileExists "static/images/partners/hit09.svg" }}
+            <img src="/images/partners/hit09.svg" alt="HIT09 SRL logo">
+          {{ else }}
+            <div class="logo-placeholder">HIT09</div>
+          {{ end }}
+        </div>
+
+        <p class="card-partner__country">🇮🇹 Italia</p>
+        <h3 class="card-partner__name">HIT09 SRL</h3>
+        <p class="card-partner__role">Project Coordinator</p>
+        <p class="card-partner__desc">HIT09 SRL is an Italian SME specialized in advanced design and engineering for aerospace and defence applications. As coordinator of DAMAGER, HIT09 leads the consortium and oversees all technical and administrative activities.</p>
+        <a href="https://www.hit09.com/advanced-design" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
+      </div>
+
+      {{/* Partner 2 — LITHOZ GMBH */}}
+      <div class="card-partner">
+        <div class="card-partner__logo">
+          {{ if fileExists "static/images/partners/lithoz.svg" }}
+            <img src="/images/partners/lithoz.svg" alt="LITHOZ GMBH logo">
+          {{ else }}
+            <div class="logo-placeholder">LITHOZ</div>
+          {{ end }}
+        </div>
+
+        <p class="card-partner__country">🇦🇹 Austria</p>
+        <h3 class="card-partner__name">LITHOZ GMBH</h3>
+        <p class="card-partner__role">Expert in ceramic additive manufacturing</p>
+        <p class="card-partner__desc">Lithoz GmbH is a world-leading Austrian company in high-performance ceramic additive manufacturing. Within DAMAGER, Lithoz contributes expertise in 3D printing of ceramic components for high-temperature turbine applications.</p>
+        <a href="https://www.lithoz.com/en/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
+      </div>
+
+      {{/* Partner 3 — AENIUM ENGINEERING SL */}}
+      <div class="card-partner">
+        <div class="card-partner__logo">
+          {{ if fileExists "static/images/partners/aenium.svg" }}
+            <img src="/images/partners/aenium.svg" alt="AENIUM ENGINEERING SL logo">
+          {{ else }}
+            <div class="logo-placeholder">AENIUM</div>
+          {{ end }}
+        </div>
+
+        <p class="card-partner__country">🇪🇸 Spagna</p>
+        <h3 class="card-partner__name">AENIUM ENGINEERING SL</h3>
+        <p class="card-partner__role">Expert in metal additive manufacturing</p>
+        <p class="card-partner__desc">Aenium Engineering SL is a Spanish company specializing in metal additive manufacturing and advanced materials. In DAMAGER, Aenium focuses on manufacturing of metallic turbojet components using cutting-edge AM processes.</p>
+        <a href="https://aenium.es/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
+      </div>
+
+      {{/* Partner 4 — ERGON RESEARCH SRL */}}
+      <div class="card-partner">
+        <div class="card-partner__logo">
+          {{ if fileExists "static/images/partners/ergon.svg" }}
+            <img src="/images/partners/ergon.svg" alt="ERGON RESEARCH SRL logo">
+          {{ else }}
+            <div class="logo-placeholder">ERGON</div>
+          {{ end }}
+        </div>
+
+        <p class="card-partner__country">🇮🇹 Italia</p>
+        <h3 class="card-partner__name">ERGON RESEARCH SRL</h3>
+        <p class="card-partner__role">Research — CFD and thermal analysis</p>
+        <p class="card-partner__desc">Ergon Research SRL is an Italian research company with expertise in aerodynamics, CFD and thermal management. Within DAMAGER, Ergon Research leads the aerodynamic design and simulation activities.</p>
+        <a href="https://www.ergonresearch.it/it/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
+      </div>
+
+      {{/* Partner 5 — COMOTI */}}
+      <div class="card-partner">
+        <div class="card-partner__logo">
+          {{ if fileExists "static/images/partners/comoti.svg" }}
+            <img src="/images/partners/comoti.svg" alt="COMOTI logo">
+          {{ else }}
+            <div class="logo-placeholder">COMOTI</div>
+          {{ end }}
+        </div>
+
+        <p class="card-partner__country">🇷🇴 Romania</p>
+        <h3 class="card-partner__name">COMOTI</h3>
+        <p class="card-partner__role">National R&amp;D institute — testing and validation</p>
+        <p class="card-partner__desc">COMOTI is the Romanian National R&amp;D Institute for Gas Turbines. In DAMAGER, COMOTI contributes unique expertise in turbojet testing, experimental validation and performance assessment.</p>
+        <a href="https://comoti.ro/en/home-2/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{/* ── C) Consortium Map ────────────────────────────────────────────────── */}}
+<section class="section section--alt">
+  <div class="container">
+    <span class="section-eyebrow">Where we are</span>
+    <h2 class="section-title">Consortium Map</h2>
+
+    <div class="map-wrapper">
+      {{/*
+        Google Maps embed — to be activated in FASE 7 when:
+        1. Physical addresses for all partners are confirmed
+        2. Cookie consent (functional cookies) is implemented
+        The iframe will replace this placeholder block.
+      */}}
+      <div class="map-placeholder" data-map-embed>
+
+        <div class="map-overlay">
+          <span class="map-overlay__icon" aria-hidden="true">🗺️</span>
+          <p class="map-overlay__title">Interactive Map</p>
+          <p class="map-overlay__note">The interactive consortium map will be available after enabling functional cookies. This will be integrated in a future update.</p>
+          <button class="btn btn--outline" disabled aria-disabled="true">Enable Map</button>
+        </div>
+
+        <ul class="map-locations" aria-label="Partner locations">
+          <li><span aria-hidden="true">🇮🇹</span> HIT09 SRL — Italy</li>
+          <li><span aria-hidden="true">🇦🇹</span> LITHOZ GMBH — Vienna, Austria</li>
+          <li><span aria-hidden="true">🇪🇸</span> AENIUM ENGINEERING — Spain</li>
+          <li><span aria-hidden="true">🇮🇹</span> ERGON RESEARCH — Florence, Italy</li>
+          <li><span aria-hidden="true">🇷🇴</span> COMOTI — Bucharest, Romania</li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{{ end }}

@@ -121,10 +121,10 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 5 — Partners Page
 
-- [ ] **F5.1** Card per i 5 partner (logo, nome, paese, ruolo)
-- [ ] **F5.2** Loghi partner inseriti
-- [ ] **F5.3** Mappa Google Maps con marker consorzio
-- [ ] **F5.4** Stile mappa monocromatico
+- [x] **F5.1** Card per i 5 partner (logo, nome, paese, ruolo) ✅
+- [x] **F5.2** Loghi partner placeholder (definitivi in FASE 0B) ✅
+- [x] **F5.3** Mappa placeholder pronta per Google Maps (FASE 7) ✅
+- [x] **F5.4** Stile mappa monocromatico (da completare in FASE 7) ✅
 
 #### FASE 6 — Media Page
 

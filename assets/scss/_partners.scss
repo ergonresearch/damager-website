@@ -1,0 +1,158 @@
+// ─────────────────────────────────────────────
+// DAMAGER — Partners Page Styles
+// ─────────────────────────────────────────────
+
+// ────────────────────────────────────
+// Consortium intro + stat boxes
+// ────────────────────────────────────
+.consortium-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+  align-items: start;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 340px;
+    gap: $space-16;
+  }
+
+  &__text {
+    max-width: 640px;
+    .section-intro { margin-bottom: 0; }
+  }
+}
+
+.consortium-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.stat-box {
+  border: $border;
+  padding: $space-6;
+  text-align: center;
+  background: $white;
+
+  @media (min-width: $bp-lg) {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: $space-4;
+  }
+
+  &__value {
+    display: block;
+    font-size: $font-size-4xl;
+    font-weight: 900;
+    line-height: 1;
+
+    @media (min-width: $bp-lg) { font-size: $font-size-3xl; }
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $gray-600;
+    margin-top: $space-1;
+
+    @media (min-width: $bp-lg) { margin-top: 0; }
+  }
+}
+
+// ────────────────────────────────────
+// Coordinator card variant
+// ────────────────────────────────────
+.card-partner {
+  position: relative; // needed for badge positioning
+
+  &--coordinator {
+    border-color: $black;
+    border-width: 2px;
+  }
+}
+
+.coordinator-badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: $black;
+  color: $white;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: $space-1 $space-3;
+}
+
+// ────────────────────────────────────
+// Map section
+// ────────────────────────────────────
+.map-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder {
+  height: 400px;
+  background: $gray-100;
+  border: $border;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-6;
+
+  @media (min-width: $bp-md) { height: 480px; }
+}
+
+.map-overlay {
+  text-align: center;
+
+  &__icon {
+    font-size: 3rem;
+    margin-bottom: $space-4;
+    display: block;
+    opacity: 0.4;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    margin-bottom: $space-2;
+  }
+
+  &__note {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-bottom: $space-6;
+    max-width: 380px;
+  }
+}
+
+.map-locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3 $space-6;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $gray-800;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+}
