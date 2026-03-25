@@ -12,6 +12,9 @@
   padding-bottom: $space-6;
 
   @media (min-width: $bp-md) { padding-bottom: $space-8; }
+
+  &::before,
+  &::after { display: none; }
 }
 
 // ────────────────────────────────────

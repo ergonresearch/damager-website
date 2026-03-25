@@ -11,7 +11,7 @@
 ## Checklist di fase
 
 - [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG path-based/favicon) ✅
-- [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
+- [x] F0B.2 — Decorazioni di sfondo (`g3175.svg` + `g5.svg`) integrate via `_decorations.scss` ✅
 - [x] F0B.3 — Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` (footer)
 - [x] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner ✅
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
@@ -32,7 +32,7 @@ Durante lo sviluppo delle pagine (FASI 3-6) vengono usati i seguenti placeholder
 | Logo DAMAGER (versione bianca) | CSS `filter: invert(1)` sul placeholder | `static/images/logo/damager-logo-white.svg` |
 | Favicon | Emoji ✈ o lettera "D" | `static/images/logo/favicon.ico` |
 | Logo EU "Funded by the EU" | Testo semplice con link | `static/images/eu-logo/funded-by-eu-en.svg` |
-| Sfondi decorativi | Assenti (sezioni senza sfondo) | `static/images/backgrounds/compressor-bg.svg`, `turbine-bg.svg` |
+| Sfondi decorativi | Assenti (sezioni senza sfondo) | `static/images/backgrounds/g3175.svg`, `static/images/backgrounds/g5.svg` |
 | Logo HIT09 | Box grigio con testo "HIT09" | `static/images/partners/hit09-logo.png` |
 | Logo Lithoz | Box grigio con testo "LITHOZ" | `static/images/partners/lithoz-logo.png` |
 | Logo Aenium | Box grigio con testo "AENIUM" | `static/images/partners/aenium-logo.png` |
@@ -60,33 +60,31 @@ Struttura attesa al termine di questa fase:
 
 ```
 resources/
-├── DAMAGER_logo.pdf          ✅ Presente (sorgente originale PDF)
-├── damager_logo_plain.svg    ✅ Presente (sorgente SVG path-based — usato per logo sito)
-├── background_template.pdf   ✅ Presente (sorgente)
-├── turbojet.png              ✅ Presente
-├── FACTSHEET_EDF_...pdf      ✅ Presente
-├── foto_kickoff.jpg          ✅ Presente (versione originale bassa risoluzione)
-├── kickoff.jpg               ✅ Presente (versione alta risoluzione — usata nel sito)
-├── logo/
-
-│   ├── damager-logo.svg      ⬜ Da creare (F0B.1)
-│   ├── damager-logo-white.svg ⬜ Da creare (F0B.1)
-│   ├── damager-logo-512.png  ⬜ Da creare (F0B.1)
-│   ├── damager-logo-192.png  ⬜ Da creare (F0B.1)
-│   └── favicon.ico           ⬜ Da creare (F0B.1)
-├── eu-logo/
-│   ├── funded-by-eu-en.svg   ⬜ Da scaricare (F0B.3)
-│   └── funded-by-eu-en.png   ⬜ Da scaricare (F0B.3)
-├── backgrounds/
-│   ├── compressor-bg.svg     ⬜ Da creare (F0B.2)
-│   └── turbine-bg.svg        ⬜ Da creare (F0B.2)
-└── partners/
-    ├── hit09-logo.png         ⬜ Da scaricare (F0B.4)
-    ├── lithoz-logo.png        ⬜ Da scaricare (F0B.4)
-    ├── aenium-logo.png        ⬜ Da scaricare (F0B.4)
-    ├── ergon-logo.png         ⬜ Da scaricare (F0B.4)
-    └── comoti-logo.png        ⬜ Da scaricare (F0B.4)
+├── DAMAGER_logo.pdf                        ✅ Presente (sorgente originale PDF logo)
+├── DAMAGER.svg                             ✅ Presente (variante SVG logo — vedi nota F0B.1)
+├── DAMAGER_drone.svg                       ✅ Presente (icona drone isolata — vedi nota F0B.1)
+├── damager_logo_plain.svg                  ✅ Presente (sorgente path-based — usato per sito)
+├── background_template.pdf                 ✅ Presente (sorgente disegni tecnici turbomachinery)
+├── turbojet.png                            ✅ Presente
+├── turbojet_half.png                       ✅ Presente (pre-ritagliato — usato nell'hero)
+├── FACTSHEET_EDF_...pdf                    ✅ Presente
+├── DAMAGER - Press Release KOM.pdf         ✅ Presente
+├── foto_kickoff.jpg                        ✅ Presente (versione originale bassa risoluzione)
+├── kickoff.jpg                             ✅ Presente (alta risoluzione — usata nel sito)
+├── Flag_of_Europe.png                      ✅ Presente (usata nel footer — logo EU provvisorio)
+├── g3175.svg                               ✅ Presente (F0B.2) — anello compressore
+├── g5.svg                                  ✅ Presente (F0B.2) — halftone dots
+├── logo hit09.png                          ✅ Presente → static/images/partners/hit09.png
+├── zlithoz_logo_cut-out-scaled.jpg         ✅ Presente → static/images/partners/lithoz.jpg
+├── Aenium-2048x649.png                     ✅ Presente → static/images/partners/aenium.png
+├── Logo Ergon_highres.jpg                  ✅ Presente → static/images/partners/ergon.jpg
+├── COMOTI-Logo-PNG-EN-3.png                ✅ Presente → static/images/partners/comoti.png
+└── eu-logo/
+    ├── funded-by-eu-en.svg                 ⬜ Da scaricare (F0B.3 — obbligo EDF)
+    └── funded-by-eu-en.png                 ⬜ Da scaricare (F0B.3 — obbligo EDF)
 ```
+
+> **Nota:** i file dei loghi partner in `resources/` mantengono i nomi originali forniti dal cliente. Le versioni processate (rinominate e ottimizzate) si trovano in `static/images/partners/`. I file di logo DAMAGER elaborati (variante bianca e nera) si trovano in `assets/images/logo/` e `static/images/logo/` — non in `resources/`.
 
 ---
 
@@ -148,80 +146,56 @@ Il file `resources/damager_logo_plain.svg` è il sorgente ufficiale da cui deriv
 
 ---
 
-## F0B.2 — Creazione immagini di sfondo da `background_template.pdf`
+### Altri file SVG logo presenti in `resources/` (non usati direttamente nel sito)
 
-**File sorgente:** `resources/background_template.pdf`  
-**Obiettivo:** creare immagini decorative in stile "blueprint tecnico" da usare come sfondo semitrasparente nelle sezioni del sito
-
-**File da produrre:**
-
-```
-resources/backgrounds/
-├── compressor-bg.svg    (sezione compressore)
-└── turbine-bg.svg       (sezione turbina/generale)
-```
+| File | Contenuto | Utilizzo |
+|------|-----------|----------|
+| `resources/DAMAGER.svg` | Logo completo con sfondo incluso — esportazione diretta con rettangolo bianco di fondo | Non usato nel sito (si usa `damager_logo_plain.svg`). Conservato come archivio. |
+| `resources/DAMAGER_drone.svg` | Icona del drone/aeroplano isolata, senza il testo "DAMAGER" | Non usato nel sito attualmente. Potenziale riutilizzo come elemento grafico (favicon alternativa, decorazione). |
 
 ---
 
-### Passo 1 — Analizzare il contenuto del PDF
+## F0B.2 — Decorazioni di sfondo ✅ Completata
 
-Aprire `background_template.pdf` e determinare il tipo di contenuto:
-
-| Tipo di contenuto | Approccio consigliato |
-|-------------------|-----------------------|
-| Disegni tecnici vettoriali (linee nette al massimo zoom) | Estrarre in SVG con Inkscape |
-| Fotografie o rendering 3D | Esportare come PNG ad alta risoluzione (300 DPI) |
-| Layout misto (vettoriale + foto) | Estrarre le parti vettoriali, PNG per le foto |
+**File sorgente originale:** `resources/background_template.pdf`  
+**SVG esportato dall'utente:** derivato da `resources/background_template.pdf` via Inkscape (il file `.svg` intermedio non è incluso nel repository)
 
 ---
 
-### Passo 2 — Estrazione con Inkscape
+### ✅ Soluzione adottata — SVG forniti direttamente dall'utente
 
-1. Aprire il PDF in Inkscape
-2. Identificare le geometrie della turbina e del compressore
-3. Selezionare gli elementi da usare come sfondo decorativo
-4. Semplificare il tracciato se necessario (rimuovere dettagli troppo fini — uno sfondo deve essere leggero)
-5. Cambiare i colori in grigio chiaro (`#E0E0E0`) per l'uso come sfondo
-6. Esportare come SVG Plain in `resources/backgrounds/`
+L'utente ha prodotto autonomamente i due SVG decorativi, esportandoli direttamente dal documento tecnico originale. Entrambi i file sono stati forniti in `resources/` e copiati in `static/images/backgrounds/`. I rettangoli di sfondo bianco (`fill:#ffffff`) presenti nell'esportazione Inkscape sono stati rimossi da entrambi i file per garantire sfondo completamente trasparente.
 
----
+**File prodotti:**
 
-### Passo 3 — Utilizzo CSS nel tema Hugo
+| File sorgente | Destinazione | Contenuto |
+|---------------|--------------|-----------|
+| `resources/g3175.svg` | `static/images/backgrounds/g3175.svg` | Anello compressore frontale (sezione circolare) — colore `#9fa191`, opacità interna SVG 0.36 |
+| `resources/g5.svg` | `static/images/backgrounds/g5.svg` | Pattern halftone dots — colore `#9fa191`, opacità interna SVG 0.09 |
 
-Le immagini verranno applicate via CSS con bassa opacità:
+**Integrazione CSS — `assets/scss/_decorations.scss`:**
 
-```css
-.section-with-bg {
-  background-image: url('/images/backgrounds/turbine-bg.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.08; /* quasi invisibile, solo texture */
+File SCSS dedicato creato e importato in `assets/scss/main.scss`. Tutte le sezioni a sfondo bianco (`.section:not(.section--alt):not(.section--dark)`) ricevono due pseudo-elementi decorativi:
+
+| Pseudo-elemento | File SVG | Posizione | Dimensione | CSS opacity | Effetto visivo finale |
+|----------------|----------|-----------|------------|-------------|----------------------|
+| `::before` | `g5.svg` (halftone dots) | Angolo in basso a destra | 460px × 460px, offset −110px | 1.00 | ~9% (opacità interna SVG 0.09) |
+| `::after` | `g3175.svg` (anello compressore) | Bordo sinistro, centrato verticalmente | 400px × 400px, offset −200px | 0.28 | ~10% (0.28 × opacità interna 0.36) |
+
+Breakpoint responsive (`$bp-sm`): `::before` ridotto a 280px (offset −70px); `::after` nascosto (`display:none`).
+
+**Override per la pagina Media — `assets/scss/_media.scss`:**
+
+La pagina Media è composta da due sezioni bianche adiacenti (`media-page-header` + sezione tabs), che causerebbero una decorazione spezzata visivamente. Per risolvere, i pseudo-elementi vengono disabilitati sull'header:
+
+```scss
+.media-page-header {
+  &::before,
+  &::after { display: none; }
 }
 ```
 
----
-
-### ⚠️ Punti aperti F0B.2
-
-**[APERTO — critico] Tipo di contenuto del PDF**
-
-Il metodo di estrazione dipende interamente dal contenuto:
-- Geometrie vettoriali (tipico CAD) → SVG ottimale, leggero, scalabile
-- Fotografie/rendering → solo PNG ad alta risoluzione
-- Template PowerPoint convertito → probabilmente misto
-
-**[APERTO] Stile delle immagini di sfondo**
-
-Tre opzioni stilistiche:
-
-| Opzione | Descrizione | Coerenza con palette |
-|---------|-------------|----------------------|
-| **A** — Blueprint classico | Sfondo blu scuro, linee bianche | ❌ Non coerente con bianco/nero |
-| **B** — Wireframe monocromatico | Sfondo bianco, linee grigio chiarissimo | ✅ Coerente |
-| **C** — Outline scuro | Sfondo bianco, contorni grigi medi | ✅ Coerente, più visibile |
-
-**Raccomandazione: Opzione B** — wireframe monocromatico con opacità CSS al 5-10%.
+**Colore degli elementi:** `#9fa191` (grigio-oliva, colore originale dei path nel documento tecnico)
 
 ---
 
@@ -403,11 +377,11 @@ Il programma EDF usa ufficialmente: `@defis_eu` su Twitter/X, hashtag `#Stronger
 
 | Partner | Logo | Indirizzo | Descrizione EN | Stato |
 |---------|------|-----------|----------------|-------|
-| HIT09 SRL | ⬜ Da scaricare | ⚠️ Da fornire | ⚠️ Da approvare | In corso |
-| LITHOZ GMBH | ⬜ Da scaricare | ⚠️ Da verificare | ⚠️ Placeholder | In corso |
-| AENIUM ENGINEERING | ⬜ Da scaricare | ⚠️ Da verificare | ⚠️ Placeholder | In corso |
-| ERGON RESEARCH | ⬜ Da scaricare | ⚠️ Da fornire | ⚠️ Da approvare | In corso |
-| COMOTI | ⬜ Da scaricare | ⚠️ Da verificare indirizzo | ⚠️ Placeholder | ✅ URL confermato |
+| HIT09 SRL | ✅ Integrato | ⚠️ Da fornire | ⚠️ Da approvare | ✅ Logo integrato |
+| LITHOZ GMBH | ✅ Integrato | ⚠️ Da verificare | ⚠️ Placeholder | ✅ Logo integrato |
+| AENIUM ENGINEERING | ✅ Integrato | ⚠️ Da verificare | ⚠️ Placeholder | ✅ Logo integrato |
+| ERGON RESEARCH | ✅ Integrato | ⚠️ Da fornire | ⚠️ Da approvare | ✅ Logo integrato |
+| COMOTI | ✅ Integrato | ⚠️ Da verificare indirizzo | ⚠️ Placeholder | ✅ URL + logo integrato |
 
 
 ---
@@ -430,7 +404,7 @@ I loghi sono stati forniti direttamente dal cliente. Gli indirizzi fisici per la
 - [x] Logo DAMAGER versione bianca (`assets/images/logo/damager-logo-white.svg`) ✅
 - [ ] Logo DAMAGER in PNG 512px (opzionale, da generare se necessario per PWA)
 - [x] Favicon SVG generato (`static/images/logo/favicon.svg`) ✅
-- [ ] Immagini di sfondo create (`compressor-bg.svg`, `turbine-bg.svg`) — da fare in FASE futura
+- [x] Immagini di sfondo create (`static/images/backgrounds/g3175.svg`, `g5.svg`) — sfondo trasparente, integrate in `_decorations.scss` ✅
 - [x] Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` ✅
 - [x] Loghi dei 5 partner in `static/images/partners/` ✅
 

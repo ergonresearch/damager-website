@@ -216,10 +216,11 @@ damager-website/
 │   │   ├── _footer.scss       # Footer EU disclaimer, link legali
 │   │   ├── _components.scss   # Card (news, doc, partner), bottoni, form, progress bar, tab nav
 │   │   ├── _timeline.scss     # Timeline animata con aeroplano SVG
+│   │   ├── _decorations.scss  # Decorazioni SVG di sfondo (g5.svg + g3175.svg) su tutte le sezioni bianche
 │   │   ├── _home.scss         # Stili specifici Home page (hero, eu-disclaimer)
 │   │   ├── _project.scss      # Stili specifici Project page (tabella, intro, quote)
 │   │   ├── _partners.scss     # Stili specifici Partners page (stat box, coordinator badge, mappa)
-│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, paper entries)
+│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, paper entries, override decorazioni)
 │   └── js/
 │       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation
 ├── static/
@@ -227,10 +228,10 @@ damager-website/
 │   │   ├── index.html         # Pannello Decap CMS
 │   │   └── config.yml         # Configurazione CMS (3 collezioni: news, documents, papers)
 │   ├── images/
-│   │   ├── logo/              # Logo DAMAGER (placeholder — file definitivi in FASE 0B)
-│   │   ├── backgrounds/       # Sfondi blueprint (placeholder — file definitivi in FASE 0B)
-│   │   ├── eu-logo/           # Logo EU (placeholder — file definitivi in FASE 0B)
-│   │   ├── partners/          # Loghi partner (placeholder — file definitivi in FASE 0B)
+│   │   ├── logo/              # Logo DAMAGER (SVG inline + favicon) ✅
+│   │   ├── backgrounds/       # Decorazioni SVG: g3175.svg (anello compressore) + g5.svg (halftone dots) ✅
+│   │   ├── eu-logo/           # Logo EU (bandiera europea) ✅
+│   │   ├── partners/          # Loghi definitivi dei 5 partner ✅
 │   │   └── uploads/           # Immagini caricate da CMS (foto news, ecc.)
 │   └── documents/             # PDF scaricabili (factsheet, press release, deliverable, ecc.)
 └── docs/                      # Documentazione di progetto

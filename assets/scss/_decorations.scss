@@ -1,0 +1,62 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// DAMAGER — Turbomachinery background decorations
+//
+// Applies stylized elements to all white-background sections
+// (excludes --alt and --dark variants). Both SVGs have transparent backgrounds.
+//
+// ::before → g5.svg     (halftone dot pattern, bottom-right)
+//            SVG internal opacity 0.09 → CSS opacity 1.00 → effective ~9%
+// ::after  → g3175.svg  (compressor ring, left edge)
+//            SVG internal opacity 0.36 → CSS opacity 0.28 → effective ~10%
+// ─────────────────────────────────────────────────────────────────────────────
+
+.section:not(.section--alt):not(.section--dark) {
+  position: relative;
+  overflow: hidden;
+
+  // ── g5 halftone dots — bottom-right corner, partially cropped ──────────────
+  &::before {
+    content: '';
+    position: absolute;
+    right:  -110px;
+    bottom: -110px;
+    width:  460px;
+    height: 460px;
+    background-image:    url('/images/backgrounds/g5.svg');
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    background-position: center;
+    opacity:       1;
+    pointer-events: none;
+    z-index: -1;
+
+    @media (max-width: $bp-sm) {
+      width:  280px;
+      height: 280px;
+      right:  -70px;
+      bottom: -70px;
+    }
+  }
+
+  // ── g3175 ring — left edge, vertically centred, partially cropped ─────────
+  &::after {
+    content: '';
+    position: absolute;
+    left:   -200px;
+    top:    50%;
+    transform: translateY(-50%);
+    width:  400px;
+    height: 400px;
+    background-image:    url('/images/backgrounds/g3175.svg');
+    background-size:     contain;
+    background-repeat:   no-repeat;
+    background-position: center;
+    opacity:       0.28;
+    pointer-events: none;
+    z-index: -1;
+
+    @media (max-width: $bp-sm) {
+      display: none;
+    }
+  }
+}
