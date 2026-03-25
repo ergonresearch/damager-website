@@ -9,7 +9,7 @@
 */}}
 
 {{- $milestones := slice
-  (dict "month" 0  "date" "Dec 2025" "name" "Kickoff Meeting")
+  (dict "month" 0  "date" "Jan 2026" "name" "Kickoff Meeting")
   (dict "month" 12 "date" "Dec 2026" "name" "M12 Meeting")
   (dict "month" 24 "date" "Dec 2027" "name" "M24 Review")
   (dict "month" 36 "date" "Dec 2028" "name" "M36 Review")
@@ -30,14 +30,16 @@
       {{- if $drone }}{{ $drone.Content | safeHTML }}{{ end -}}
     </div>
 
-    {{/* Milestones */}}
+    {{/* Milestones — each centered on its exact % along the 48-month span.
+         translateX(-50%) ensures the dot center sits at the computed left value. */}}
     <div class="timeline__milestones">
-      {{- range $milestones }}
-        <div class="timeline__milestone">
-          <div class="timeline__dot" data-milestone-month="{{ .month }}"></div>
+      {{- range $i, $m := $milestones }}
+        {{- $pct := mul (div ($m.month | float) 48) 100 -}}
+        <div class="timeline__milestone" style="left: {{ $pct }}%">
+          <div class="timeline__dot" data-milestone-month="{{ $m.month }}"></div>
           <div class="timeline__label">
-            <span class="timeline__label-date">{{ .date }}</span>
-            <span class="timeline__label-name">{{ .name }}</span>
+            <span class="timeline__label-date">{{ $m.date }}</span>
+            <span class="timeline__label-name">{{ $m.name }}</span>
           </div>
         </div>
       {{- end }}

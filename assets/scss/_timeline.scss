@@ -13,17 +13,21 @@
 .timeline {
   position: relative;
   min-width: 680px;
+  min-height: 180px; // milestones are absolute; ensure labels (dot 14px + margin 16px + label ~50px below top: 81px) are visible
   padding: 64px 0 $space-12;
 
   @media (min-width: $bp-lg) { min-width: auto; }
 }
 
 // ── Horizontal baseline
+// 80px inset on each side so M0/M48 labels don't overflow the scrollable area
+$timeline-inset: 80px;
+
 .timeline__line {
   position: absolute;
   top: 88px;
-  left: 0;
-  right: 0;
+  left: $timeline-inset;
+  right: $timeline-inset;
   height: 2px;
   background: $gray-200;
 }
@@ -38,19 +42,24 @@
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// ── Milestone track
+// ── Milestone track — same inset as the line so dots align with the bar
 .timeline__milestones {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
+  position: absolute;
+  top: 81px; // dot center (81 + 7px) aligns with the bar at top: 88px
+  left: $timeline-inset;
+  right: $timeline-inset;
+  overflow: visible;
 }
 
-// ── Single milestone
+// ── Single milestone — centered on its left % via translateX(-50%)
+//    This guarantees the dot center sits exactly at the specified position,
+//    matching the airplane and progress line which also use % of the same span.
 .timeline__milestone {
+  position: absolute;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
 }
 
 .timeline__dot {
@@ -74,9 +83,6 @@
     box-shadow: 0 0 0 5px rgba(0,0,0,0.1);
   }
 
-  &.is-drone-at {
-    opacity: 0;
-  }
 }
 
 .timeline__label {
@@ -92,6 +98,7 @@
   letter-spacing: 0.06em;
   color: $gray-600;
   margin-bottom: $space-1;
+  white-space: nowrap;
 
   .timeline__milestone.is-past &,
   .timeline__milestone.is-current & { color: $black; }
@@ -103,6 +110,7 @@
   font-weight: 600;
   line-height: 1.3;
   color: $gray-800;
+  white-space: nowrap;
 
   .timeline__milestone.is-current & {
     color: $black;
@@ -114,7 +122,7 @@
 .timeline__plane {
   position: absolute;
   top: 58px; // sits just above the progress line
-  left: 0;   // set by JS
+  left: $timeline-inset; // default matches bar start; overridden by JS in px
   transform: translateX(-50%);
   z-index: 10;
   color: $black;

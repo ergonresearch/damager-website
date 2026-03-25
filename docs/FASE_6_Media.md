@@ -31,7 +31,7 @@ content/media/
 ├── _index.md           → sezione principale (usa layouts/media/list.html)
 ├── news/
 │   ├── _index.md       → sottosezione news
-│   └── 2025-12-01-kickoff-meeting.md
+│   └── 2026-01-20-kickoff-meeting.md
 ├── documents/
 │   ├── _index.md       → sottosezione documenti
 │   └── factsheet-2024.md
@@ -86,7 +86,7 @@ Ogni tab ha un badge con il conteggio degli elementi. Il tab attivo mostra il su
 | Campo | Valore |
 |-------|--------|
 | Titolo | DAMAGER Kickoff Meeting |
-| Data | 1 December 2025 |
+| Data | 20 January 2026 |
 | Tipo | Event |
 | Immagine | — (da aggiungere: `static/images/uploads/kickoff.jpg` in FASE 0B) |
 | Link esterno | https://www.linkedin.com/posts/damager-edf-project_... |
@@ -155,7 +155,7 @@ Struttura:
 - Footer con "← All News & Events" e "View on LinkedIn →" (se link presente)
 - Tags in fondo come chip
 
-> **Fix campo `type` (Hugo reserved word):** il campo front-matter `type` è riservato da Hugo per la risoluzione del layout. Era impostato a `type: "Event"` nel file `content/media/news/2025-12-01-kickoff-meeting.md`, causando il fallback al layout generico `_default/single.html` (senza immagini né header personalizzato). Rinominato in `news_type` in tutti i file interessati: content, template (`layouts/media/news/single.html`, `layouts/media/list.html`) e CMS config (`static/admin/config.yml`). ✅
+> **Fix campo `type` (Hugo reserved word):** il campo front-matter `type` è riservato da Hugo per la risoluzione del layout. Era impostato a `type: "Event"` nel file `content/media/news/2026-01-20-kickoff-meeting.md`, causando il fallback al layout generico `_default/single.html` (senza immagini né header personalizzato). Rinominato in `news_type` in tutti i file interessati: content, template (`layouts/media/news/single.html`, `layouts/media/list.html`) e CMS config (`static/admin/config.yml`). ✅
 
 ---
 

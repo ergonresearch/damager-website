@@ -1,6 +1,6 @@
 ---
 title: "DAMAGER Kickoff Meeting"
-date: 2025-12-01T00:00:00Z
+date: 2026-01-20T00:00:00Z
 news_type: "Event"
 image: "/images/uploads/kickoff.jpg"
 link: "https://www.linkedin.com/posts/damager-edf-project_edf-europeandefencefund-damager-activity-7429165736457162752-bi3g"
@@ -10,7 +10,7 @@ tags:
   - EDF
 ---
 
-The DAMAGER project officially launched on 1 December 2025 with a kickoff meeting bringing together all five consortium partners from Italy, Austria, Spain, and Romania.
+The DAMAGER project officially started in December 2025 under the European Defence Fund (EDF) 2024 programme. The consortium kickoff meeting took place on 20 January 2026, bringing together all five consortium partners from Italy, Austria, Spain, and Romania.
 
 The meeting marked the official start of the 48-month research programme funded by the European Defence Fund (EDF) 2024. Participants discussed the project work plan, defined responsibilities across the work packages, and established the communication and reporting framework for the duration of the project.
 

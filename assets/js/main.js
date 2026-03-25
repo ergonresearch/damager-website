@@ -78,11 +78,18 @@
     var plane        = timeline.querySelector('[data-timeline-plane]');
     var dots         = timeline.querySelectorAll('[data-milestone-month]');
 
-    // Set progress line width
+    // Set progress line width (relative to the inset line container — already correct)
     if (progressLine) { progressLine.style.width = pct + '%'; }
 
-    // Position airplane
-    if (plane) { plane.style.left = pct + '%'; }
+    // Position airplane in px so it stays aligned with the inset milestone dots.
+    // Uses the same `pct` integer as the progress line width so they animate in sync.
+    // The CSS default left matches $timeline-inset so the transition starts at the bar's origin.
+    var TIMELINE_INSET = 80; // must match $timeline-inset in _timeline.scss
+    if (plane) {
+      var usableWidth = timeline.offsetWidth - 2 * TIMELINE_INSET;
+      var planeLeft   = TIMELINE_INSET + (pct / 100) * usableWidth;
+      plane.style.left = Math.round(planeLeft) + 'px';
+    }
 
     // Mark milestones as past/current; hide dot when drone is directly over it
     var totalMonths = 48;
@@ -99,11 +106,6 @@
 
     });
 
-    // Hide the last black dot (closest past milestone to the drone)
-    var pastDots = timeline.querySelectorAll('.timeline__milestone.is-past .timeline__dot');
-    if (pastDots.length > 0) {
-      pastDots[pastDots.length - 1].classList.add('is-drone-at');
-    }
   }
 
   // ── Tab navigation (Media page)

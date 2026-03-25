@@ -182,7 +182,7 @@ damager-website/
 │       ├── _index.md          # Media page
 │       ├── news/
 │       │   ├── _index.md
-│       │   └── 2025-12-01-kickoff-meeting.md  # Primo news item
+│       │   └── 2026-01-20-kickoff-meeting.md  # Primo news item (kickoff meeting 20 Jan 2026)
 │       ├── documents/
 │       │   ├── _index.md
 │       │   ├── factsheet-2024.md              # Factsheet EDF 2024

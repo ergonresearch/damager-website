@@ -70,24 +70,27 @@ Tabella con dati ufficiali del progetto:
 **SCSS:** `assets/scss/_timeline.scss`  
 **JS:** `assets/js/main.js` — funzione `initTimeline()`
 
-Milestone:
+Milestone (corrispondono esattamente alla struttura nel partial `timeline.html`):
 
 | Mese | Data | Nome |
 |------|------|------|
-| M0 | Dec 2025 | Kickoff Meeting |
-| M6 | Jun 2026 | M06 Review |
-| M12 | Dec 2026 | M12 Review |
+| M0  | Jan 2026 | Kickoff Meeting *(project start: Dec 2025)* |
+| M12 | Dec 2026 | M12 Meeting |
 | M24 | Dec 2027 | M24 Review |
 | M36 | Dec 2028 | M36 Review |
-| M48 | Nov 2029 | Project End |
+| M48 | Nov 2029 | M48 Meeting |
 
 Il marcatore SVG viene posizionato dinamicamente da `initTimeline()` in base alla data corrente.
 
-**Aggiornamenti al marcatore:**
-- L'icona aeroplano è stata sostituita con il drone SVG DAMAGER (`resources/DAMAGER_drone.svg` → `assets/images/damager_drone.svg`), incluso inline nel partial tramite `resources.Get`.
+**Implementazione tecnica:**
+- L'icona aeroplano è il drone SVG DAMAGER (`assets/images/damager_drone.svg`), incluso inline nel partial tramite `resources.Get`.
 - Il drone è ruotato a 90° tramite CSS (`@keyframes plane-float` con `rotate(90deg)`).
 - L'animazione di galleggiamento usa `translateX` nel frame ruotato per ottenere un movimento verticale sullo schermo.
-- Il pallino della milestone `is-past` più vicina al drone (l'ultima in ordine cronologico) viene nascosto automaticamente da JS (`is-drone-at` class) per evitare la sovrapposizione visiva con l'icona.
+- Ciascuna milestone è posizionata assolutamente con `left: X%` (calcolato da Hugo: `month/48 × 100`) e centrata tramite `transform: translateX(-50%)` in CSS — il centro del dot corrisponde esattamente al punto temporale sulla barra.
+- Linea e container milestone usano un inset orizzontale di `80px` per lato (`$timeline-inset` in `_timeline.scss`), così le etichette di M0 e M48 non escono dall'area scrollabile su schermi stretti.
+- Il drone è posizionato in pixel dal JS: `left = 80px + pct × (timeline_width − 160px)`, coerente con l'inset del container milestone.
+- I label usano `white-space: nowrap` per evitare il wrapping del testo.
+- Le milestone passate ricevono la classe `is-past` (dot nero pieno); quella corrente riceve `is-current`.
 
 ---
 
