@@ -3,18 +3,17 @@
   Usage: {{ partial "timeline.html" . }}
 
   Renders a horizontal timeline with:
-  - 6 milestones (M00 → M48)
+  - 5 milestones (M00 → M48)
   - An animated SVG airplane positioned at current progress (set by main.js)
   - Past milestones highlighted in black
 */}}
 
 {{- $milestones := slice
   (dict "month" 0  "date" "Dec 2025" "name" "Kickoff Meeting")
-  (dict "month" 6  "date" "Jun 2026" "name" "M06 Review")
-  (dict "month" 12 "date" "Dec 2026" "name" "M12 Review")
+  (dict "month" 12 "date" "Dec 2026" "name" "M12 Meeting")
   (dict "month" 24 "date" "Dec 2027" "name" "M24 Review")
   (dict "month" 36 "date" "Dec 2028" "name" "M36 Review")
-  (dict "month" 48 "date" "Nov 2029" "name" "Project End")
+  (dict "month" 48 "date" "Nov 2029" "name" "M48 Meeting")
 -}}
 
 <div class="timeline-wrapper">

@@ -17,6 +17,7 @@
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
 - [x] F0B.6 — `resources/kickoff.jpg` (alta risoluzione) → `static/images/uploads/kickoff.jpg` + `image:` aggiornato in `content/media/news/2025-12-01-kickoff-meeting.md`
 - [x] F0B.7 — Factsheet PDF copiato in `static/documents/` (percorso configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
+- [x] F0B.8 — Press Release PDF (`resources/DAMAGER - Press Release KOM.pdf`) → `static/documents/DAMAGER-Press-Release-KOM.pdf` + CMS entry `content/media/documents/press-release-2025.md` ✅
 - [ ] Verifica finale struttura cartelle
 
 ---
@@ -424,6 +425,7 @@ I loghi sono stati forniti direttamente dal cliente. Gli indirizzi fisici per la
 ### Struttura cartelle
 
 - [x] Cartelle `static/images/logo/`, `static/images/eu-logo/`, `static/images/partners/`, `static/images/uploads/`, `static/documents/` create ✅
+- [x] Press Release PDF: `static/documents/DAMAGER-Press-Release-KOM.pdf` ✅
 - [x] Logo DAMAGER SVG (`assets/images/logo/damager-logo.svg` + copia in `static/`) ✅
 - [x] Logo DAMAGER versione bianca (`assets/images/logo/damager-logo-white.svg`) ✅
 - [ ] Logo DAMAGER in PNG 512px (opzionale, da generare se necessario per PWA)

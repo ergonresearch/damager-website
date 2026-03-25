@@ -109,14 +109,14 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F3.1** Hero section (turbojet_half.png + logo DAMAGER SVG inline) ✅
 - [x] **F3.2** ~~EU Disclaimer~~ *(rimossa dalla Home, spostata nel footer)* ✅
 - [x] **F3.3** Project progress bar (dinamica, calcolo JS) ✅
-- [x] **F3.4** Upcoming Events (DAMAGER M06 Meeting) ✅
+- [x] **F3.4** Upcoming Events (DAMAGER M12 Meeting — Dec 2026) ✅
 - [x] **F3.5** Form di contatto (Netlify Forms) ✅
 
 #### FASE 4 — Project Page
 
 - [x] **F4.1** Intro/context (testo factsheet EDF) ✅
 - [x] **F4.2** Project Details (tabella dati chiave) ✅
-- [x] **F4.3** Timeline animata con milestone M06–M48 ✅
+- [x] **F4.3** Timeline General Assembly Meetings: Kickoff → M12 → M24 Review → M36 Review → M48 Meeting ✅
 - [x] **F4.4** Research Areas (4 card tecnologiche) ✅
 
 #### FASE 5 — Partners Page
@@ -135,6 +135,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F6.5** Factsheet document entry (PDF in static/documents/ in FASE 0B) ✅
 - [x] **F6.6** Sezione Academic Papers ✅
 - [x] **F6.7** CMS collegato a tutte le collezioni ✅
+- [x] **F6.8** Press Release entry (Kickoff Meeting, PDF `DAMAGER-Press-Release-KOM.pdf`) ✅
 
 ---
 
@@ -143,12 +144,13 @@ La documentazione di progetto è suddivisa in file specializzati:
 > A questo punto il sito ha la struttura completa con placeholder. Si sostituiscono i materiali definitivi prima del go-live.
 
 - [x] **F0B.1** Logo DAMAGER SVG + font Ethnocentric + favicon ✅
-- [x] **F0B.5** `turbojet_half.png` in `static/images/` (hero Home) ✅
 - [ ] **F0B.2** Immagini di sfondo create da `resources/background_template.pdf`
 - [x] **F0B.3** Logo EU: bandiera europea nel footer ✅
+- [x] **F0B.4** Loghi definitivi dei 5 partner integrati (`static/images/partners/`) ✅
+- [x] **F0B.5** `turbojet_half.png` in `static/images/` (hero Home) ✅
 - [x] **F0B.6** `kickoff.jpg` (alta risoluzione) → `static/images/uploads/kickoff.jpg` (news article) ✅
 - [x] **F0B.7** Factsheet PDF in `static/documents/` ✅
-- [x] **F0B.4** Loghi definitivi dei 5 partner integrati (`static/images/partners/`) ✅
+- [x] **F0B.8** Press Release PDF (`DAMAGER - Press Release KOM.pdf`) → `static/documents/DAMAGER-Press-Release-KOM.pdf` ✅
 
 ---
 
@@ -231,7 +233,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 |---|-----------|----------------|-------|
 | 1 | Foto del Kickoff Meeting | Media → News | ✅ `resources/kickoff.jpg` (alta risoluzione) |
 | 2 | Link post LinkedIn Kickoff | Media → News | ✅ [Post LinkedIn](https://www.linkedin.com/posts/damager-edf-project_edf-europeandefencefund-damager-activity-7429165736457162752-bi3g) |
-| 3 | Data DAMAGER M06 Meeting (Polonia) | Home → Events | ✅ Indicativa giugno 2026 |
+| 3 | Data DAMAGER M12 Meeting | Home → Events | ✅ Dicembre 2026 (luogo da confermare) |
+| 13 | Press Release Kickoff Meeting | Media → Documents | ✅ `static/documents/DAMAGER-Press-Release-KOM.pdf` |
 | 4 | URL ufficiale COMOTI | Partners | ✅ https://comoti.ro/en/home-2/ |
 | 5 | Indirizzo fisico HIT09 SRL | Partners (mappa) | ⏳ Da fornire |
 | 6 | Indirizzo fisico Ergon Research SRL | Partners (mappa) | ⏳ Da fornire |

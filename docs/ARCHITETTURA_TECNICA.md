@@ -185,7 +185,8 @@ damager-website/
 │       │   └── 2025-12-01-kickoff-meeting.md  # Primo news item
 │       ├── documents/
 │       │   ├── _index.md
-│       │   └── factsheet-2024.md              # Factsheet EDF 2024
+│       │   ├── factsheet-2024.md              # Factsheet EDF 2024
+│       │   └── press-release-2025.md          # Press Release Kickoff Meeting
 │       └── papers/
 │           └── _index.md
 ├── layouts/
@@ -231,7 +232,7 @@ damager-website/
 │   │   ├── eu-logo/           # Logo EU (placeholder — file definitivi in FASE 0B)
 │   │   ├── partners/          # Loghi partner (placeholder — file definitivi in FASE 0B)
 │   │   └── uploads/           # Immagini caricate da CMS (foto news, ecc.)
-│   └── documents/             # PDF scaricabili (factsheet, deliverable, ecc.)
+│   └── documents/             # PDF scaricabili (factsheet, press release, deliverable, ecc.)
 └── docs/                      # Documentazione di progetto
     ├── PROGETTO_DAMAGER_WEBSITE.md
     ├── SPECIFICHE_SITO.md

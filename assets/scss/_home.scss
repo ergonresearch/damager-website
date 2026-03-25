@@ -7,7 +7,7 @@
 // ────────────────────────────────────
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   background: $dark;
@@ -46,8 +46,10 @@
     position: relative;
     z-index: 1;
     color: $white;
-    padding: $space-20 0;
-    max-width: 800px;
+    padding: $space-12 0;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   // SVG logo replacing the plain text title
@@ -56,19 +58,21 @@
     line-height: 0; // remove extra inline space from h1
 
     svg {
-      width: 85vw;
-      max-width: 610px;
+      width: 90vw;
+      max-width: 780px;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
   }
 
   &__subtitle {
-    font-size: $font-size-xl;
+    font-size: $font-size-2xl;
     color: rgba(255, 255, 255, 0.72);
-    max-width: 660px;
-    line-height: 1.7;
+    max-width: 780px;
+    line-height: 1.6;
     font-style: italic;
+    margin: 0 auto;
 
     strong {
       color: $white;
