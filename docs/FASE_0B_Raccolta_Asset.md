@@ -10,12 +10,12 @@
 
 ## Checklist di fase
 
-- [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG/PNG/favicon)
+- [x] F0B.1 — Sostituzione logo placeholder con logo DAMAGER definitivo (SVG path-based/favicon) ✅
 - [ ] F0B.2 — Sostituzione sfondi placeholder con immagini da `background_template.pdf`
 - [x] F0B.3 — Logo EU: `resources/Flag_of_Europe.png` → `static/images/eu-logo/flag-of-europe.png` (footer)
 - [x] F0B.4 — Sostituzione loghi partner placeholder con loghi definitivi dei 5 partner ✅
 - [x] F0B.5 — Immagine hero Home: `resources/turbojet_half.png` → `static/images/turbojet_half.png` *(usata al posto di turbojet.png: immagine pre-ritagliata alla metà superiore, anchored bottom)*
-- [x] F0B.6 — `resources/foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` + `image:` aggiornato in `content/media/news/2025-12-01-kickoff-meeting.md`
+- [x] F0B.6 — `resources/kickoff.jpg` (alta risoluzione) → `static/images/uploads/kickoff.jpg` + `image:` aggiornato in `content/media/news/2025-12-01-kickoff-meeting.md`
 - [x] F0B.7 — Factsheet PDF copiato in `static/documents/` (percorso configurato nel CMS entry `content/media/documents/factsheet-2024.md`)
 - [ ] Verifica finale struttura cartelle
 
@@ -59,11 +59,13 @@ Struttura attesa al termine di questa fase:
 
 ```
 resources/
-├── DAMAGER_logo.pdf          ✅ Presente (sorgente)
+├── DAMAGER_logo.pdf          ✅ Presente (sorgente originale PDF)
+├── damager_logo_plain.svg    ✅ Presente (sorgente SVG path-based — usato per logo sito)
 ├── background_template.pdf   ✅ Presente (sorgente)
 ├── turbojet.png              ✅ Presente
 ├── FACTSHEET_EDF_...pdf      ✅ Presente
-├── foto_kickoff.jpg          ✅ Presente (usata in Media → Kickoff Meeting news)
+├── foto_kickoff.jpg          ✅ Presente (versione originale bassa risoluzione)
+├── kickoff.jpg               ✅ Presente (versione alta risoluzione — usata nel sito)
 ├── logo/
 
 │   ├── damager-logo.svg      ⬜ Da creare (F0B.1)
@@ -89,11 +91,14 @@ resources/
 
 ## F0B.1 — Logo DAMAGER definitivo ✅ Completata
 
-**File sorgente fornito:** `resources/DAMAGER.svg` (SVG vettoriale con testo, font Ethnocentric)  
-**Font fornito:** `resources/ethnocentric.zip` → `ethnocentric-italic.otf` + `Ethnocentric-Regular.otf`
+**File sorgente fornito:** `resources/damager_logo_plain.svg` (SVG vettoriale con lettere come path puri, senza font)
 
-**Soluzione adottata — SVG inline + @font-face:**  
-Il file SVG usa testo reale con `font-family: 'EthnocentricRg-Italic', 'Ethnocentric'` (non convertito in path). Per garantire la corretta visualizzazione, il logo viene inserito come SVG inline nel template (non come `<img>`), così il CSS `@font-face` si applica al testo.
+**Soluzione adottata — SVG inline con path puri (no font-dependency):**  
+Il file sorgente `damager_logo_plain.svg` è stato esportato da Inkscape con tutte le lettere convertite in path vettoriali (nessuna dipendenza da font). Il logo viene inserito come SVG inline nel template (`resources.Get ... .Content | safeHTML`). La versione bianca mantiene la struttura e i transform originali del file sorgente, rimuovendo solo il rettangolo di sfondo (`BACKGROUND`). La versione nera inverte tutti i colori (`#ffffff` ↔ `#000000`).
+
+**Caratteristica chiave — SWOOSH con bordo:** lo SWOOSH ha `stroke:#000000;stroke-width:12.5px` (versione bianca) che, disegnato sopra le lettere, crea l'effetto visivo della scia che passa "sotto" le lettere. Nella versione nera lo stroke è invertito in `stroke:#ffffff`.
+
+> **Nota — Font Ethnocentric:** i file font (`static/fonts/ethnocentric-italic.otf`, `static/fonts/ethnocentric-regular.otf`) e il relativo `@font-face` in `_base.scss` sono presenti nel progetto ma **non più necessari** per il logo SVG, che usa path vettoriali. Possono essere mantenuti per eventuali usi tipografici futuri.
 
 **File prodotti:**
 
@@ -103,13 +108,11 @@ Il file SVG usa testo reale con `font-family: 'EthnocentricRg-Italic', 'Ethnocen
 | Logo nero (sfondo trasparente) | `assets/images/logo/damager-logo.svg` | Sfondi chiari |
 | Copia statica bianco | `static/images/logo/damager-logo-white.svg` | Riferimenti diretti |
 | Copia statica nero | `static/images/logo/damager-logo.svg` | Riferimenti diretti |
-| Favicon SVG | `static/images/logo/favicon.svg` | Tab del browser |
-| Font italic | `static/fonts/ethnocentric-italic.otf` | @font-face |
-| Font regular | `static/fonts/ethnocentric-regular.otf` | @font-face |
+| Favicon SVG | `static/images/logo/favicon.svg` | Tab del browser (lettera D su sfondo nero) |
+| File sorgente plain | `resources/damager_logo_plain.svg` | Sorgente per derivazione varianti |
 
 **Modifiche tecniche:**
 
-- `assets/scss/_base.scss`: aggiunto `@font-face` per `EthnocentricRg-Italic` e `Ethnocentric` (italic + regular)
 - `layouts/partials/header.html`: logo reso con `resources.Get ... .Content | safeHTML` (SVG inline)
 - `assets/scss/_header.scss`: `.logo svg` con `height: 36px; width: auto`
 - `layouts/_default/baseof.html`: aggiunto `<link rel="icon" href="/images/logo/favicon.svg" type="image/svg+xml">`
@@ -119,64 +122,28 @@ Il file SVG usa testo reale con `font-family: 'EthnocentricRg-Italic', 'Ethnocen
 
 ---
 
-### Metodo A — Inkscape *(raccomandato, gratuito)*
+### Come derivare nuove varianti dal sorgente `damager_logo_plain.svg`
 
-1. Scaricare Inkscape da https://inkscape.org/release/ (versione Windows 64-bit)
-2. Aprire il file: `File` → `Open` → selezionare `resources/DAMAGER_logo.pdf`
-3. Inkscape chiederà quale pagina importare → selezionare pagina 1
-4. Ispezionare il contenuto: il logo è vettoriale (linee nette) o raster (pixelato al massimo zoom)?
-5. Selezionare tutti gli elementi del logo (`Ctrl+A`)
-6. Rimuovere eventuali rettangoli di sfondo bianchi non necessari
-7. `File` → `Save As` → formato "Plain SVG" → salvare come `damager-logo.svg`
-8. Per la versione bianca: selezionare tutti gli elementi → cambiare fill e stroke a `#FFFFFF` → salvare come `damager-logo-white.svg`
-9. Per il PNG 512×512: `File` → `Export PNG Image` → width=512, height=512 → `damager-logo-512.png`
-10. Per favicon `.ico`: caricare il PNG su https://favicon.io/favicon-converter/
+Il file `resources/damager_logo_plain.svg` è il sorgente ufficiale da cui derivare tutte le varianti. La struttura del file è:
 
----
-
-### Metodo B — Strumento online *(alternativa rapida)*
-
-Se Inkscape non è disponibile:
-1. https://cloudconvert.com/pdf-to-svg oppure https://convertio.co/pdf-svg/
-2. Caricare `DAMAGER_logo.pdf` → convertire in SVG → scaricare in `resources/logo/`
-
-> ⚠️ I convertitori online possono produrre SVG con elementi ridondanti. Il file potrebbe richiedere pulizia manuale in Inkscape o in un editor di testo.
-
----
-
-### Metodo C — Python *(solo PNG, senza SVG)*
-
-```bash
-pip install pdf2image pillow
-python -c "
-from pdf2image import convert_from_path
-imgs = convert_from_path('resources/DAMAGER_logo.pdf', dpi=300)
-imgs[0].save('resources/logo/damager-logo-512.png')
-"
+```
+<svg viewBox="0 0 500.00003 156.25004">
+  <g id="layer1" transform="translate(...)">
+    <g id="g7" transform="matrix(0.26458333,...)">
+      <path id="BACKGROUND" .../>   ← RIMUOVERE nelle varianti
+      <path id="text1" .../>        ← Lettera D (path)
+      <g id="text2" .../>           ← Lettere AMAGER (3 path)
+      <path id="SWOOSH" style="fill:#ffffff;stroke:#000000;stroke-width:12.5px"/>
+      <path id="path2" .../>        ← Drone/aereo
+    </g>
+  </g>
+</svg>
 ```
 
-> Produce solo PNG (raster), non SVG vettoriale. Usare come fallback se i metodi A e B non sono disponibili.
+**Per la variante bianca** (su sfondo scuro): rimuovere `BACKGROUND`, mantenere tutto il resto invariato.  
+**Per la variante nera** (su sfondo chiaro): rimuovere `BACKGROUND`, sostituire `fill:#ffffff` → `fill:#000000` e `stroke:#000000` → `stroke:#ffffff`.
 
----
-
-### ⚠️ Punti aperti F0B.1
-
-**[APERTO — da verificare prima di procedere] Tipo di contenuto del PDF**
-
-Aprire `DAMAGER_logo.pdf` con un visualizzatore PDF e zoomare al massimo:
-- Se le linee rimangono nette → il logo è **vettoriale** → Metodo A produce SVG perfetto
-- Se il logo diventa pixelato → è un'immagine raster incorporata → Metodo A produce SVG di qualità limitata
-
-In caso raster, contattare chi ha creato il logo per ottenere il file sorgente in formato **AI (Adobe Illustrator)**, **EPS** o **SVG nativo**.
-
-**[APERTO] Versione bianca del logo**
-
-Per l'header con sfondo nero servono elementi bianchi. Tre approcci:
-1. **CSS `filter: invert(1)`** — rapido, funziona se il logo è solo nero su sfondo trasparente. Nessun file aggiuntivo necessario.
-2. **SVG separato con fill `#FFFFFF`** — più pulito, necessario se il logo ha più colori.
-3. **Richiedere al designer il file white** — soluzione ideale.
-
-**Raccomandazione:** partire con il CSS filter come soluzione rapida. Se il risultato non è soddisfacente, creare una versione SVG dedicata.
+> ⚠️ Non modificare i path data o i transform. Qualsiasi reinterpretazione geometrica può alterare proporzioni e allineamento tra scia e aereo.
 
 ---
 
@@ -506,7 +473,7 @@ La corrispondenza tra le cartelle è la seguente:
 | `resources/backgrounds/` | `static/images/backgrounds/` |
 | `resources/partners/` | `static/images/partners/` |
 | `resources/turbojet.png` | `static/images/turbojet.png` |
-| `resources/foto_kickoff.jpg` | `static/images/uploads/foto_kickoff.jpg` |
+| `resources/kickoff.jpg` | `static/images/uploads/kickoff.jpg` |
 | `resources/FACTSHEET_EDF_...pdf` | `static/documents/` |
 
 > La cartella `resources/` nella root del repository rimane come archivio dei file sorgente originali (PDF, ecc.). Le sottocartelle con gli asset elaborati vengono copiate in `static/images/` durante la FASE 1.

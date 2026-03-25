@@ -146,7 +146,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0B.5** `turbojet_half.png` in `static/images/` (hero Home) ✅
 - [ ] **F0B.2** Immagini di sfondo create da `resources/background_template.pdf`
 - [x] **F0B.3** Logo EU: bandiera europea nel footer ✅
-- [x] **F0B.6** `foto_kickoff.jpg` → `static/images/uploads/kickoff.jpg` (news article) ✅
+- [x] **F0B.6** `kickoff.jpg` (alta risoluzione) → `static/images/uploads/kickoff.jpg` (news article) ✅
 - [x] **F0B.7** Factsheet PDF in `static/documents/` ✅
 - [x] **F0B.4** Loghi definitivi dei 5 partner integrati (`static/images/partners/`) ✅
 
@@ -229,7 +229,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 | # | Materiale | Necessario per | Stato |
 |---|-----------|----------------|-------|
-| 1 | Foto del Kickoff Meeting | Media → News | ✅ `resources/foto_kickoff.jpg` |
+| 1 | Foto del Kickoff Meeting | Media → News | ✅ `resources/kickoff.jpg` (alta risoluzione) |
 | 2 | Link post LinkedIn Kickoff | Media → News | ✅ [Post LinkedIn](https://www.linkedin.com/posts/damager-edf-project_edf-europeandefencefund-damager-activity-7429165736457162752-bi3g) |
 | 3 | Data DAMAGER M06 Meeting (Polonia) | Home → Events | ✅ Indicativa giugno 2026 |
 | 4 | URL ufficiale COMOTI | Partners | ✅ https://comoti.ro/en/home-2/ |

@@ -91,7 +91,7 @@ Ogni tab ha un badge con il conteggio degli elementi. Il tab attivo mostra il su
 | Immagine | — (da aggiungere: `static/images/uploads/kickoff.jpg` in FASE 0B) |
 | Link esterno | https://www.linkedin.com/posts/damager-edf-project_... |
 
-> **Immagine:** `resources/foto_kickoff.jpg` deve essere copiata in `static/images/uploads/kickoff.jpg` e il campo `image` dell'articolo aggiornato in FASE 0B.
+> **Immagine:** `resources/kickoff.jpg` (versione ad alta risoluzione) è stata copiata in `static/images/uploads/kickoff.jpg` e il campo `image` dell'articolo è aggiornato in FASE 0B. ✅
 
 ---
 
@@ -193,7 +193,7 @@ Classi definite:
 
 | File | Cartella destinazione | Stato |
 |------|-----------------------|-------|
-| `foto_kickoff.jpg` → `kickoff.jpg` | `static/images/uploads/` | ✅ Completato (F0B.6) |
+| `resources/kickoff.jpg` (alta risoluzione) | `static/images/uploads/kickoff.jpg` | ✅ Completato (F0B.6) |
 | `FACTSHEET_EDF_2024_...pdf` | `static/documents/` | ✅ Completato (F0B.7) |
 
 ---

@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#000000"/>
-  <text x="50%" y="76%" text-anchor="middle" font-family="EthnocentricRg-Italic, Ethnocentric, sans-serif" font-style="italic" font-size="22" fill="#ffffff">D</text>
+<svg viewBox="11 14.5 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" aria-label="DAMAGER" role="img">
+  <title>DAMAGER</title>
+  <rect x="11" y="14.5" width="84" height="84" fill="#000000"/>
+  <g id="layer1" transform="translate(144.96043,-70.570822)">
+    <g style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5" id="g7" transform="matrix(0.26458333,0,0,0.26458333,-144.96037,70.570518)">
+      <path d="m 372.39044,308.46478 c 0,-50.4 -41.7,-85.2 -105,-85.2 h -94.8 l -48.9,52.2 h 134.4 c 30.3,0 51.3,18 51.3,42.6 0,32.1 -30.3,54.3 -68.4,54.3 h -72 l 12.9,-73.5 h -62.1 l -22.200003,125.1 H 231.99044 c 76.8,0 140.4,-51 140.4,-115.5 z" style="fill:#ffffff;stroke-width:4.6457" aria-label="D" />
+    </g>
+  </g>
 </svg>
