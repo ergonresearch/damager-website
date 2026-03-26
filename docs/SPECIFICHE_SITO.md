@@ -114,10 +114,7 @@ Sezioni dall'alto verso il basso:
 
 ### B) EU Funding Disclaimer
 
-- Sfondo bianco o grigio chiarissimo
-- Logo EU "Funded by the European Union" (dal sito ufficiale della Commissione Europea)
-- Testo disclaimer completo obbligatorio (vedi sezione 1.5)
-- Layout: logo a sinistra, testo a destra
+> ⚠️ **Modifica rispetto alle specifiche originali:** il blocco EU disclaimer è stato spostato nel **footer** (presente su tutte le pagine) anziché nella Home. La sezione B della Home è stata eliminata per mantenere il flusso visivo più pulito. Il testo obbligatorio e il logo EU rimangono visibili nel footer su ogni pagina del sito.
 
 ---
 
@@ -145,7 +142,7 @@ Project Progress
   - Bordo nero, sfondo bianco, data in evidenza
   - Titolo, luogo, data, descrizione breve
 - Primo evento preconfigurato:
-  - **DAMAGER M06 Meeting** — Polonia — data indicativa giugno 2026
+  - **DAMAGER M12 Meeting** — dicembre 2026 (luogo da confermare)
 - Link "View all events" → `/media#events`
 
 
@@ -176,13 +173,25 @@ Form di contatto con i campi:
 
 ---
 
-### A) Intro e Context
+### A) About the Project
 
-Testo estratto dal factsheet EDF ufficiale:
+La sezione è strutturata in tre blocchi verticali su sfondo blueprint:
 
-> *"The aim of the project is validating and de-risking of some fundamental technological bricks for the rapid deployment of turbojet-propelled small to medium size, expendable uncrewed aerial vehicles (UAV). Key to reducing the cost and time of manufacturing and deployment of large numbers of UAVs is the development of a low-cost yet high-performance, scalable propulsion system that can be manufactured rapidly in large quantities. Turbojet engines are the ideal candidates, due to their high specific thrust and ease of integration into multiple platforms. Several enabling technologies for highly efficient and low-cost small turbojet engines will be investigated."*
+**1 — Header** (pattern standard del sito): eyebrow "EDF 2024 — Research Action", titolo "About the Project", testo introduttivo.
 
-Layout: testo a colonne con immagine decorativa (turbina in stile blueprint) a lato.
+**2 — Blocco motore turbojet:**
+- SVG schematico orizzontale del turbojet (compressore centrifugo → combustore → turbina → ugello) con frecce di flusso aria, freccia FUEL tratteggiata dall'alto, linea albero tratteggiata. I tre componenti prodotti in AM (compressore, combustore, turbina) hanno un pallino (`<circle>`) nella parte inferiore collegato da una linea tratteggiata dinamica alla card GIF corrispondente.
+- Tre card GIF in griglia 3 colonne (1 colonna su mobile): `compressor.gif`, `combustor.gif`, `turbine.gif`. Fallback visivo con bordo tratteggiato se il file non è ancora disponibile.
+- Le drop-line SVG vengono ridisegnate dinamicamente via JavaScript (`ResizeObserver`) ad ogni resize della finestra.
+
+**3 — Quattro card descrittive in griglia 2×2** (1×4 su mobile):
+
+| # | Titolo | Sintesi |
+|---|--------|---------|
+| 01 | Mission background | Necessità operativa di UAV espendibili in grandi numeri |
+| 02 | Critical gaps | Limiti della produzione convenzionale sottrattiva; stealth irrisolto |
+| 03 | Technologies | AM applicata a compressore, combustore e turbina |
+| 04 | Programme goals | Validare e consegnare un sistema propulsivo scalabile e low-observable |
 
 ---
 
@@ -222,14 +231,7 @@ Visualizzazione grafica ad alto impatto:
 
 ### D) Research Areas / Technology Focus
 
-4 card con le aree tecnologiche principali:
-
-1. **Additive Manufacturing** — Produzione additiva per componenti turbojet
-2. **Low-Cost Propulsion** — Sistemi propulsivi economici ad alte prestazioni
-3. **Low-Observable Design** — Riduzione della segnatura radar/termica
-4. **Scalable Manufacturing** — Produzione rapida su larga scala
-
-Ogni card: icona tecnica SVG, titolo, breve descrizione.
+> ⚠️ **Sezione rimossa:** la sezione "Research Areas" con le 4 card tecnologiche è stata eliminata dalla Project page. Il contenuto concettuale è stato integrato e aggiornato nelle 4 card descrittive della sezione A "About the Project" (Mission background, Critical gaps, Technologies, Programme goals), che forniscono un inquadramento più preciso e operativo del progetto.
 
 ---
 

@@ -3,60 +3,150 @@
 // ─────────────────────────────────────────────
 
 // ────────────────────────────────────
-// Intro two-column layout
+// 2. Engine block
 // ────────────────────────────────────
-.project-intro {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-12;
-  align-items: center;
-
-  @media (min-width: $bp-lg) {
-    grid-template-columns: 1fr 360px;
-    gap: $space-16;
-  }
-
-  &__text {
-    max-width: 680px;
-  }
+.engine-block {
+  position: relative;
+  margin-bottom: $space-16;
 }
 
-// ── Pull quote from factsheet
-.project-quote {
-  margin-top: $space-8;
-  padding: $space-6 $space-8;
-  border-left: 4px solid $black;
-  font-size: $font-size-base;
-  font-style: italic;
-  color: $gray-800;
-  line-height: 1.75;
-
-  @media (min-width: $bp-md) { font-size: $font-size-lg; }
-}
-
-// ── Blueprint visual placeholder (right column)
-// Replaced with real SVG in FASE 0B
-.blueprint-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  border: $border;
-  background: $white;
+// Overlay SVG drawn by JS — drop-lines from SVG dots to GIF cards
+.engine-droplines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
   color: $gray-400;
-  font-size: $font-size-xs;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: $space-8;
-  gap: $space-4;
+}
+
+.engine-diagram {
+  margin-bottom: $space-6;
 
   svg {
-    width: 80px;
-    height: 80px;
-    opacity: 0.2;
+    width: 100%;
+    height: auto;
+    display: block;
+    color: $gray-800;
+  }
+}
+
+// ── Three GIF cards (3-col on ≥md, 1-col on mobile)
+.engine-gifs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-5;
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gif-card {
+  border: 0.5px solid $gray-400;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background: $white;
+}
+
+.gif-media {
+  aspect-ratio: 16 / 9;
+  background: $gray-50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.gif-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed $gray-400;
+  font-family: monospace;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $gray-400;
+  padding: $space-4;
+  text-align: center;
+
+  &[hidden] { display: none; }
+}
+
+.gif-label {
+  display: block;
+  font-family: monospace;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $gray-600;
+  padding: $space-3 $space-4;
+  border-top: 0.5px solid $gray-200;
+}
+
+// ────────────────────────────────────
+// 3. Four descriptive cards (2×2 → 1×4 on mobile)
+// ────────────────────────────────────
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-5;
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-card {
+  border: 0.5px solid $gray-400;
+  border-radius: $radius-sm;
+  padding: $space-8;
+  background: $white;
+  transition: box-shadow $ease, transform $ease;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+    transform: translateY(-1px);
+  }
+
+  &__num {
+    display: block;
+    font-family: monospace;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $gray-400;
+    margin-bottom: $space-3;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $black;
+    margin: 0 0 $space-3;
+    line-height: $line-height-tight;
+  }
+
+  &__body {
+    font-size: $font-size-base;
+    color: $gray-600;
+    line-height: $line-height;
+    margin: 0;
   }
 }
 
@@ -102,29 +192,5 @@
 
   tr:nth-child(even) th {
     background: $gray-50;
-  }
-}
-
-// ────────────────────────────────────
-// Research area cards on alt bg — ensure white card bg
-// ────────────────────────────────────
-.section--alt .card-research {
-  background: $white;
-}
-
-// ── Icon styling within research cards
-.card-research__icon {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  svg {
-    width: 48px;
-    height: 48px;
-    stroke: $black;
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
   }
 }

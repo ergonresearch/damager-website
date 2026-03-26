@@ -114,15 +114,15 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 4 — Project Page
 
-- [x] **F4.1** Intro/context (testo factsheet EDF) ✅
+- [x] **F4.1** "About the Project": header (eyebrow + titolo + intro), SVG motore turbojet, 3 card GIF con drop-line dinamiche JS, griglia 2×2 card descrittive (Mission background, Critical gaps, Technologies, Programme goals) ✅
 - [x] **F4.2** Project Details (tabella dati chiave) ✅
 - [x] **F4.3** Timeline General Assembly Meetings: Kickoff → M12 → M24 Review → M36 Review → M48 Meeting ✅
-- [x] **F4.4** Research Areas (4 card tecnologiche) ✅
+- [x] **F4.4** ~~Research Areas (4 card tecnologiche)~~ *(rimossa — contenuto integrato in F4.1)* ✅
 
 #### FASE 5 — Partners Page
 
 - [x] **F5.1** Card per i 5 partner (logo, nome, paese, ruolo) ✅
-- [x] **F5.2** Loghi partner placeholder (definitivi in FASE 0B) ✅
+- [x] **F5.2** Loghi partner definitivi integrati (`static/images/partners/`) ✅
 - [x] **F5.3** Mappa placeholder pronta per Google Maps (FASE 7) ✅
 - [x] **F5.4** Stile mappa monocromatico (da completare in FASE 7) ✅
 
@@ -244,6 +244,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
 | 11 | Publications scientifiche già disponibili | Media → Publications | ⏳ Da fornire |
 | 12 | Linee guida comunicazione EDF | Tutto il sito | ⏳ Da verificare con HIT09 |
+| 14 | `compressor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/compressor.gif`) |
+| 15 | `combustor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/combustor.gif`) |
+| 16 | `turbine.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/turbine.gif`) |
 
 
 ---

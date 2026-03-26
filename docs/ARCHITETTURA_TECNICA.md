@@ -217,12 +217,12 @@ damager-website/
 │   │   ├── _components.scss   # Card (news, doc, partner), bottoni, form, progress bar, tab nav
 │   │   ├── _timeline.scss     # Timeline animata con aeroplano SVG
 │   │   ├── _decorations.scss  # Decorazioni SVG di sfondo (g5.svg + g3175.svg) su tutte le sezioni bianche
-│   │   ├── _home.scss         # Stili specifici Home page (hero, eu-disclaimer)
-│   │   ├── _project.scss      # Stili specifici Project page (tabella, intro, quote)
+│   │   ├── _home.scss         # Stili specifici Home page (hero, contact layout)
+│   │   ├── _project.scss      # Stili specifici Project page (engine block, gif-card, about-card, project-table)
 │   │   ├── _partners.scss     # Stili specifici Partners page (stat box, coordinator badge, mappa)
 │   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, publication entries, override decorazioni)
 │   └── js/
-│       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation
+│       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation, engine drop-lines
 ├── static/
 │   ├── admin/
 │   │   ├── index.html         # Pannello Decap CMS
@@ -313,19 +313,9 @@ collections:
       - {label: "DOI Link", name: "doi", widget: "string", required: false}
       - {label: "Tags", name: "tags", widget: "list", required: false}
 
-  # Partners
-  - name: "partners"
-    label: "Partners"
-    folder: "content/partners"
-    create: false
-    fields:
-      - {label: "Name", name: "title", widget: "string"}
-      - {label: "Country", name: "country", widget: "string"}
-      - {label: "Logo", name: "logo", widget: "image"}
-      - {label: "Website", name: "website", widget: "string"}
-      - {label: "Role", name: "role", widget: "string"}
-      - {label: "Description", name: "body", widget: "markdown"}
 ```
+
+> **Nota:** la collection `partners` mostrata nelle specifiche iniziali **non è stata implementata** nel `config.yml` effettivo. I dati dei partner (loghi, nomi, ruoli, descrizioni) sono hard-coded in `layouts/partners/list.html` — i loghi definitivi risiedono in `static/images/partners/`. Non essendo contenuti che cambiano frequentemente, si è scelto di non passarli dal CMS.
 
 ### 2.3 Funzionamento Git Gateway
 

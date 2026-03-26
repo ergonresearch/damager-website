@@ -92,13 +92,9 @@
 // ────────────────────────────────────
 // Coordinator card variant
 // ────────────────────────────────────
-.card-partner {
-  position: relative; // needed for badge positioning
-
-  &--coordinator {
-    border-color: $black;
-    border-width: 2px;
-  }
+.card-partner--coordinator {
+  border-color: $black;
+  border-width: 2px;
 }
 
 .coordinator-badge {

@@ -461,4 +461,4 @@ La corrispondenza tra le cartelle è la seguente:
 
 ---
 
-*Documento FASE 0B — Progetto DAMAGER Website | Versione 1.0 | Marzo 2026*
+*Documento FASE 0B — Progetto DAMAGER Website | Versione 2.0 | Marzo 2026*

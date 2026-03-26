@@ -1,39 +1,186 @@
 {{ define "main" }}
 
-{{/* ── A) Intro & Context ────────────────────────────────────────────────── */}}
+{{/* ── A) About the Project ────────────────────────────────────────────── */}}
+{{- $compGif := resources.Get "compressor.gif" -}}
+{{- $combGif := resources.Get "combustor.gif" -}}
+{{- $turbGif := resources.Get "turbine.gif" -}}
+
 <section class="section bg-blueprint">
   <div class="container">
-    <div class="project-intro">
 
-      <div class="project-intro__text">
-        <h1 class="section-title">About the Project</h1>
+    {{/* ── 1. Project header ── */}}
+    <span class="section-eyebrow">EDF 2024 — Research Action</span>
+    <h1 class="section-title">About the Project</h1>
+    <p class="section-intro">Study of additive manufacturing for low-cost, low-observable, highly-deployable expendable turbojet engines.</p>
 
-        <blockquote class="project-quote">
-          "The aim of the project is validating and de-risking of some fundamental technological bricks for the rapid deployment of turbojet-propelled small to medium size, expendable uncrewed aerial vehicles (UAV). Key to reducing the cost and time of manufacturing and deployment of large numbers of UAVs is the development of a low-cost yet high-performance, scalable propulsion system that can be manufactured rapidly in large quantities. Turbojet engines are the ideal candidates, due to their high specific thrust and ease of integration into multiple platforms. Several enabling technologies for highly efficient and low-cost small turbojet engines will be investigated."
-        </blockquote>
+    {{/* ── 2. Engine block ── */}}
+    <div class="engine-block" id="engine-block">
+
+      {{/* Overlay SVG — drop-lines drawn by JavaScript */}}
+      <svg class="engine-droplines" id="engine-droplines" aria-hidden="true"></svg>
+
+      {{/* 2a — Turbojet schematic SVG */}}
+      <div class="engine-diagram">
+        <svg id="engine-svg" viewBox="0 0 860 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Turbojet engine cross-section schematic">
+          <title>Turbojet engine cross-section: compressor, combustor, turbine, nozzle</title>
+          <defs>
+            <marker id="eng-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+            </marker>
+            <marker id="eng-arrow-sm" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+              <path d="M0,0 L5,2.5 L0,5 Z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          {{/* Shaft — dashed centreline, drawn first so components render on top */}}
+          <line x1="65" y1="100" x2="692" y2="100"
+                stroke="currentColor" stroke-width="0.75" stroke-dasharray="6 4" opacity="0.3"/>
+
+          {{/* AIR IN */}}
+          <text x="4" y="96" font-size="10" font-family="monospace" font-weight="700"
+                letter-spacing="0.5" fill="currentColor" opacity="0.6">AIR</text>
+          <text x="7" y="109" font-size="10" font-family="monospace" font-weight="700"
+                letter-spacing="0.5" fill="currentColor" opacity="0.6">IN</text>
+          <line x1="38" y1="100" x2="63" y2="100"
+                stroke="currentColor" stroke-width="1.5" marker-end="url(#eng-arrow)"/>
+
+          {{/* COMPRESSOR — trapezoid: narrow inlet (left), wide outlet (right) */}}
+          <polygon points="65,82 195,57 195,143 65,118"
+                   fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+          <text x="130" y="96" text-anchor="middle" font-size="10" font-family="monospace"
+                font-weight="700" letter-spacing="1" fill="currentColor">COMP.</text>
+          <text x="130" y="110" text-anchor="middle" font-size="9" font-family="monospace"
+                fill="currentColor" opacity="0.6">AM</text>
+
+          {{/* Flow arrow: compressor → combustor */}}
+          <line x1="195" y1="100" x2="223" y2="100"
+                stroke="currentColor" stroke-width="1.5" marker-end="url(#eng-arrow)"/>
+
+          {{/* COMBUSTOR — rectangle */}}
+          <rect x="225" y="57" width="283" height="86"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+          {{/* Fuel — dashed arrow from top */}}
+          <text x="366" y="18" text-anchor="middle" font-size="9" font-family="monospace"
+                fill="currentColor" opacity="0.6" letter-spacing="1">FUEL</text>
+          <line x1="366" y1="22" x2="366" y2="55"
+                stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"
+                marker-end="url(#eng-arrow-sm)"/>
+          <text x="366" y="96" text-anchor="middle" font-size="10" font-family="monospace"
+                font-weight="700" letter-spacing="1" fill="currentColor">COMBUSTOR</text>
+          <text x="366" y="110" text-anchor="middle" font-size="9" font-family="monospace"
+                fill="currentColor" opacity="0.6">AM</text>
+
+          {{/* Flow arrow: combustor → turbine */}}
+          <line x1="508" y1="100" x2="539" y2="100"
+                stroke="currentColor" stroke-width="1.5" marker-end="url(#eng-arrow)"/>
+
+          {{/* TURBINE — inverted trapezoid: wide inlet (left), narrow outlet (right) */}}
+          <polygon points="541,57 691,82 691,118 541,143"
+                   fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+          <text x="616" y="96" text-anchor="middle" font-size="10" font-family="monospace"
+                font-weight="700" letter-spacing="1" fill="currentColor">TURBINE</text>
+          <text x="616" y="110" text-anchor="middle" font-size="9" font-family="monospace"
+                fill="currentColor" opacity="0.6">AM</text>
+
+          {{/* Flow arrow: turbine → nozzle */}}
+          <line x1="691" y1="100" x2="721" y2="100"
+                stroke="currentColor" stroke-width="1.5" marker-end="url(#eng-arrow)"/>
+
+          {{/* NOZZLE — converging shape */}}
+          <polygon points="723,82 807,91 807,109 723,118"
+                   fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"/>
+          <text x="765" y="103" text-anchor="middle" font-size="9" font-family="monospace"
+                font-weight="700" letter-spacing="1" fill="currentColor">NOZZLE</text>
+
+          {{/* Exhaust arrow */}}
+          <line x1="807" y1="100" x2="843" y2="100"
+                stroke="currentColor" stroke-width="1.5" marker-end="url(#eng-arrow)"/>
+          <text x="848" y="96" font-size="10" font-family="monospace" font-weight="700"
+                letter-spacing="0.5" fill="currentColor" opacity="0.6">EXH.</text>
+
+          {{/* AM dot stems — short dashed lines from component bottom edge to dot */}}
+          <line x1="130" y1="134" x2="130" y2="163"
+                stroke="currentColor" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle id="dot-compressor" cx="130" cy="168" r="4"
+                  fill="none" stroke="currentColor" stroke-width="1.5"/>
+
+          <line x1="366" y1="143" x2="366" y2="163"
+                stroke="currentColor" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle id="dot-combustor" cx="366" cy="168" r="4"
+                  fill="none" stroke="currentColor" stroke-width="1.5"/>
+
+          <line x1="616" y1="134" x2="616" y2="163"
+                stroke="currentColor" stroke-width="1" stroke-dasharray="3 2"/>
+          <circle id="dot-turbine" cx="616" cy="168" r="4"
+                  fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
       </div>
 
-      <div class="project-intro__visual">
-        {{/*
-          Blueprint visual placeholder — will be replaced with an SVG
-          extracted from resources/background_template.pdf in FASE 0B.
-        */}}
-        <div class="blueprint-visual">
-          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="40" cy="40" r="36" stroke="currentColor" stroke-width="2" fill="none"/>
-            <circle cx="40" cy="40" r="26" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <circle cx="40" cy="40" r="16" stroke="currentColor" stroke-width="1" fill="none"/>
-            <circle cx="40" cy="40" r="4" fill="currentColor"/>
-            <line x1="4"  y1="40" x2="76" y2="40" stroke="currentColor" stroke-width="1"/>
-            <line x1="40" y1="4"  x2="40" y2="76" stroke="currentColor" stroke-width="1"/>
-            <line x1="14.5" y1="14.5" x2="65.5" y2="65.5" stroke="currentColor" stroke-width="0.75"/>
-            <line x1="65.5" y1="14.5" x2="14.5" y2="65.5" stroke="currentColor" stroke-width="0.75"/>
-          </svg>
-          <span>Blueprint Visual<br>(FASE 0B)</span>
+      {{/* 2b — Three GIF cards */}}
+      <div class="engine-gifs">
+
+        <div class="gif-card" id="gif-compressor">
+          <div class="gif-media">
+            <img src="{{ with $compGif }}{{ .RelPermalink }}{{ end }}"
+                 alt="Centrifugal compressor — additive manufactured component"
+                 onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
+            <div class="gif-fallback" hidden>compressor.gif</div>
+          </div>
+          <span class="gif-label">Compressor</span>
         </div>
+
+        <div class="gif-card" id="gif-combustor">
+          <div class="gif-media">
+            <img src="{{ with $combGif }}{{ .RelPermalink }}{{ end }}"
+                 alt="Combustor — additive manufactured component"
+                 onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
+            <div class="gif-fallback" hidden>combustor.gif</div>
+          </div>
+          <span class="gif-label">Combustor</span>
+        </div>
+
+        <div class="gif-card" id="gif-turbine">
+          <div class="gif-media">
+            <img src="{{ with $turbGif }}{{ .RelPermalink }}{{ end }}"
+                 alt="Turbine — additive manufactured component"
+                 onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
+            <div class="gif-fallback" hidden>turbine.gif</div>
+          </div>
+          <span class="gif-label">Turbine</span>
+        </div>
+
+      </div>
+    </div>{{/* /engine-block */}}
+
+    {{/* ── 3. Four descriptive cards (2×2 grid) ── */}}
+    <div class="about-cards">
+
+      <div class="about-card">
+        <span class="about-card__num">01</span>
+        <h3 class="about-card__title">Mission background</h3>
+        <p class="about-card__body">European defence forces require large numbers of expendable UAVs for rapid deployment scenarios. Current propulsion solutions are too costly, slow to manufacture, and insufficiently scalable to meet operational demand.</p>
       </div>
 
-    </div>
+      <div class="about-card">
+        <span class="about-card__num">02</span>
+        <h3 class="about-card__title">Critical gaps</h3>
+        <p class="about-card__body">Existing small turbojet engines rely on conventional subtractive manufacturing, limiting geometric complexity and production speed. Stealth compatibility and low-cost attritable design remain unresolved engineering challenges.</p>
+      </div>
+
+      <div class="about-card">
+        <span class="about-card__num">03</span>
+        <h3 class="about-card__title">Technologies</h3>
+        <p class="about-card__body">Additive manufacturing (AM) is applied to key engine components — centrifugal compressor, combustor, turbine — to enable rapid batch production, complex internal geometries, and reduced radar cross-section profiles.</p>
+      </div>
+
+      <div class="about-card">
+        <span class="about-card__num">04</span>
+        <h3 class="about-card__title">Programme goals</h3>
+        <p class="about-card__body">Validate and de-risk AM-produced turbojet technology bricks. Deliver a scalable, low-observable propulsion system ready for integration into small-to-medium expendable UAV platforms across European defence fleets.</p>
+      </div>
+
+    </div>{{/* /about-cards */}}
+
   </div>
 </section>
 
@@ -92,70 +239,6 @@
     <span class="section-eyebrow">Project Timeline</span>
     <h2 class="section-title">General Assembly Meetings</h2>
     {{ partial "timeline.html" . }}
-  </div>
-</section>
-
-{{/* ── D) Research Areas ────────────────────────────────────────────────── */}}
-<section class="section section--alt">
-  <div class="container">
-    <span class="section-eyebrow">Technology Focus</span>
-    <h2 class="section-title">Research Areas</h2>
-
-    <div class="card-grid">
-
-      {{/* Card 1 — Additive Manufacturing */}}
-      <div class="card-research">
-        <div class="card-research__icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <h3 class="card-research__title">Additive Manufacturing</h3>
-        <p class="card-research__desc">Additive manufacturing of high-performance turbojet components with complex geometries that cannot be achieved through conventional machining methods.</p>
-      </div>
-
-      {{/* Card 2 — Low-Cost Propulsion */}}
-      <div class="card-research">
-        <div class="card-research__icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M19.07 4.93l-2.83 2.83M7.76 16.24l-2.83 2.83"/>
-          </svg>
-        </div>
-        <h3 class="card-research__title">Low-Cost Propulsion</h3>
-        <p class="card-research__desc">Development of affordable yet high-performance propulsion systems enabling rapid production of large quantities of UAVs at low unit cost.</p>
-      </div>
-
-      {{/* Card 3 — Low-Observable Design */}}
-      <div class="card-research">
-        <div class="card-research__icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-            <line x1="1" y1="1" x2="23" y2="23"/>
-          </svg>
-        </div>
-        <h3 class="card-research__title">Low-Observable Design</h3>
-        <p class="card-research__desc">Reduction of radar and thermal signature through integrated design of advanced materials, optimised geometries and selective coatings.</p>
-      </div>
-
-      {{/* Card 4 — Scalable Manufacturing */}}
-      <div class="card-research">
-        <div class="card-research__icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="3" width="7" height="7" rx="1"/>
-            <rect x="15" y="3" width="7" height="7" rx="1"/>
-            <rect x="2" y="14" width="7" height="7" rx="1"/>
-            <rect x="15" y="14" width="7" height="7" rx="1"/>
-          </svg>
-        </div>
-        <h3 class="card-research__title">Scalable Manufacturing</h3>
-        <p class="card-research__desc">Scalable production processes for the rapid manufacturing of propulsion units in large quantities with controlled quality and reduced costs.</p>
-      </div>
-
-    </div>
   </div>
 </section>
 

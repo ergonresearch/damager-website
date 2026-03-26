@@ -1,7 +1,7 @@
 # FASE 5 — Partners Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 2.0 | **Data:** Marzo 2026  
 **Prerequisiti:** FASE 1–4 completate  
 **Obiettivo:** Implementare la pagina Partners (`/partners`) con tutte le sezioni previste nelle specifiche
 
@@ -10,7 +10,7 @@
 ## Checklist
 
 - [x] F5.1 — Consortium Overview (titolo, intro, statistiche)
-- [x] F5.2 — Partner Cards (5 card con logo placeholder, nome, paese, ruolo, descrizione, link)
+- [x] F5.2 — Partner Cards (5 card con logo definitivo, nome, paese, ruolo, descrizione, link)
 - [x] F5.3 — Mappa placeholder (pronta per integrazione Google Maps in FASE 7)
 - [x] F5.4 — SCSS: `_partners.scss` (overview stats, coordinator badge, map placeholder)
 - [x] F5.5 — Build, verifica e deploy
@@ -64,7 +64,7 @@ Il partner coordinatore (HIT09) ha un badge "Coordinator" e bordo nero più spes
 
 > **Bandiere:** le emoji delle bandiere nazionali non vengono renderizzate nei browser desktop Windows. Sostituite con `<img>` SVG locali (`static/images/flags/it.svg`, `at.svg`, `es.svg`, `ro.svg`) scaricati da [flagcdn.com](https://flagcdn.com). Stilizzate con classe `.country-flag` (20px larghezza, bordo sottile).
 
-> **Loghi placeholder:** tutti i loghi sono box `.logo-placeholder` con il nome del partner. I loghi reali verranno inseriti in FASE 0B da `resources/partners/`.  
+> **Loghi definitivi:** tutti i loghi partner sono stati integrati in `static/images/partners/` (FASE 0B completata). I file sono `hit09.png`, `lithoz.jpg`, `aenium.png`, `ergon.jpg`, `comoti.png`.  
 > **Descrizioni:** testi placeholder dalle specifiche; le descrizioni ufficiali per HIT09 e Ergon Research sono ancora da fornire internamente.
 
 ---
@@ -109,16 +109,16 @@ Classi definite:
 
 ---
 
-## F5.5 — Asset placeholder
+## F5.5 — Asset
 
-| Asset | Placeholder attuale | File finale (FASE 0B) |
-|-------|--------------------|-----------------------|
-| Logo HIT09 | Box grigio "HIT09" | `static/images/partners/hit09.svg` |
-| Logo LITHOZ | Box grigio "LITHOZ" | `static/images/partners/lithoz.svg` |
-| Logo AENIUM | Box grigio "AENIUM" | `static/images/partners/aenium.svg` |
-| Logo ERGON | Box grigio "ERGON" | `static/images/partners/ergon.svg` |
-| Logo COMOTI | Box grigio "COMOTI" | `static/images/partners/comoti.svg` |
-| Google Maps embed | Placeholder visuale | Da configurare in FASE 7 (API key + indirizzi) |
+| Asset | Stato | File |
+|-------|-------|------|
+| Logo HIT09 | ✅ Integrato | `static/images/partners/hit09.png` |
+| Logo LITHOZ | ✅ Integrato | `static/images/partners/lithoz.jpg` |
+| Logo AENIUM | ✅ Integrato | `static/images/partners/aenium.png` |
+| Logo ERGON | ✅ Integrato | `static/images/partners/ergon.jpg` |
+| Logo COMOTI | ✅ Integrato | `static/images/partners/comoti.png` |
+| Google Maps embed | ⏳ Da configurare | Da completare in FASE 7 (indirizzi fisici + cookie consent) |
 
 ---
 

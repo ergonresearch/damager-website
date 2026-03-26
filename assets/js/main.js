@@ -108,6 +108,47 @@
 
   }
 
+  // ── Engine drop-lines (Project page)
+  // Draws dashed SVG lines from the AM-component dots in the engine schematic
+  // to the top-centre of each corresponding GIF card below.
+  // Recalculates on every ResizeObserver callback so lines stay aligned at
+  // any viewport width.
+  function initEngineDroplines() {
+    var block   = document.getElementById('engine-block');
+    var overlay = document.getElementById('engine-droplines');
+    if (!block || !overlay) return;
+
+    function draw() {
+      var blockRect  = block.getBoundingClientRect();
+      var components = ['compressor', 'combustor', 'turbine'];
+      var lines = '';
+
+      components.forEach(function (comp) {
+        var dot  = document.getElementById('dot-' + comp);
+        var card = document.getElementById('gif-' + comp);
+        if (!dot || !card) return;
+
+        var dotRect  = dot.getBoundingClientRect();
+        var cardRect = card.getBoundingClientRect();
+
+        var x1 = dotRect.left  + dotRect.width  / 2 - blockRect.left;
+        var y1 = dotRect.bottom                      - blockRect.top;
+        var x2 = cardRect.left + cardRect.width / 2  - blockRect.left;
+        var y2 = cardRect.top                        - blockRect.top;
+
+        lines += '<line x1="' + x1 + '" y1="' + y1 +
+                 '" x2="' + x2 + '" y2="' + y2 +
+                 '" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>';
+      });
+
+      overlay.innerHTML = lines;
+    }
+
+    draw();
+    var ro = new ResizeObserver(draw);
+    ro.observe(block);
+  }
+
   // ── Tab navigation (Media page)
   function initTabs() {
     var tabNavs = document.querySelectorAll('.tab-nav');
@@ -136,6 +177,7 @@
     initProgressBar();
     initTimeline();
     initTabs();
+    initEngineDroplines();
   });
 
 }());

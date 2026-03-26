@@ -83,57 +83,6 @@
 }
 
 // ────────────────────────────────────
-// EU Funding Disclaimer (Home section)
-// ────────────────────────────────────
-.eu-disclaimer {
-  display: flex;
-  flex-direction: column;
-  gap: $space-6;
-  align-items: flex-start;
-
-  @media (min-width: $bp-md) {
-    flex-direction: row;
-    align-items: center;
-    gap: $space-10;
-  }
-
-  &__logo {
-    flex-shrink: 0;
-    width: 140px;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    &--placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 140px;
-      min-height: 80px;
-      border: $border;
-      background: $white;
-      font-size: $font-size-xs;
-      font-weight: 700;
-      color: $gray-600;
-      text-align: center;
-      padding: $space-3;
-      line-height: 1.4;
-    }
-  }
-
-  &__text {
-    font-size: $font-size-sm;
-    color: $gray-800;
-    line-height: 1.7;
-    max-width: 680px;
-
-    strong { color: $black; }
-  }
-}
-
-// ────────────────────────────────────
 // Events section CTA link
 // ────────────────────────────────────
 .events-cta {
@@ -193,22 +142,6 @@ abbr[title="required"] {
       width: auto;
       object-fit: contain;
     }
-  }
-
-  &__logo-placeholder {
-    height: 56px;
-    min-width: 100px;
-    background: $gray-100;
-    border: $border;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: $font-size-sm;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: $gray-600;
-    text-transform: uppercase;
-    padding: 0 $space-4;
   }
 
   &__info {

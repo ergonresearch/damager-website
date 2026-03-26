@@ -73,4 +73,4 @@ FASE 9 (Formazione editor)
 
 ---
 
-*Documento indice FASE 0 — Progetto DAMAGER Website | Versione 2.0 | Marzo 2026*
+*Documento indice FASE 0 — Progetto DAMAGER Website | Versione 3.0 | Marzo 2026*

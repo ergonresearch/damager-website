@@ -1,7 +1,7 @@
 # FASE 4 — Project Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 2.0 | **Data:** Marzo 2026  
 **Prerequisiti:** FASE 1, 2 e 3 completate  
 **Obiettivo:** Implementare la pagina Project (`/project`) con tutte le sezioni previste nelle specifiche
 
@@ -9,12 +9,13 @@
 
 ## Checklist
 
-- [x] F4.1 — Intro & Context (testo factsheet EDF + layout bicolonna con visual blueprint)
+- [x] F4.1 — About the Project: header (eyebrow + titolo + intro), blocco motore SVG + card GIF, griglia 2×2 card descrittive
 - [x] F4.2 — Project Details (tabella dati chiave)
 - [x] F4.3 — Timeline animata con milestone M00–M48
-- [x] F4.4 — Research Areas (4 card tecnologiche con icone SVG)
-- [x] F4.5 — SCSS: `_project.scss` (tabella, intro, blockquote, blueprint visual)
-- [x] F4.6 — Build, verifica e deploy
+- [x] F4.4 — ~~Research Areas~~ *(rimossa — contenuto integrato nelle 4 card di F4.1)*
+- [x] F4.5 — SCSS: `_project.scss` aggiornato (engine block, gif-card, about-card, project-table)
+- [x] F4.6 — JS: `initEngineDroplines()` in `assets/js/main.js`
+- [x] F4.7 — Build, verifica e deploy
 
 ---
 
@@ -24,23 +25,90 @@
 
 | Sezione | Classe CSS | Note |
 |---------|-----------|------|
-| A — Intro & Context | `.project-intro` + `.project-quote` | Testo factsheet EDF; visual blueprint placeholder (FASE 0B) |
+| A — About the Project | `section bg-blueprint` | Header + blocco motore + 4 card descrittive |
 | B — Project Details | `.project-table` | Tabella dati ufficiali del progetto |
 | C — Timeline | `{{ partial "timeline.html" . }}` | Riutilizzo del partial già creato in FASE 2 |
-| D — Research Areas | `.card-research` × 4 | Icone SVG inline, titolo, descrizione |
 
 ---
 
-## F4.1 — Intro & Context
+## F4.1 — About the Project
 
 **File:** `layouts/project/list.html`
 
-Layout bicolonna (testo sx, visual dx) su desktop. Il testo include:
+La sezione è strutturata in tre blocchi verticali all'interno di un'unica `<section class="section bg-blueprint">`:
 
-- **Titolo:** `<h1>About the Project</h1>` — il titolo "DAMAGER" e il sottotitolo con acronimo espanso sono stati rimossi da questa sezione (già presenti nell'hero della Home e nella tabella F4.2).
-- **Corpo:** estratto ufficiale dal factsheet EDF in forma di `<blockquote>`
+### Blocco 1 — Header
 
-Il pannello visivo destro è un **placeholder blueprint** (bordo + sfondo grigio chiaro + label "Blueprint Visual") che in FASE 0B verrà sostituito con un'immagine SVG estratta da `resources/background_template.pdf`.
+Pattern standard del sito:
+
+```html
+<span class="section-eyebrow">EDF 2024 — Research Action</span>
+<h1 class="section-title">About the Project</h1>
+<p class="section-intro">Study of additive manufacturing for low-cost, low-observable,
+  highly-deployable expendable turbojet engines.</p>
+```
+
+### Blocco 2 — Engine block (motore turbojet)
+
+Contenitore `<div class="engine-block" id="engine-block">` con tre sotto-elementi:
+
+**a) Overlay SVG per drop-lines (disegnato da JavaScript):**
+
+```html
+<svg class="engine-droplines" id="engine-droplines" aria-hidden="true"></svg>
+```
+
+Posizionato `position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible`.
+Le linee tratteggiate che collegano i dot SVG alle card GIF sono iniettate dinamicamente da `initEngineDroplines()`.
+
+**b) SVG schematico del turbojet:**
+
+Elemento `<svg id="engine-svg" viewBox="0 0 860 220">` con:
+
+| Componente | Forma | Coordinate chiave |
+|------------|-------|-------------------|
+| AIR IN | testo + freccia | x=4–63, y=100 |
+| Compressore (AM) | Poligono trapezoidale (si allarga verso destra) | `65,82 195,57 195,143 65,118` |
+| Combustore (AM) | Rettangolo | x=225, y=57, w=283, h=86 |
+| Freccia FUEL | Tratteggiata dall'alto | x=366, y=22→55 |
+| Turbina (AM) | Poligono trapezoidale invertito (si restringe verso destra) | `541,57 691,82 691,118 541,143` |
+| Ugello | Poligono convergente | `723,82 807,91 807,109 723,118` |
+| EXH. | testo + freccia | x=807–848, y=100 |
+| Linea albero | Tratteggiata orizzontale | x=65→692, y=100, opacity=0.3 |
+| Dot AM (×3) | `<circle>` vuoto con stelo tratteggiato | cy=168, id=dot-compressor/combustor/turbine |
+
+Il flag `currentColor` su stroke/fill permette adattamento al colore CSS del container.
+
+**c) Tre card GIF (`<div class="engine-gifs">`):**
+
+```html
+<div class="gif-card" id="gif-compressor">
+  <div class="gif-media">
+    <img src="{{ with $compGif }}{{ .RelPermalink }}{{ end }}"
+         onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
+    <div class="gif-fallback" hidden>compressor.gif</div>
+  </div>
+  <span class="gif-label">Compressor</span>
+</div>
+```
+
+Le GIF sono caricate via `resources.Get` da `assets/`:
+- `assets/compressor.gif` → componente compressore centrifugo
+- `assets/combustor.gif` → camera di combustione
+- `assets/turbine.gif` → stadio turbina
+
+Se il file non esiste, `src` è vuoto → `onerror` rivela il `div.gif-fallback` con bordo tratteggiato e nome file.
+
+### Blocco 3 — Quattro card descrittive (`<div class="about-cards">`)
+
+Griglia 2×2 su desktop, 1×4 su mobile:
+
+| # | Titolo | Contenuto |
+|---|--------|-----------|
+| 01 | Mission background | Contesto operativo delle UAV e limiti delle soluzioni propulsive attuali |
+| 02 | Critical gaps | Limiti della produzione sottrattiva; stealth e design attritable non risolti |
+| 03 | Technologies | AM applicata a compressore, combustore e turbina per batch rapido e RCS ridotto |
+| 04 | Programme goals | Validare le technology bricks AM e consegnare un sistema propulsivo scalabile e low-observable |
 
 ---
 
@@ -70,7 +138,7 @@ Tabella con dati ufficiali del progetto:
 **SCSS:** `assets/scss/_timeline.scss`  
 **JS:** `assets/js/main.js` — funzione `initTimeline()`
 
-Milestone (corrispondono esattamente alla struttura nel partial `timeline.html`):
+Milestone:
 
 | Mese | Data | Nome |
 |------|------|------|
@@ -80,61 +148,110 @@ Milestone (corrispondono esattamente alla struttura nel partial `timeline.html`)
 | M36 | Dec 2028 | M36 Review |
 | M48 | Nov 2029 | M48 Meeting |
 
-Il marcatore SVG viene posizionato dinamicamente da `initTimeline()` in base alla data corrente.
+Il marcatore drone SVG viene posizionato dinamicamente da `initTimeline()` in base alla data corrente.
 
 **Implementazione tecnica:**
 - L'icona aeroplano è il drone SVG DAMAGER (`assets/images/damager_drone.svg`), incluso inline nel partial tramite `resources.Get`.
 - Il drone è ruotato a 90° tramite CSS (`@keyframes plane-float` con `rotate(90deg)`).
 - L'animazione di galleggiamento usa `translateX` nel frame ruotato per ottenere un movimento verticale sullo schermo.
-- Ciascuna milestone è posizionata assolutamente con `left: X%` (calcolato da Hugo: `month/48 × 100`) e centrata tramite `transform: translateX(-50%)` in CSS — il centro del dot corrisponde esattamente al punto temporale sulla barra.
-- Linea e container milestone usano un inset orizzontale di `80px` per lato (`$timeline-inset` in `_timeline.scss`), così le etichette di M0 e M48 non escono dall'area scrollabile su schermi stretti.
-- Il drone è posizionato in pixel dal JS: `left = 80px + pct × (timeline_width − 160px)`, coerente con l'inset del container milestone.
-- I label usano `white-space: nowrap` per evitare il wrapping del testo.
+- Ciascuna milestone è posizionata assolutamente con `left: X%` (calcolato da Hugo: `month/48 × 100`) e centrata tramite `transform: translateX(-50%)` in CSS.
+- Linea e container milestone usano un inset orizzontale di `80px` per lato (`$timeline-inset` in `_timeline.scss`).
+- Il drone è posizionato in pixel dal JS: `left = 80px + pct × (timeline_width − 160px)`.
 - Le milestone passate ricevono la classe `is-past` (dot nero pieno); quella corrente riceve `is-current`.
-
----
-
-## F4.4 — Research Areas
-
-**File:** `layouts/project/list.html`  
-**SCSS:** `.card-research` in `assets/scss/_components.scss`
-
-4 card con icone SVG inline (24×24 viewBox, stroke monocromatico). Le descrizioni sono in inglese:
-
-
-| # | Titolo | Descrizione |
-|---|--------|-------------|
-| 1 | Additive Manufacturing | Additive manufacturing of high-performance turbojet components with complex geometries that cannot be achieved through conventional machining methods. |
-| 2 | Low-Cost Propulsion | Development of affordable yet high-performance propulsion systems enabling rapid production of large quantities of UAVs at low unit cost. |
-| 3 | Low-Observable Design | Reduction of radar and thermal signature through integrated design of advanced materials, optimised geometries and selective coatings. |
-| 4 | Scalable Manufacturing | Scalable production processes for the rapid manufacturing of propulsion units in large quantities with controlled quality and reduced costs. |
 
 ---
 
 ## F4.5 — SCSS: `_project.scss`
 
 **File:** `assets/scss/_project.scss`  
-**Import:** aggiunto in `assets/scss/main.scss`
+**Import:** presente in `assets/scss/main.scss`
 
 Classi definite:
 
 | Classe | Descrizione |
 |--------|-------------|
-| `.project-intro` | Grid bicolonna testo/visual |
-| `.project-intro__text` | Colonna sinistra con testo |
-| `.project-intro__visual` | Colonna destra con placeholder blueprint |
-| `.project-quote` | Blockquote con bordo sinistro nero |
-| `.blueprint-visual` | Placeholder per SVG blueprint (FASE 0B) |
+| `.engine-block` | Container relativo per il blocco motore; `margin-bottom: $space-16` |
+| `.engine-droplines` | Overlay SVG assoluto per le drop-line JS; `pointer-events: none` |
+| `.engine-diagram` | Wrapper del SVG schematico; `margin-bottom: $space-6` |
+| `.engine-gifs` | Griglia 3 colonne (≥768px) / 1 colonna (mobile) |
+| `.gif-card` | Card singola GIF: bordo 0.5px, border-radius 2px, background bianco |
+| `.gif-media` | Area media 16:9 con fallback flex centrato |
+| `.gif-fallback` | Placeholder con bordo tratteggiato, nascosto via `[hidden]` finché `onerror` non lo mostra |
+| `.gif-label` | Label monospace uppercase sotto la GIF |
+| `.about-cards` | Griglia 2 colonne (≥768px) / 1 colonna (mobile) |
+| `.about-card` | Card descrittiva: bordo 0.5px, `border-radius: 2px`, hover con `box-shadow` + `translateY(-1px)` |
+| `.about-card__num` | Numero progressivo (01–04): monospace, grigio, uppercase |
+| `.about-card__title` | Titolo card: 18px, font-weight 700 |
+| `.about-card__body` | Testo card: 16px, `$gray-600` |
 | `.project-table` | Tabella dati progetto con righe zebrate |
-| `.card-research` (override) | `background: $white` su sfondo `--alt` |
+
+**Note di stile:**
+- Nessun gradiente, nessuna ombra (eccetto l'hover delle about-card).
+- Bordi: 0.5px su gif-card e about-card (stile militare/tecnico).
+- `border-radius` massimo: 4px (`$radius-sm` = 2px usato effettivamente).
+- Testo in sentence case tranne le label monospace in UPPERCASE.
 
 ---
 
-## F4.6 — Asset placeholder
+## F4.6 — JavaScript: `initEngineDroplines()`
 
-| Asset | Placeholder attuale | File finale (FASE 0B) |
-|-------|--------------------|-----------------------|
-| Visual blueprint dx | Box grigio con label | SVG da `background_template.pdf` |
+**File:** `assets/js/main.js`
+
+Funzione che disegna le drop-line dinamiche (linee tratteggiate dall'SVG engine alle card GIF):
+
+```javascript
+function initEngineDroplines() {
+  var block   = document.getElementById('engine-block');
+  var overlay = document.getElementById('engine-droplines');
+  if (!block || !overlay) return;
+
+  function draw() {
+    var blockRect  = block.getBoundingClientRect();
+    var components = ['compressor', 'combustor', 'turbine'];
+    var lines = '';
+
+    components.forEach(function (comp) {
+      var dot  = document.getElementById('dot-' + comp);
+      var card = document.getElementById('gif-' + comp);
+      if (!dot || !card) return;
+
+      var dotRect  = dot.getBoundingClientRect();
+      var cardRect = card.getBoundingClientRect();
+
+      var x1 = dotRect.left  + dotRect.width  / 2 - blockRect.left;
+      var y1 = dotRect.bottom                      - blockRect.top;
+      var x2 = cardRect.left + cardRect.width / 2  - blockRect.left;
+      var y2 = cardRect.top                        - blockRect.top;
+
+      lines += '<line x1="' + x1 + '" y1="' + y1 +
+               '" x2="' + x2 + '" y2="' + y2 +
+               '" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>';
+    });
+
+    overlay.innerHTML = lines;
+  }
+
+  draw();
+  var ro = new ResizeObserver(draw);
+  ro.observe(block);
+}
+```
+
+Principio: `getBoundingClientRect()` funziona sui `<circle>` SVG esattamente come sugli elementi HTML — restituisce la posizione renderizzata in pixel CSS. Sottraendo `blockRect` si ottengono coordinate relative al container, coincidenti con il sistema di coordinate dell'overlay SVG (che ha `width: 100%; height: 100%` sul container `position: relative`).
+
+La funzione è chiamata da `DOMContentLoaded` insieme a `initProgressBar()`, `initTimeline()`, `initTabs()`.
+
+---
+
+## Asset GIF (in attesa)
+
+| File | Posizione | Stato |
+|------|-----------|-------|
+| `compressor.gif` | `assets/compressor.gif` | ⏳ Da fornire |
+| `combustor.gif` | `assets/combustor.gif` | ⏳ Da fornire |
+| `turbine.gif` | `assets/turbine.gif` | ⏳ Da fornire |
+
+Fino all'inserimento dei file, le card mostrano il placeholder visivo (bordo tratteggiato + nome file). Il placeholder è attivato dall'attributo `onerror` sull'elemento `<img>` quando il `src` è vuoto (file non trovato da `resources.Get`).
 
 ---
 
@@ -142,4 +259,5 @@ Classi definite:
 
 - **`layouts/project/list.html`**: Hugo usa il template `list.html` per le section page (`_index.md`). Il template viene cercato prima in `layouts/project/`, poi in `layouts/_default/`.
 - **Riutilizzo partial**: la timeline viene inclusa con `{{ partial "timeline.html" . }}` — nessuna duplicazione di codice.
-- **Icone SVG inline**: `viewBox="0 0 24 24"`, stroke monocromatico `currentColor`, dimensione controllata da CSS (`.card-research__icon`).
+- **GIF e loop**: le GIF si animano in loop infinito per default nei browser — nessun CSS `animation: none` o `animation-play-state: paused` applicato.
+- **Responsive**: engine-gifs passa a 1 colonna sotto `$bp-md` (768px); about-cards idem. L'SVG del motore scala con `width: 100%; height: auto`.
