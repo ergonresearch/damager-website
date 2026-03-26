@@ -1,10 +1,6 @@
 {{ define "main" }}
 
 {{/* ── A) About the Project ────────────────────────────────────────────── */}}
-{{- $compGif := resources.Get "compressor.gif" -}}
-{{- $combGif := resources.Get "combustor.gif" -}}
-{{- $turbGif := resources.Get "turbine.gif" -}}
-
 <section class="section bg-blueprint">
   <div class="container">
 
@@ -121,7 +117,7 @@
 
         <div class="gif-card" id="gif-compressor">
           <div class="gif-media">
-            <img src="{{ with $compGif }}{{ .RelPermalink }}{{ end }}"
+            <img src="/images/engine/compressor.gif"
                  alt="Centrifugal compressor — additive manufactured component"
                  onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
             <div class="gif-fallback" hidden>compressor.gif</div>
@@ -131,7 +127,7 @@
 
         <div class="gif-card" id="gif-combustor">
           <div class="gif-media">
-            <img src="{{ with $combGif }}{{ .RelPermalink }}{{ end }}"
+            <img src="/images/engine/combustor.gif"
                  alt="Combustor — additive manufactured component"
                  onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
             <div class="gif-fallback" hidden>combustor.gif</div>
@@ -141,7 +137,7 @@
 
         <div class="gif-card" id="gif-turbine">
           <div class="gif-media">
-            <img src="{{ with $turbGif }}{{ .RelPermalink }}{{ end }}"
+            <img src="/images/engine/turbine.gif"
                  alt="Turbine — additive manufactured component"
                  onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
             <div class="gif-fallback" hidden>turbine.gif</div>

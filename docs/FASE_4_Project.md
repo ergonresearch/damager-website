@@ -92,12 +92,12 @@ Il flag `currentColor` su stroke/fill permette adattamento al colore CSS del con
 </div>
 ```
 
-Le GIF sono caricate via `resources.Get` da `assets/`:
-- `assets/compressor.gif` → componente compressore centrifugo
-- `assets/combustor.gif` → camera di combustione
-- `assets/turbine.gif` → stadio turbina
+Le GIF risiedono in `static/images/engine/` e vengono referenziate con path statici diretti (come tutti gli altri file immagine del progetto):
+- `/images/engine/compressor.gif` → componente compressore centrifugo
+- `/images/engine/combustor.gif` → camera di combustione
+- `/images/engine/turbine.gif` → stadio turbina
 
-Se il file non esiste, `src` è vuoto → `onerror` rivela il `div.gif-fallback` con bordo tratteggiato e nome file.
+Se il file non è ancora presente, il browser genera un errore di caricamento → `onerror` nasconde l'`<img>` e rivela il `div.gif-fallback` con bordo tratteggiato e nome file.
 
 ### Blocco 3 — Quattro card descrittive (`<div class="about-cards">`)
 
@@ -245,13 +245,15 @@ La funzione è chiamata da `DOMContentLoaded` insieme a `initProgressBar()`, `in
 
 ## Asset GIF (in attesa)
 
-| File | Posizione | Stato |
-|------|-----------|-------|
-| `compressor.gif` | `assets/compressor.gif` | ⏳ Da fornire |
-| `combustor.gif` | `assets/combustor.gif` | ⏳ Da fornire |
-| `turbine.gif` | `assets/turbine.gif` | ⏳ Da fornire |
+| File | Posizione nel repository | URL pubblico | Stato |
+|------|--------------------------|--------------|-------|
+| `compressor.gif` | `static/images/engine/compressor.gif` | `/images/engine/compressor.gif` | ⏳ Da fornire |
+| `combustor.gif` | `static/images/engine/combustor.gif` | `/images/engine/combustor.gif` | ⏳ Da fornire |
+| `turbine.gif` | `static/images/engine/turbine.gif` | `/images/engine/turbine.gif` | ⏳ Da fornire |
 
-Fino all'inserimento dei file, le card mostrano il placeholder visivo (bordo tratteggiato + nome file). Il placeholder è attivato dall'attributo `onerror` sull'elemento `<img>` quando il `src` è vuoto (file non trovato da `resources.Get`).
+Convenzione: coerente con tutti gli altri file immagine del progetto (`static/images/partners/`, `static/images/eu-logo/`, `static/images/flags/`, ecc.). Non è necessario nessun processing Hugo — i file vengono copiati direttamente in `public/images/engine/` durante la build.
+
+Fino all'inserimento dei file, le card mostrano automaticamente il placeholder visivo (bordo tratteggiato + nome file), attivato dall'attributo `onerror` sull'`<img>` quando il browser non riesce a caricare l'immagine.
 
 ---
 

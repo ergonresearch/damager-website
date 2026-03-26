@@ -244,9 +244,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
 | 11 | Publications scientifiche già disponibili | Media → Publications | ⏳ Da fornire |
 | 12 | Linee guida comunicazione EDF | Tutto il sito | ⏳ Da verificare con HIT09 |
-| 14 | `compressor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/compressor.gif`) |
-| 15 | `combustor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/combustor.gif`) |
-| 16 | `turbine.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire (`assets/turbine.gif`) |
+| 14 | `compressor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire → copiare in `static/images/engine/compressor.gif` |
+| 15 | `combustor.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire → copiare in `static/images/engine/combustor.gif` |
+| 16 | `turbine.gif` — animazione componente AM | Project → Engine block | ⏳ Da fornire → copiare in `static/images/engine/turbine.gif` |
 
 
 ---
