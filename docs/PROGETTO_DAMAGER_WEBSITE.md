@@ -60,7 +60,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_3_Home.md`](FASE_3_Home.md) | Home page (hero, EU disclaimer, progress bar, eventi, form) | ✅ Completata |
 | [`FASE_4_Project.md`](FASE_4_Project.md) | Project page (intro, dettagli, timeline, research areas) | ✅ Completata |
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
-| [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Papers + CMS) | ✅ Completata |
+| [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | `FASE_7_Cookie.md` | Cookie consent + Privacy policy | ⏳ Da creare |
 | `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_9_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
@@ -128,12 +128,12 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 #### FASE 6 — Media Page
 
-- [x] **F6.1** Layout tab: News&Events / Documents / Papers ✅
+- [x] **F6.1** Layout tab: News&Events / Documents / Publications ✅
 - [x] **F6.2** Sezione News & Events con card ✅
 - [x] **F6.3** Kickoff Meeting inserito come prima news ✅
 - [x] **F6.4** Sezione Documents (3 categorie) ✅
 - [x] **F6.5** Factsheet document entry (PDF in static/documents/ in FASE 0B) ✅
-- [x] **F6.6** Sezione Academic Papers ✅
+- [x] **F6.6** Sezione Publications ✅
 - [x] **F6.7** CMS collegato a tutte le collezioni ✅
 - [x] **F6.8** Press Release entry (Kickoff Meeting, PDF `DAMAGER-Press-Release-KOM.pdf`) ✅
 
@@ -220,7 +220,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | Operazione | Chi | Come |
 |------------|-----|------|
 | Inserire news/eventi | Editor non tecnico | `damager.eu/admin` → CMS |
-| Caricare PDF (documenti, paper) | Editor non tecnico | `damager.eu/admin` → CMS |
+| Caricare PDF (documenti, publications) | Editor non tecnico | `damager.eu/admin` → CMS |
 | Modificare testi | Editor non tecnico | `damager.eu/admin` → CMS |
 | Modificare design/template | Sviluppatore | VS Code → git push → deploy auto |
 | Rinnovo dominio | Coordinatore | Registrar (~10-15€/anno) |
@@ -242,7 +242,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 8 | Email contatto pubblico progetto | Form contatto + Privacy Policy | ✅ info@hit09.com *(configurare in Netlify dashboard → Form notifications)* |
 | 9 | LinkedIn progetto DAMAGER | Header/Footer | ✅ https://www.linkedin.com/company/damager-edf-project/posts/ |
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
-| 11 | Paper scientifici già disponibili | Media → Papers | ⏳ Da fornire |
+| 11 | Publications scientifiche già disponibili | Media → Publications | ⏳ Da fornire |
 | 12 | Linee guida comunicazione EDF | Tutto il sito | ⏳ Da verificare con HIT09 |
 
 

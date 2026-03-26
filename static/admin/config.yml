@@ -33,9 +33,9 @@ collections:
       - {label: "PDF File", name: "pdf", widget: "file"}
       - {label: "Date", name: "date", widget: "datetime"}
 
-  - name: "papers"
-    label: "Academic Papers"
-    folder: "content/media/papers"
+  - name: "publications"
+    label: "Publications"
+    folder: "content/media/publications"
     create: true
     slug: "{{slug}}"
     fields:

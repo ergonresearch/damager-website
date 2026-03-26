@@ -187,7 +187,7 @@ damager-website/
 │       │   ├── _index.md
 │       │   ├── factsheet-2024.md              # Factsheet EDF 2024
 │       │   └── press-release-2025.md          # Press Release Kickoff Meeting
-│       └── papers/
+│       └── publications/
 │           └── _index.md
 ├── layouts/
 │   ├── _default/
@@ -220,13 +220,13 @@ damager-website/
 │   │   ├── _home.scss         # Stili specifici Home page (hero, eu-disclaimer)
 │   │   ├── _project.scss      # Stili specifici Project page (tabella, intro, quote)
 │   │   ├── _partners.scss     # Stili specifici Partners page (stat box, coordinator badge, mappa)
-│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, paper entries, override decorazioni)
+│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, publication entries, override decorazioni)
 │   └── js/
 │       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation
 ├── static/
 │   ├── admin/
 │   │   ├── index.html         # Pannello Decap CMS
-│   │   └── config.yml         # Configurazione CMS (3 collezioni: news, documents, papers)
+│   │   └── config.yml         # Configurazione CMS (3 collezioni: news, documents, publications)
 │   ├── images/
 │   │   ├── logo/              # Logo DAMAGER (SVG inline + favicon) ✅
 │   │   ├── backgrounds/       # Decorazioni SVG: g3175.svg (anello compressore) + g5.svg (halftone dots) ✅
@@ -298,10 +298,10 @@ collections:
       - {label: "PDF File", name: "pdf", widget: "file", media_library: {config: {multiple: false}}}
       - {label: "Date", name: "date", widget: "datetime"}
 
-  # Academic Papers
-  - name: "papers"
-    label: "Academic Papers"
-    folder: "content/media/papers"
+  # Publications
+  - name: "publications"
+    label: "Publications"
+    folder: "content/media/publications"
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
@@ -547,7 +547,7 @@ git checkout develop          # tornare su develop
 1. Aprire `https://damager-website.netlify.app/admin` (o `damager.eu/admin`)
 
 2. Accedere con email e password (invitati dal coordinatore)
-3. Selezionare la collezione: News & Events / Documents / Papers
+3. Selezionare la collezione: News & Events / Documents / Publications
 4. Cliccare "New entry" → compilare il form → salvare
 5. Il sito si aggiorna automaticamente in 1-2 minuti
 

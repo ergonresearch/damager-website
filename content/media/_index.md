@@ -1,4 +1,4 @@
 ---
 title: "Media"
-description: "News, Documents and Academic Papers"
+description: "News, Documents and Publications"
 ---

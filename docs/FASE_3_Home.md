@@ -68,7 +68,7 @@ La hero section occupa almeno l'88% dell'altezza visibile (88vh) con:
 
 La sezione EU Disclaimer è stata rimossa dalla Home page su richiesta. Il testo regolatorio obbligatorio (EDF) è riportato nel footer del sito, visibile su tutte le pagine.
 
-> *"Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or DG DEFIS. Neither the European Union nor the granting authority can be held responsible for them."*
+> *"This project has received funding from the European Defence Fund (EDF) under Grant Agreement No. 101224541. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union (EU) or European Defence Agency (EDA). Neither the European Union nor the granting authority can be held responsible for them."*
 
 ---
 

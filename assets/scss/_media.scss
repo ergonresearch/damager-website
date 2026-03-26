@@ -192,15 +192,15 @@
 }
 
 // ────────────────────────────────────
-// Academic paper entries
+// Publication entries
 // ────────────────────────────────────
-.paper-list {
+.publication-list {
   display: flex;
   flex-direction: column;
   gap: $space-4;
 }
 
-.paper-entry {
+.publication-entry {
   display: flex;
   gap: $space-6;
   padding: $space-6;

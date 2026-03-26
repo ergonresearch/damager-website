@@ -131,7 +131,7 @@ mkdir -p content\project
 mkdir -p content\partners
 mkdir -p content\media\news
 mkdir -p content\media\documents
-mkdir -p content\media\papers
+mkdir -p content\media\publications
 ```
 
 > Su Windows PowerShell usare `New-Item -ItemType Directory -Force -Path <path>` oppure `mkdir -p` se supportato.
@@ -182,8 +182,7 @@ I file verranno completati nella FASE 2 (template grafico). In questa fase si cr
 ```html
 <footer class="site-footer">
   <div class="container">
-    <p>Funded by the European Union — European Defence Fund (EDF) 2024</p>
-    <p><em>Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or DG DEFIS. Neither the European Union nor the granting authority can be held responsible for them.</em></p>
+    <p><em>This project has received funding from the European Defence Fund (EDF) under Grant Agreement No. 101224541. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union (EU) or European Defence Agency (EDA). Neither the European Union nor the granting authority can be held responsible for them.</em></p>
     <p>&copy; {{ now.Year }} DAMAGER Consortium</p>
   </div>
 </footer>
@@ -379,9 +378,9 @@ collections:
       - {label: "PDF File", name: "pdf", widget: "file"}
       - {label: "Date", name: "date", widget: "datetime"}
 
-  - name: "papers"
-    label: "Academic Papers"
-    folder: "content/media/papers"
+  - name: "publications"
+    label: "Publications"
+    folder: "content/media/publications"
     create: true
     slug: "{{slug}}"
     fields:

@@ -9,15 +9,15 @@
 
 ## Checklist
 
-- [x] F6.1 — Layout tab: News & Events / Documents / Papers
+- [x] F6.1 — Layout tab: News & Events / Documents / Publications
 - [x] F6.2 — Sezione News & Events con lista card orizzontali
 - [x] F6.3 — Kickoff Meeting inserito come primo elemento news
 - [x] F6.4 — Sezione Documents con 3 categorie (Fact Sheet, Deliverables, Press Release)
 - [x] F6.5 — Factsheet document entry (PDF da aggiungere in FASE 0B)
-- [x] F6.6 — Sezione Academic Papers con abstract espandibile
+- [x] F6.6 — Sezione Publications con abstract espandibile
 - [x] F6.7 — CMS collegato a tutte e 3 le collezioni (`config.yml` già completo da FASE 1)
 - [x] F6.8 — Layout articolo singolo (`layouts/media/news/single.html`)
-- [x] F6.9 — SCSS: `_media.scss` (news list, doc groups, paper entries, empty states)
+- [x] F6.9 — SCSS: `_media.scss` (news list, doc groups, publication entries, empty states)
 - [x] F6.10 — Build, verifica e deploy
 
 ---
@@ -35,8 +35,8 @@ content/media/
 ├── documents/
 │   ├── _index.md       → sottosezione documenti
 │   └── factsheet-2024.md
-└── papers/
-    └── _index.md       → sottosezione paper (vuota)
+└── publications/
+    └── _index.md       → sottosezione publications (vuota)
 ```
 
 ```
@@ -51,10 +51,10 @@ layouts/media/
 In `layouts/media/list.html`, le pagine vengono caricate per sottosezione:
 
 ```hugo
-{{ $news    := slice }}
-{{ with .Site.GetPage "/media/news"      }}{{ $news   = .RegularPages.ByDate.Reverse }}{{ end }}
-{{ with .Site.GetPage "/media/documents" }}{{ $docs   = .RegularPages.ByDate.Reverse }}{{ end }}
-{{ with .Site.GetPage "/media/papers"    }}{{ $papers = .RegularPages.ByDate.Reverse }}{{ end }}
+{{ $news         := slice }}
+{{ with .Site.GetPage "/media/news"         }}{{ $news         = .RegularPages.ByDate.Reverse }}{{ end }}
+{{ with .Site.GetPage "/media/documents"    }}{{ $docs         = .RegularPages.ByDate.Reverse }}{{ end }}
+{{ with .Site.GetPage "/media/publications" }}{{ $publications = .RegularPages.ByDate.Reverse }}{{ end }}
 ```
 
 ---
@@ -66,7 +66,7 @@ In `layouts/media/list.html`, le pagine vengono caricate per sottosezione:
 **JS:** `initTabs()` in `assets/js/main.js`
 
 ```
-[ News & Events (1) ]  [ Documents (1) ]  [ Academic Papers ]
+[ News & Events (1) ]  [ Documents (1) ]  [ Publications ]
 ```
 
 Ogni tab ha un badge con il conteggio degli elementi. Il tab attivo mostra il suo pannello `.tab-panel.is-active`; gli altri hanno `display: none`.
@@ -118,13 +118,13 @@ La sezione Documents è divisa in **3 categorie** con intestazioni separate:
 
 ---
 
-## F6.6 — Academic Papers
+## F6.6 — Publications
 
 Sezione inizialmente vuota con messaggio placeholder:
 
-> *"Academic papers will be published here as they are accepted and cleared for public release."*
+> *"Publications will appear here as they are accepted and cleared for public release."*
 
-Ogni paper mostrerà:
+Ogni pubblicazione mostrerà:
 - Titolo, autori, conference/journal + anno
 - Abstract espandibile con `<details>` HTML nativo (nessun JS necessario)
 - Pulsanti "Download PDF" e "DOI →"
@@ -139,7 +139,7 @@ Le tre collezioni CMS erano già configurate in `static/admin/config.yml` da FAS
 |------------|-----------------|-------|
 | `news` | `content/media/news/` | title, date, news_type, body, image, link, tags |
 | `documents` | `content/media/documents/` | title, category, description, pdf, date |
-| `papers` | `content/media/papers/` | title, authors, venue, year, abstract, pdf, doi, tags |
+| `publications` | `content/media/publications/` | title, authors, venue, year, abstract, pdf, doi, tags |
 
 L'editor non tecnico può aggiungere/modificare tutti i contenuti dal pannello CMS a `/admin/`.
 
@@ -175,9 +175,9 @@ Classi definite:
 | `.news-item__type--event` | Variante nera per eventi |
 | `.doc-group` | Gruppo documenti per categoria |
 | `.doc-group-header` | Intestazione categoria con icona, titolo, count |
-| `.paper-list` | Lista paper verticale |
-| `.paper-entry` | Entry singolo paper con icona PDF |
-| `.paper-entry__abstract` | `<details>` espandibile |
+| `.publication-list` | Lista publications verticale |
+| `.publication-entry` | Entry singola publication con icona PDF |
+| `.publication-entry__abstract` | `<details>` espandibile |
 | `.empty-state` | Placeholder centrato con icona, titolo, testo |
 | `.article-header` | Header articolo singolo |
 | `.article-header-section` | Modificatore sulla section header: riduce `padding-bottom` per minimizzare il gap verso il body |

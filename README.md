@@ -4,7 +4,7 @@ Official website for the DAMAGER project — stuDy of Additive ManufActuring
 for low-cost, low-observable, hiGhly-deployable, expendablE/attritable
 tuRbojet engines.
 
-**Funded by the European Union — European Defence Fund (EDF) 2024**
+Funded by the European Defence Fund (EDF) — Grant Agreement No. 101224541
 
 ---
 
@@ -69,7 +69,4 @@ Authentication: Netlify Identity (invite-only — contact the project coordinato
 
 ## Legal
 
-*Funded by the European Union. Views and opinions expressed are however those
-of the author(s) only and do not necessarily reflect those of the European Union
-or DG DEFIS. Neither the European Union nor the granting authority can be held
-responsible for them.*
+*This project has received funding from the European Defence Fund (EDF) under Grant Agreement No. 101224541. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union (EU) or European Defence Agency (EDA). Neither the European Union nor the granting authority can be held responsible for them.*

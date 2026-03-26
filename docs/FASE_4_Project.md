@@ -74,7 +74,7 @@ Milestone (corrispondono esattamente alla struttura nel partial `timeline.html`)
 
 | Mese | Data | Nome |
 |------|------|------|
-| M0  | Jan 2026 | Kickoff Meeting *(project start: Dec 2025)* |
+| M0  | Dec 2025 | Kickoff Meeting |
 | M12 | Dec 2026 | M12 Meeting |
 | M24 | Dec 2027 | M24 Review |
 | M36 | Dec 2028 | M36 Review |

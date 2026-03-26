@@ -59,10 +59,10 @@ Logo: "Funded by the European Union"
 Fonte: https://commission.europa.eu/resources-and-tools/resources/logos-and-visual-identity_en
 
 Testo obbligatorio (parola per parola):
-"Funded by the European Union. Views and opinions expressed are however those of 
-the author(s) only and do not necessarily reflect those of the European Union or 
-DG DEFIS. Neither the European Union nor the granting authority can be held 
-responsible for them."
+"This project has received funding from the European Defence Fund (EDF) under Grant Agreement No. 101224541.
+Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those
+of the European Union (EU) or European Defence Agency (EDA). Neither the European Union nor the granting
+authority can be held responsible for them."
 ```
 
 Layout: logo EU a sinistra, testo a destra (su desktop); impilati verticalmente su mobile.
@@ -92,7 +92,7 @@ Layout: logo EU a sinistra, testo a destra (su desktop); impilati verticalmente 
 | Home | `/` | Landing page principale |
 | Project | `/project` | Descrizione tecnica del progetto |
 | Partners | `/partners` | Consorzio e partner |
-| Media | `/media` | News, documenti, eventi, paper |
+| Media | `/media` | News, documenti, eventi, publications |
 
 ---
 
@@ -336,7 +336,7 @@ Organizzata in sottosezioni accessibili tramite tab:
 /media
 ├── News & Events     → news, comunicati, eventi del progetto
 ├── Documents         → Fact Sheet, Deliverable, Press Release
-└── Papers            → pubblicazioni scientifiche
+└── Publications      → pubblicazioni scientifiche
 ```
 
 ---
@@ -376,9 +376,9 @@ Organizzata in **3 categorie**:
 
 ---
 
-### C) Academic Papers
+### C) Publications
 
-Ogni paper mostra:
+Ogni publication mostra:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -390,7 +390,7 @@ Ogni paper mostra:
 ```
 
 Campi CMS: titolo, autori, journal/conference, anno, abstract, PDF (upload), DOI link, tags.  
-Inizialmente vuota: *"Academic papers will be published here as they are accepted and cleared for public release."*
+Inizialmente vuota: *"Publications will appear here as they are accepted and cleared for public release."*
 
 ---
 
