@@ -467,20 +467,17 @@ VCC v3 è caricato **sincrono** (senza `defer`) a fine `<body>` per garantire ch
 <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
 <script>
   (function () {
-    var gaId   = document.body.dataset.gaId  || '';
-    var mapUrl = document.body.dataset.mapUrl || '';
+    var gaId = document.body.dataset.gaId || '';
     // ... callback loadGA4() e enableMap() ...
     CookieConsent.run({ /* config */ });
   })();
 </script>
 ```
 
-**Iniezione parametri Hugo:** i valori configurati in `hugo.toml` (`googleAnalyticsId`, `mapsEmbedUrl`) vengono esposti tramite attributi `data-*` sul tag `<body>` — non tramite `{{ ... | jsonify }}` nel contesto script, che causava double-encoding in Hugo v0.158.
+**Iniezione parametri Hugo:** il valore `googleAnalyticsId` configurato in `hugo.toml` viene esposto tramite attributo `data-ga-id` sul tag `<body>` — non tramite `{{ ... | jsonify }}` nel contesto script, che causava double-encoding in Hugo v0.158.
 
 ```html
-<body
-  data-map-url="{{ .Site.Params.mapsEmbedUrl }}"
-  data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
+<body data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
 ```
 
 Il tema B&W del banner è definito in `assets/scss/_cookie-consent.scss` tramite CSS custom properties (`--cc-btn-primary-bg`, `--cc-toggle-on-bg`, ecc.).
@@ -491,19 +488,25 @@ Il tema B&W del banner è definito in `assets/scss/_cookie-consent.scss` tramite
 |-----------|----------|-------------------|
 | `necessary` | Sì | Nessuna (sempre attivi) |
 | `analytics` | No | `loadGA4()` — inietta script gtag con `anonymize_ip: true` |
-| `functional` | No | `enableMap()` — sostituisce il div `[data-map-embed]` con `<iframe>` OSM |
+| `functional` | No | `enableMap()` — lazy-load Leaflet.js + OSM tiles; inizializza mappa interattiva con 5 marker |
 
 `autoClear` sulla categoria `analytics` rimuove i cookie `_ga*` e `_gid` se l'utente revoca il consenso.
 
-### 6.3 Mappa del consorzio — stato attuale e piano
+### 6.3 Mappa del consorzio — Leaflet.js ✅
 
-**Implementazione corrente (iframe OSM):**  
-Quando l'utente accetta i cookie funzionali, `enableMap()` crea un `<iframe>` con la mappa OpenStreetMap del bounding box europeo e lo sostituisce al div placeholder `[data-map-embed]` in `layouts/partners/list.html`.
+Quando l'utente accetta i cookie funzionali, `enableMap()` lazy-carica **Leaflet.js v1.9.4** (CSS + JS da jsDelivr CDN) e inizializza la mappa sul `div#map-embed` nella pagina Partners. La mappa mostra i tile OpenStreetMap con **5 marker interattivi** — uno per sede di ogni partner — ciascuno con un **permanent tooltip** (etichetta sempre visibile) contenente nome del partner e città.
 
-La mappa mostra la regione geografica ma **non include marker** per le sedi dei partner — limite strutturale dell'endpoint `export/embed.html` di OSM.
+**Coordinati sedi:**
 
-**Piano (prossimo step — Leaflet.js):**  
-Migrare a una mappa Leaflet.js inizializzata direttamente nel div `[data-map-embed]`, con 5 marker interattivi (popup con nome partner + città). Coordinate già note per tutte le sedi. Nessuna API key richiesta, stessi tile OSM, stessa policy GDPR.
+| Partner | Città | Lat | Lon |
+|---------|-------|-----|-----|
+| HIT09 SRL | Padua, Italy | 45.4064 | 11.8768 |
+| LITHOZ GMBH | Wien, Austria | 48.2082 | 16.3738 |
+| AENIUM ENGINEERING | Valladolid, Spain | 41.6523 | -4.7245 |
+| ERGON RESEARCH | Florence, Italy | 43.7696 | 11.2558 |
+| COMOTI | Bucharest, Romania | 44.4268 | 26.1025 |
+
+Nessuna API key richiesta. Nessun cookie persistente lato browser. Le richieste di tile a `tile.openstreetmap.org` sono coperte dalla OSM Foundation Privacy Policy. Il CSS placeholder viene sovrascritto dal selettore `&.leaflet-container` in `_partners.scss`.
 
 ---
 

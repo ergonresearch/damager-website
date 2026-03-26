@@ -74,14 +74,14 @@ Il partner coordinatore (HIT09) ha un badge "Coordinator" e bordo nero più spes
 **File:** `layouts/partners/list.html`  
 **SCSS:** `.map-placeholder`, `.map-locations` in `assets/scss/_partners.scss`
 
-La mappa è un placeholder visuale pronto per l'integrazione con Google Maps. La struttura HTML è già predisposta con:
-- Contenitore `.map-wrapper` con attributo `data-map-embed` (letto in FASE 7)
-- Overlay `.map-overlay` con il pulsante "Enable Map" (disabilitato finché non c'è cookie consent)
-- Lista `.map-locations` con i Paesi dei partner
+La mappa utilizza **Leaflet.js v1.9.4** (lazy-loaded da jsDelivr CDN) con tile **OpenStreetMap**. La struttura HTML è predisposta con:
+- Contenitore `div#map-embed.map-placeholder` con attributo `data-map-embed` (target Leaflet)
+- Overlay `.map-overlay` con link "Enable Map" che apre la modale VCC (cookie consent funzionali)
+- Lista `.map-locations` con i Paesi dei partner (visibile senza consenso)
 
-Integrazione completa (Google Maps embed + stile monocromatico + cookie consent toggle) in **FASE 7**.
+Quando l'utente accetta i cookie funzionali, `enableMap()` in `baseof.html` carica Leaflet e inizializza la mappa con **5 marker** e **etichette permanenti** (nome + città). Vedi `docs/FASE_7_Cookie.md` per i dettagli.
 
-> **⚠️ Indirizzi fisici mancanti:** HIT09 SRL e Ergon Research SRL non hanno ancora fornito l'indirizzo fisico della sede (vedi item #5 e #6 in `PROGETTO_DAMAGER_WEBSITE.md`). La mappa verrà completata quando questi dati saranno disponibili.
+> **⚠️ Coordinate a livello città:** la mappa usa coordinate del centro città. Gli indirizzi fisici precisi di HIT09 SRL e Ergon Research SRL non sono ancora stati forniti (item #5 e #6 in `PROGETTO_DAMAGER_WEBSITE.md`).
 
 ---
 
@@ -101,9 +101,10 @@ Classi definite:
 | `.coordinator-badge` | Label "Coordinator" in alto a destra sulla card |
 | `.map-section` | Sezione mappa con titolo |
 | `.map-wrapper` | Contenitore con posizionamento relativo per overlay |
-| `.map-placeholder` | Box placeholder visuale con altezza fissa |
-| `.map-overlay` | Overlay semi-trasparente con pulsante "Enable Map" |
-| `.map-locations` | Lista dei Paesi partner con bandiere SVG |
+| `.map-placeholder` | Box placeholder visuale; `&.leaflet-container` override a `display:block` quando Leaflet inizializza |
+| `.map-overlay` | Overlay semi-trasparente con link "Enable Map" → apre modale VCC |
+| `.map-locations` | Lista dei Paesi partner con bandiere SVG (visibile senza consenso) |
+| `.map-label` | Etichette permanenti Leaflet (`bindTooltip`): B&W, `font-size-xs`, nessun box-shadow |
 | `.country-flag` | Immagine SVG bandiera (20px, bordo sottile) — sostituisce emoji per compatibilità Windows |
 | `.partners-cards-section` | Modificatore sulla section "Consortium Members": riduce `padding-top` (`$space-8` mobile, `$space-10` desktop) per accorciare il gap visivo tra la sezione Overview e quella dei partner |
 
@@ -118,7 +119,7 @@ Classi definite:
 | Logo AENIUM | ✅ Integrato | `static/images/partners/aenium.png` |
 | Logo ERGON | ✅ Integrato | `static/images/partners/ergon.jpg` |
 | Logo COMOTI | ✅ Integrato | `static/images/partners/comoti.png` |
-| Google Maps embed | ⏳ Da configurare | Da completare in FASE 7 (indirizzi fisici + cookie consent) |
+| Mappa Leaflet.js + OSM | ✅ Implementata | 5 marker con etichette permanenti — vedi `docs/FASE_7_Cookie.md` |
 
 ---
 
@@ -126,5 +127,5 @@ Classi definite:
 
 - **`layouts/partners/list.html`**: Hugo usa `list.html` per le section page (`_index.md`). Template cercato prima in `layouts/partners/`, poi in `layouts/_default/`.
 - **Coordinator badge**: implementato con `position: absolute` all'interno della `.card-partner` con `position: relative`.
-- **Google Maps**: l'embed gratuito (senza API key) è disponibile tramite `https://www.google.com/maps/embed?pb=...`. Sarà configurato in FASE 7 quando gli indirizzi saranno disponibili e il cookie consent sarà attivo.
+- **Leaflet.js**: la mappa interattiva è implementata con Leaflet.js + OpenStreetMap tiles. Non richiede API key. I dettagli implementativi sono in `docs/FASE_7_Cookie.md`.
 - **Cookie consent map toggle**: la logica JS per mostrare/nascondere la mappa in base alle preferenze cookie è in FASE 7.

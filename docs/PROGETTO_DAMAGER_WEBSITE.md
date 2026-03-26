@@ -61,7 +61,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_4_Project.md`](FASE_4_Project.md) | Project page (intro, dettagli, timeline, research areas) | ✅ Completata |
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
-| `FASE_7_Cookie.md` | Cookie consent + Privacy policy | ⏳ Da creare |
+| [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
 | `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_9_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
@@ -123,8 +123,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 - [x] **F5.1** Card per i 5 partner (logo, nome, paese, ruolo) ✅
 - [x] **F5.2** Loghi partner definitivi integrati (`static/images/partners/`) ✅
-- [x] **F5.3** Mappa placeholder pronta per Google Maps (FASE 7) ✅
-- [x] **F5.4** Stile mappa monocromatico (da completare in FASE 7) ✅
+- [x] **F5.3** Mappa Leaflet.js con 5 marker interattivi (OpenStreetMap, etichette permanenti) ✅
+- [x] **F5.4** Mappa condizionale al consenso cookie funzionali — lazy-load Leaflet ✅
 
 #### FASE 6 — Media Page
 
@@ -159,7 +159,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F7.1** Vanilla Cookie Consent v3 integrato (CDN jsDelivr)
 - [x] **F7.2** Categorie: necessari / analitici (GA4) / funzionali (Maps)
 - [x] **F7.3** Google Analytics 4 condizionale (ID da impostare in `hugo.toml` quando disponibile)
-- [x] **F7.4** Mappa consorzio condizionale (OpenStreetMap, sostituisce Google Maps se accettato)
+- [x] **F7.4** Mappa consorzio condizionale (Leaflet.js + OpenStreetMap, 5 marker con etichette permanenti)
 - [x] **F7.5** Privacy Policy scritta → `content/privacy-policy.md`
 - [x] **F7.6** Cookie Policy scritta → `content/cookie-policy.md`
 - [x] **F7.7** Link "Cookie Preferences" nel footer
@@ -208,7 +208,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | Hugo, Decap CMS, GitHub | **Gratuito** |
 | Netlify (hosting + forms + Identity) | **Gratuito** |
 | Vanilla Cookie Consent | **Gratuito** |
-| Google Analytics 4, Maps, Fonts | **Gratuito** |
+| Google Analytics 4, Google Fonts / Leaflet.js + OpenStreetMap | **Gratuito** |
 | SSL/HTTPS (Let's Encrypt) | **Gratuito** |
 | **Dominio `damager.eu`** | **~10-15€/anno** |
 | **TOTALE** | **~10-15€/anno** |

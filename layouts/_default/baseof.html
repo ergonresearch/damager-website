@@ -35,9 +35,7 @@
     }
   </script>
 </head>
-<body
-  data-map-url="{{ .Site.Params.mapsEmbedUrl }}"
-  data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
+<body data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
   {{ partial "header.html" . }}
 
   <main id="main-content">
@@ -56,8 +54,7 @@
   (function () {
     'use strict';
 
-    var gaId   = document.body.dataset.gaId  || '';
-    var mapUrl = document.body.dataset.mapUrl || '';
+    var gaId = document.body.dataset.gaId || '';
 
     function loadGA4() {
       if (!gaId) return;
@@ -72,24 +69,56 @@
       gtag('config', gaId, { anonymize_ip: true });
     }
 
+    function initLeafletMap() {
+      var el = document.getElementById('map-embed');
+      if (!el || el._leaflet_id) return;
+      el.innerHTML = '';
+
+      var partners = [
+        { name: 'HIT09 SRL',         city: 'Padua, Italy',       lat: 45.4064, lon:  11.8768 },
+        { name: 'LITHOZ GMBH',        city: 'Wien, Austria',      lat: 48.2082, lon:  16.3738 },
+        { name: 'AENIUM ENGINEERING', city: 'Valladolid, Spain',  lat: 41.6523, lon:  -4.7245 },
+        { name: 'ERGON RESEARCH',     city: 'Florence, Italy',    lat: 43.7696, lon:  11.2558 },
+        { name: 'COMOTI',             city: 'Bucharest, Romania', lat: 44.4268, lon:  26.1025 }
+      ];
+
+      var map = L.map('map-embed', { center: [44.7, 12.2], zoom: 4, scrollWheelZoom: false });
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      partners.forEach(function (p) {
+        L.marker([p.lat, p.lon])
+          .addTo(map)
+          .bindTooltip('<strong>' + p.name + '</strong>' + p.city, {
+            permanent:   true,
+            direction:   'right',
+            className:   'map-label',
+            offset:      [6, 0]
+          });
+      });
+    }
+
     function enableMap() {
-      if (!mapUrl) return;
-      var placeholder = document.querySelector('[data-map-embed]');
-      if (!placeholder) return;
-      var h = placeholder.offsetHeight || 400;
-      var iframe = document.createElement('iframe');
-      iframe.src = mapUrl;
-      iframe.style.width = '100%';
-      iframe.style.height = h + 'px';
-      iframe.style.border = '0';
-      iframe.style.display = 'block';
-      iframe.title = 'DAMAGER Consortium Map';
-      iframe.loading = 'lazy';
-      iframe.setAttribute('allowfullscreen', '');
-      placeholder.innerHTML = '';
-      placeholder.style.display = 'block';
-      placeholder.style.padding = '0';
-      placeholder.appendChild(iframe);
+      var el = document.getElementById('map-embed');
+      if (!el || el._leaflet_id) return;
+
+      if (window.L) {
+        initLeafletMap();
+        return;
+      }
+
+      var cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(cssLink);
+
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = initLeafletMap;
+      document.head.appendChild(script);
     }
 
     CookieConsent.run({

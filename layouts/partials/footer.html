@@ -25,7 +25,7 @@
       <div class="footer-links">
         <a href="/privacy-policy/">Privacy Policy</a>
         <a href="/cookie-policy/">Cookie Policy</a>
-        <button type="button" class="footer-cookie-btn" onclick="CookieConsent.showPreferences()">Cookie Preferences</button>
+        <a href="#" onclick="CookieConsent.showPreferences(); return false;">Cookie Preferences</a>
         {{ with .Site.Params.linkedin }}
           <a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         {{ end }}

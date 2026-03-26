@@ -37,11 +37,11 @@ These cookies are set by **Google Analytics 4** only if you accept the "Analytic
 
 ### 2.3 Functional cookies (opt-in)
 
-These cookies are set when you enable the interactive consortium map. They are loaded only if you accept the "Functional" category.
+The interactive consortium map uses **Leaflet.js** with **OpenStreetMap** tiles. These are loaded only if you accept the "Functional" category. OpenStreetMap does not set persistent tracking cookies in your browser; however, loading map tiles sends your IP address to the OpenStreetMap tile servers, which are covered by the [OSM Foundation Privacy Policy](https://osmfoundation.org/wiki/Privacy_Policy).
 
 | Name | Domain | Purpose | Duration |
 |------|--------|---------|----------|
-| `NID` | .google.com | Stores user preferences for Google Maps | 6 months |
+| *(none set by browser)* | tile.openstreetmap.org | Map tile requests — server-side log only, no cookie stored | Session |
 
 ---
 
@@ -52,7 +52,7 @@ This website may load content from the following third-party domains, which may 
 | Third party | Domain | Purpose |
 |-------------|--------|---------|
 | Google Analytics | google-analytics.com | Audience analytics |
-| Google Maps / OSM | google.com / openstreetmap.org | Interactive map |
+| OpenStreetMap (Leaflet.js) | tile.openstreetmap.org | Interactive consortium map tiles |
 | Google Fonts | fonts.gstatic.com | Web font delivery |
 
 ---
@@ -77,6 +77,10 @@ Please note that disabling certain cookies may affect the functionality of this 
 ### 4.3 Google Analytics opt-out
 
 To opt out of Google Analytics tracking across all websites, you can install the [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
+
+### 4.4 OpenStreetMap tiles
+
+Map tile requests go to `tile.openstreetmap.org`. OpenStreetMap does not set tracking cookies; requests are covered by the [OSM Foundation Privacy Policy](https://osmfoundation.org/wiki/Privacy_Policy). You can disable tile loading at any time by withdrawing functional consent via the Cookie Preferences button in the footer.
 
 ---
 

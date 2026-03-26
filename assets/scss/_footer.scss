@@ -75,29 +75,27 @@
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: $space-1;
+  align-items: center;
+  gap: 0;
 
   a {
     color: rgba(255,255,255,0.45);
     text-decoration: none;
-    padding: $space-1 $space-3;
     font-size: $font-size-sm;
+    padding: $space-1 $space-3 $space-1 0;
     transition: color $ease;
 
-    &:hover {
-      color: $white;
-      opacity: 1;
-    }
+    &:hover { color: $white; }
+  }
 
-    &:not(:last-child)::after {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      height: 0.75em;
-      background: rgba(255,255,255,0.2);
-      margin-left: $space-3;
-      vertical-align: middle;
-    }
+  > :not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 0.75em;
+    background: rgba(255,255,255,0.2);
+    margin-left: $space-3;
+    vertical-align: middle;
   }
 }
 

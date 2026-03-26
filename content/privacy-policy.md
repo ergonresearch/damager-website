@@ -54,7 +54,7 @@ This data is processed in aggregate form and cannot be used to identify individu
 |---------|----------|---------|----------------|
 | Netlify Forms | Netlify, Inc. (USA) | Contact form submission | [netlify.com/privacy](https://www.netlify.com/privacy/) |
 | Google Analytics 4 | Google LLC (USA) | Audience analytics — analytics consent required | [policies.google.com/privacy](https://policies.google.com/privacy) |
-| Google Maps / OpenStreetMap | Google LLC / OSM Foundation | Interactive consortium map — functional consent required | [policies.google.com/privacy](https://policies.google.com/privacy) |
+| OpenStreetMap (Leaflet.js) | OSM Foundation (UK) | Interactive consortium map tiles — functional consent required | [osmfoundation.org/wiki/Privacy\_Policy](https://osmfoundation.org/wiki/Privacy_Policy) |
 | Google Fonts (Inter) | Google LLC (USA) | Typography — loaded from Google CDN | [policies.google.com/privacy](https://policies.google.com/privacy) |
 
 Data transfers to the United States are governed by Standard Contractual Clauses (SCC) as adopted by the European Commission.

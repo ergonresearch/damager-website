@@ -56,19 +56,3 @@
   border-top: $border;
 }
 
-// Footer-style cookie button
-.footer-cookie-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: $font-primary;
-  font-size: $font-size-sm;
-  color: $gray-600;
-  letter-spacing: 0.02em;
-  transition: color $ease;
-
-  &:hover {
-    color: $black;
-  }
-}

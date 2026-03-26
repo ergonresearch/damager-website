@@ -411,7 +411,7 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 |-----------|--------|-------------------|
 | Tecnici / Strettamente necessari | Cookie di sessione Netlify, preferenze consenso | ❌ NO |
 | Analitici (anonimizzati) | Google Analytics 4 (IP anonimizzato) | ✅ SÌ |
-| Funzionali | Google Maps embed | ✅ SÌ |
+| Funzionali | Leaflet.js + OpenStreetMap tiles | ✅ SÌ |
 | Marketing/Profilazione | Nessuno previsto | — |
 
 ### 7.3 Comportamento del banner cookie
@@ -420,19 +420,19 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 1. Al primo accesso → banner in basso con: **"Accept All"** / **"Reject Non-Essential"** / **"Preferences"**
 2. Google Analytics si carica **solo dopo** consenso analitici
-3. Google Maps si carica **solo dopo** consenso funzionali (altrimenti: immagine statica + bottone "Enable Map")
+3. La mappa Leaflet.js si carica **solo dopo** consenso funzionali (altrimenti: placeholder con lista partner + link "Enable Map")
 4. Il form di contatto (Netlify Forms) è tecnico → **nessun consenso richiesto**
 5. Preferenze salvate per **12 mesi**
 6. Link nel footer: **"Cookie Preferences"** per modificare le scelte in qualsiasi momento
 
-### 7.4 Pagine legali da creare
+### 7.4 Pagine legali ✅
 
 | Pagina | URL | Contenuto |
 |--------|-----|-----------|
-| Privacy Policy | `/privacy-policy` | Informativa GDPR completa |
-| Cookie Policy | `/cookie-policy` | Elenco cookie: nome, finalità, durata, titolare |
+| Privacy Policy | `/privacy-policy/` | Informativa GDPR completa (`content/privacy-policy.md`) |
+| Cookie Policy | `/cookie-policy/` | Elenco cookie: nome, finalità, durata, titolare (`content/cookie-policy.md`) |
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.0 | Marzo 2026*  
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.1 | Marzo 2026*  
 **File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza

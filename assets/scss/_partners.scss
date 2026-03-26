@@ -129,6 +129,41 @@
   gap: $space-6;
 
   @media (min-width: $bp-md) { height: 480px; }
+
+  // Leaflet adds .leaflet-container when the map initialises —
+  // override flex layout so tiles fill the container correctly.
+  &.leaflet-container {
+    display: block;
+    background: $gray-200;
+    padding: 0;
+    gap: 0;
+  }
+}
+
+// Permanent map labels — partner names always visible next to markers
+.map-label {
+  background: $white;
+  border: 0.5px solid $gray-400;
+  border-radius: $radius-sm;
+  box-shadow: none;
+  padding: $space-1 $space-3;
+  font-family: $font-primary;
+  font-size: $font-size-xs;
+  font-weight: 400;
+  color: $black;
+  white-space: nowrap;
+
+  // Remove Leaflet's default tooltip arrow and shadow
+  &::before { display: none; }
+
+  strong {
+    display: block;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 }
 
 .map-overlay {
