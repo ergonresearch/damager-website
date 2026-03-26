@@ -113,13 +113,15 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Repository           │ GitHub (pubblico)                            │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Cookie Consent       │ Vanilla Cookie Consent (open source)         │
+│ Cookie Consent       │ Vanilla Cookie Consent v3 (open source, CDN) │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Analytics            │ Google Analytics 4 (gratuito)                │
+│ Analytics            │ Google Analytics 4 (caricato solo su consent)│
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Mappe                │ Google Maps Embed (gratuito)                 │
+│ Mappe                │ OpenStreetMap embed — migrazione Leaflet.js  │
+│                      │ pianificata (marker 5 partner, nessuna API   │
+│                      │ key, GDPR-friendly)                          │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Font                 │ Google Fonts — Inter / Montserrat            │
+│ Font                 │ Google Fonts — Inter                         │
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Dominio              │ damager.eu (~10-15€/anno) — acquisto FASE 8  │
 └──────────────────────┴──────────────────────────────────────────────┘
@@ -174,6 +176,8 @@ damager-website/
 ├── content/
 │   ├── _index.md              # Home page (front matter)
 │   ├── contact-success.md     # Pagina conferma form di contatto
+│   ├── privacy-policy.md      # Privacy Policy GDPR (generata con single.html)
+│   ├── cookie-policy.md       # Cookie Policy con tabella cookie (generata con single.html)
 │   ├── project/
 │   │   └── _index.md          # Project page
 │   ├── partners/
@@ -209,18 +213,19 @@ damager-website/
 │           └── single.html    # Template articolo singolo news
 ├── assets/
 │   ├── scss/
-│   │   ├── main.scss          # Entry point — importa tutti i partial
-│   │   ├── _variables.scss    # Palette colori, font, spacing, breakpoints
-│   │   ├── _base.scss         # Reset, tipografia, container, helper
-│   │   ├── _header.scss       # Header sticky, menu desktop, hamburger mobile
-│   │   ├── _footer.scss       # Footer EU disclaimer, link legali
-│   │   ├── _components.scss   # Card (news, doc, partner), bottoni, form, progress bar, tab nav
-│   │   ├── _timeline.scss     # Timeline animata con aeroplano SVG
-│   │   ├── _decorations.scss  # Decorazioni SVG di sfondo (g5.svg + g3175.svg) su tutte le sezioni bianche
-│   │   ├── _home.scss         # Stili specifici Home page (hero, contact layout)
-│   │   ├── _project.scss      # Stili specifici Project page (engine block, gif-card, about-card, project-table)
-│   │   ├── _partners.scss     # Stili specifici Partners page (stat box, coordinator badge, mappa)
-│   │   └── _media.scss        # Stili specifici Media page (news list, doc groups, publication entries, override decorazioni)
+│   │   ├── main.scss              # Entry point — importa tutti i partial
+│   │   ├── _variables.scss        # Palette colori, font, spacing, breakpoints
+│   │   ├── _base.scss             # Reset, tipografia, container, helper
+│   │   ├── _header.scss           # Header sticky, menu desktop, hamburger mobile
+│   │   ├── _footer.scss           # Footer EU disclaimer, link legali
+│   │   ├── _components.scss       # Card (news, doc, partner), bottoni, form, progress bar, tab nav
+│   │   ├── _timeline.scss         # Timeline animata con aeroplano SVG
+│   │   ├── _decorations.scss      # Decorazioni SVG di sfondo (g5.svg + g3175.svg)
+│   │   ├── _home.scss             # Stili specifici Home page (hero, contact layout)
+│   │   ├── _project.scss          # Stili specifici Project page (engine block, gif-card, about-card)
+│   │   ├── _partners.scss         # Stili specifici Partners page (stat box, coordinator badge, mappa)
+│   │   ├── _media.scss            # Stili specifici Media page (news list, doc groups, publications)
+│   │   └── _cookie-consent.scss   # Theme overrides B&W per Vanilla Cookie Consent v3
 │   └── js/
 │       └── main.js            # JS: hamburger menu, progress bar, timeline, tab navigation, engine drop-lines
 ├── static/
@@ -246,7 +251,8 @@ damager-website/
     ├── FASE_3_Home.md
     ├── FASE_4_Project.md
     ├── FASE_5_Partners.md
-    └── FASE_6_Media.md
+    ├── FASE_6_Media.md
+    └── FASE_7_Cookie.md
 ```
 
 ---
@@ -390,9 +396,8 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 | Variabile | Contenuto | Note |
 |-----------|-----------|------|
 | `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build |
-| `GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` | Google Analytics 4 tracking ID |
 
-> Le chiavi API non devono mai essere committate nel repository.
+> **Nota GA4:** il Measurement ID è attualmente configurato nel parametro `googleAnalyticsId` di `hugo.toml`. Essendo un identificatore pubblico (non una chiave segreta), questa soluzione è accettabile. Prima del go-live è possibile spostarlo in una variabile d'ambiente Netlify e leggerlo con `{{ os.Getenv "GA_MEASUREMENT_ID" }}` nel template per maggiore coerenza con le best practice.
 
 ### 3.4 Limiti piano gratuito Netlify
 
@@ -450,63 +455,55 @@ Automatico via **Let's Encrypt** — Netlify gestisce il certificato SSL senza c
 
 ## 6. IMPLEMENTAZIONE COOKIE CONSENT
 
-### 6.1 Integrazione Vanilla Cookie Consent
+### 6.1 Integrazione Vanilla Cookie Consent v3
+
+VCC v3 è caricato **sincrono** (senza `defer`) a fine `<body>` per garantire che la libreria sia disponibile prima dell'esecuzione dello script inline di inizializzazione. Il CSS va nel `<head>`.
 
 ```html
-<!-- Da inserire in layouts/_default/baseof.html o in un partial dedicato -->
-<!-- Inserire nel <head> di baseof.html -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent/dist/cookieconsent.css"/>
-<script defer src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent/dist/cookieconsent.umd.js"></script>
+<!-- In layouts/_default/baseof.html — nel <head> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+
+<!-- In layouts/_default/baseof.html — prima di </body>, dopo main.js defer -->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+<script>
+  (function () {
+    var gaId   = document.body.dataset.gaId  || '';
+    var mapUrl = document.body.dataset.mapUrl || '';
+    // ... callback loadGA4() e enableMap() ...
+    CookieConsent.run({ /* config */ });
+  })();
+</script>
 ```
 
-### 6.2 Caricamento condizionale Google Analytics
-
-Google Analytics viene caricato **solo** dopo il consenso dell'utente per la categoria "analytics":
-
-```javascript
-// In assets/js/cookie-init.js
-CookieConsent.run({
-  categories: {
-    necessary: { enabled: true, readOnly: true },
-    analytics: {
-      autoClear: { cookies: [{name: /^(_ga)/}] },
-      onAccept: function() {
-        // Carica GA4 solo dopo consenso
-        const script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-        document.head.appendChild(script);
-      }
-    },
-    maps: {
-      onAccept: function() {
-        // Riabilita gli iframe Google Maps nascosti
-        document.querySelectorAll('.maps-placeholder').forEach(el => {
-          el.style.display = 'none';
-        });
-        document.querySelectorAll('.maps-iframe').forEach(el => {
-          el.style.display = 'block';
-        });
-      }
-    }
-  }
-});
-```
-
-### 6.3 Google Maps con consenso condizionale
+**Iniezione parametri Hugo:** i valori configurati in `hugo.toml` (`googleAnalyticsId`, `mapsEmbedUrl`) vengono esposti tramite attributi `data-*` sul tag `<body>` — non tramite `{{ ... | jsonify }}` nel contesto script, che causava double-encoding in Hugo v0.158.
 
 ```html
-<!-- Nella template della Partners Page -->
-<!-- Mostrato PRIMA del consenso: -->
-<div class="maps-placeholder">
-  <img src="/images/maps-placeholder.png" alt="Map placeholder">
-  <button onclick="CookieConsent.acceptCategory('maps')">Enable Map</button>
-</div>
-
-<!-- Mostrato DOPO il consenso: -->
-<div class="maps-iframe" style="display:none">
-  <iframe src="https://www.google.com/maps/embed?..."></iframe>
-</div>
+<body
+  data-map-url="{{ .Site.Params.mapsEmbedUrl }}"
+  data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
 ```
+
+Il tema B&W del banner è definito in `assets/scss/_cookie-consent.scss` tramite CSS custom properties (`--cc-btn-primary-bg`, `--cc-toggle-on-bg`, ecc.).
+
+### 6.2 Categorie e callback
+
+| Categoria | readOnly | Azione `onConsent` |
+|-----------|----------|-------------------|
+| `necessary` | Sì | Nessuna (sempre attivi) |
+| `analytics` | No | `loadGA4()` — inietta script gtag con `anonymize_ip: true` |
+| `functional` | No | `enableMap()` — sostituisce il div `[data-map-embed]` con `<iframe>` OSM |
+
+`autoClear` sulla categoria `analytics` rimuove i cookie `_ga*` e `_gid` se l'utente revoca il consenso.
+
+### 6.3 Mappa del consorzio — stato attuale e piano
+
+**Implementazione corrente (iframe OSM):**  
+Quando l'utente accetta i cookie funzionali, `enableMap()` crea un `<iframe>` con la mappa OpenStreetMap del bounding box europeo e lo sostituisce al div placeholder `[data-map-embed]` in `layouts/partners/list.html`.
+
+La mappa mostra la regione geografica ma **non include marker** per le sedi dei partner — limite strutturale dell'endpoint `export/embed.html` di OSM.
+
+**Piano (prossimo step — Leaflet.js):**  
+Migrare a una mappa Leaflet.js inizializzata direttamente nel div `[data-map-embed]`, con 5 marker interattivi (popup con nome partner + città). Coordinate già note per tutte le sedi. Nessuna API key richiesta, stessi tile OSM, stessa policy GDPR.
 
 ---
 
@@ -550,9 +547,10 @@ git checkout develop          # tornare su develop
 | Documentazione Hugo | https://gohugo.io/documentation/ |
 | Decap CMS docs | https://decapcms.org/docs/ |
 | Netlify docs | https://docs.netlify.com/ |
-| Vanilla Cookie Consent | https://cookieconsent.orestbida.com/ |
+| Vanilla Cookie Consent v3 | https://cookieconsent.orestbida.com/ |
 | Google Analytics 4 | https://analytics.google.com/ |
-| Google Maps Embed | https://developers.google.com/maps/documentation/embed/ |
+| Leaflet.js | https://leafletjs.com/ |
+| OpenStreetMap | https://www.openstreetmap.org/ |
 
 ---
 

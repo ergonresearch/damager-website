@@ -18,6 +18,9 @@
   {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
+  <!-- Vanilla Cookie Consent v3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
@@ -32,7 +35,9 @@
     }
   </script>
 </head>
-<body>
+<body
+  data-map-url="{{ .Site.Params.mapsEmbedUrl }}"
+  data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
   {{ partial "header.html" . }}
 
   <main id="main-content">
@@ -44,5 +49,151 @@
   <!-- Main JS -->
   {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
   <script src="{{ $js.RelPermalink }}" defer></script>
+
+  <!-- Vanilla Cookie Consent v3 -->
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var gaId   = document.body.dataset.gaId  || '';
+    var mapUrl = document.body.dataset.mapUrl || '';
+
+    function loadGA4() {
+      if (!gaId) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', gaId, { anonymize_ip: true });
+    }
+
+    function enableMap() {
+      if (!mapUrl) return;
+      var placeholder = document.querySelector('[data-map-embed]');
+      if (!placeholder) return;
+      var h = placeholder.offsetHeight || 400;
+      var iframe = document.createElement('iframe');
+      iframe.src = mapUrl;
+      iframe.style.width = '100%';
+      iframe.style.height = h + 'px';
+      iframe.style.border = '0';
+      iframe.style.display = 'block';
+      iframe.title = 'DAMAGER Consortium Map';
+      iframe.loading = 'lazy';
+      iframe.setAttribute('allowfullscreen', '');
+      placeholder.innerHTML = '';
+      placeholder.style.display = 'block';
+      placeholder.style.padding = '0';
+      placeholder.appendChild(iframe);
+    }
+
+    CookieConsent.run({
+      guiOptions: {
+        consentModal: {
+          layout: 'bar',
+          position: 'bottom',
+          equalWeightButtons: false,
+          flipButtons: false
+        },
+        preferencesModal: {
+          layout: 'box',
+          equalWeightButtons: true,
+          flipButtons: false
+        }
+      },
+
+      onConsent: function () {
+        if (CookieConsent.acceptedCategory('analytics'))  loadGA4();
+        if (CookieConsent.acceptedCategory('functional')) enableMap();
+      },
+
+      onChange: function () {
+        if (CookieConsent.acceptedCategory('analytics'))  loadGA4();
+        if (CookieConsent.acceptedCategory('functional')) enableMap();
+      },
+
+      categories: {
+        necessary: {
+          enabled: true,
+          readOnly: true
+        },
+        analytics: {
+          readOnly: false,
+          autoClear: {
+            cookies: [
+              { name: /^(_ga)/ },
+              { name: '_gid' }
+            ]
+          }
+        },
+        functional: {
+          readOnly: false
+        }
+      },
+
+      language: {
+        default: 'en',
+        translations: {
+          en: {
+            consentModal: {
+              title: 'We use cookies',
+              description: 'This website uses cookies to improve your experience and to analyse traffic. You can accept all cookies, reject non-essential ones, or manage your preferences.',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject non-essential',
+              showPreferencesBtn: 'Manage preferences',
+              footer: '<a href="/privacy-policy/">Privacy Policy</a> · <a href="/cookie-policy/">Cookie Policy</a>'
+            },
+            preferencesModal: {
+              title: 'Cookie preferences',
+              acceptAllBtn: 'Accept all',
+              acceptNecessaryBtn: 'Reject all',
+              savePreferencesBtn: 'Save preferences',
+              closeIconLabel: 'Close modal',
+              serviceCounterLabel: 'Service|Services',
+              sections: [
+                {
+                  title: 'Strictly necessary',
+                  description: 'These cookies are required for the website to function correctly. They cannot be disabled.',
+                  linkedCategory: 'necessary'
+                },
+                {
+                  title: 'Analytics',
+                  description: 'Google Analytics 4 helps us understand how visitors interact with the site. All data is anonymised (IP anonymisation enabled). No data is shared with third parties for advertising.',
+                  linkedCategory: 'analytics',
+                  cookieTable: {
+                    caption: 'Cookie list',
+                    headers: { name: 'Cookie', domain: 'Domain', desc: 'Description' },
+                    body: [
+                      { name: '_ga',   domain: '.damager.eu', desc: 'Distinguishes users — expires after 2 years' },
+                      { name: '_ga_*', domain: '.damager.eu', desc: 'Session state for GA4 — expires after 2 years' },
+                      { name: '_gid',  domain: '.damager.eu', desc: 'Distinguishes users — expires after 24 hours' }
+                    ]
+                  }
+                },
+                {
+                  title: 'Functional',
+                  description: 'These cookies enable enhanced functionality such as the interactive consortium map. Disabling them will replace the map with a static placeholder.',
+                  linkedCategory: 'functional',
+                  cookieTable: {
+                    caption: 'Cookie list',
+                    headers: { name: 'Cookie', domain: 'Domain', desc: 'Description' },
+                    body: [
+                      { name: 'NID', domain: '.google.com', desc: 'Stores user preferences for Google Maps — expires after 6 months' }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    });
+  })();
+  </script>
 </body>
 </html>

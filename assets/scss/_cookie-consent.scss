@@ -1,0 +1,74 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Cookie Consent — Vanilla Cookie Consent v3 theme overrides
+// Palette: monochrome B&W — matches site design language
+// ─────────────────────────────────────────────────────────────────────────────
+
+#cc-main {
+  --cc-font-family:            #{$font-primary};
+  --cc-modal-border-radius:    #{$radius-sm};
+  --cc-btn-border-radius:      #{$radius-sm};
+
+  // Modal background & text
+  --cc-bg:                     #{$white};
+  --cc-primary-color:          #{$black};
+  --cc-secondary-color:        #{$gray-600};
+
+  // Primary button (Accept All)
+  --cc-btn-primary-bg:              #{$black};
+  --cc-btn-primary-color:           #{$white};
+  --cc-btn-primary-border-color:    #{$black};
+  --cc-btn-primary-hover-bg:        #{$gray-800};
+  --cc-btn-primary-hover-color:     #{$white};
+  --cc-btn-primary-hover-border-color: #{$gray-800};
+
+  // Secondary button (Reject / Preferences)
+  --cc-btn-secondary-bg:               transparent;
+  --cc-btn-secondary-color:            #{$black};
+  --cc-btn-secondary-border-color:     #{$black};
+  --cc-btn-secondary-hover-bg:         #{$black};
+  --cc-btn-secondary-hover-color:      #{$white};
+  --cc-btn-secondary-hover-border-color: #{$black};
+
+  // Toggle (on/off)
+  --cc-toggle-on-bg:               #{$black};
+  --cc-toggle-off-bg:              #{$gray-400};
+  --cc-toggle-on-knob-bg:          #{$white};
+  --cc-toggle-off-knob-bg:         #{$white};
+  --cc-toggle-readonly-bg:         #{$gray-200};
+  --cc-toggle-readonly-knob-bg:    #{$white};
+
+  // Separator / borders
+  --cc-separator-border-color:     #{$gray-200};
+
+  // Cookie category blocks
+  --cc-cookie-category-block-bg:           #{$gray-50};
+  --cc-cookie-category-block-border:       #{$gray-200};
+  --cc-cookie-category-block-hover-bg:     #{$gray-100};
+  --cc-cookie-category-block-hover-border: #{$gray-400};
+  --cc-cookie-category-expanded-block-bg:  #{$gray-50};
+
+  // Overlay
+  --cc-overlay-bg: rgba(0, 0, 0, 0.35);
+}
+
+// Consent bar — tighter vertical padding on desktop
+#cc-main .cm--bar {
+  border-top: $border;
+}
+
+// Footer-style cookie button
+.footer-cookie-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  color: $gray-600;
+  letter-spacing: 0.02em;
+  transition: color $ease;
+
+  &:hover {
+    color: $black;
+  }
+}

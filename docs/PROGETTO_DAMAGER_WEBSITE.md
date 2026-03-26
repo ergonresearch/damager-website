@@ -154,15 +154,15 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-### FASE 7 — Cookie Consent e Privacy
+### FASE 7 — Cookie Consent e Privacy ✅
 
-- [ ] **F7.1** Vanilla Cookie Consent integrato
-- [ ] **F7.2** Categorie: necessari / analitici / funzionali
-- [ ] **F7.3** Google Analytics 4 condizionale
-- [ ] **F7.4** Google Maps condizionale (placeholder se non accettato)
-- [ ] **F7.5** Privacy Policy scritta
-- [ ] **F7.6** Cookie Policy scritta
-- [ ] **F7.7** Link "Cookie Preferences" nel footer
+- [x] **F7.1** Vanilla Cookie Consent v3 integrato (CDN jsDelivr)
+- [x] **F7.2** Categorie: necessari / analitici (GA4) / funzionali (Maps)
+- [x] **F7.3** Google Analytics 4 condizionale (ID da impostare in `hugo.toml` quando disponibile)
+- [x] **F7.4** Mappa consorzio condizionale (OpenStreetMap, sostituisce Google Maps se accettato)
+- [x] **F7.5** Privacy Policy scritta → `content/privacy-policy.md`
+- [x] **F7.6** Cookie Policy scritta → `content/cookie-policy.md`
+- [x] **F7.7** Link "Cookie Preferences" nel footer
 
 ### FASE 8 — Deploy e Go-Live
 

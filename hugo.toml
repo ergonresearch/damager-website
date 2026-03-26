@@ -8,6 +8,8 @@ favicon = "/images/logo/favicon.svg"
   projectStart = "2025-12-01"
   projectEnd   = "2029-11-30"
   linkedin     = "https://www.linkedin.com/company/damager-edf-project/posts/"
+  googleAnalyticsId = ""  # Set when GA4 property is created (e.g. "G-XXXXXXXXXX")
+  mapsEmbedUrl      = "https://www.openstreetmap.org/export/embed.html?bbox=-8.0,39.0,30.0,51.0&layer=mapnik"
 
 [menu]
   [[menu.main]]
