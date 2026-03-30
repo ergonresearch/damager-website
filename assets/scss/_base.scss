@@ -24,6 +24,9 @@ body {
   line-height: $line-height;
   color: $black;
   background: $white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 // ── Links
@@ -103,7 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // ── Generic page layout
-main { min-height: 60vh; }
+main { min-height: 0; }
+
+// ── Dark filler — grows to fill remaining viewport height, pushing footer down
+.page-fill {
+  flex: 1;
+  background: $dark;
+}
 
 // ── Default list template (layouts/_default/list.html)
 .list-page {
