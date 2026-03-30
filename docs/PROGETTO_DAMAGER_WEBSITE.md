@@ -143,7 +143,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > A questo punto il sito ha la struttura completa con placeholder. Si sostituiscono i materiali definitivi prima del go-live.
 
-- [x] **F0B.1** Logo DAMAGER SVG + font Ethnocentric + favicon ✅
+- [x] **F0B.1** Logo DAMAGER SVG + favicon ✅
 - [x] **F0B.2** Decorazioni di sfondo (`g3175.svg` + `g5.svg`) integrate in `_decorations.scss` ✅
 - [x] **F0B.3** Logo EU: bandiera europea nel footer ✅
 - [x] **F0B.4** Loghi definitivi dei 5 partner integrati (`static/images/partners/`) ✅

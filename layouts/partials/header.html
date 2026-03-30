@@ -1,7 +1,7 @@
 <header class="site-header">
   <div class="container header-inner">
 
-    {{/* Logo — inline SVG so @font-face (Ethnocentric) applies correctly */}}
+    {{/* Logo — inline SVG (path-based) */}}
     <a href="/" class="logo" aria-label="DAMAGER — Home">
       {{- $logo := resources.Get "images/logo/damager-logo-white.svg" -}}
       {{- if $logo -}}

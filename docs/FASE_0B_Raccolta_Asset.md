@@ -90,14 +90,13 @@ resources/
 
 ## F0B.1 — Logo DAMAGER definitivo ✅ Completata
 
-**File sorgente fornito:** `resources/damager_logo_plain.svg` (SVG vettoriale con lettere come path puri, senza font)
+**File sorgente fornito:** `resources/damager_logo_plain.svg` (SVG vettoriale)
 
-**Soluzione adottata — SVG inline con path puri (no font-dependency):**  
-Il file sorgente `damager_logo_plain.svg` è stato esportato da Inkscape con tutte le lettere convertite in path vettoriali (nessuna dipendenza da font). Il logo viene inserito come SVG inline nel template (`resources.Get ... .Content | safeHTML`). La versione bianca mantiene la struttura e i transform originali del file sorgente, rimuovendo solo il rettangolo di sfondo (`BACKGROUND`). La versione nera inverte tutti i colori (`#ffffff` ↔ `#000000`).
+**Soluzione adottata — SVG inline:**  
+Il logo viene inserito come SVG inline nel template (`resources.Get ... .Content | safeHTML`). La versione bianca mantiene la struttura e i transform originali del file sorgente, rimuovendo solo il rettangolo di sfondo (`BACKGROUND`). La versione nera inverte tutti i colori (`#ffffff` ↔ `#000000`).
 
 **Caratteristica chiave — SWOOSH con bordo:** lo SWOOSH ha `stroke:#000000;stroke-width:12.5px` (versione bianca) che, disegnato sopra le lettere, crea l'effetto visivo della scia che passa "sotto" le lettere. Nella versione nera lo stroke è invertito in `stroke:#ffffff`.
 
-> **Nota — Font Ethnocentric:** i file font (`static/fonts/ethnocentric-italic.otf`, `static/fonts/ethnocentric-regular.otf`) e il relativo `@font-face` in `_base.scss` sono presenti nel progetto ma **non più necessari** per il logo SVG, che usa path vettoriali. Possono essere mantenuti per eventuali usi tipografici futuri.
 
 **File prodotti:**
 
