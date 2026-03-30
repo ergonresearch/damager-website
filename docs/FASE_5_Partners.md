@@ -101,7 +101,7 @@ Classi definite:
 | `.coordinator-badge` | Label "Coordinator" in alto a destra sulla card |
 | `.map-section` | Sezione mappa con titolo |
 | `.map-wrapper` | Contenitore con posizionamento relativo per overlay |
-| `.map-placeholder` | Box placeholder visuale; `&.leaflet-container` override a `display:block` quando Leaflet inizializza |
+| `.map-placeholder` | Altezza `320px` (mobile) / `384px` (≥768px); `&.leaflet-container` override a `display:block` quando Leaflet inizializza |
 | `.map-overlay` | Overlay semi-trasparente con link "Enable Map" → apre modale VCC |
 | `.map-locations` | Lista dei Paesi partner con bandiere SVG (visibile senza consenso) |
 | `.map-label` | Etichette permanenti Leaflet (`bindTooltip`): B&W, `font-size-xs`, nessun box-shadow |

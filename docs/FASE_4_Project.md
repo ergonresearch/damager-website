@@ -175,7 +175,7 @@ Classi definite:
 |--------|-------------|
 | `.engine-block` | Container relativo per il blocco motore; `margin-bottom: $space-16` |
 | `.engine-droplines` | Overlay SVG assoluto per le drop-line JS; `pointer-events: none` |
-| `.engine-diagram` | Wrapper `position: relative` per l'immagine turbojet; `margin-bottom: $space-6` |
+| `.engine-diagram` | Wrapper `position: relative`; `width: 70%; margin: 0 auto` — riduce e centra l'immagine rispetto al container |
 | `.engine-photo` | Immagine turbojet: `width: 100%; height: auto; display: block` |
 | `.engine-anchor` | Anchor 1×1 px `position: absolute` per i punti di partenza delle drop-line |
 | `.engine-gifs` | Griglia 3 colonne (≥768px) / 1 colonna (mobile) |

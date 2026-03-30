@@ -30,7 +30,7 @@ Durante lo sviluppo delle pagine (FASI 3-6) vengono usati i seguenti placeholder
 |-------|------------------------------------|--------------------------|
 | Logo DAMAGER (header) | SVG inline con testo "DAMAGER" | `static/images/logo/damager-logo.svg` |
 | Logo DAMAGER (versione bianca) | CSS `filter: invert(1)` sul placeholder | `static/images/logo/damager-logo-white.svg` |
-| Favicon | Emoji ✈ o lettera "D" | `static/images/logo/favicon.ico` |
+| Favicon | Lettera "D" bianca su sfondo nero | `static/images/logo/favicon.svg` |
 | Logo EU "Funded by the EU" | Testo semplice con link | `static/images/eu-logo/funded-by-eu-en.svg` |
 | Sfondi decorativi | Assenti (sezioni senza sfondo) | `static/images/backgrounds/g3175.svg`, `static/images/backgrounds/g5.svg` |
 | Logo HIT09 | Box grigio con testo "HIT09" | `static/images/partners/hit09-logo.png` |
@@ -106,7 +106,7 @@ Il logo viene inserito come SVG inline nel template (`resources.Get ... .Content
 | Logo nero (sfondo trasparente) | `assets/images/logo/damager-logo.svg` | Sfondi chiari |
 | Copia statica bianco | `static/images/logo/damager-logo-white.svg` | Riferimenti diretti |
 | Copia statica nero | `static/images/logo/damager-logo.svg` | Riferimenti diretti |
-| Favicon SVG | `static/images/logo/favicon.svg` | Tab del browser (lettera D su sfondo nero) |
+| Favicon SVG | `static/images/logo/favicon.svg` | Tab del browser (lettera D bianca su sfondo nero; `viewBox="19 43 86 86"` calibrato sul glifo D) |
 | File sorgente plain | `resources/damager_logo_plain.svg` | Sorgente per derivazione varianti |
 
 **Modifiche tecniche:**

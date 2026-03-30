@@ -119,7 +119,7 @@
 }
 
 .map-placeholder {
-  height: 400px;
+  height: 320px;
   background: $gray-100;
   border: $border;
   display: flex;
@@ -128,7 +128,7 @@
   justify-content: center;
   gap: $space-6;
 
-  @media (min-width: $bp-md) { height: 480px; }
+  @media (min-width: $bp-md) { height: 384px; }
 
   // Leaflet adds .leaflet-container when the map initialises —
   // override flex layout so tiles fill the container correctly.
