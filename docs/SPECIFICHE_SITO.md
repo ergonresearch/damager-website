@@ -180,9 +180,9 @@ La sezione è strutturata in tre blocchi verticali su sfondo blueprint:
 **1 — Header** (pattern standard del sito): eyebrow "EDF 2024 — Research Action", titolo "About the Project", testo introduttivo.
 
 **2 — Blocco motore turbojet:**
-- SVG schematico orizzontale del turbojet (compressore centrifugo → combustore → turbina → ugello) con frecce di flusso aria, freccia FUEL tratteggiata dall'alto, linea albero tratteggiata. I tre componenti prodotti in AM (compressore, combustore, turbina) hanno un pallino (`<circle>`) nella parte inferiore collegato da una linea tratteggiata dinamica alla card GIF corrispondente.
-- Tre card GIF in griglia 3 colonne (1 colonna su mobile): `compressor.gif`, `combustor.gif`, `turbine.gif`. Fallback visivo con bordo tratteggiato se il file non è ancora disponibile.
-- Le drop-line SVG vengono ridisegnate dinamicamente via JavaScript (`ResizeObserver`) ad ogni resize della finestra.
+- Fotografia CAD della sezione trasversale reale del motore (`turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (compressore 28%/93%, combustore 53%/86%, turbina 76%/78%).
+- Tre linee tratteggiate SVG (`stroke-width: 2`) vengono disegnate dinamicamente da JavaScript, collegando gli anchor point al bordo superiore di ciascuna card media sottostante. Le linee si ricalcolano ad ogni resize tramite `ResizeObserver`.
+- Tre card media in griglia 3 colonne (1 colonna su mobile): `compressor.webm` (video loop, `object-fit: cover`), `combustor.png` (immagine, `object-fit: contain`), `turbine.webm` (video loop, `object-fit: cover`).
 
 **3 — Quattro card descrittive in griglia 2×2** (1×4 su mobile):
 

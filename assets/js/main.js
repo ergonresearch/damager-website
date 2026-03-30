@@ -138,7 +138,7 @@
 
         lines += '<line x1="' + x1 + '" y1="' + y1 +
                  '" x2="' + x2 + '" y2="' + y2 +
-                 '" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>';
+                 '" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>';
       });
 
       overlay.innerHTML = lines;

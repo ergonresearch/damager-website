@@ -9,7 +9,7 @@
 
 ## Checklist
 
-- [x] F4.1 — About the Project: header (eyebrow + titolo + intro), blocco motore SVG + card GIF, griglia 2×2 card descrittive
+- [x] F4.1 — About the Project: header (eyebrow + titolo + intro), blocco motore (foto turbojet + drop-line + card media), griglia 2×2 card descrittive
 - [x] F4.2 — Project Details (tabella dati chiave)
 - [x] F4.3 — Timeline animata con milestone M00–M48
 - [x] F4.4 — ~~Research Areas~~ *(rimossa — contenuto integrato nelle 4 card di F4.1)*
@@ -61,43 +61,46 @@ Contenitore `<div class="engine-block" id="engine-block">` con tre sotto-element
 Posizionato `position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible`.
 Le linee tratteggiate che collegano i dot SVG alle card GIF sono iniettate dinamicamente da `initEngineDroplines()`.
 
-**b) SVG schematico del turbojet:**
+**b) Immagine turbojet reale + anchor points:**
 
-Elemento `<svg id="engine-svg" viewBox="0 0 860 220">` con:
+```html
+<div class="engine-diagram">
+  <img src="/images/engine/turbojet.png"
+       alt="Turbojet engine cross-section: compressor, combustor, turbine"
+       class="engine-photo">
+  <div id="dot-compressor" class="engine-anchor" style="left:28%;top:93%"></div>
+  <div id="dot-combustor"  class="engine-anchor" style="left:53%;top:86%"></div>
+  <div id="dot-turbine"    class="engine-anchor" style="left:76%;top:78%"></div>
+</div>
+```
 
-| Componente | Forma | Coordinate chiave |
-|------------|-------|-------------------|
-| AIR IN | testo + freccia | x=4–63, y=100 |
-| Compressore (AM) | Poligono trapezoidale (si allarga verso destra) | `65,82 195,57 195,143 65,118` |
-| Combustore (AM) | Rettangolo | x=225, y=57, w=283, h=86 |
-| Freccia FUEL | Tratteggiata dall'alto | x=366, y=22→55 |
-| Turbina (AM) | Poligono trapezoidale invertito (si restringe verso destra) | `541,57 691,82 691,118 541,143` |
-| Ugello | Poligono convergente | `723,82 807,91 807,109 723,118` |
-| EXH. | testo + freccia | x=807–848, y=100 |
-| Linea albero | Tratteggiata orizzontale | x=65→692, y=100, opacity=0.3 |
-| Dot AM (×3) | `<circle>` vuoto con stelo tratteggiato | cy=168, id=dot-compressor/combustor/turbine |
+`turbojet.png` è l'immagine CAD reale della sezione trasversale del motore (`static/images/engine/turbojet.png`). Al suo interno, tre `<div class="engine-anchor">` invisibili (1×1 px, `position: absolute`) fungono da anchor point per le drop-line. Le percentuali `left`/`top` sono calibrate sul layout visivo dell'immagine:
 
-Il flag `currentColor` su stroke/fill permette adattamento al colore CSS del container.
+| Componente | left | top | Riferimento visivo |
+|------------|------|-----|--------------------|
+| Compressore | 28% | 93% | Bordo inferiore del'impeller centrifugo (area teal) |
+| Combustore | 53% | 86% | Bordo inferiore della camera di combustione |
+| Turbina | 76% | 78% | Bordo inferiore dello stadio turbina |
 
-**c) Tre card GIF (`<div class="engine-gifs">`):**
+**c) Tre card media (`<div class="engine-gifs">`):**
 
 ```html
 <div class="gif-card" id="gif-compressor">
   <div class="gif-media">
-    <img src="{{ with $compGif }}{{ .RelPermalink }}{{ end }}"
-         onerror="this.style.display='none';this.nextElementSibling.removeAttribute('hidden')">
-    <div class="gif-fallback" hidden>compressor.gif</div>
+    <video autoplay loop muted playsinline>
+      <source src="/images/engine/compressor.webm" type="video/webm">
+    </video>
   </div>
   <span class="gif-label">Compressor</span>
 </div>
 ```
 
-Le GIF risiedono in `static/images/engine/` e vengono referenziate con path statici diretti (come tutti gli altri file immagine del progetto):
-- `/images/engine/compressor.gif` → componente compressore centrifugo
-- `/images/engine/combustor.gif` → camera di combustione
-- `/images/engine/turbine.gif` → stadio turbina
+I file risiedono in `static/images/engine/` e vengono referenziate con path statici diretti:
+- `/images/engine/compressor.webm` → animazione compressore centrifugo (video loop)
+- `/images/engine/combustor.png` → immagine camera di combustione
+- `/images/engine/turbine.webm` → animazione stadio turbina (video loop)
 
-Se il file non è ancora presente, il browser genera un errore di caricamento → `onerror` nasconde l'`<img>` e rivela il `div.gif-fallback` con bordo tratteggiato e nome file.
+I video `.webm` usano `autoplay loop muted playsinline` per riproduzione automatica continua senza audio e senza controlli.
 
 ### Blocco 3 — Quattro card descrittive (`<div class="about-cards">`)
 
@@ -172,12 +175,13 @@ Classi definite:
 |--------|-------------|
 | `.engine-block` | Container relativo per il blocco motore; `margin-bottom: $space-16` |
 | `.engine-droplines` | Overlay SVG assoluto per le drop-line JS; `pointer-events: none` |
-| `.engine-diagram` | Wrapper del SVG schematico; `margin-bottom: $space-6` |
+| `.engine-diagram` | Wrapper `position: relative` per l'immagine turbojet; `margin-bottom: $space-6` |
+| `.engine-photo` | Immagine turbojet: `width: 100%; height: auto; display: block` |
+| `.engine-anchor` | Anchor 1×1 px `position: absolute` per i punti di partenza delle drop-line |
 | `.engine-gifs` | Griglia 3 colonne (≥768px) / 1 colonna (mobile) |
-| `.gif-card` | Card singola GIF: bordo 0.5px, border-radius 2px, background bianco |
-| `.gif-media` | Area media 16:9 con fallback flex centrato |
-| `.gif-fallback` | Placeholder con bordo tratteggiato, nascosto via `[hidden]` finché `onerror` non lo mostra |
-| `.gif-label` | Label monospace uppercase sotto la GIF |
+| `.gif-card` | Card singola: bordo 0.5px, border-radius 2px, background bianco |
+| `.gif-media` | Area media 16:9; `img` → `object-fit: contain`; `video` → `object-fit: cover` |
+| `.gif-label` | Label monospace uppercase sotto il media |
 | `.about-cards` | Griglia 2 colonne (≥768px) / 1 colonna (mobile) |
 | `.about-card` | Card descrittiva: bordo 0.5px, `border-radius: 2px`, hover con `box-shadow` + `translateY(-1px)` |
 | `.about-card__num` | Numero progressivo (01–04): monospace, grigio, uppercase |
@@ -225,7 +229,7 @@ function initEngineDroplines() {
 
       lines += '<line x1="' + x1 + '" y1="' + y1 +
                '" x2="' + x2 + '" y2="' + y2 +
-               '" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>';
+               '" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>';
     });
 
     overlay.innerHTML = lines;
@@ -237,23 +241,21 @@ function initEngineDroplines() {
 }
 ```
 
-Principio: `getBoundingClientRect()` funziona sui `<circle>` SVG esattamente come sugli elementi HTML — restituisce la posizione renderizzata in pixel CSS. Sottraendo `blockRect` si ottengono coordinate relative al container, coincidenti con il sistema di coordinate dell'overlay SVG (che ha `width: 100%; height: 100%` sul container `position: relative`).
+Principio: `getBoundingClientRect()` restituisce la posizione renderizzata in pixel CSS degli anchor `<div>` (1×1 px, `position: absolute` dentro `.engine-diagram`). Sottraendo `blockRect` si ottengono coordinate relative al container, coincidenti con il sistema di coordinate dell'overlay SVG (`width: 100%; height: 100%` su `position: relative`). Le linee hanno `stroke-width="2"` per buona visibilità su sfondo chiaro.
 
 La funzione è chiamata da `DOMContentLoaded` insieme a `initProgressBar()`, `initTimeline()`, `initTabs()`.
 
 ---
 
-## Asset GIF (in attesa)
+## Asset media engine block ✅
 
 | File | Posizione nel repository | URL pubblico | Stato |
 |------|--------------------------|--------------|-------|
-| `compressor.gif` | `static/images/engine/compressor.gif` | `/images/engine/compressor.gif` | ⏳ Da fornire |
-| `combustor.gif` | `static/images/engine/combustor.gif` | `/images/engine/combustor.gif` | ⏳ Da fornire |
-| `turbine.gif` | `static/images/engine/turbine.gif` | `/images/engine/turbine.gif` | ⏳ Da fornire |
+| `compressor.webm` | `static/images/engine/compressor.webm` | `/images/engine/compressor.webm` | ✅ Integrato |
+| `combustor.png` | `static/images/engine/combustor.png` | `/images/engine/combustor.png` | ✅ Integrato |
+| `turbine.webm` | `static/images/engine/turbine.webm` | `/images/engine/turbine.webm` | ✅ Integrato |
 
 Convenzione: coerente con tutti gli altri file immagine del progetto (`static/images/partners/`, `static/images/eu-logo/`, `static/images/flags/`, ecc.). Non è necessario nessun processing Hugo — i file vengono copiati direttamente in `public/images/engine/` durante la build.
-
-Fino all'inserimento dei file, le card mostrano automaticamente il placeholder visivo (bordo tratteggiato + nome file), attivato dall'attributo `onerror` sull'`<img>` quando il browser non riesce a caricare l'immagine.
 
 ---
 
