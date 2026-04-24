@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.6 | **Data:** Aprile 2026  
+**Versione:** 4.7 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -62,7 +62,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page — snapshot F5; dettagli F8.C / F8.E in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
-| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Home (F8.A–C) + Project (F8.D) implementati; **F8.E** specificato (dati + partial Partners); **F8.E-code** in attesa di conferma | In corso |
+| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners Our Partners (F8.E) — implementati in codice | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
 | `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
@@ -171,13 +171,13 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 - [x] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup concordato
 - [x] **F8.2** Home — sezione «What is DAMAGER» (testi, immagine `.webp`, didascalia GKN, acronimo, griglia 8 concetti)
-- [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su ogni card partner; inclusione Home e pagina Partners
+- [x] **F8.3** Griglia partner Home: `partners-card-grid.html` + `data/partners.yaml` + link LinkedIn (pagina Partners: partial dedicato **F8.E**)  
 - [x] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti `card-partner` in `_components.scss`
 - [x] **F8.5** Verifica build Hugo, responsive, accessibilità heading
 - [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro esteso, sei `about-card`, nota opzionale coordinate primo anchor — in `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`
 - [x] **F8.7** Implementazione codice pagina Project secondo **F8.D**
-- [x] **F8.E-spec** Partners «Our Partners» (mockup dedicato, layout a riga intera, dati centralizzati) — specificato in `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`  
-- [ ] **F8.E-code** Implementazione **F8.E** in repository — in attesa di conferma esplicita
+- [x] **F8.E-spec** Partners «Our Partners» (mockup dedicato, layout a riga intera, dati centralizzati) — `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`  
+- [x] **F8.E-code** Implementazione **F8.E** in repository (`data/partners.yaml`, partial inner / rows / grid, SCSS, `markdownify`, bullet razzo su `/partners`)  
 
 ### FASE 9 — Deploy e Go-Live
 
@@ -212,7 +212,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | F5 | Partners Page | 1-2 giorni |
 | F6 | Media Page + CMS | 2-3 giorni |
 | F7 | Cookie + Privacy | 1 giorno |
-| F8 | Riordino contenuti Home (+ partial partner / LinkedIn; TBD Project/Partners) | 2-4 giorni |
+| F8 | Riordino contenuti Home, Project About, Partners Our Partners (+ dati YAML partner) | 2-4 giorni |
 | F9 | Deploy + Testing | 1 giorno |
 | F10 | Formazione | 0.5 giorni |
 | **TOTALE** | | **~16-23 giorni lavorativi** |

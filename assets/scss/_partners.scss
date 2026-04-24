@@ -77,6 +77,34 @@
   @media (min-width: $bp-md) { padding-top: $space-10; }
 }
 
+// Partners page — one card per row (no multi-column grid)
+.partners-page-rows__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-6;
+}
+
+// Lista «In DAMAGER … contributes to:» — bullet come mockup (emoji razzo)
+.partners-page-rows .card-partner__desc {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: $space-2;
+
+    &::before {
+      content: '🚀';
+      position: absolute;
+      left: 0;
+      line-height: 1.45;
+    }
+  }
+}
+
 // ────────────────────────────────────
 // Country flag images (replaces emoji for cross-OS compatibility)
 // ────────────────────────────────────

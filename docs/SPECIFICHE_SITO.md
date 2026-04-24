@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.8 | **Data:** Aprile 2026  
+**Versione:** 1.9 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -132,7 +132,7 @@ Blocco testuale (finanziamento EDF, bisogni, aree tecnologiche), immagine UAV wi
 
 ### E) Our Partners (anteprima consorzio)
 
-Stesse cinque card della pagina Partners, con link al sito e a LinkedIn. Sfondo alternato sulla Home. Partial Hugo condiviso; vedi **F8.C** in `FASE_8_Riordino_Contenuti.md`.
+Cinque card partner (testi brevi `description_home` in [`data/partners.yaml`](../data/partners.yaml)), link sito e LinkedIn, griglia responsiva. Sfondo alternato sulla Home. Partial [`partners-card-grid.html`](../layouts/partials/partners-card-grid.html); vedi **F8.C** in `FASE_8_Riordino_Contenuti.md`. La pagina `/partners` usa copy e layout distinti (**F8.E**).
 
 ---
 
@@ -263,20 +263,21 @@ Visualizzazione grafica ad alto impatto:
 
 ### B) Partner — Home vs pagina Partners
 
-**Fonte dati (prevista, F8.E):** un file [`data/partners.yaml`](../data/partners.yaml) con un record per partner: logo, nome, paese, bandiera SVG (`static/images/flags/`), link sito, link **LinkedIn** (company), più **due varianti testuali** dove serve — breve/anteprima per la **Home** e copy **verbatim** dal mockup **Partners** concordato per la pagina **Partners**. Le emoji di bandiera non vengono usate in pagina (solo SVG). Architettura dei partial: vedi [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) sezione **F8.E** (inner + griglia Home + righe Partners).
+**Fonte dati:** [`data/partners.yaml`](../data/partners.yaml) — un record per partner: logo, nome, paese, bandiera SVG (`static/images/flags/`), link sito, link **LinkedIn** (company), **`description_home`** (anteprima Home) e **`description_partners`** (testo esteso pagina Partners, Markdown con paragrafi e liste). Le emoji di bandiera non si usano in pagina (solo SVG). Partial: **F8.E** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
 
 #### B1) Home — «Our Partners» (anteprima)
 
-- Partial: [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia **responsiva** (1 → 2 → 3 colonne come `.card-grid` in [`assets/scss/_components.scss`](../assets/scss/_components.scss)).
-- Contenuti: varianti **Home** dal dato (`description_home` / `role_home` o equivalente).
-- Footer card: *Visit website →* e **LinkedIn** (`justify-content: space-between`); URL LinkedIn come da tabella in **F8.C** / **F8.E** del documento FASE 8.
+- Partial: [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia **responsiva** (1 → 2 → 3 colonne, `.card-grid` in [`assets/scss/_components.scss`](../assets/scss/_components.scss)), `range` su **`site.Data.partners`**, variante `home` nel partial [`partners-card-inner.html`](../layouts/partials/partners-card-inner.html).
+- Contenuti: `role_home`, `description_home` nel YAML; descrizione resa con **`markdownify`** (tipicamente un solo paragrafo).
+- Footer card: *Visit website →* e **LinkedIn** (`justify-content: space-between`); URL nel YAML (tabella **F8** in `FASE_8_Riordino_Contenuti.md`).
 
 #### B2) Pagina `/partners` — «Our Partners» (mockup dedicato)
 
-- **Diversa dalla Home:** partial dedicato (es. `partners-page-rows.html`), **non** il riuso dello stesso layout della griglia Home.
-- **Layout:** **una riga per partner** (colonna singola a tutti i breakpoint; modificatore SCSS tipo `.card-grid--partners-page` in [`assets/scss/_partners.scss`](../assets/scss/_partners.scss)).
-- **Contenuti:** ruolo e descrizione (e ogni altro testo previsto) **verbatim** dal mockup **Partners** concordato; campo/i dedicati nel YAML (`description_partners`, ecc.).
-- **LinkedIn:** stessi URL della Home (nessuna nuova tabella qui — unica fonte in `partners.yaml` + tabella **F8**).
+- **Partial:** [`partners-page-rows.html`](../layouts/partials/partners-page-rows.html) — **non** la griglia Home.
+- **Layout:** **`.partners-page-rows__grid`** — una colonna, una card per riga ([`_partners.scss`](../assets/scss/_partners.scss)).
+- **Contenuti:** `role_partners`, **`description_partners`** (Markdown: paragrafi + elenco «In DAMAGER … contributes to»); allineamento al mockup Partners concordato.
+- **Elenchi:** marcatori a **emoji razzo** (`🚀`) in CSS solo sotto **`.partners-page-rows .card-partner__desc ul`** (come mockup).
+- **LinkedIn:** stessi URL della Home (campo `linkedin` nel YAML).
 
 #### Elenco partner e asset logo (invariati)
 
@@ -288,9 +289,9 @@ Visualizzazione grafica ad alto impatto:
 | 4 | ERGON RESEARCH SRL | `ergon.jpg` |
 | 5 | COMOTI | `comoti.png` |
 
-Siti ufficiali e note redazionali (indirizzi mappa, testi da interno) restano governati come in precedenza; dopo **F8.E-code** i paragrafi lunghi non si duplicano nel template ma vivono nel **YAML**.
+Siti ufficiali e note redazionali (indirizzi mappa, ecc.) restano come in precedenza; i testi lunghi della sezione partner vivono nel **YAML** (nessun HTML duplicato per le cinque card).
 
-> **Implementazione:** documentata come **F8.E-code** in [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) — **in attesa di conferma** prima di creare i file nel repository.
+**Implementazione:** **F8.E-code** completata — vedi checklist in [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) e **F8.E** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
 
 ---
 

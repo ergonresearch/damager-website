@@ -1,0 +1,16 @@
+{{/*
+  Partners page only — «Our Partners»: one full-width row per partner (F8.E).
+  Same data as Home; variant "partners" for role/description fields.
+*/}}
+<section class="section partners-cards-section partners-page-rows">
+  <div class="container">
+    <span class="section-eyebrow">Consortium Members</span>
+    <h2 class="section-title">Our Partners</h2>
+
+    <div class="partners-page-rows__grid">
+      {{- range site.Data.partners -}}
+        {{- partial "partners-card-inner.html" (dict "partner" . "variant" "partners") -}}
+      {{- end -}}
+    </div>
+  </div>
+</section>

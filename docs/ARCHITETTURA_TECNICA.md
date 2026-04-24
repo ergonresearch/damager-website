@@ -1,6 +1,6 @@
 # 🏗️ ARCHITETTURA TECNICA — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.5 | **Data:** Aprile 2026  
+**Versione:** 1.6 | **Data:** Aprile 2026  
 **Destinatari:** Sviluppatori, Responsabile tecnico  
 **Obiettivo:** Descrivere stack tecnologico, architettura, CMS, hosting e sicurezza
 
@@ -204,9 +204,9 @@ damager-website/
 │   │   ├── timeline.html      # Partial timeline con aeroplano SVG
 │   │   ├── home-pillars.html  # Home — tre pilastri SES (FASE 8)
 │   │   ├── home-what-is-damager.html  # Home — blocco What is DAMAGER (FASE 8)
-│   │   ├── partners-card-grid.html    # Home — griglia partner (FASE 8; refactor verso `data/partners.yaml` — F8.E)
-│   │   ├── partners-page-rows.html    # Partners — «Our Partners» una riga per partner (F8.E, da creare)
-│   │   └── partners-card-inner.html   # Corpo singola `.card-partner` da dati (F8.E, da creare)
+│   │   ├── partners-card-grid.html    # Home — griglia partner da `site.Data.partners` (F8.C)
+│   │   ├── partners-page-rows.html    # Partners — «Our Partners» una riga per partner (F8.E)
+│   │   └── partners-card-inner.html   # Corpo `.card-partner` + markdownify (F8.C / F8.E)
 │   ├── index.html             # Template Home (hero + partial F8 + timeline + eventi + contatto)
 │   ├── project/
 │   │   └── list.html          # Project: About (F8.D — intro, engine, 6 card) + Details + Timeline
@@ -217,7 +217,7 @@ damager-website/
 │       └── news/
 │           └── single.html    # Template articolo singolo news
 ├── data/
-│   └── partners.yaml              # Consorzio: partner, URL, testi Home vs Partners (F8.E — previsto)
+│   └── partners.yaml              # Consorzio: 5 partner, URL, testi Home vs Partners (F8.C / F8.E)
 ├── assets/
 │   ├── scss/
 │   │   ├── main.scss              # Entry point — importa tutti i partial
@@ -332,7 +332,7 @@ collections:
 
 ```
 
-> **Nota:** la collection `partners` mostrata nelle specifiche iniziali **non è stata implementata** nel `config.yml` effettivo. I dati dei partner (loghi, nomi, ruoli, descrizioni) sono hard-coded in `layouts/partners/list.html` — i loghi definitivi risiedono in `static/images/partners/`. Non essendo contenuti che cambiano frequentemente, si è scelto di non passarli dal CMS.
+> **Nota:** la collection `partners` mostrata nelle specifiche iniziali **non è stata implementata** nel `config.yml` effettivo. I dati testuali e i metadati delle card partner (nomi, ruoli, descrizioni Home/Partners, URL sito e LinkedIn, riferimenti ai loghi) vivono in **`data/partners.yaml`** e vengono resi tramite i partial `partners-card-inner.html`, `partners-card-grid.html` (Home) e `partners-page-rows.html` (pagina Partners); `layouts/partners/list.html` orchestra le sezioni della pagina e include il partial della sezione «Our Partners». I file immagine dei loghi restano in **`static/images/partners/`**. Non essendo contenuti che cambiano spesso, non sono esposti nel CMS Decap; gli aggiornamenti avvengono via Git sul YAML e sugli asset statici.
 
 ### 2.3 Funzionamento Git Gateway
 

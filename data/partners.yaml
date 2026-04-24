@@ -1,0 +1,112 @@
+# DAMAGER consortium — single source for partner cards (Home grid + Partners rows).
+# description_partners: testi estesi pagina Partners dal mockup contenuti Website (Aprile 2026).
+
+- id: hit09
+  coordinator: true
+  name: "HIT09 SRL"
+  country_label: "Italy"
+  country_flag_alt: "Italy"
+  flag: "/images/flags/it.svg"
+  logo: "/images/partners/hit09.png"
+  logo_alt: "HIT09 SRL logo"
+  role_home: "Project Coordinator"
+  description_home: "HIT09 SRL is an Italian SME specialized in advanced design and engineering for aerospace and defence applications. As coordinator of DAMAGER, HIT09 leads the consortium and oversees all technical and administrative activities."
+  role_partners: "Project Coordinator"
+  description_partners: |
+    HIT09 (Coordinator) is an Italian SME created in 2010 as a spin-off company from the University of Padova, which offers specialised engineering and consultancy services in Aerospace & Defence. Main competencies are in the field of design optimisation, numerical simulations and code development with a focus in aircraft propulsion systems design and propulsion/airframe integration. In addition, HIT09 is dedicated to design, prototyping and testing of small propulsors for UAV and/or ultra-light aircrafts. HIT09 members combine decades of expertise in various fields of mechanical and aerospace engineering, ranging from design of propulsion systems, computational analyses and experimental measurements, to the design and realization of complex systems that have been also tested in flight. HIT09 is deeply involved in EU-funded research projects in aeronautics (15+) mainly devoted to aircraft and propulsion design optimisation and complex fluid-dynamic numerical simulations including testing in wind tunnels. Currently coordinator of two EDF projects.
+
+    In DAMAGER, HIT09 contributes to:
+
+    - Multidisciplinary optimisation of highly-efficient, low-cost turbojet architectures
+    - Integrated aero-propulsive performance modelling
+    - Design strategies enabling rapid manufacturing and deployment
+  website: "https://www.hit09.com/advanced-design"
+  linkedin: "https://www.linkedin.com/company/hit09-srl/"
+
+- id: lithoz
+  coordinator: false
+  name: "LITHOZ GMBH"
+  country_label: "Austria"
+  country_flag_alt: "Austria"
+  flag: "/images/flags/at.svg"
+  logo: "/images/partners/lithoz.jpg"
+  logo_alt: "LITHOZ GMBH logo"
+  role_home: "Expert in ceramic additive manufacturing"
+  description_home: "Lithoz GmbH is a world-leading Austrian company in high-performance ceramic additive manufacturing. Within DAMAGER, Lithoz contributes expertise in 3D printing of ceramic components for high-temperature turbine applications."
+  role_partners: "Expert in ceramic additive manufacturing"
+  description_partners: |
+    LITHOZ is a R&D driven SME which develops and distributes AM systems for ceramic materials on the basis of the patented Lithography-based Ceramic Manufacturing (LCM) technology. This technology is capable of structuring a broad range of photopolymers, including ceramic filled resins. Lithoz covers the whole process chain from the material development over the material processing to the development of the hard- and software, making them to a strong partner for R&D projects. Lithoz is continuously developing their LCM process and is building up a unique know-how in this field through continuous innovation and development. Lithoz currently employs 40 researchers working on the development of the machine, photopolymerizable resins, ceramics, software and application technology.
+
+    In DAMAGER, LITHOZ contributes to:
+
+    - Ceramic AM processes for turbojet components exposed to extreme conditions
+    - Development of materials enabling high-temperature, low-cost solutions
+    - Prototyping and testing of critical ceramic elements
+  website: "https://www.lithoz.com/en/"
+  linkedin: "https://www.linkedin.com/company/lithoz/"
+
+- id: aenium
+  coordinator: false
+  name: "AENIUM ENGINEERING SL"
+  country_label: "Spain"
+  country_flag_alt: "Spain"
+  flag: "/images/flags/es.svg"
+  logo: "/images/partners/aenium.png"
+  logo_alt: "AENIUM ENGINEERING SL logo"
+  role_home: "Expert in metal additive manufacturing"
+  description_home: "Aenium Engineering SL is a Spanish company specializing in metal additive manufacturing and advanced materials. In DAMAGER, Aenium focuses on manufacturing of metallic turbojet components using cutting-edge AM processes."
+  role_partners: "Expert in metal additive manufacturing"
+  description_partners: |
+    AENIUM is a Spanish additive manufacturing and materials engineering SME, established in 2018 and headquartered in the Boecillo Technology Park (Valladolid). The company delivers end-to-end industrialisation of high-value metal components through qualified laser-based additive manufacturing, supported by advanced alloy and powder engineering, process and inspection procedure development, and in-house post-processing, metrology, and testing for final part qualification and certification. AENIUM serves demanding sectors including space hardware, defence, energy and industrial applications, leveraging vertically integrated capabilities and international partnerships to support OEM programmes from concept design to serial production readiness.
+
+    In DAMAGER, AENIUM contributes to:
+
+    - AM production of turbojet components for low-cost, scalable manufacturing
+    - Qualification of materials and processes for expendable systems
+    - Enabling rapid manufacturing cycles for large-volume deployment
+  website: "https://aenium.es/"
+  linkedin: "https://www.linkedin.com/company/aenium-engineering/"
+
+- id: ergon
+  coordinator: false
+  name: "ERGON RESEARCH SRL"
+  country_label: "Italy"
+  country_flag_alt: "Italy"
+  flag: "/images/flags/it.svg"
+  logo: "/images/partners/ergon.jpg"
+  logo_alt: "ERGON RESEARCH SRL logo"
+  role_home: "Research — CFD and thermal analysis"
+  description_home: "Ergon Research SRL is an Italian research company with expertise in aerodynamics, CFD and thermal management. Within DAMAGER, Ergon Research leads the aerodynamic design and simulation activities."
+  role_partners: "Research — CFD and thermal analysis"
+  description_partners: |
+    ERGON RESEARCH was founded in 2008, nominated spin-off of the University of Florence from 2012 to 2022 and is currently recognized also Innovative SME. It is specialized in technology transfer from the research world to the industry, working in the fields of combustion, energy, fluid dynamics, turbomachinery and thermal management. Ergon Research counts about 35 people, 12 of which have a PhD in Engineering, Chemistry or Physics, and an internal HPC cluster of 1000+ cores. The mission is to innovate products by exploiting simulations (CFD, FEM, MBSE), developing codes and supporting experimental tests. The company and its members have large experience in regional, national and European funded R&D programmes (FP7, Horizon Europe, Clean Sky 2, Clean Aviation, FF4EuroHPC, EuroHPC and European Defence Fund).
+
+    In DAMAGER, ERGON contributes to:
+
+    - Thermofluid design of recuperators and combustors
+    - Design for AM and thermomechanical verifications of all components
+    - Validation of enabling technologies based on experimental testing
+  website: "https://www.ergonresearch.it/it/"
+  linkedin: "https://www.linkedin.com/company/ergon-research"
+
+- id: comoti
+  coordinator: false
+  name: "COMOTI"
+  country_label: "Romania"
+  country_flag_alt: "Romania"
+  flag: "/images/flags/ro.svg"
+  logo: "/images/partners/comoti.png"
+  logo_alt: "COMOTI logo"
+  role_home: "National R&D institute — testing and validation"
+  description_home: "COMOTI is the Romanian National R&D Institute for Gas Turbines. In DAMAGER, COMOTI contributes unique expertise in turbojet testing, experimental validation and performance assessment."
+  role_partners: "National R&D institute — testing and validation"
+  description_partners: |
+    COMOTI operates at the forefront of aerospace, energy, environment and defense technologies. Its core activities span advanced research, engineering design, manufacturing, testing and technological transfer for aircraft and industrial gas turbines, high-speed rotating machinery and propulsion systems. COMOTI is deeply involved in European aviation and space programs, contributing to low-noise, low-emission engines, satellite propulsion, launch systems and additive manufacturing technologies. In the energy sector, the institute develops gas turbines, compressors, cogeneration solutions and equipment for natural gas and renewable energy applications. Complementing these efforts, COMOTI delivers expertise in environmental protection, noise and vibration reduction, and defense-related propulsion and maintenance systems.
+
+    In DAMAGER, COMOTI contributes to:
+
+    - Experimental testing of turbojet enabling technologies
+    - Validation of low-cost manufacturing approaches
+    - Integration of scalable propulsion concepts for UAV deployment
+  website: "https://comoti.ro/en/home-2/"
+  linkedin: "https://www.linkedin.com/company/comoti-incdt/"

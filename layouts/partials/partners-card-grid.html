@@ -1,7 +1,7 @@
 {{/*
-  Partner cards grid — used on Home and Partners pages.
-  Each card: website link + company LinkedIn (FASE 8).
-  Call with dict: (dict "sectionAlt" true) on Home, (dict "sectionAlt" false) on Partners.
+  Partner cards — Home: responsive multi-column .card-grid.
+  Data: data/partners.yaml → site.Data.partners
+  Call: (dict "sectionAlt" true|false)
 */}}
 {{- $sectionAlt := default false (index . "sectionAlt") -}}
 <section class="section partners-cards-section{{ if $sectionAlt }} section--alt{{ end }}">
@@ -10,104 +10,9 @@
     <h2 class="section-title">Our Partners</h2>
 
     <div class="card-grid">
-
-      {{/* Partner 1 — HIT09 SRL (Coordinator) */}}
-      <div class="card-partner card-partner--coordinator">
-        <span class="coordinator-badge">Coordinator</span>
-
-        <div class="card-partner__logo">
-          <img src="/images/partners/hit09.png" alt="HIT09 SRL logo">
-        </div>
-
-        <p class="card-partner__country"><img src="/images/flags/it.svg" alt="Italy" class="country-flag"> Italy</p>
-        <h3 class="card-partner__name">HIT09 SRL</h3>
-        <p class="card-partner__role">Project Coordinator</p>
-        <p class="card-partner__desc">HIT09 SRL is an Italian SME specialized in advanced design and engineering for aerospace and defence applications. As coordinator of DAMAGER, HIT09 leads the consortium and oversees all technical and administrative activities.</p>
-        <div class="card-partner__footer">
-          <a href="https://www.hit09.com/advanced-design" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
-          <a href="https://www.linkedin.com/company/hit09-srl/" class="card-partner__linkedin" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      {{/* Partner 2 — LITHOZ GMBH */}}
-      <div class="card-partner">
-        <div class="card-partner__logo">
-          <img src="/images/partners/lithoz.jpg" alt="LITHOZ GMBH logo">
-        </div>
-
-        <p class="card-partner__country"><img src="/images/flags/at.svg" alt="Austria" class="country-flag"> Austria</p>
-        <h3 class="card-partner__name">LITHOZ GMBH</h3>
-        <p class="card-partner__role">Expert in ceramic additive manufacturing</p>
-        <p class="card-partner__desc">Lithoz GmbH is a world-leading Austrian company in high-performance ceramic additive manufacturing. Within DAMAGER, Lithoz contributes expertise in 3D printing of ceramic components for high-temperature turbine applications.</p>
-        <div class="card-partner__footer">
-          <a href="https://www.lithoz.com/en/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
-          <a href="https://www.linkedin.com/company/lithoz/" class="card-partner__linkedin" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      {{/* Partner 3 — AENIUM ENGINEERING SL */}}
-      <div class="card-partner">
-        <div class="card-partner__logo">
-          <img src="/images/partners/aenium.png" alt="AENIUM ENGINEERING SL logo">
-        </div>
-
-        <p class="card-partner__country"><img src="/images/flags/es.svg" alt="Spain" class="country-flag"> Spain</p>
-        <h3 class="card-partner__name">AENIUM ENGINEERING SL</h3>
-        <p class="card-partner__role">Expert in metal additive manufacturing</p>
-        <p class="card-partner__desc">Aenium Engineering SL is a Spanish company specializing in metal additive manufacturing and advanced materials. In DAMAGER, Aenium focuses on manufacturing of metallic turbojet components using cutting-edge AM processes.</p>
-        <div class="card-partner__footer">
-          <a href="https://aenium.es/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
-          <a href="https://www.linkedin.com/company/aenium-engineering/" class="card-partner__linkedin" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      {{/* Partner 4 — ERGON RESEARCH SRL */}}
-      <div class="card-partner">
-        <div class="card-partner__logo">
-          <img src="/images/partners/ergon.jpg" alt="ERGON RESEARCH SRL logo">
-        </div>
-
-        <p class="card-partner__country"><img src="/images/flags/it.svg" alt="Italy" class="country-flag"> Italy</p>
-        <h3 class="card-partner__name">ERGON RESEARCH SRL</h3>
-        <p class="card-partner__role">Research — CFD and thermal analysis</p>
-        <p class="card-partner__desc">Ergon Research SRL is an Italian research company with expertise in aerodynamics, CFD and thermal management. Within DAMAGER, Ergon Research leads the aerodynamic design and simulation activities.</p>
-        <div class="card-partner__footer">
-          <a href="https://www.ergonresearch.it/it/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
-          <a href="https://www.linkedin.com/company/ergon-research" class="card-partner__linkedin" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
-      {{/* Partner 5 — COMOTI */}}
-      <div class="card-partner">
-        <div class="card-partner__logo">
-          <img src="/images/partners/comoti.png" alt="COMOTI logo">
-        </div>
-
-        <p class="card-partner__country"><img src="/images/flags/ro.svg" alt="Romania" class="country-flag"> Romania</p>
-        <h3 class="card-partner__name">COMOTI</h3>
-        <p class="card-partner__role">National R&amp;D institute — testing and validation</p>
-        <p class="card-partner__desc">COMOTI is the Romanian National R&amp;D Institute for Gas Turbines. In DAMAGER, COMOTI contributes unique expertise in turbojet testing, experimental validation and performance assessment.</p>
-        <div class="card-partner__footer">
-          <a href="https://comoti.ro/en/home-2/" class="card-partner__link" target="_blank" rel="noopener noreferrer">Visit website →</a>
-          <a href="https://www.linkedin.com/company/comoti-incdt/" class="card-partner__linkedin" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
-
+      {{- range site.Data.partners -}}
+        {{- partial "partners-card-inner.html" (dict "partner" . "variant" "home") -}}
+      {{- end -}}
     </div>
   </div>
 </section>

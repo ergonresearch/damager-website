@@ -1,7 +1,7 @@
 # FASE 8 — Riordino contenuti (Home, Project, Partners)
 
-> **Versione:** 1.8 | **Data:** Aprile 2026  
-> **Stato:** In corso — **Home (F8.A–C)** e **Project About (F8.D)** completate in codice; **F8.E** (Partners) specificata in dettaglio (implementazione codice in attesa di conferma).  
+> **Versione:** 1.9 | **Data:** Aprile 2026  
+> **Stato:** **Home (F8.A–C)**, **Project About (F8.D)** e **Partners — Our Partners (F8.E)** completate in codice. Restano eventuali evoluzioni redazionali sui testi in `data/partners.yaml`.  
 > **Branch:** develop
 
 ---
@@ -28,10 +28,10 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 | Stili card condivise (mixin rilievo) | [`assets/scss/_components.scss`](../assets/scss/_components.scss) — `card-base` |
 | Partial pilastri | [`layouts/partials/home-pillars.html`](../layouts/partials/home-pillars.html) |
 | Partial What is DAMAGER | [`layouts/partials/home-what-is-damager.html`](../layouts/partials/home-what-is-damager.html) |
-| Dati partner (previsto) | [`data/partners.yaml`](../data/partners.yaml) — unica fonte per URL, logo, testi Home vs Partners (vedi **F8.E**) |
-| Partial Home partner | [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia multi-colonna; `sectionAlt` true |
-| Partial Partners «Our Partners» | [`layouts/partials/partners-page-rows.html`](../layouts/partials/partners-page-rows.html) *(da creare)* — una card per riga; non riusare il markup della Home |
-| Partial card singola *(previsto)* | [`layouts/partials/partners-card-inner.html`](../layouts/partials/partners-card-inner.html) — markup `.card-partner` condiviso, alimentato dal dato + variante `home` / `partners` |
+| Dati partner | [`data/partners.yaml`](../data/partners.yaml) — unica fonte: URL, logo, `description_home` / `description_partners`, ecc. (vedi **F8.E**) |
+| Partial Home partner | [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia `.card-grid` multi-colonna; `range` + `partners-card-inner` con `variant: home`; chiamata con `sectionAlt` true |
+| Partial Partners «Our Partners» | [`layouts/partials/partners-page-rows.html`](../layouts/partials/partners-page-rows.html) — sezione dedicata pagina `/partners`; griglia **`.partners-page-rows__grid`** (1 colonna); `variant: partners` |
+| Partial card singola | [`layouts/partials/partners-card-inner.html`](../layouts/partials/partners-card-inner.html) — corpo `.card-partner`; descrizione via **`markdownify`** (liste Markdown per i contributi DAMAGER sulla variante Partners) |
 | Immagine UAV Home | `static/images/home/uav-sweden-concept.webp` |
 | Documento master indice fasi | [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) |
 
@@ -96,11 +96,11 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 ## F8.C — Home: «Our Partners» + LinkedIn
 
-**Markup di partenza:** stessa struttura della sezione *Partner Cards* in [`layouts/partners/list.html`](../layouts/partners/list.html) (eyebrow «Consortium Members», titolo «Our Partners», `card-grid`, cinque `card-partner`).
+**Markup di partenza (F5 / prima di F8):** sezione *Partner Cards* inline in [`layouts/partners/list.html`](../layouts/partners/list.html) (eyebrow «Consortium Members», titolo «Our Partners», `card-grid`, cinque `card-partner`). **Oggi:** la Home usa [`partners-card-grid.html`](../layouts/partials/partners-card-grid.html); `/partners` usa [`partners-page-rows.html`](../layouts/partials/partners-page-rows.html); `list.html` include solo il partial, non duplica il markup delle cinque card.
 
 **Implementazione attuale (Home):** griglia in [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html), inclusa dalla Home con `sectionAlt` true.
 
-**Evoluzione prevista (F8.E):** la pagina `/partners` **non** riuserà più lo stesso partial/layout della Home per «Our Partners»; resterà comune solo il **modello dati** (YAML) e, in implementazione, un partial **interno** per il corpo della singola card (vedi **F8.E**). Gli URL **LinkedIn** definiti qui sotto restano la fonte per entrambe le superfici.
+**Pagina `/partners` (F8.E):** la sezione «Our Partners» usa il partial dedicato **`partners-page-rows.html`** (non `partners-card-grid.html`). Home e Partners condividono **`data/partners.yaml`** e **`partners-card-inner.html`**. Gli URL **LinkedIn** in tabella restano la fonte di verità (duplicati nel YAML).
 
 **Aggiunta obbligatoria su ogni card:** link alla company page LinkedIn, `target="_blank"`, `rel="noopener noreferrer"` (stesso approccio del link LinkedIn nella contact card HIT09 sulla Home). Nella riga azioni (`.card-partner__footer`), **Visit website →** è allineato a sinistra e **LinkedIn** all’estrema destra (`flex` + `justify-content: space-between`).
 
@@ -151,7 +151,7 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 ## F8.E — Partners page: sezione «Our Partners» (distinta dalla Home)
 
-> **Stato documentazione:** specifica e architettura sotto approvate come riferimento. **Implementazione Hugo/SCSS:** in attesa di **conferma esplicita** prima di modificare repository (partial, `data/`, `list.html`).
+> **Stato implementazione:** completata in repository — vedi file in tabella «Componente» sotto. I testi lunghi della pagina Partners si aggiornano in **`data/partners.yaml`** (`description_partners`, elenchi Markdown).
 
 ### Requisiti (mockup contenuti Partners concordato)
 
@@ -172,7 +172,7 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 ---
 
-### Architettura consigliata (ordinata, DRY, mantenibile)
+### Architettura (ordinata, DRY, mantenibile)
 
 Obiettivo: **un solo posto** per sito, LinkedIn, logo, paese, flag; **due testi** dove serve (anteprima Home vs copy completo su Partners); **due shell** di pagina (griglia vs righe) che delegano a un **unico** partial per il corpo della card.
 
@@ -197,33 +197,15 @@ flowchart TB
 | Componente | Ruolo |
 |------------|--------|
 | **`data/partners.yaml`** | Lista ordinata di partner. Campi minimi suggeriti: `id`, `name`, `country_label`, `flag` (path SVG), `coordinator` (bool), `role_home`, `role_partners` *(se il mockup unifica ruolo+descrizione, un solo campo `role_partners` + `description_partners`)*, `description_home`, `description_partners`, `website`, `linkedin`, `logo`, `logo_alt`. I testi **Partners** devono riflettere il **mockup Partners** concordato; i testi **Home** possono restare più brevi finché il mockup Home non li aggiorna. |
-| **`partners-card-inner.html`** | Riceve un dizionario (es. `partner` + `variant` = `home` \| `partners`). Renderizza struttura `.card-partner` (logo, paese, nome, ruolo, descrizione in base alla variante, footer con Visit website + LinkedIn). Nessuna duplicazione delle cinque card in HTML lungo. |
-| **`partners-card-grid.html`** | Solo Home: `<section>`, eyebrow/titolo, wrapper **`.card-grid`** (comportamento attuale multi-colonna), `range` su `site.Data.partners`, per ogni elemento chiama `partners-card-inner` con `variant: home`. Parametro `sectionAlt` invariato. |
-| **`partners-page-rows.html`** | Solo Partners: `<section>` con sfondo bianco come oggi, eyebrow/titolo allineati al mockup Partners concordato, wrapper **`.card-grid.card-grid--partners-page`** (o classe dedicata in `_partners.scss`) con **`grid-template-columns: 1fr`** a tutti i breakpoint, `range` sugli stessi dati, `partners-card-inner` con `variant: partners`. |
-| **`layouts/partners/list.html`** | Sostituire l’inclusione attuale di `partners-card-grid.html` con `partners-page-rows.html`. |
-| **SCSS** | In [`assets/scss/_partners.scss`](../assets/scss/_partners.scss) (o `_components.scss`): modificatore **`.card-grid--partners-page`** che forza 1 colonna e annulla le media query multi-colonna di [`.card-grid`](../assets/scss/_components.scss). Opzionale: layout orizzontale logo+testo da un breakpoint se il mockup lo richiede. |
+| **`partners-card-inner.html`** | Dizionario `partner` + `variant` (`home` \| `partners`). Struttura `.card-partner`; descrizione con **`markdownify`** in **`<div class="card-partner__desc">`** (paragrafi e liste Markdown). Footer Visit website + LinkedIn. |
+| **`partners-card-grid.html`** | Solo Home: `<section>`, **`.card-grid`**, `range site.Data.partners` → `partners-card-inner` con `variant: home`. Parametro `sectionAlt`. |
+| **`partners-page-rows.html`** | Solo Partners: sezione **`.partners-page-rows`**, griglia **`.partners-page-rows__grid`** (1 colonna), `variant: partners`. |
+| **`layouts/partners/list.html`** | Blocco B: `partners-page-rows.html` (non `partners-card-grid.html`). |
+| **SCSS** | `_partners.scss`: **`.partners-page-rows__grid`**; bullet elenchi descrizione Partners — **`🚀`** via **`::before`** su **`ul li`** dentro **`.partners-page-rows .card-partner__desc`**. `_components.scss`: annidamento **`p` / `ul` / `li`** sotto **`.card-partner__desc`**. |
 
-**Schema YAML di esempio** (indicativo; adattare ai campi reali del mockup Partners):
+**Schema YAML** (il file [`data/partners.yaml`](../data/partners.yaml) è una **lista radice** di mappe — `site.Data.partners` in Hugo; ogni voce: `id`, `name`, `coordinator`, `country_label`, `country_flag_alt`, `flag`, `logo`, `logo_alt`, `role_home`, `description_home`, `role_partners`, `description_partners` con blocco letterale `|` per testi lunghi e liste Markdown, `website`, `linkedin`).
 
-```yaml
-partners:
-  - id: hit09
-    name: "HIT09 SRL"
-    coordinator: true
-    country_label: "Italy"
-    flag: "/images/flags/it.svg"
-    role_home: "Project Coordinator"
-    description_home: "…"
-    role_partners: "…"
-    description_partners: "… testo Partners (mockup concordato) …"
-    website: "https://www.hit09.com/advanced-design"
-    linkedin: "https://www.linkedin.com/company/hit09-srl/"
-    logo: "/images/partners/hit09.png"
-    logo_alt: "HIT09 SRL logo"
-  # … altri 4 partner
-```
-
-**Ordine di implementazione suggerito** (dopo conferma): (1) creare `data/partners.yaml` migrando i contenuti attuali da `partners-card-grid.html`; (2) estrarre `partners-card-inner.html`; (3) refactor `partners-card-grid.html` a `range`; (4) aggiungere `partners-page-rows.html` + SCSS; (5) aggiornare `layouts/partners/list.html`; (6) compilare `description_partners` / ruoli dal mockup Partners concordato; (7) build Hugo e controllo accessibilità.
+**Implementazione (completata):** dati centralizzati; partial inner + griglia Home + righe Partners; `list.html` aggiornato; `description_partners` allineato al mockup Partners; elenchi con marcatori razzo in CSS sulla sola pagina Partners.
 
 ---
 
@@ -245,13 +227,13 @@ Hero
 
 - [x] **F8.1** Sezione tre pilastri in Home (markup + testi concordati)  
 - [x] **F8.2** Sezione What is DAMAGER: testi, immagine da `.webp` in `static/images/home/`, didascalia, acronimo, griglia 8  
-- [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su tutte e 5 le card; inclusione Home (e Partners fino a separazione **F8.E**)  
+- [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn; inclusione **solo Home** (griglia da `data/partners.yaml`)  
 - [x] **F8.4** Stili in `_home.scss` (pilastri, figura+didascalia, griglia 8); ritocchi `card-partner` in `_components.scss`  
 - [x] **F8.5** Verifica build Hugo, responsive, heading hierarchy  
 - [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro `.project-about-lead`, sei `about-card`, coordinate anchor (compressore 17%/70%) — documentata in questo file e in `SPECIFICHE_SITO.md`  
 - [x] **F8.7** Implementazione codice pagina Project secondo **F8.D** (intro `.project-about-lead`, 6 card, griglia SCSS)  
-- [x] **F8.E-spec** Specifica **F8.E**: Partners «Our Partners» distinta dalla Home, una riga per partner, testi mockup Partners concordato, architettura `data/partners.yaml` + partial (documentato qui e in `SPECIFICHE_SITO.md`)  
-- [ ] **F8.E-code** Implementazione codice **F8.E** (`data/partners.yaml`, `partners-card-inner`, `partners-page-rows`, refactor griglia Home, SCSS) — **in attesa di conferma**  
+- [x] **F8.E-spec** Specifica **F8.E**: Partners «Our Partners» distinta dalla Home, una riga per partner, testi mockup Partners, architettura dati + partial (documentato qui e in `SPECIFICHE_SITO.md`)  
+- [x] **F8.E-code** Implementazione **F8.E**: `data/partners.yaml`, `partners-card-inner.html`, `partners-page-rows.html`, refactor `partners-card-grid.html`, `_partners.scss` (griglia a una colonna + bullet razzo), `partners-card-inner` + `markdownify` e annidamento in `_components.scss`  
 
 ---
 
@@ -261,4 +243,4 @@ Con l’introduzione di questa FASE 8, nel documento master **Deploy e Go-Live**
 
 ---
 
-*FASE 8 — Riordino contenuti | DAMAGER Website v1.9 | Aprile 2026*
+*FASE 8 — Riordino contenuti | DAMAGER Website v2.1 | Aprile 2026*
