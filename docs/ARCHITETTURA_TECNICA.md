@@ -1,6 +1,6 @@
 # 🏗️ ARCHITETTURA TECNICA — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.4 | **Data:** Aprile 2026  
+**Versione:** 1.5 | **Data:** Aprile 2026  
 **Destinatari:** Sviluppatori, Responsabile tecnico  
 **Obiettivo:** Descrivere stack tecnologico, architettura, CMS, hosting e sicurezza
 
@@ -204,7 +204,9 @@ damager-website/
 │   │   ├── timeline.html      # Partial timeline con aeroplano SVG
 │   │   ├── home-pillars.html  # Home — tre pilastri SES (FASE 8)
 │   │   ├── home-what-is-damager.html  # Home — blocco What is DAMAGER (FASE 8)
-│   │   └── partners-card-grid.html    # Griglia card partner — Home + Partners (FASE 8)
+│   │   ├── partners-card-grid.html    # Home — griglia partner (FASE 8; refactor verso `data/partners.yaml` — F8.E)
+│   │   ├── partners-page-rows.html    # Partners — «Our Partners» una riga per partner (F8.E, da creare)
+│   │   └── partners-card-inner.html   # Corpo singola `.card-partner` da dati (F8.E, da creare)
 │   ├── index.html             # Template Home (hero + partial F8 + timeline + eventi + contatto)
 │   ├── project/
 │   │   └── list.html          # Project: About (F8.D — intro, engine, 6 card) + Details + Timeline
@@ -214,6 +216,8 @@ damager-website/
 │       ├── list.html          # Template Media page (tab navigation)
 │       └── news/
 │           └── single.html    # Template articolo singolo news
+├── data/
+│   └── partners.yaml              # Consorzio: partner, URL, testi Home vs Partners (F8.E — previsto)
 ├── assets/
 │   ├── scss/
 │   │   ├── main.scss              # Entry point — importa tutti i partial

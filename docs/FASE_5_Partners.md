@@ -1,11 +1,11 @@
 # FASE 5 — Partners Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.1 | **Data:** Aprile 2026  
+**Versione:** 2.2 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1–4 completate  
 **Obiettivo:** Implementare la pagina Partners (`/partners`) con tutte le sezioni previste nelle specifiche
 
-> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 5**. Il partial griglia partner condiviso con la Home, i link **LinkedIn** sulle card e le evoluzioni previste per la pagina Partners nella **FASE 8** (**F8.C**, **F8.E**) sono descritti in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicati qui.
+> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 5**. Il partial griglia partner condiviso con la Home, i link **LinkedIn** sulle card e le evoluzioni previste per la pagina Partners nella **FASE 8** (**F8.C**, **F8.E**) sono descritti in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicati qui. **F8.E (previsto):** `data/partners.yaml` come fonte unica, partial dedicato alla pagina Partners (`partners-page-rows.html`) distinto dalla griglia Home, una riga per partner, testi dal mockup Partners concordato — vedi sezione **F8.E** nello stesso documento.
 
 ---
 

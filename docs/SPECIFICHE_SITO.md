@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.6 | **Data:** Aprile 2026  
+**Versione:** 1.8 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -261,76 +261,36 @@ Visualizzazione grafica ad alto impatto:
 
 ---
 
-### B) Partner Cards
+### B) Partner — Home vs pagina Partners
 
-Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`), ruolo, descrizione, link al sito ufficiale, link **LinkedIn** (company page) in riga con il link al sito. Le emoji di bandiera non vengono renderizzate su browser desktop Windows. La griglia è inclusa tramite partial Hugo condiviso con la Home (`partners-card-grid.html`); sulla pagina Partners lo sfondo della sezione card resta bianco.
+**Fonte dati (prevista, F8.E):** un file [`data/partners.yaml`](../data/partners.yaml) con un record per partner: logo, nome, paese, bandiera SVG (`static/images/flags/`), link sito, link **LinkedIn** (company), più **due varianti testuali** dove serve — breve/anteprima per la **Home** e copy **verbatim** dal mockup **Partners** concordato per la pagina **Partners**. Le emoji di bandiera non vengono usate in pagina (solo SVG). Architettura dei partial: vedi [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) sezione **F8.E** (inner + griglia Home + righe Partners).
 
----
+#### B1) Home — «Our Partners» (anteprima)
 
-**Partner 1 — HIT09 SRL** *(Coordinatore)*
+- Partial: [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia **responsiva** (1 → 2 → 3 colonne come `.card-grid` in [`assets/scss/_components.scss`](../assets/scss/_components.scss)).
+- Contenuti: varianti **Home** dal dato (`description_home` / `role_home` o equivalente).
+- Footer card: *Visit website →* e **LinkedIn** (`justify-content: space-between`); URL LinkedIn come da tabella in **F8.C** / **F8.E** del documento FASE 8.
 
-| Campo | Valore |
-|-------|--------|
-| Sito | https://www.hit09.com/advanced-design |
-| Paese | 🇮🇹 Italia |
-| Ruolo | Project Coordinator |
-| Logo | `static/images/partners/hit09.png` |
-| Descrizione placeholder | *"HIT09 SRL is an Italian SME specialized in advanced design and engineering for aerospace and defence applications. As coordinator of DAMAGER, HIT09 leads the consortium and oversees all technical and administrative activities."* |
+#### B2) Pagina `/partners` — «Our Partners» (mockup dedicato)
 
-⚠️ Indirizzo fisico sede e descrizione ufficiale: **da fornire internamente**.
+- **Diversa dalla Home:** partial dedicato (es. `partners-page-rows.html`), **non** il riuso dello stesso layout della griglia Home.
+- **Layout:** **una riga per partner** (colonna singola a tutti i breakpoint; modificatore SCSS tipo `.card-grid--partners-page` in [`assets/scss/_partners.scss`](../assets/scss/_partners.scss)).
+- **Contenuti:** ruolo e descrizione (e ogni altro testo previsto) **verbatim** dal mockup **Partners** concordato; campo/i dedicati nel YAML (`description_partners`, ecc.).
+- **LinkedIn:** stessi URL della Home (nessuna nuova tabella qui — unica fonte in `partners.yaml` + tabella **F8**).
 
----
+#### Elenco partner e asset logo (invariati)
 
-**Partner 2 — LITHOZ GMBH**
+| # | Partner | Logo in `static/images/partners/` |
+|---|---------|--------------------------------------|
+| 1 | HIT09 SRL *(coordinator)* | `hit09.png` |
+| 2 | LITHOZ GMBH | `lithoz.jpg` |
+| 3 | AENIUM ENGINEERING SL | `aenium.png` |
+| 4 | ERGON RESEARCH SRL | `ergon.jpg` |
+| 5 | COMOTI | `comoti.png` |
 
-| Campo | Valore |
-|-------|--------|
-| Sito | https://www.lithoz.com/en/ |
-| Paese | 🇦🇹 Austria |
-| Ruolo | Expert in ceramic additive manufacturing |
-| Logo | `static/images/partners/lithoz.jpg` |
-| Descrizione placeholder | *"Lithoz GmbH is a world-leading Austrian company in high-performance ceramic additive manufacturing. Within DAMAGER, Lithoz contributes expertise in 3D printing of ceramic components for high-temperature turbine applications."* |
+Siti ufficiali e note redazionali (indirizzi mappa, testi da interno) restano governati come in precedenza; dopo **F8.E-code** i paragrafi lunghi non si duplicano nel template ma vivono nel **YAML**.
 
----
-
-**Partner 3 — AENIUM ENGINEERING SL**
-
-| Campo | Valore |
-|-------|--------|
-| Sito | https://aenium.es/ |
-| Paese | 🇪🇸 Spagna |
-| Ruolo | Expert in metal additive manufacturing |
-| Logo | `static/images/partners/aenium.png` |
-| Descrizione placeholder | *"Aenium Engineering SL is a Spanish company specializing in metal additive manufacturing and advanced materials. In DAMAGER, Aenium focuses on manufacturing of metallic turbojet components using cutting-edge AM processes."* |
-
----
-
-**Partner 4 — ERGON RESEARCH SRL**
-
-| Campo | Valore |
-|-------|--------|
-| Sito | https://www.ergonresearch.it/it/ |
-| Paese | 🇮🇹 Italia |
-| Ruolo | Research — CFD and thermal analysis |
-| Logo | `static/images/partners/ergon.jpg` |
-| Descrizione placeholder | *"Ergon Research SRL is an Italian research company with expertise in aerodynamics, CFD and thermal management. Within DAMAGER, Ergon Research leads the aerodynamic design and simulation activities."* |
-
-⚠️ Indirizzo fisico sede e descrizione ufficiale: **da fornire internamente**.
-
----
-
-**Partner 5 — COMOTI**
-
-| Campo | Valore |
-|-------|--------|
-| Sito | https://comoti.ro/en/home-2/ |
-| Paese | 🇷🇴 Romania |
-| Ruolo | National R&D institute — testing and validation |
-| Logo | `static/images/partners/comoti.png` |
-| Descrizione placeholder | *"COMOTI is the Romanian National R&D Institute for Gas Turbines. In DAMAGER, COMOTI contributes unique expertise in turbojet testing, experimental validation and performance assessment."* |
-
-✅ URL confermato: https://comoti.ro/en/home-2/ — versione EN disponibile.
-
+> **Implementazione:** documentata come **F8.E-code** in [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) — **in attesa di conferma** prima di creare i file nel repository.
 
 ---
 
