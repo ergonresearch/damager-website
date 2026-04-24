@@ -1,6 +1,6 @@
 # 🏗️ ARCHITETTURA TECNICA — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 1.1 | **Data:** Aprile 2026  
 **Destinatari:** Sviluppatori, Responsabile tecnico  
 **Obiettivo:** Descrivere stack tecnologico, architettura, CMS, hosting e sicurezza
 
@@ -117,9 +117,9 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Analytics            │ Google Analytics 4 (caricato solo su consent)│
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Mappe                │ OpenStreetMap embed — migrazione Leaflet.js  │
-│                      │ pianificata (marker 5 partner, nessuna API   │
-│                      │ key, GDPR-friendly)                          │
+│ Mappe                │ Leaflet.js + tile OpenStreetMap (Partners,   │
+│                      │ 5 marker; lazy-load; consenso cookie       │
+│                      │ funzionali — vedi FASE 7)                    │
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Font                 │ Google Fonts — Inter                         │
 ├──────────────────────┼──────────────────────────────────────────────┤
@@ -201,8 +201,11 @@ damager-website/
 │   ├── partials/
 │   │   ├── header.html        # Header sticky con menu + hamburger mobile
 │   │   ├── footer.html        # Footer con EU disclaimer + link legali
-│   │   └── timeline.html      # Partial timeline con aeroplano SVG
-│   ├── index.html             # Template Home page (5 sezioni)
+│   │   ├── timeline.html      # Partial timeline con aeroplano SVG
+│   │   ├── home-pillars.html  # Home — tre pilastri SES (FASE 8)
+│   │   ├── home-what-is-damager.html  # Home — blocco What is DAMAGER (FASE 8)
+│   │   └── partners-card-grid.html    # Griglia card partner — Home + Partners (FASE 8)
+│   ├── index.html             # Template Home (hero + partial F8 + timeline + eventi + contatto)
 │   ├── project/
 │   │   └── list.html          # Template Project page (4 sezioni)
 │   ├── partners/
@@ -221,7 +224,7 @@ damager-website/
 │   │   ├── _components.scss       # Card (news, doc, partner), bottoni, form, progress bar, tab nav
 │   │   ├── _timeline.scss         # Timeline animata con aeroplano SVG
 │   │   ├── _decorations.scss      # Decorazioni SVG di sfondo (g5.svg + g3175.svg)
-│   │   ├── _home.scss             # Stili specifici Home page (hero, contact layout)
+│   │   ├── _home.scss             # Home: hero, pilastri, what-is, contact layout (FASE 8 in parte)
 │   │   ├── _project.scss          # Stili specifici Project page (engine block, gif-card, about-card)
 │   │   ├── _partners.scss         # Stili specifici Partners page (stat box, coordinator badge, mappa)
 │   │   ├── _media.scss            # Stili specifici Media page (news list, doc groups, publications)
@@ -237,6 +240,7 @@ damager-website/
 │   │   ├── backgrounds/       # Decorazioni SVG: g3175.svg (anello compressore) + g5.svg (halftone dots) ✅
 │   │   ├── eu-logo/           # Logo EU (bandiera europea) ✅
 │   │   ├── partners/          # Loghi definitivi dei 5 partner ✅
+│   │   ├── home/              # Asset Home aggiuntivi (es. UAV concept .webp, FASE 8) ✅
 │   │   └── uploads/           # Immagini caricate da CMS (foto news, ecc.)
 │   └── documents/             # PDF scaricabili (factsheet, press release, deliverable, ecc.)
 └── docs/                      # Documentazione di progetto
@@ -560,5 +564,5 @@ git checkout develop          # tornare su develop
 
 ---
 
-*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.0 | Marzo 2026*  
+*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.1 | Aprile 2026*  
 **File correlato:** `docs/SPECIFICHE_SITO.md` — identità visiva, struttura pagine, contenuti

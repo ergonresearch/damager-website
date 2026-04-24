@@ -1,6 +1,6 @@
 # 🗂️ FASE 0B — Raccolta e Preparazione degli Asset
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.0 | **Data:** Marzo 2026  
+**Versione:** 2.1 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1-6 completate (struttura Hugo e tutte le pagine con placeholder)  
 **Obiettivo:** Raccogliere e convertire i materiali grafici e testuali definitivi, sostituendo i placeholder inseriti durante il blocco FASI 3-6
 
@@ -39,7 +39,7 @@ Durante lo sviluppo delle pagine (FASI 3-6) vengono usati i seguenti placeholder
 | Logo Ergon Research | Box grigio con testo "ERGON" | `static/images/partners/ergon-logo.png` |
 | Logo COMOTI | Box grigio con testo "COMOTI" | `static/images/partners/comoti-logo.png` |
 
-> `turbojet.png` è già disponibile in `resources/` e viene usato direttamente nella hero section — non richiede placeholder.
+> `turbojet.png` in `resources/` è la CAD per la **Project page** (`static/images/engine/turbojet.png`). La **hero Home** usa `turbojet_half.png` (metà superiore pre-ritagliata) in `static/images/turbojet_half.png` — vedi checklist F0B.5.
 
 ---
 
@@ -460,4 +460,4 @@ La corrispondenza tra le cartelle è la seguente:
 
 ---
 
-*Documento FASE 0B — Progetto DAMAGER Website | Versione 2.0 | Marzo 2026*
+*Documento FASE 0B — Progetto DAMAGER Website | Versione 2.1 | Aprile 2026*

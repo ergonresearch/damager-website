@@ -5,8 +5,6 @@
 **Prerequisiti:** FASE 1, 2 e 3 completate  
 **Obiettivo:** Implementare la pagina Project (`/project`) con tutte le sezioni previste nelle specifiche
 
-> **Aggiornamento (FASE 8):** una futura riorganizzazione della sezione «About the project» sarà pianificata in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) (sezione F8.D — TBD).
-
 ---
 
 ## Checklist

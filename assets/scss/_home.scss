@@ -188,3 +188,161 @@ abbr[title="required"] {
     &:hover { opacity: 0.65; }
   }
 }
+
+// ────────────────────────────────────
+// Home — three pillars (FASE 8)
+// ────────────────────────────────────
+.home-pillars {
+  &__main-title {
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $space-12;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @media (min-width: $bp-lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-8;
+    }
+  }
+
+  &__cell {
+    @include card-base;
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 800;
+    margin: 0;
+    line-height: $line-height-tight;
+  }
+
+  &__tagline {
+    font-size: $font-size-base;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.45;
+    color: $black;
+  }
+
+  &__body {
+    font-size: $font-size-sm;
+    color: $gray-800;
+    line-height: 1.65;
+    margin: 0;
+  }
+}
+
+// ────────────────────────────────────
+// Home — What is DAMAGER (FASE 8)
+// ────────────────────────────────────
+.home-what-is {
+  &__intro {
+    width: 100%;
+    max-width: none;
+
+    p {
+      font-size: $font-size-base;
+      color: $gray-800;
+      line-height: $line-height;
+      margin: 0 0 $space-6;
+
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  &__intro-lead {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    line-height: 1.7;
+    color: $gray-800;
+    margin: 0 0 $space-6;
+  }
+
+  &__tech-list {
+    margin: 0 0 $space-6;
+    padding-left: 1.25rem;
+    font-size: $font-size-base;
+    color: $gray-800;
+    line-height: $line-height;
+
+    li { margin-bottom: $space-3; }
+    li:last-child { margin-bottom: 0; }
+  }
+
+  &__figure {
+    margin: $space-12 0 $space-10;
+    max-width: 100%;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: $border;
+    background: $gray-100;
+  }
+
+  &__caption {
+    margin: $space-3 0 0;
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: 1.45;
+    text-align: center;
+    font-style: italic;
+  }
+
+  &__acronym {
+    font-size: clamp(1rem, 2.5vw, $font-size-2xl);
+    color: rgba(0, 0, 0, 0.72);
+    max-width: 780px;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0 auto $space-12;
+    text-align: center;
+
+    strong {
+      color: $black;
+      font-weight: 800;
+      font-style: normal;
+    }
+  }
+
+  &__concept-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-4;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: $bp-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $bp-lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $space-5;
+    }
+  }
+
+  &__concept-cell {
+    @include card-base;
+    padding: $space-5 $space-4;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+    color: $black;
+  }
+}

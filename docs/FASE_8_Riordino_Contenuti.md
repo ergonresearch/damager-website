@@ -1,7 +1,7 @@
 # FASE 8 — Riordino contenuti (Home, Project, Partners)
 
-> **Versione:** 1.0 | **Data:** Aprile 2026  
-> **Stato:** In corso (specifica approvata; implementazione da eseguire)  
+> **Versione:** 1.3 | **Data:** Aprile 2026  
+> **Stato:** In corso — **Home (F8.A–C) completata** in codice; restano **F8.D–E** (Project / Partners) da dettagliare.  
 > **Branch:** develop
 
 ---
@@ -21,7 +21,19 @@ Riallineare il sito al mockup contenutistico della prima slide del file PowerPoi
 | Partners attuale | [`layouts/partners/list.html`](../layouts/partners/list.html) |
 | Stili Home | [`assets/scss/_home.scss`](../assets/scss/_home.scss) |
 | Stili Partners | [`assets/scss/_partners.scss`](../assets/scss/_partners.scss) |
+| Stili card condivise (mixin rilievo) | [`assets/scss/_components.scss`](../assets/scss/_components.scss) — `card-base` |
+| Partial pilastri | [`layouts/partials/home-pillars.html`](../layouts/partials/home-pillars.html) |
+| Partial What is DAMAGER | [`layouts/partials/home-what-is-damager.html`](../layouts/partials/home-what-is-damager.html) |
+| Partial griglia partner | [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — chiamata con `dict` (`sectionAlt` true sulla Home, false su Partners) |
+| Immagine UAV Home | `static/images/home/uav-sweden-concept.webp` |
 | Documento master indice fasi | [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) |
+
+### Sintesi implementativa (Home)
+
+- **Sfondi alternati** dopo l’hero: pilastri `section--alt` (grigio) → What is DAMAGER bianco → Our Partners `section--alt` sulla sola Home → timeline bianca → eventi `section--alt` → contact blueprint. La pagina Partners mantiene la griglia partner su fondo bianco (`sectionAlt` false nel partial).
+- **Rilievo schede:** celle pilastri (`.home-pillars__cell`) e celle concetti (`.home-what-is__concept-cell`) usano `@include card-base` come le `.card-partner`.
+- **What is DAMAGER:** nessun eyebrow (solo `<h2>`); **testo sopra l’immagine:** blocco intro a **larghezza piena** del contenitore (allineato all’immagine); prima frase in **`.home-what-is__intro-lead`** tutta in grassetto (`font-weight: 700`), dimensione intro `$font-size-lg`.
+- **Partner card:** riga `.card-partner__footer` con *Visit website* a sinistra e *LinkedIn* a destra (`justify-content: space-between`).
 
 ---
 
@@ -43,16 +55,18 @@ Riallineare il sito al mockup contenutistico della prima slide del file PowerPoi
 
 ## F8.B — Home: «What is DAMAGER»
 
+**Eyebrow:** nessuno — il titolo `<h2>What is DAMAGER</h2>` è sufficiente; si evita il duplicato semantico con la sezione Project «About the Project».
+
 **Ordine dei blocchi:**
 
-1. Testo introduttivo dalla slide (finanziamento EC / European Defence Fund, bisogni, paragrafi su swarm/larger UAV, ecc.). Includere il blocco **«To answer these challenges…»** con le **quattro aree tecnologiche** (coppie titolo + continuazione «to improve…» / «to reduce…» / ecc.) e la chiusura su modellazione numerica e test sperimentali, come sul mockup.
+1. Testo introduttivo dalla slide (finanziamento EC / European Defence Fund, bisogni, paragrafi su swarm/larger UAV, ecc.). La **prima frase** è resa in grassetto intero (`.home-what-is__intro-lead`); il blocco intro ha la **stessa larghezza** dell’immagine sotto (full width del `.container`). Includere il blocco **«To answer these challenges…»** con le **quattro aree tecnologiche** (coppie titolo + continuazione «to improve…» / «to reduce…» / ecc.) e la chiusura su modellazione numerica e test sperimentali, come sul mockup.
 2. **Immagine** (formato wide ~2:1).  
    - **Sorgente file:** `https://nextgendefense.com/wp-content/uploads/2025/12/uav-sweden-concept.webp`  
    - In repository: copiare l’asset sotto `static/images/home/` (nome stabile, es. `uav-sweden-concept.webp`) per indipendenza dal CDN esterno.  
    - **Non** mostrare alcun link di riferimento accanto all’immagine in pagina.
 3. **Didascalia** sotto l’immagine (testo letterale dalla slide):  
    `Concept photo of GKN Aerospace’s UAV. Photo: GKN Aerospace`
-4. **Nome esteso / acronimo DAMAGER:** stesso schema della hero (`hero__subtitle` con lettere evidenziate in `<strong>`), allineato al contenuto attuale in [`layouts/index.html`](../layouts/index.html).
+4. **Nome esteso / acronimo DAMAGER:** stesso schema della hero (`hero__subtitle` con lettere evidenziate in `<strong>`), come in [`layouts/index.html`](../layouts/index.html) (classe `.home-what-is__acronym`).
 5. **Griglia 8 concetti** (2 righe × 4 colonne da breakpoint `md`/`lg`; impilamento su mobile), testi esatti slide:
    - Low-cost, high-performance turbojet propulsion for future UAV platforms  
    - Scalable solutions for mass deployment and rapid manufacturing  
@@ -73,7 +87,7 @@ Riallineare il sito al mockup contenutistico della prima slide del file PowerPoi
 
 **Implementazione consigliata:** estrarre la griglia in [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) e includerla nella pagina Partners e nella Home.
 
-**Aggiunta obbligatoria su ogni card:** link alla company page LinkedIn, `target="_blank"`, `rel="noopener noreferrer"` (stesso approccio del link LinkedIn nella contact card HIT09 sulla Home).
+**Aggiunta obbligatoria su ogni card:** link alla company page LinkedIn, `target="_blank"`, `rel="noopener noreferrer"` (stesso approccio del link LinkedIn nella contact card HIT09 sulla Home). Nella riga azioni (`.card-partner__footer`), **Visit website →** è allineato a sinistra e **LinkedIn** all’estrema destra (`flex` + `justify-content: space-between`).
 
 | Partner | URL LinkedIn |
 |---------|----------------|
@@ -117,11 +131,11 @@ Hero
 
 ## Checklist implementazione
 
-- [ ] **F8.1** Sezione tre pilastri in Home (markup + testi slide)  
-- [ ] **F8.2** Sezione What is DAMAGER: testi, immagine da `.webp` in `static/images/home/`, didascalia, acronimo, griglia 8  
-- [ ] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su tutte e 5 le card; inclusione in Partners e Home  
-- [ ] **F8.4** Stili in `_home.scss` (pilastri, figura+didascalia, griglia 8); eventuali ritocchi `_partners.scss`  
-- [ ] **F8.5** Verifica build Hugo, responsive, heading hierarchy  
+- [x] **F8.1** Sezione tre pilastri in Home (markup + testi slide)  
+- [x] **F8.2** Sezione What is DAMAGER: testi, immagine da `.webp` in `static/images/home/`, didascalia, acronimo, griglia 8  
+- [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su tutte e 5 le card; inclusione in Partners e Home  
+- [x] **F8.4** Stili in `_home.scss` (pilastri, figura+didascalia, griglia 8); ritocchi `card-partner` in `_components.scss`  
+- [x] **F8.5** Verifica build Hugo, responsive, heading hierarchy  
 - [ ] **F8.TBD** Completare sezione F8.D (Project) quando disponibili i dettagli  
 - [ ] **F8.TBD** Completare sezione F8.E (Partners page) quando disponibili i dettagli  
 
@@ -133,4 +147,4 @@ Con l’introduzione di questa FASE 8, nel documento master **Deploy e Go-Live**
 
 ---
 
-*FASE 8 — Riordino contenuti | DAMAGER Website | Aprile 2026*
+*FASE 8 — Riordino contenuti | DAMAGER Website v1.3 | Aprile 2026*

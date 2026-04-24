@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.1 | **Data:** Aprile 2026  
+**Versione:** 4.2 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -57,7 +57,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 |------|-----------|-------|
 | [`FASE_1_Setup_Hugo_CMS.md`](FASE_1_Setup_Hugo_CMS.md) | Inizializzazione progetto Hugo + Decap CMS | ✅ Completata |
 | [`FASE_2_Template.md`](FASE_2_Template.md) | Tema grafico bianco/nero | ✅ Completata |
-| [`FASE_3_Home.md`](FASE_3_Home.md) | Home page (hero, EU disclaimer, progress bar, eventi, form) | ✅ Completata |
+| [`FASE_3_Home.md`](FASE_3_Home.md) | Home page — implementazione base FASE 3 (hero, progress bar, eventi, form; EU in footer) | ✅ Completata |
 | [`FASE_4_Project.md`](FASE_4_Project.md) | Project page (intro, dettagli, timeline, research areas) | ✅ Completata |
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
@@ -169,11 +169,11 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > Specifica dettagliata: [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md)
 
-- [ ] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup PPT
-- [ ] **F8.2** Home — sezione «What is DAMAGER» (testi, immagine `.webp`, didascalia GKN, acronimo, griglia 8 concetti)
-- [ ] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su ogni card partner; inclusione Home e pagina Partners
-- [ ] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti partner se necessario
-- [ ] **F8.5** Verifica build Hugo, responsive, accessibilità heading
+- [x] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup PPT
+- [x] **F8.2** Home — sezione «What is DAMAGER» (testi, immagine `.webp`, didascalia GKN, acronimo, griglia 8 concetti)
+- [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su ogni card partner; inclusione Home e pagina Partners
+- [x] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti `card-partner` in `_components.scss`
+- [x] **F8.5** Verifica build Hugo, responsive, accessibilità heading
 - [ ] **F8.TBD** Riorganizzazione pagina Project («About the project») — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
 - [ ] **F8.TBD** Riorganizzazione pagina Partners — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
 
@@ -265,5 +265,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.1 | Aprile 2026*  
+*Progetto DAMAGER Website — Documento Master v4.2 | Aprile 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*

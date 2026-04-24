@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 1.2 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -38,7 +38,7 @@ Il sito adotta una palette **bianco e nero** coerente con il logo ufficiale DAMA
 |------|----------|
 | `resources/DAMAGER_logo.pdf` | Logo nell'header (da convertire in SVG/PNG) |
 | `resources/background_template.pdf` | Riferimento per sfondi decorativi (compressore/turbina) |
-| `resources/turbojet.png` | Immagine hero della Home page |
+| `resources/turbojet.png` | Sezione motore Project (CAD); variante `turbojet_half.png` in `static/images/` per la hero Home |
 | `resources/FACTSHEET_EDF_2024_...pdf` | Testi del progetto + documento scaricabile |
 
 ### 1.4 Immagini di sfondo — Blueprint tecnico
@@ -52,7 +52,7 @@ Stile consigliato: **wireframe monocromatico** — linee grigio chiaro su sfondo
 
 ### 1.5 Logo EU/EDF — Disclaimer obbligatorio
 
-Il disclaimer EU deve apparire nella **Home page** e nel **footer** di ogni pagina:
+Il testo del disclaimer EU è **obbligatorio**; in implementazione attuale compare nel **footer** di ogni pagina (con logo EU). Una sezione dedicata in Home non è più prevista — vedi nota in §3.B.
 
 ```
 Logo: "Funded by the European Union"
@@ -98,29 +98,47 @@ Layout: logo EU a sinistra, testo a destra (su desktop); impilati verticalmente 
 
 ## 3. HOME PAGE (`/`)
 
-Sezioni dall'alto verso il basso:
+Sezioni dall'alto verso il basso (**ordine implementato**). Il dettaglio markup dei blocchi aggiunti dopo la FASE 3 è in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
 
 ---
 
 ### A) Hero Section
 
-- **Immagine di sfondo full-width:** `turbojet.png`
-- **Overlay:** leggero overlay nero semitrasparente per leggibilità
-- **Titolo:** `DAMAGER` (grande, bianco, grassetto)
-- **Sottotitolo:** *stuDy of Additive ManufActuring for low-cost, low-observable, hiGhly-deployable, expendablE/attritable tuRbojet engines*
+- **Immagine di sfondo full-width:** `turbojet_half.png` (`/images/turbojet_half.png`) — metà superiore pre-ritagliata, ancorata al fondo della hero
+- **Overlay:** gradiente scuro per leggibilità del testo in alto
+- **Titolo:** logo **DAMAGER** come SVG bianco inline (`<h1 class="hero__logo">`, `damager-logo-white.svg`)
+- **Sottotitolo:** acronimo espanso; lettere **DAMAGER** evidenziate in grassetto bianco pieno
 - Nessun bottone call-to-action (il menu è sufficiente)
 
 ---
 
 ### B) EU Funding Disclaimer
 
-> ⚠️ **Modifica rispetto alle specifiche originali:** il blocco EU disclaimer è stato spostato nel **footer** (presente su tutte le pagine) anziché nella Home. La sezione B della Home è stata eliminata per mantenere il flusso visivo più pulito. Il testo obbligatorio e il logo EU rimangono visibili nel footer su ogni pagina del sito.
+> ⚠️ **Rispetto alle specifiche originali:** il blocco EU disclaimer non è una sezione della Home; il testo obbligatorio e il logo EU sono nel **footer** su ogni pagina.
 
 ---
 
-### C) Project Progress Bar
+### C) Tre pilastri — Scalability, Efficiency, Survivability
 
-Barra di avanzamento dinamica calcolata automaticamente in base alla data corrente:
+Sezione introduttiva a tre colonne (contenuti da mockup progetto). Sfondo alternato grigio chiaro (`section--alt`). Vedi **F8.A** in `FASE_8_Riordino_Contenuti.md`.
+
+---
+
+### D) What is DAMAGER
+
+Blocco testuale (finanziamento EDF, bisogni, aree tecnologiche), immagine UAV wide, didascalia GKN, riga acronimo DAMAGER, griglia di 8 concetti. Sfondo bianco. Nessun eyebrow sopra il titolo. Vedi **F8.B** in `FASE_8_Riordino_Contenuti.md`.
+
+---
+
+### E) Our Partners (anteprima consorzio)
+
+Stesse cinque card della pagina Partners, con link al sito e a LinkedIn. Sfondo alternato sulla Home. Partial Hugo condiviso; vedi **F8.C** in `FASE_8_Riordino_Contenuti.md`.
+
+---
+
+### F) Project Progress Bar
+
+Eyebrow **Project Timeline**. Barra di avanzamento dinamica calcolata automaticamente in base alla data corrente:
 
 ```
 Project Progress
@@ -135,20 +153,21 @@ Project Progress
 
 ---
 
-### D) Upcoming Events
+### G) Upcoming Events
 
-- Titolo: **"Upcoming Events"**
+- Eyebrow: **Upcoming Events** — titolo di sezione: **Mark your calendar**
 - Card stilizzata per ogni evento futuro:
   - Bordo nero, sfondo bianco, data in evidenza
-  - Titolo, luogo, data, descrizione breve
+  - Titolo, data (mese/anno; giorno opzionale se noto), descrizione breve
 - Primo evento preconfigurato:
   - **DAMAGER M12 Meeting** — dicembre 2026 (luogo da confermare)
-- Link "View all events" → `/media#events`
-
+- Link "View all events" → `/media/#events`
 
 ---
 
-### E) Contact us
+### H) Contact us
+
+- Eyebrow: **Get in touch** — titolo: **Contact us**
 
 Form di contatto con i campi:
 
@@ -158,7 +177,7 @@ Form di contatto con i campi:
 | Email | Email | ✅ |
 | Subject | Testo | ✅ |
 | Message | Textarea | ✅ |
-| [SEND] | Button | — |
+| Send Message | Button | — |
 
 - I messaggi vengono inviati a: **info@hit09.com** (Netlify Forms — configurare notifica in dashboard Netlify → Form notifications)
 - **Referente:** Rita Ponza — Project Coordinator
@@ -180,7 +199,7 @@ La sezione è strutturata in tre blocchi verticali su sfondo blueprint:
 **1 — Header** (pattern standard del sito): eyebrow "EDF 2024 — Research Action", titolo "About the Project", testo introduttivo.
 
 **2 — Blocco motore turbojet:**
-- Fotografia CAD della sezione trasversale reale del motore (`turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (compressore 28%/93%, combustore 53%/86%, turbina 76%/78%).
+- Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (compressore 28%/93%, combustore 53%/86%, turbina 76%/78%).
 - Tre linee tratteggiate SVG (`stroke-width: 2`) vengono disegnate dinamicamente da JavaScript, collegando gli anchor point al bordo superiore di ciascuna card media sottostante. Le linee si ricalcolano ad ogni resize tramite `ResizeObserver`.
 - Tre card media in griglia 3 colonne (1 colonna su mobile): `compressor.webm` (video loop, `object-fit: cover`), `combustor.png` (immagine, `object-fit: contain`), `turbine.webm` (video loop, `object-fit: cover`).
 
@@ -248,7 +267,7 @@ Visualizzazione grafica ad alto impatto:
 
 ### B) Partner Cards
 
-Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`), ruolo, descrizione, link al sito ufficiale. Le emoji di bandiera non vengono renderizzate su browser desktop Windows.
+Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`), ruolo, descrizione, link al sito ufficiale, link **LinkedIn** (company page) in riga con il link al sito. Le emoji di bandiera non vengono renderizzate su browser desktop Windows. La griglia è inclusa tramite partial Hugo condiviso con la Home (`partners-card-grid.html`); sulla pagina Partners lo sfondo della sezione card resta bianco.
 
 ---
 
@@ -259,7 +278,7 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 | Sito | https://www.hit09.com/advanced-design |
 | Paese | 🇮🇹 Italia |
 | Ruolo | Project Coordinator |
-| Logo | `resources/partners/hit09-logo.png` |
+| Logo | `static/images/partners/hit09.png` |
 | Descrizione placeholder | *"HIT09 SRL is an Italian SME specialized in advanced design and engineering for aerospace and defence applications. As coordinator of DAMAGER, HIT09 leads the consortium and oversees all technical and administrative activities."* |
 
 ⚠️ Indirizzo fisico sede e descrizione ufficiale: **da fornire internamente**.
@@ -273,7 +292,7 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 | Sito | https://www.lithoz.com/en/ |
 | Paese | 🇦🇹 Austria |
 | Ruolo | Expert in ceramic additive manufacturing |
-| Logo | `resources/partners/lithoz-logo.png` |
+| Logo | `static/images/partners/lithoz.jpg` |
 | Descrizione placeholder | *"Lithoz GmbH is a world-leading Austrian company in high-performance ceramic additive manufacturing. Within DAMAGER, Lithoz contributes expertise in 3D printing of ceramic components for high-temperature turbine applications."* |
 
 ---
@@ -285,7 +304,7 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 | Sito | https://aenium.es/ |
 | Paese | 🇪🇸 Spagna |
 | Ruolo | Expert in metal additive manufacturing |
-| Logo | `resources/partners/aenium-logo.png` |
+| Logo | `static/images/partners/aenium.png` |
 | Descrizione placeholder | *"Aenium Engineering SL is a Spanish company specializing in metal additive manufacturing and advanced materials. In DAMAGER, Aenium focuses on manufacturing of metallic turbojet components using cutting-edge AM processes."* |
 
 ---
@@ -297,7 +316,7 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 | Sito | https://www.ergonresearch.it/it/ |
 | Paese | 🇮🇹 Italia |
 | Ruolo | Research — CFD and thermal analysis |
-| Logo | `resources/partners/ergon-logo.png` |
+| Logo | `static/images/partners/ergon.jpg` |
 | Descrizione placeholder | *"Ergon Research SRL is an Italian research company with expertise in aerodynamics, CFD and thermal management. Within DAMAGER, Ergon Research leads the aerodynamic design and simulation activities."* |
 
 ⚠️ Indirizzo fisico sede e descrizione ufficiale: **da fornire internamente**.
@@ -311,7 +330,7 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 | Sito | https://comoti.ro/en/home-2/ |
 | Paese | 🇷🇴 Romania |
 | Ruolo | National R&D institute — testing and validation |
-| Logo | `resources/partners/comoti-logo.png` |
+| Logo | `static/images/partners/comoti.png` |
 | Descrizione placeholder | *"COMOTI is the Romanian National R&D Institute for Gas Turbines. In DAMAGER, COMOTI contributes unique expertise in turbojet testing, experimental validation and performance assessment."* |
 
 ✅ URL confermato: https://comoti.ro/en/home-2/ — versione EN disponibile.
@@ -319,12 +338,10 @@ Per ogni partner: logo, nome, paese (con bandiera SVG da `static/images/flags/`)
 
 ---
 
-### C) Mappa del Consorzio (Google Maps)
+### C) Mappa del Consorzio (Leaflet + OpenStreetMap)
 
-- Mappa interattiva Google Maps (embed gratuito) con marker per ogni sede partner
-- Stile mappa: monocromatico grigio (Snazzy Maps, coerente con la palette del sito)
-- Clic su marker → popup con nome partner e link al sito
-- Se l'utente non ha accettato i cookie funzionali → placeholder statico con bottone "Enable Map"
+- Mappa interattiva **Leaflet.js** con tile **OpenStreetMap** (nessuna API key), marker per sede (coordinate a livello città)
+- Se l'utente non ha accettato i cookie **funzionali** → overlay con invito ad abilitare la mappa (coerente con cookie policy / FASE 7)
 
 ---
 
@@ -434,5 +451,5 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.1 | Marzo 2026*  
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.2 | Aprile 2026*  
 **File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza
