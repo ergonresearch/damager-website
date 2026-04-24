@@ -5,6 +5,8 @@
 **Prerequisiti:** FASE 1 (Hugo + CMS) e FASE 2 (Template grafico) completate  
 **Obiettivo:** Implementare la Home page (`/`) con tutte le sezioni previste nelle specifiche
 
+> **Aggiornamento (FASE 8):** un riordino contenutistico della Home (nuove sezioni tra Hero e Project Timeline, partial partner con LinkedIn, ecc.) è specificato in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md). Le checklist F3.x qui sotto restano lo storico dell’implementazione originale.
+
 ---
 
 ## Checklist

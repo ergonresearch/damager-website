@@ -5,6 +5,8 @@
 **Prerequisiti:** FASE 1–4 completate  
 **Obiettivo:** Implementare la pagina Partners (`/partners`) con tutte le sezioni previste nelle specifiche
 
+> **Aggiornamento (FASE 8):** link LinkedIn sulle card partner, partial condiviso con la Home, e futura riorganizzazione approfondita della pagina sono descritti in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
+
 ---
 
 ## Checklist

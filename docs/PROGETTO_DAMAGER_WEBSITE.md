@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.0 | **Data:** Marzo 2026  
+**Versione:** 4.1 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -62,10 +62,11 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
-| `FASE_8_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
-| `FASE_9_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
+| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (mockup PPT), partial partner + LinkedIn; placeholder riordino Project / Partners | In corso |
+| `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
+| `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
-> **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali.
+> **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali. Dopo la FASE 7, la **FASE 8** (riordino contenuti Home / Project / Partners) aggiorna layout e testi senza modificare la numerazione delle fasi 0-7 già completate.
 
 ---
 
@@ -76,7 +77,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0A.1** Repository GitHub creato (`ergonresearch/damager-website`, pubblico) ✅
 - [x] **F0A.2** Account Netlify + URL staging (`damager-website.netlify.app`) ✅
 
-- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 9 — Deploy)*
 - [x] **F0A.4** Hugo Extended installato ✅ (`v0.158.0+extended`)
 
 
@@ -164,22 +165,34 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F7.6** Cookie Policy scritta → `content/cookie-policy.md`
 - [x] **F7.7** Link "Cookie Preferences" nel footer
 
-### FASE 8 — Deploy e Go-Live
+### FASE 8 — Riordino contenuti (Home / Project / Partners)
 
-- [ ] **F8.0** Acquisto dominio `damager.eu` (registrar OVH/Aruba, a nome HIT09 SRL)
-- [ ] **F8.1** DNS configurato (`damager.eu` → Netlify)
-- [ ] **F8.2** HTTPS attivato (automatico)
-- [ ] **F8.3** Test cross-browser (Chrome, Firefox, Safari, Edge)
-- [ ] **F8.4** Test mobile (iOS, Android)
-- [ ] **F8.5** Test form di contatto (email ricevuta)
-- [ ] **F8.6** Test CMS (inserimento news, upload PDF)
-- [ ] **F8.7** Test cookie consent
+> Specifica dettagliata: [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md)
 
-### FASE 9 — Formazione editor
+- [ ] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup PPT
+- [ ] **F8.2** Home — sezione «What is DAMAGER» (testi, immagine `.webp`, didascalia GKN, acronimo, griglia 8 concetti)
+- [ ] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su ogni card partner; inclusione Home e pagina Partners
+- [ ] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti partner se necessario
+- [ ] **F8.5** Verifica build Hugo, responsive, accessibilità heading
+- [ ] **F8.TBD** Riorganizzazione pagina Project («About the project») — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
+- [ ] **F8.TBD** Riorganizzazione pagina Partners — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
 
-- [ ] **F9.1** Guida utente CMS (screenshots passo-passo)
-- [ ] **F9.2** Invito editor tramite Netlify Identity
-- [ ] **F9.3** Sessione training
+### FASE 9 — Deploy e Go-Live
+
+- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar OVH/Aruba, a nome HIT09 SRL)
+- [ ] **F9.1** DNS configurato (`damager.eu` → Netlify)
+- [ ] **F9.2** HTTPS attivato (automatico)
+- [ ] **F9.3** Test cross-browser (Chrome, Firefox, Safari, Edge)
+- [ ] **F9.4** Test mobile (iOS, Android)
+- [ ] **F9.5** Test form di contatto (email ricevuta)
+- [ ] **F9.6** Test CMS (inserimento news, upload PDF)
+- [ ] **F9.7** Test cookie consent
+
+### FASE 10 — Formazione editor
+
+- [ ] **F10.1** Guida utente CMS (screenshots passo-passo)
+- [ ] **F10.2** Invito editor tramite Netlify Identity
+- [ ] **F10.3** Sessione training
 
 ---
 
@@ -197,9 +210,10 @@ La documentazione di progetto è suddivisa in file specializzati:
 | F5 | Partners Page | 1-2 giorni |
 | F6 | Media Page + CMS | 2-3 giorni |
 | F7 | Cookie + Privacy | 1 giorno |
-| F8 | Deploy + Testing | 1 giorno |
-| F9 | Formazione | 0.5 giorni |
-| **TOTALE** | | **~14-18 giorni lavorativi** |
+| F8 | Riordino contenuti Home (+ partial partner / LinkedIn; TBD Project/Partners) | 2-4 giorni |
+| F9 | Deploy + Testing | 1 giorno |
+| F10 | Formazione | 0.5 giorni |
+| **TOTALE** | | **~16-23 giorni lavorativi** |
 
 ### Riepilogo costi
 
@@ -251,5 +265,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.0 | Marzo 2026*  
+*Progetto DAMAGER Website — Documento Master v4.1 | Aprile 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*

@@ -1,6 +1,6 @@
 # 📁 FASE 0 — Preparazione (Indice)
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 3.0 | **Data:** Marzo 2026
+**Versione:** 3.1 | **Data:** Aprile 2026
 
 ---
 
@@ -15,7 +15,7 @@ Contiene le istruzioni per configurare tutti gli strumenti tecnici necessari all
 
 - **F0A.1** — Configurazione repository GitHub e Git locale (credenziali, .gitignore, README, init, remote, branch)
 - **F0A.2** — Creazione account Netlify e collegamento al repository GitHub
-- **F0A.3** — Pre-verifica disponibilità dominio `damager.eu` *(acquisto differito alla FASE 8)*
+- **F0A.3** — Pre-verifica disponibilità dominio `damager.eu` *(acquisto differito alla FASE 9 — Deploy)*
 - **F0A.4** — Installazione Hugo Extended
 
 → [Apri FASE_0A_Setup_Stack.md](FASE_0A_Setup_Stack.md)
@@ -63,14 +63,17 @@ FASE 0B (Raccolta Asset)        ← sostituzione placeholder con asset reali
 FASE 7 (Cookie Consent + Privacy)
     │
     ▼
-FASE 8 (Deploy e Go-Live)
+FASE 8 (Riordino contenuti Home / Project / Partners)
     │
     ▼
-FASE 9 (Formazione editor)
+FASE 9 (Deploy e Go-Live)
+    │
+    ▼
+FASE 10 (Formazione editor)
 ```
 
 > La FASE 0B può essere avviata non appena Inkscape è installato (primo passo di F0B.1). Inkscape non fa parte della FASE 0A — va scaricato separatamente come da istruzioni in F0B.1.
 
 ---
 
-*Documento indice FASE 0 — Progetto DAMAGER Website | Versione 3.0 | Marzo 2026*
+*Documento indice FASE 0 — Progetto DAMAGER Website | Versione 3.1 | Aprile 2026*

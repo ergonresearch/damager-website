@@ -123,7 +123,7 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Font                 │ Google Fonts — Inter                         │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Dominio              │ damager.eu (~10-15€/anno) — acquisto FASE 8  │
+│ Dominio              │ damager.eu (~10-15€/anno) — acquisto FASE 9  │
 └──────────────────────┴──────────────────────────────────────────────┘
 ```
 
@@ -135,7 +135,7 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano (hugo server) |
 | **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity, Maps |
-| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 8) |
+| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 9 — Deploy) |
 
 
 Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify (non in locale).  
@@ -252,7 +252,10 @@ damager-website/
     ├── FASE_4_Project.md
     ├── FASE_5_Partners.md
     ├── FASE_6_Media.md
-    └── FASE_7_Cookie.md
+    ├── FASE_7_Cookie.md
+    ├── FASE_8_Riordino_Contenuti.md
+    ├── FASE_9_Deploy.md          # da creare (go-live)
+    └── FASE_10_Formazione.md     # da creare (CMS editor)
 ```
 
 ---
@@ -413,7 +416,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 ## 4. CONFIGURAZIONE DOMINIO E DNS
 
-> ⏸️ **Acquisto differito alla FASE 8.** Il sito si sviluppa e testa su `damager-website.netlify.app`.
+> ⏸️ **Acquisto differito alla FASE 9 (Deploy).** Il sito si sviluppa e testa su `damager-website.netlify.app`.
 
 
 ### 4.1 Registrazione `damager.eu`

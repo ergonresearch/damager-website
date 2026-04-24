@@ -13,7 +13,7 @@
 
 - [x] F0A.2 — Account Netlify e collegamento GitHub ✅
 
-- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 8)*
+- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 9 — Deploy)*
 
 - [x] F0A.4 — Installazione Hugo Extended ✅ (`v0.158.0+extended`)
 - [x] Verifica finale ✅
@@ -348,7 +348,7 @@ Pannello Netlify → "Site settings" → "Build & deploy" → "Branches" → "Pr
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano |
 | **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity |
-| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 8) |
+| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 9 — Deploy) |
 
 
 > Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify, non in locale.
@@ -422,7 +422,7 @@ Account Netlify creato e collegato al repository `ergonresearch/damager-website`
 
 ## F0A.3 — Dominio `damager.eu` *(DIFFERITO)*
 
-> ⏸️ **Acquisto differito alla FASE 8.** Non è necessario alcun acquisto per iniziare lo sviluppo. Il sito viene sviluppato e testato completamente sull'URL di staging gratuito.
+> ⏸️ **Acquisto differito alla FASE 9 (Deploy e Go-Live).** Non è necessario alcun acquisto per iniziare lo sviluppo. Il sito viene sviluppato e testato completamente sull'URL di staging gratuito.
 
 ### Pre-verifica da fare ora
 
@@ -441,7 +441,7 @@ Alternative se `damager.eu` fosse occupato: `damager-project.eu`, `damager-edf.e
 | **Aruba** | ~10-13€ | IT | Supporto telefonico italiano |
 | **Gandi** | ~15-18€ | IT, EN | WHOIS privacy inclusa |
 
-Il dominio va registrato a nome di **HIT09 SRL** (coordinatore del progetto). Dettagli nell'documento **FASE 8 — Deploy e Go-Live**.
+Il dominio va registrato a nome di **HIT09 SRL** (coordinatore del progetto). Dettagli nel documento **FASE 9 — Deploy e Go-Live** (file `FASE_9_Deploy.md` da creare al momento del go-live).
 
 ---
 
