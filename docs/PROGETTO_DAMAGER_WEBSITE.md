@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.2 | **Data:** Aprile 2026  
+**Versione:** 4.5 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -62,7 +62,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
-| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (mockup PPT), partial partner + LinkedIn; placeholder riordino Project / Partners | In corso |
+| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (mockup concordato); **F8.D** Project — About documentata; partial partner + LinkedIn; F8.E Partners TBD | In corso |
 | `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
@@ -169,13 +169,14 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > Specifica dettagliata: [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md)
 
-- [x] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup PPT
+- [x] **F8.1** Home — sezione tre pilastri (Scalability, Efficiency, Survivability), testi da mockup concordato
 - [x] **F8.2** Home — sezione «What is DAMAGER» (testi, immagine `.webp`, didascalia GKN, acronimo, griglia 8 concetti)
 - [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su ogni card partner; inclusione Home e pagina Partners
 - [x] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti `card-partner` in `_components.scss`
 - [x] **F8.5** Verifica build Hugo, responsive, accessibilità heading
-- [ ] **F8.TBD** Riorganizzazione pagina Project («About the project») — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
-- [ ] **F8.TBD** Riorganizzazione pagina Partners — dettagli da integrare in `FASE_8_Riordino_Contenuti.md`
+- [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro esteso, sei `about-card`, nota opzionale coordinate primo anchor — in `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`
+- [ ] **F8.7** Implementazione codice pagina Project secondo **F8.D**
+- [ ] **F8.TBD** Riorganizzazione pagina Partners — dettagli in `FASE_8_Riordino_Contenuti.md` (F8.E)
 
 ### FASE 9 — Deploy e Go-Live
 
@@ -265,5 +266,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.2 | Aprile 2026*  
+*Progetto DAMAGER Website — Documento Master v4.5 | Aprile 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*

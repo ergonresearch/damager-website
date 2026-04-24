@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.2 | **Data:** Aprile 2026  
+**Versione:** 1.5 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -194,23 +194,19 @@ Form di contatto con i campi:
 
 ### A) About the Project
 
-La sezione è strutturata in tre blocchi verticali su sfondo blueprint:
+La sezione è strutturata in tre blocchi verticali su sfondo blueprint. **Contenuti e layout della prima sezione** riflettono le **modifiche richieste e discusse** con il coordinamento (mockup contenutistico concordato; dettaglio operativo in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — **F8.D**).
 
-**1 — Header** (pattern standard del sito): eyebrow "EDF 2024 — Research Action", titolo "About the Project", testo introduttivo.
+**1 — Header** (pattern standard del sito): eyebrow *EDF 2024 — Research Action*, titolo *About the Project*, **testo introduttivo esteso** concordato: dall’inizio *«The rapid evolution…»* fino a *«…future propulsion-system development.»* (sostituisce la precedente tagline unica *Study of additive manufacturing for low-cost…*). Se il testo approvato prevede più paragrafi, il markup usa più elementi di testo coerenti con la tipografia della pagina.
 
 **2 — Blocco motore turbojet:**
-- Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (compressore 28%/93%, combustore 53%/86%, turbina 76%/78%).
-- Tre linee tratteggiate SVG (`stroke-width: 2`) vengono disegnate dinamicamente da JavaScript, collegando gli anchor point al bordo superiore di ciascuna card media sottostante. Le linee si ricalcolano ad ogni resize tramite `ResizeObserver`.
+- Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (valori indicativi di partenza: compressore 28%/93%, combustore 53%/86%, turbina 76%/78%; se serve, il primo punto si affina **manualmente** su `#dot-compressor`).
+- Tre linee tratteggiate SVG (`stroke-width: 2`) generate da JavaScript dagli anchor al bordo superiore di ciascuna card media sottostante; ricalcolo su `ResizeObserver`.
 - Tre card media in griglia 3 colonne (1 colonna su mobile): `compressor.webm` (video loop, `object-fit: cover`), `combustor.png` (immagine, `object-fit: contain`), `turbine.webm` (video loop, `object-fit: cover`).
 
-**3 — Quattro card descrittive in griglia 2×2** (1×4 su mobile):
+**3 — Sei card descrittive** (griglia responsive sotto il blocco motore; obiettivo tipico: 1 colonna mobile, 2 colonne da tablet, 3 colonne su desktop per due file da tre card):
 
-| # | Titolo | Sintesi |
-|---|--------|---------|
-| 01 | Mission background | Necessità operativa di UAV espendibili in grandi numeri |
-| 02 | Critical gaps | Limiti della produzione convenzionale sottrattiva; stealth irrisolto |
-| 03 | Technologies | AM applicata a compressore, combustore e turbina |
-| 04 | Programme goals | Validare e consegnare un sistema propulsivo scalabile e low-observable |
+- Contenuti (titolo + corpo per ciascuna delle **sei** card, numerate 01–06) **verbatim** rispetto al mockup concordato, nello stesso ordine approvato.
+- Le quattro card storiche (*Mission background*, *Critical gaps*, *Technologies*, *Programme goals*) sono **sostituite** da questa nuova serie di sei contenuti.
 
 ---
 
@@ -250,7 +246,7 @@ Visualizzazione grafica ad alto impatto:
 
 ### D) Research Areas / Technology Focus
 
-> ⚠️ **Sezione rimossa:** la sezione "Research Areas" con le 4 card tecnologiche è stata eliminata dalla Project page. Il contenuto concettuale è stato integrato e aggiornato nelle 4 card descrittive della sezione A "About the Project" (Mission background, Critical gaps, Technologies, Programme goals), che forniscono un inquadramento più preciso e operativo del progetto.
+> ⚠️ **Sezione rimossa:** la sezione "Research Areas" con le 4 card tecnologiche è stata eliminata dalla Project page in fase iniziale. L’inquadramento testuale sotto il blocco motore è evoluto secondo **F8.D**: **sei** card descrittive dal mockup concordato (non più le quattro card *Mission background* / *Critical gaps* / *Technologies* / *Programme goals*).
 
 ---
 
@@ -451,5 +447,5 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.2 | Aprile 2026*  
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.5 | Aprile 2026*  
 **File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza
