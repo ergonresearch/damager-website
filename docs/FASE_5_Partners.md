@@ -1,9 +1,11 @@
 # FASE 5 — Partners Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.0 | **Data:** Marzo 2026  
+**Versione:** 2.1 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1–4 completate  
 **Obiettivo:** Implementare la pagina Partners (`/partners`) con tutte le sezioni previste nelle specifiche
+
+> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 5**. Il partial griglia partner condiviso con la Home, i link **LinkedIn** sulle card e le evoluzioni previste per la pagina Partners nella **FASE 8** (**F8.C**, **F8.E**) sono descritti in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicati qui.
 
 ---
 

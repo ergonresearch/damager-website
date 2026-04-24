@@ -1,6 +1,6 @@
 # 🏗️ ARCHITETTURA TECNICA — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.3 | **Data:** Aprile 2026  
+**Versione:** 1.4 | **Data:** Aprile 2026  
 **Destinatari:** Sviluppatori, Responsabile tecnico  
 **Obiettivo:** Descrivere stack tecnologico, architettura, CMS, hosting e sicurezza
 
@@ -225,7 +225,7 @@ damager-website/
 │   │   ├── _timeline.scss         # Timeline animata con aeroplano SVG
 │   │   ├── _decorations.scss      # Decorazioni SVG di sfondo (g5.svg + g3175.svg)
 │   │   ├── _home.scss             # Home: hero, pilastri, what-is, contact layout (FASE 8 in parte)
-│   │   ├── _project.scss          # Project: engine block, gif-card, griglia about-cards (6 card post F8.D)
+│   │   ├── _project.scss          # Project: project-about-lead, engine block, gif-card, griglia 6 about-card
 │   │   ├── _partners.scss         # Stili specifici Partners page (stat box, coordinator badge, mappa)
 │   │   ├── _media.scss            # Stili specifici Media page (news list, doc groups, publications)
 │   │   └── _cookie-consent.scss   # Theme overrides B&W per Vanilla Cookie Consent v3
@@ -564,5 +564,5 @@ git checkout develop          # tornare su develop
 
 ---
 
-*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.3 | Aprile 2026*  
+*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.4 | Aprile 2026*  
 **File correlato:** `docs/SPECIFICHE_SITO.md` — identità visiva, struttura pagine, contenuti

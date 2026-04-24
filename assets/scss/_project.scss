@@ -3,6 +3,32 @@
 // ─────────────────────────────────────────────
 
 // ────────────────────────────────────
+// 1. About — extended intro (mockup concordato)
+// ────────────────────────────────────
+.project-about-lead {
+  // Full width of `.container` — same band as `.engine-gifs` and `.about-cards` below
+  margin-bottom: $space-12;
+  font-size: $font-size-lg;
+  line-height: 1.7;
+  color: $gray-800;
+
+  p {
+    margin: 0 0 $space-5;
+    color: inherit;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__list {
+    margin: $space-5 0;
+    padding-left: 1.25rem;
+    color: inherit;
+
+    li { margin-bottom: $space-3; }
+  }
+}
+
+// ────────────────────────────────────
 // 2. Engine block
 // ────────────────────────────────────
 .engine-block {
@@ -53,10 +79,10 @@
 }
 
 .gif-card {
+  @include card-base;
   border: 0.5px solid $gray-400;
   border-radius: $radius-sm;
   overflow: hidden;
-  background: $white;
 }
 
 .gif-media {
@@ -114,7 +140,7 @@
 }
 
 // ────────────────────────────────────
-// 3. Four descriptive cards (2×2 → 1×4 on mobile)
+// 3. Six descriptive cards (1 → 2 → 3 columns)
 // ────────────────────────────────────
 .about-cards {
   display: grid;
@@ -124,30 +150,17 @@
   @media (min-width: $bp-md) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .about-card {
+  @include card-base;
   border: 0.5px solid $gray-400;
   border-radius: $radius-sm;
   padding: $space-8;
-  background: $white;
-  transition: box-shadow $ease, transform $ease;
-
-  &:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
-    transform: translateY(-1px);
-  }
-
-  &__num {
-    display: block;
-    font-family: monospace;
-    font-size: $font-size-xs;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: $gray-400;
-    margin-bottom: $space-3;
-  }
 
   &__title {
     font-size: $font-size-lg;
@@ -155,6 +168,14 @@
     color: $black;
     margin: 0 0 $space-3;
     line-height: $line-height-tight;
+
+    &--standalone {
+      font-size: $font-size-base;
+      font-weight: 700;
+      color: $gray-800;
+      line-height: $line-height;
+      margin: 0;
+    }
   }
 
   &__body {

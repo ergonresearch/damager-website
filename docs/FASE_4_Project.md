@@ -1,9 +1,11 @@
 # FASE 4 — Project Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.0 | **Data:** Marzo 2026  
+**Versione:** 2.1 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1, 2 e 3 completate  
 **Obiettivo:** Implementare la pagina Project (`/project`) con tutte le sezioni previste nelle specifiche
+
+> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 4**. Le modifiche alla sezione About nella **FASE 8** (**F8.D**) sono descritte in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicate qui.
 
 ---
 

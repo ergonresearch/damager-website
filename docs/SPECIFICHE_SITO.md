@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.5 | **Data:** Aprile 2026  
+**Versione:** 1.6 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -196,17 +196,17 @@ Form di contatto con i campi:
 
 La sezione è strutturata in tre blocchi verticali su sfondo blueprint. **Contenuti e layout della prima sezione** riflettono le **modifiche richieste e discusse** con il coordinamento (mockup contenutistico concordato; dettaglio operativo in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — **F8.D**).
 
-**1 — Header** (pattern standard del sito): eyebrow *EDF 2024 — Research Action*, titolo *About the Project*, **testo introduttivo esteso** concordato: dall’inizio *«The rapid evolution…»* fino a *«…future propulsion-system development.»* (sostituisce la precedente tagline unica *Study of additive manufacturing for low-cost…*). Se il testo approvato prevede più paragrafi, il markup usa più elementi di testo coerenti con la tipografia della pagina.
+**1 — Header** (pattern standard del sito): eyebrow *EDF 2024 — Research Action*, titolo *About the Project*, blocco **`.project-about-lead`** (implementazione in [`layouts/project/list.html`](../layouts/project/list.html)): più paragrafi con enfasi in **`<strong>`** (contesto UAV / propulsione / sfide), due elenchi **`.project-about-lead__list`** (quattro criticità, quattro tecnologie abilitanti DAMAGER), paragrafo di chiusura senza grassetto su analisi numeriche/sperimentali e *future propulsion-system development*. Sostituisce la precedente tagline unica *Study of additive manufacturing for low-cost…*. **Layout:** il blocco intro usa la **stessa larghezza orizzontale** del contenitore (`.container`) condiviso con la griglia delle tre card media del motore e con le sei `about-cards` sotto (nessuna colonna di testo più stretta rispetto a quella fascia).
 
 **2 — Blocco motore turbojet:**
-- Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) posizionati in percentuale sui tre componenti AM (valori indicativi di partenza: compressore 28%/93%, combustore 53%/86%, turbina 76%/78%; se serve, il primo punto si affina **manualmente** su `#dot-compressor`).
+- Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) con coordinate **inline** nel template: compressore **`left: 17%; top: 70%`** (`#dot-compressor`), combustore **53% / 86%**, turbina **76% / 78%** (allineamento drop-line al mockup; eventuali ritocchi futuri solo su questi `style` nel markup).
 - Tre linee tratteggiate SVG (`stroke-width: 2`) generate da JavaScript dagli anchor al bordo superiore di ciascuna card media sottostante; ricalcolo su `ResizeObserver`.
-- Tre card media in griglia 3 colonne (1 colonna su mobile): `compressor.webm` (video loop, `object-fit: cover`), `combustor.png` (immagine, `object-fit: contain`), `turbine.webm` (video loop, `object-fit: cover`).
+- Tre card media in griglia 3 colonne (1 colonna su mobile): `compressor.webm` (video loop, `object-fit: cover`), `combustor.png` (immagine, `object-fit: contain`), `turbine.webm` (video loop, `object-fit: cover`). Stile hover «rilievo» come le altre card del sito: **`@include card-base`** in `_project.scss` su **`.gif-card`**.
 
-**3 — Sei card descrittive** (griglia responsive sotto il blocco motore; obiettivo tipico: 1 colonna mobile, 2 colonne da tablet, 3 colonne su desktop per due file da tre card):
+**3 — Sei card descrittive** (griglia responsive sotto il blocco motore: 1 colonna mobile, 2 da `md`, 3 da `lg`):
 
-- Contenuti (titolo + corpo per ciascuna delle **sei** card, numerate 01–06) **verbatim** rispetto al mockup concordato, nello stesso ordine approvato.
-- Le quattro card storiche (*Mission background*, *Critical gaps*, *Technologies*, *Programme goals*) sono **sostituite** da questa nuova serie di sei contenuti.
+- Sei celle senza indice numerico; testo **verbatim** del mockup in **`<h3 class="about-card__title about-card__title--standalone">`** (`font-weight: 700`, una frase per card, senza `about-card__body` separato).
+- Le quattro card storiche (*Mission background*, *Critical gaps*, *Technologies*, *Programme goals*) sono **sostituite** da questa serie.
 
 ---
 
@@ -447,5 +447,5 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.5 | Aprile 2026*  
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.6 | Aprile 2026*  
 **File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza

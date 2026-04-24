@@ -1,7 +1,7 @@
 # FASE 8 — Riordino contenuti (Home, Project, Partners)
 
-> **Versione:** 1.6 | **Data:** Aprile 2026  
-> **Stato:** In corso — **Home (F8.A–C) completata** in codice; **F8.D** specificata (documentazione); implementazione codice Project e **F8.E** (Partners) ancora da completare.  
+> **Versione:** 1.7 | **Data:** Aprile 2026  
+> **Stato:** In corso — **Home (F8.A–C)** e **Project About (F8.D)** completate in codice; resta **F8.E** (Partners) da dettagliare.  
 > **Branch:** develop
 
 ---
@@ -41,9 +41,9 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 ### Sintesi specifica (Project — mockup About concordato)
 
-- **Intro «About the Project»:** sostituire la tagline attuale (*Study of additive manufacturing…*) con il testo continuo **concordato**, dall’inizio *«The rapid evolution…»* fino a *«…future propulsion-system development.»* (stesso ordine e paragrafi del mockup; se più paragrafi, markup con più `<p>` o wrapper dedicato prima di `engine-block`).
-- **Collegamenti motore → card (SVG):** linee tratteggiate generate da JavaScript dagli anchor alle card media. Se la prima linea (compressore) va meglio allineata al mockup, si possono correggere **a mano** le percentuali `left` / `top` inline di `#dot-compressor` in [`layouts/project/list.html`](../layouts/project/list.html).
-- **Card sotto il motore:** sostituire le **quattro** `about-card` con **sei** contenuti (titolo + corpo) secondo il mockup concordato; griglia responsive da aggiornare in `_project.scss` (es. 1 colonna mobile, 2 colonne `md`, 3 colonne `lg` per 2×3).
+- **Intro «About the Project»:** blocco **`.project-about-lead`** in [`layouts/project/list.html`](../layouts/project/list.html) — paragrafi con **`<strong>`** sulle frasi guida, due liste **`.project-about-lead__list`** (criticità e tecnologie abilitanti), paragrafo finale di chiusura; sostituisce la tagline unica storica (*Study of additive manufacturing…*).
+- **Collegamenti motore → card (SVG):** linee tratteggiate generate da JavaScript dagli anchor alle card media. Coordinate **attuali** nel markup: `#dot-compressor` **`left: 17%; top: 70%`**, `#dot-combustor` **53% / 86%**, `#dot-turbine` **76% / 78%** (ritocchi futuri solo sugli `style` inline degli anchor).
+- **Card sotto il motore:** **sei** `.about-card` con una sola **`<h3 class="about-card__title about-card__title--standalone">`** per cella (testo verbatim del mockup); griglia in `_project.scss` (1 colonna mobile, 2 da `md`, 3 da `lg`).
 
 ---
 
@@ -118,29 +118,29 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 ### D1 — Introduttivo prima del blocco motore
 
 - **Posizione:** tra il titolo `About the Project` e `<div class="engine-block">`.
-- **Sostituzione:** rimuovere il paragrafo unico attuale (`section-intro` con *Study of additive manufacturing for low-cost…*) e inserire il testo concordato da *«The rapid evolution…»* a *«…future propulsion-system development.»*
-- **Markup:** supportare **più paragrafi** se previsti dal testo approvato; riusare o estendere le classi tipografiche esistenti (coerenza con `.section-intro` / max-width leggibile sul blueprint).
+- **Implementazione:** wrapper **`.project-about-lead`** in [`layouts/project/list.html`](../layouts/project/list.html) — paragrafi con **`<strong>`** sulle frasi guida, due **`<ul class="project-about-lead__list">`**, paragrafo finale senza grassetto; stili in `_project.scss` (larghezza piena del contenitore, allineata a griglia engine + `about-cards`; tipografia).
+- **Sostituisce:** il vecchio `section-intro` a una riga (*Study of additive manufacturing for low-cost…*).
 
 ### D2 — Engine block e linee di collegamento
 
-- Struttura attuale: `engine-droplines` SVG + immagine `turbojet.png` + tre `.engine-anchor` + tre card media (compressor / combustor / turbine).
-- **Allineamento (opzionale):** se il tratto dal compressore non coincide col mockup, correggere **a mano** le coordinate percentuali del primo anchor (`#dot-compressor`) nel markup HTML.
+- Struttura: `engine-droplines` SVG + immagine `turbojet.png` + tre `.engine-anchor` con coordinate **inline** nel markup + tre `.gif-card` (compressor / combustor / turbine).
+- **Anchor attuali** nel template: `#dot-compressor` **`left: 17%; top: 70%`**; `#dot-combustor` **`left: 53%; top: 86%`**; `#dot-turbine` **`left: 76%; top: 78%`**. Le drop-line sono disegnate da `initEngineDroplines()` in `main.js` a partire da questi punti.
 
 ### D3 — Griglia `about-cards` (sei contenuti)
 
-- Rimuovere le quattro card tematiche attuali (Mission background, Critical gaps, Technologies, Programme goals).
-- Aggiungere **sei** `.about-card` con numerazione **01–06**, titoli e paragrafi **esattamente** come nel mockup concordato (ordine rispettato).
+- Rimuovere le quattro card tematiche storiche (Mission background, Critical gaps, Technologies, Programme goals).
+- **Sei** `.about-card` con testo **verbatim** del mockup (ordine rispettato), senza prefisso numerico; una frase per cella in `<h3 class="about-card__title about-card__title--standalone">` con **`font-weight: 700`** (nessun `about-card__body` separato).
 - **Layout (indicazione implementativa):** `.about-cards` con `grid-template-columns`: 1fr (base); da breakpoint `md` due colonne; da `lg` (o `xl`) tre colonne per ottenere due file da tre card sotto il blocco motore.
 
 ### File da toccare (implementazione)
 
 | File | Modifica |
 |------|----------|
-| [`layouts/project/list.html`](../layouts/project/list.html) | Intro, sei card, eventuali `style` su `#dot-compressor` |
-| [`assets/scss/_project.scss`](../assets/scss/_project.scss) | Griglia `.about-cards` per 6 elementi; commenti |
+| [`layouts/project/list.html`](../layouts/project/list.html) | `.project-about-lead`, anchor motore (incl. compressore 17%/70%), sei `about-card` |
+| [`assets/scss/_project.scss`](../assets/scss/_project.scss) | Griglia `.about-cards`; `.gif-card` / `.about-card` con `@include card-base`; `about-card__title--standalone` |
 | [`docs/SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) | § Project — About (allineato alla specifica F8.D) |
 
-**Stato:** specifica redazionale e layout **documentata**; implementazione HTML/SCSS = task di sviluppo successivo (checklist **F8.7** sotto).
+**Stato:** implementazione allineata al mockup in [`layouts/project/list.html`](../layouts/project/list.html) + [`assets/scss/_project.scss`](../assets/scss/_project.scss) — intro `.project-about-lead`, anchor come sopra, sei card standalone in grassetto, hover rilievo su `.gif-card` e `.about-card`.
 
 ---
 
@@ -173,8 +173,8 @@ Hero
 - [x] **F8.3** Partial `partners-card-grid.html` + link LinkedIn su tutte e 5 le card; inclusione in Partners e Home  
 - [x] **F8.4** Stili in `_home.scss` (pilastri, figura+didascalia, griglia 8); ritocchi `card-partner` in `_components.scss`  
 - [x] **F8.5** Verifica build Hugo, responsive, heading hierarchy  
-- [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro, sei `about-card`, nota opzionale su coordinate primo anchor — documentata in questo file e in `SPECIFICHE_SITO.md`  
-- [ ] **F8.7** Implementazione codice pagina Project secondo **F8.D** (intro, 6 card, griglia SCSS)  
+- [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro `.project-about-lead`, sei `about-card`, coordinate anchor (compressore 17%/70%) — documentata in questo file e in `SPECIFICHE_SITO.md`  
+- [x] **F8.7** Implementazione codice pagina Project secondo **F8.D** (intro `.project-about-lead`, 6 card, griglia SCSS)  
 - [ ] **F8.TBD** Completare sezione F8.E (Partners page) quando disponibili i dettagli  
 
 ---
@@ -185,4 +185,4 @@ Con l’introduzione di questa FASE 8, nel documento master **Deploy e Go-Live**
 
 ---
 
-*FASE 8 — Riordino contenuti | DAMAGER Website v1.6 | Aprile 2026*
+*FASE 8 — Riordino contenuti | DAMAGER Website v1.8 | Aprile 2026*

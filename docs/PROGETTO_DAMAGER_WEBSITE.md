@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.5 | **Data:** Aprile 2026  
+**Versione:** 4.6 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -57,12 +57,12 @@ La documentazione di progetto è suddivisa in file specializzati:
 |------|-----------|-------|
 | [`FASE_1_Setup_Hugo_CMS.md`](FASE_1_Setup_Hugo_CMS.md) | Inizializzazione progetto Hugo + Decap CMS | ✅ Completata |
 | [`FASE_2_Template.md`](FASE_2_Template.md) | Tema grafico bianco/nero | ✅ Completata |
-| [`FASE_3_Home.md`](FASE_3_Home.md) | Home page — implementazione base FASE 3 (hero, progress bar, eventi, form; EU in footer) | ✅ Completata |
-| [`FASE_4_Project.md`](FASE_4_Project.md) | Project page (intro, dettagli, timeline, research areas) | ✅ Completata |
-| [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page (5 card + mappa placeholder) | ✅ Completata |
+| [`FASE_3_Home.md`](FASE_3_Home.md) | Home page — snapshot F3; dettagli F8.A–C in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | ✅ Completata |
+| [`FASE_4_Project.md`](FASE_4_Project.md) | Project page — snapshot F4; dettagli F8.D in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | ✅ Completata |
+| [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page — snapshot F5; dettagli F8.C / F8.E in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
-| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (mockup concordato); **F8.D** Project — About documentata; partial partner + LinkedIn; F8.E Partners TBD | In corso |
+| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home + Project About (F8.D) implementati; partial partner + LinkedIn; F8.E Partners TBD | In corso |
 | `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
@@ -175,7 +175,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F8.4** SCSS Home (pilastri, figura + didascalia, griglia 8) e adeguamenti `card-partner` in `_components.scss`
 - [x] **F8.5** Verifica build Hugo, responsive, accessibilità heading
 - [x] **F8.6** Specifica **F8.D** (Project — mockup About): intro esteso, sei `about-card`, nota opzionale coordinate primo anchor — in `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`
-- [ ] **F8.7** Implementazione codice pagina Project secondo **F8.D**
+- [x] **F8.7** Implementazione codice pagina Project secondo **F8.D**
 - [ ] **F8.TBD** Riorganizzazione pagina Partners — dettagli in `FASE_8_Riordino_Contenuti.md` (F8.E)
 
 ### FASE 9 — Deploy e Go-Live
@@ -266,5 +266,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.5 | Aprile 2026*  
+*Progetto DAMAGER Website — Documento Master v4.6 | Aprile 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*
