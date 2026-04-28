@@ -8,7 +8,6 @@
 .project-about-lead {
   // Full width of `.container` — same band as `.engine-gifs` and `.about-cards` below
   margin-bottom: $space-12;
-  font-size: $font-size-lg;
   line-height: 1.7;
   color: $gray-800;
 
@@ -17,6 +16,12 @@
     color: inherit;
 
     &:last-child { margin-bottom: 0; }
+  }
+
+  // Prime due righe introduttive: stessa scala del sottotitolo Home (`.home-what-is__intro-lead`)
+  &__subtitle {
+    font-size: clamp($font-size-lg, 2.2vw, 1.25rem);
+    line-height: 1.55;
   }
 
   &__list {
