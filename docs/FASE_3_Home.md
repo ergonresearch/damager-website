@@ -1,11 +1,11 @@
 # FASE 3 — Home Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.2 | **Data:** Aprile 2026  
+**Versione:** 1.3 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1 (Hugo + CMS) e FASE 2 (Template grafico) completate  
 **Obiettivo:** Implementare la Home page (`/`) con tutte le sezioni previste nelle specifiche
 
-> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 3**. Il riordino contenuti della Home nella **FASE 8** (pilastri SES, What is DAMAGER, sezione partner e LinkedIn — **F8.A–C**) è descritto in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** viene replicato qui.
+> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 3**. Il riordino contenuti della Home nella **FASE 8** (pilastri SES, What is DAMAGER, sezione partner e LinkedIn — **F8.A–C**) è descritto in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** viene replicato qui. Tipografia condivisa: [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6 (sistema token/mixin) e tabella ruoli **F8.G** nello stesso FASE 8.
 
 ---
 

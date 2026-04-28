@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.7 | **Data:** Aprile 2026  
+**Versione:** 4.8 | **Data:** Aprile 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -48,7 +48,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 | File | Contenuto |
 |------|-----------|
-| [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) | Identità visiva, struttura pagine, contenuti, cookie |
+| [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) | Identità visiva, struttura pagine, contenuti, cookie; **§ 1.6** sistema tipografico (token, mixin, contesti corpo) + rimando **F8.G** |
 | [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) | Stack, CMS, Netlify config, sicurezza, workflow |
 
 ### Fasi di sviluppo
@@ -62,7 +62,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_5_Partners.md`](FASE_5_Partners.md) | Partners page — snapshot F5; dettagli F8.C / F8.E in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | ✅ Completata |
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
-| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners Our Partners (F8.E) — implementati in codice | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
+| [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners (F8.E), reveal (F8.F), tipografia **F8.G** in codice (`_typography.scss`, `_variables.scss`) | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
 | `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
@@ -178,6 +178,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F8.7** Implementazione codice pagina Project secondo **F8.D**
 - [x] **F8.E-spec** Partners «Our Partners» (mockup dedicato, layout a riga intera, dati centralizzati) — `FASE_8_Riordino_Contenuti.md` + `SPECIFICHE_SITO.md`  
 - [x] **F8.E-code** Implementazione **F8.E** in repository (`data/partners.yaml`, partial inner / rows / grid, SCSS, `markdownify`, bullet razzo su `/partners`)  
+- [x] **F8.F** Reveal sezioni (on-load + on-scroll), hero, `prefers-reduced-motion` — [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) + [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § I  
+- [x] **F8.G** Inventario ruoli tipografici e consolidamento SCSS — [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md); sintesi in [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6  
 
 ### FASE 9 — Deploy e Go-Live
 
@@ -267,5 +269,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.6 | Aprile 2026*  
+*Progetto DAMAGER Website — Documento Master v4.8 | Aprile 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*

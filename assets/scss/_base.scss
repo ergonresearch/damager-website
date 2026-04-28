@@ -12,7 +12,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: $font-size-root;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -79,29 +79,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-eyebrow {
+  @include type-eyebrow-section;
   display: block;
   font-size: $font-size-xs;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: $gray-600;
   margin-bottom: $space-3;
 }
 
 .section-title {
-  font-size: $font-size-2xl;
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  @include type-section-title;
   margin-bottom: $space-10;
-
-  @media (min-width: $bp-md) { font-size: $font-size-3xl; }
 }
 
 .section-intro {
-  font-size: $font-size-lg;
-  color: $gray-800;
-  max-width: 660px;
-  line-height: 1.7;
+  font-size: $type-lead-block-font-size;
+  color: $type-lead-block-color;
+  max-width: $type-intro-max-width;
+  line-height: $type-lead-block-line-height;
   margin-bottom: $space-12;
 }
 
@@ -152,10 +146,8 @@ main { min-height: 0; }
 
   // ── Headings
   h1 {
-    font-size: $font-size-2xl;
-    font-weight: 900;
+    @include type-section-title;
     margin-bottom: $space-4;
-    @media (min-width: $bp-md) { font-size: $font-size-3xl; }
   }
 
   h2 {
@@ -174,11 +166,11 @@ main { min-height: 0; }
     margin-bottom: $space-2;
   }
 
-  // ── Body text
+  // ── Body text (markdown / static pages — base size, standard line height)
   p {
-    line-height: $line-height;
-    margin-bottom: $space-5;
-    color: $gray-800;
+    line-height: $type-body-copy-line-height;
+    margin-bottom: $type-prose-paragraph-gap;
+    color: $type-body-copy-color;
 
     em { color: $gray-600; }       // "Last updated" meta line
     strong { color: $black; }
@@ -190,9 +182,9 @@ main { min-height: 0; }
     margin-bottom: $space-6;
 
     li {
-      line-height: $line-height;
+      line-height: $type-body-copy-line-height;
       margin-bottom: $space-2;
-      color: $gray-800;
+      color: $type-body-copy-color;
     }
   }
 
@@ -224,7 +216,7 @@ main { min-height: 0; }
     td {
       padding: $space-3 $space-4 $space-3 0;
       border-bottom: 1px solid $gray-100;
-      color: $gray-800;
+      color: $type-body-copy-color;
       vertical-align: top;
       line-height: 1.5;
 

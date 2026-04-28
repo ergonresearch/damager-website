@@ -67,17 +67,14 @@
   }
 
   &__subtitle {
-    font-size: $font-size-2xl;
+    @include type-display-italic-emphasis;
+    font-size: $type-hero-subtitle-font-size;
     color: rgba(255, 255, 255, 0.72);
     max-width: 780px;
-    line-height: 1.6;
-    font-style: italic;
     margin: 0 auto;
 
     strong {
       color: $white;
-      font-weight: 800;
-      font-style: normal;
     }
   }
 }
@@ -191,7 +188,7 @@ abbr[title="required"] {
 }
 
 // ────────────────────────────────────
-// Home — three pillars (FASE 8)
+// Home — three pillars
 // ────────────────────────────────────
 .home-pillars {
   &__main-title {
@@ -245,18 +242,17 @@ abbr[title="required"] {
 }
 
 // ────────────────────────────────────
-// Home — What is DAMAGER (FASE 8)
+// Home — What is DAMAGER
 // ────────────────────────────────────
 .home-what-is {
   &__intro {
     width: 100%;
     max-width: none;
 
-    // Escludere il lead: `.home-what-is__intro p` batteva in specificità su `.home-what-is__intro-lead`
     p:not(.home-what-is__intro-lead) {
       font-size: $font-size-base;
-      color: $gray-800;
-      line-height: $line-height;
+      color: $type-body-copy-color;
+      line-height: $type-body-copy-line-height;
       margin: 0 0 $space-6;
 
       &:last-child { margin-bottom: 0; }
@@ -264,20 +260,19 @@ abbr[title="required"] {
   }
 
   &__intro-lead {
-    // Sottotitolo: sempre un gradino sopra il corpo (16px → 18px+ su viewport larghi)
-    font-size: clamp($font-size-lg, 2.2vw, 1.25rem);
+    font-size: $type-lead-accent-font-size;
     font-weight: 700;
-    line-height: 1.55;
+    line-height: $type-lead-accent-line-height;
     color: $gray-800;
     margin: 0 0 $space-6;
   }
 
   &__tech-list {
     margin: 0 0 $space-6;
-    padding-left: 1.25rem;
+    padding-left: $type-prose-list-indent;
     font-size: $font-size-base;
-    color: $gray-800;
-    line-height: $line-height;
+    color: $type-body-copy-color;
+    line-height: $type-body-copy-line-height;
 
     li { margin-bottom: $space-3; }
     li:last-child { margin-bottom: 0; }
@@ -298,26 +293,23 @@ abbr[title="required"] {
 
   &__caption {
     margin: $space-3 0 0;
-    font-size: $font-size-sm;
+    font-size: $type-caption-font-size;
     color: $gray-600;
-    line-height: 1.45;
+    line-height: $type-caption-line-height;
     text-align: center;
     font-style: italic;
   }
 
   &__acronym {
-    font-size: clamp(1rem, 2.5vw, $font-size-2xl);
+    @include type-display-italic-emphasis;
+    font-size: $type-hero-acronym-font-size;
     color: rgba(0, 0, 0, 0.72);
     max-width: 780px;
-    line-height: 1.6;
-    font-style: italic;
     margin: 0 auto $space-12;
     text-align: center;
 
     strong {
       color: $black;
-      font-weight: 800;
-      font-style: normal;
     }
   }
 

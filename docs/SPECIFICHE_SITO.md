@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.0 | **Data:** Aprile 2026  
+**Versione:** 2.3 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -67,7 +67,46 @@ authority can be held responsible for them."
 
 Layout: logo EU a sinistra, testo a destra (su desktop); impilati verticalmente su mobile.
 
+### 1.6 Sistema tipografico (F8.G)
+
+Il lavoro di allineamento tipografico è **implementato in codice** e riassunto qui per committente e designer; la **tabella ruolo → classe** (con riferimento file) resta nella sezione **F8.G** di [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md), aggiornata allo stesso stato.
+
+#### 1.6.1 File SCSS
+
+| File | Ruolo |
+|------|--------|
+| `assets/scss/_variables.scss` | Palette, scala font base (`$font-size-xs` … `$font-size-4xl`), variabili aggiuntive per micro-dimensioni e spacing: `$font-size-2xs`, `$font-size-micro`, `$font-size-logo`, `$font-size-lead-max`, `$font-size-icon-xl`, `$line-height-snug`, `$font-size-root`, `$space-7`, … |
+| `assets/scss/_typography.scss` | Token e mixin condivisi: titolo sezione (`type-section-title`), eyebrow sezione/UI, lead (blocco + accent), corpo articolo, caption, display hero (italic), gap paragrafi / indent liste prose |
+| `assets/scss/main.scss` | Ordine import: `_variables` → **`_typography`** → `_base` → … |
+
+#### 1.6.2 Titoli e display
+
+- **Titoli di sezione marketing** (`.section-title`, anche `<h1>` in testate pagina e `<h2>` in Home) e **titolo principale pagine Markdown** (`.page h1`): stessa scala tramite **`@mixin type-section-title`**; differiscono margini e contesto (vedi F8.G).
+- **Hero Home:** logo SVG; sottotitolo e riga acronimo DAMAGER condividono **`@mixin type-display-italic-emphasis`** e variabili `$type-hero-subtitle-font-size` / `$type-hero-acronym-font-size`.
+
+#### 1.6.3 Eyebrow (due livelli)
+
+- **Sezione / brand:** `.section-eyebrow` e tracking del wordmark **`.logo`** → **`$type-eyebrow-section-tracking`** + **`@mixin type-eyebrow-section`** (solo sezione).
+- **UI compatta:** navigazione (desktop + drawer), etichetta progress bar, mese in card evento, tab Media → **`@mixin type-eyebrow-ui`** e **`$type-eyebrow-ui-tracking`**.
+
+#### 1.6.4 Corpo testo: quattro contesti
+
+| Contesto | Classi / scope | Comportamento |
+|----------|----------------|---------------|
+| **Markdown / pagine legali** | `.page` (`p`, liste, tabelle) | Corpo **base** 16px, colore e interlinea da **`$type-body-copy-*`**; liste con `padding-left` più largo (`$space-6`). |
+| **Intro sotto titolo di sezione** | `.section-intro` | Scala **lead blocco** (`$type-lead-block-*`), **`$type-intro-max-width`**. |
+| **Fascia About Project** | `.project-about-lead` | Paragrafi base + interlinea rilassata **`$type-body-relaxed-line-height`**; sottotitolo prime righe con **`$type-lead-accent-*`**; liste con **`$type-prose-list-indent`**. |
+| **Articolo news** | `.article-body` | Corpo **articolo** (`$type-article-*`), colonna **`$type-article-column-max-width`**, spazio tra paragrafi **`$type-prose-paragraph-gap`**. |
+
+Il blocco «What is DAMAGER» (Home) usa gli stessi token **copy** per i paragrafi standard e per la lista tecnica, in coerenza con il sistema sopra.
+
+#### 1.6.5 Liste e micro-dimensioni
+
+- **Indent liste** allineate al corpo (card partner, liste interne, Project/Home dove applicabile): **`$type-prose-list-indent`** (= `$space-5`); liste Markdown in `.page`: `$space-6`.
+- **Badge / etichette molto piccole:** tab conteggio (`$font-size-2xs`), tag card news (`$font-size-micro`), **line-height titoli compatti** in card e timeline: **`$line-height-snug`**.
+
 ---
+
 
 ## 2. STRUTTURA HEADER E NAVIGAZIONE
 
@@ -132,7 +171,7 @@ Blocco testuale (finanziamento EDF, bisogni, aree tecnologiche), immagine UAV wi
 
 ### E) Our Partners (anteprima consorzio)
 
-Cinque card partner (testi brevi `description_home` in [`data/partners.yaml`](../data/partners.yaml)), link sito e LinkedIn, griglia responsiva. Sfondo alternato sulla Home. Partial [`partners-card-grid.html`](../layouts/partials/partners-card-grid.html); vedi **F8.C** in `FASE_8_Riordino_Contenuti.md`. La pagina `/partners` usa copy e layout distinti (**F8.E**).
+Cinque card partner (testi brevi `description_home` in data/partners.yaml), link sito e LinkedIn, griglia responsiva. Sfondo alternato sulla Home. Partial layouts/partials/partners-card-grid.html; vedi **F8.C** in `FASE_8_Riordino_Contenuti.md`. La pagina `/partners` usa copy e layout distinti (**F8.E**).
 
 ---
 
@@ -190,6 +229,8 @@ Form di contatto con i campi:
 
 ### I) Comparsa graduale sezioni (Reveal on load/scroll)
 
+Dettaglio implementativo e note accessibilità: sezione **F8.F** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
+
 - Tutte le sezioni `main section` usano una comparsa graduale (`opacity + translateY`) con timing progressivo.
 - Trigger via `IntersectionObserver` in `assets/js/main.js` (`initSectionReveal()`), con attivazione una sola volta per sezione.
 - Anche le sezioni già parzialmente visibili all'apertura pagina vengono animate con lo stesso timing (attivazione post-paint), evitando discrepanze tra on-load e on-scroll.
@@ -206,7 +247,7 @@ Form di contatto con i campi:
 
 La sezione è strutturata in tre blocchi verticali su sfondo blueprint. **Contenuti e layout della prima sezione** riflettono le **modifiche richieste e discusse** con il coordinamento (mockup contenutistico concordato; dettaglio operativo in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — **F8.D**).
 
-**1 — Header** (pattern standard del sito): eyebrow *EDF 2024 — Research Action*, titolo *About the Project*, blocco **`.project-about-lead`** (implementazione in [`layouts/project/list.html`](../layouts/project/list.html)): più paragrafi con enfasi in **`<strong>`** (contesto UAV / propulsione / sfide), due elenchi **`.project-about-lead__list`** (quattro criticità, quattro tecnologie abilitanti DAMAGER), paragrafo di chiusura senza grassetto su analisi numeriche/sperimentali e *future propulsion-system development*. Sostituisce la precedente tagline unica *Study of additive manufacturing for low-cost…*. **Layout:** il blocco intro usa la **stessa larghezza orizzontale** del contenitore (`.container`) condiviso con la griglia delle tre card media del motore e con le sei `about-cards` sotto (nessuna colonna di testo più stretta rispetto a quella fascia).
+**1 — Header** (pattern standard del sito): eyebrow *EDF 2024 — Research Action*, titolo *About the Project*, blocco **`.project-about-lead`** (implementazione in layouts/project/list.html): più paragrafi con enfasi in **`<strong>`** (contesto UAV / propulsione / sfide), due elenchi **`.project-about-lead__list`** (quattro criticità, quattro tecnologie abilitanti DAMAGER), paragrafo di chiusura senza grassetto su analisi numeriche/sperimentali e *future propulsion-system development*. Sostituisce la precedente tagline unica *Study of additive manufacturing for low-cost…*. **Layout:** il blocco intro usa la **stessa larghezza orizzontale** del contenitore (`.container`) condiviso con la griglia delle tre card media del motore e con le sei `about-cards` sotto (nessuna colonna di testo più stretta rispetto a quella fascia).
 
 **2 — Blocco motore turbojet:**
 - Fotografia CAD della sezione trasversale reale del motore (`static/images/engine/turbojet.png`), con tre anchor point invisibili (`div.engine-anchor`, `position: absolute`) con coordinate **inline** nel template: compressore **`left: 17%; top: 70%`** (`#dot-compressor`), combustore **53% / 86%**, turbina **76% / 78%** (allineamento drop-line al mockup; eventuali ritocchi futuri solo su questi `style` nel markup).
@@ -273,18 +314,18 @@ Visualizzazione grafica ad alto impatto:
 
 ### B) Partner — Home vs pagina Partners
 
-**Fonte dati:** [`data/partners.yaml`](../data/partners.yaml) — un record per partner: logo, nome, paese, bandiera SVG (`static/images/flags/`), link sito, link **LinkedIn** (company), **`description_home`** (anteprima Home) e **`description_partners`** (testo esteso pagina Partners, Markdown con paragrafi e liste). Le emoji di bandiera non si usano in pagina (solo SVG). Partial: **F8.E** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
+**Fonte dati:** data/partners.yaml — un record per partner: logo, nome, paese, bandiera SVG (`static/images/flags/`), link sito, link **LinkedIn** (company), **`description_home`** (anteprima Home) e **`description_partners`** (testo esteso pagina Partners, Markdown con paragrafi e liste). Le emoji di bandiera non si usano in pagina (solo SVG). Partial: **F8.E** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md).
 
 #### B1) Home — «Our Partners» (anteprima)
 
-- Partial: [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia **responsiva** (1 → 2 → 3 colonne, `.card-grid` in [`assets/scss/_components.scss`](../assets/scss/_components.scss)), `range` su **`site.Data.partners`**, variante `home` nel partial [`partners-card-inner.html`](../layouts/partials/partners-card-inner.html).
+- Partial: layouts/partials/partners-card-grid.html — griglia **responsiva** (1 → 2 → 3 colonne, `.card-grid` in assets/scss/_components.scss), `range` su **`site.Data.partners`**, variante `home` nel partial layouts/partials/partners-card-inner.html.
 - Contenuti: `role_home`, `description_home` nel YAML; descrizione resa con **`markdownify`** (tipicamente un solo paragrafo).
 - Footer card: *Visit website →* e **LinkedIn** (`justify-content: space-between`); URL nel YAML (tabella **F8** in `FASE_8_Riordino_Contenuti.md`).
 
 #### B2) Pagina `/partners` — «Our Partners» (mockup dedicato)
 
-- **Partial:** [`partners-page-rows.html`](../layouts/partials/partners-page-rows.html) — **non** la griglia Home.
-- **Layout:** **`.partners-page-rows__grid`** — una colonna, una card per riga ([`_partners.scss`](../assets/scss/_partners.scss)).
+- **Partial:** layouts/partials/partners-page-rows.html — **non** la griglia Home.
+- **Layout:** **`.partners-page-rows__grid`** — una colonna, una card per riga (assets/scss/_partners.scss).
 - **Contenuti:** `role_partners`, **`description_partners`** (Markdown: paragrafi + elenco «In DAMAGER … contributes to»); allineamento al mockup Partners concordato.
 - **Elenchi:** marcatori a **emoji razzo** (`🚀`) in CSS solo sotto **`.partners-page-rows .card-partner__desc ul`** (come mockup).
 - **LinkedIn:** stessi URL della Home (campo `linkedin` nel YAML).
@@ -418,5 +459,5 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 1.6 | Aprile 2026*  
-**File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 2.3 | Aprile 2026*  
+**File correlato:** [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) — stack, CMS, hosting, sicurezza; [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — F8.G (mappatura ruoli → classi)

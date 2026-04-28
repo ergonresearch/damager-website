@@ -1,9 +1,11 @@
 # FASE 6 — Media Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 1.1 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1–5 completate  
 **Obiettivo:** Implementare la pagina Media (`/media`) con navigazione a tab e integrazione CMS
+
+**Nota (tipografia):** **BodyArticle** (`.article-body`) usa i token `$type-article-*` e `$type-article-column-max-width` in `assets/scss/_typography.scss` e `assets/scss/_media.scss`. Panoramica: [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6; mappatura ruoli: **F8.G** in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md). Tab nav e badge conteggio: mixin **EyebrowUI** e `$font-size-2xs` (vedi § 1.6 e F8.G).
 
 ---
 

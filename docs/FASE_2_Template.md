@@ -1,6 +1,6 @@
 # 🎨 FASE 2 — Template Grafico
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.0 | **Data:** Marzo 2026  
+**Versione:** 1.1 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1 completata (progetto Hugo funzionante su Netlify)  
 **Obiettivo:** Costruire il design system completo (SCSS, layout, componenti) su cui poggeranno tutte le pagine del sito
 
@@ -22,14 +22,17 @@
 
 ```
 assets/scss/
-├── _variables.scss   ← palette, font, spaziature, breakpoint
-├── _base.scss        ← reset, tipografia, container, sezioni
+├── _variables.scss   ← palette, scala font, spaziature, breakpoint
+├── _typography.scss  ← mixin e token tipografici condivisi (dopo variables in main.scss)
+├── _base.scss        ← reset, container, sezioni, tipografia pagina (.page, .section-*)
 ├── _header.scss      ← header sticky, nav desktop, hamburger, mobile nav
 ├── _footer.scss      ← footer, EU disclaimer, link legali
 ├── _components.scss  ← card news, doc, partner, pulsanti, form
 ├── _timeline.scss    ← timeline milestone con aeroplano SVG animato
 └── main.scss         ← entry point — importa tutti i parziali
 ```
+
+**Nota:** mappatura ruoli → classi (**F8.G**) in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md); sistema tipografico e contesti corpo (**§ 1.6**) in [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md).
 
 Il foglio di stile viene compilato da Hugo Extended via SCSS pipeline:
 ```hugo

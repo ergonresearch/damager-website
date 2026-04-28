@@ -93,14 +93,14 @@
 
   ul li {
     position: relative;
-    padding-left: 1.75rem;
+    padding-left: $space-7;
     margin-bottom: $space-2;
 
     &::before {
       content: '🚀';
       position: absolute;
       left: 0;
-      line-height: 1.45;
+      line-height: $type-caption-line-height;
     }
   }
 }
@@ -198,7 +198,7 @@
   text-align: center;
 
   &__icon {
-    font-size: 3rem;
+    font-size: $font-size-icon-xl;
     margin-bottom: $space-4;
     display: block;
     opacity: 0.4;

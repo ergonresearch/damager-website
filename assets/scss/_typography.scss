@@ -1,0 +1,66 @@
+// ─────────────────────────────────────────────
+// Semantic type tokens + shared scales
+// (section titles, lead, article body, captions, hero display lines)
+// ─────────────────────────────────────────────
+
+@mixin type-section-title {
+  font-size: $font-size-2xl;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+
+  @media (min-width: $bp-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+// Eyebrow-like labels: section (wider tracking) vs UI chrome (nav, tabs, progress, dates)
+$type-eyebrow-section-tracking: 0.12em;
+$type-eyebrow-ui-tracking:      0.1em;
+
+@mixin type-eyebrow-section {
+  font-weight: 700;
+  letter-spacing: $type-eyebrow-section-tracking;
+  text-transform: uppercase;
+}
+
+@mixin type-eyebrow-ui {
+  font-weight: 700;
+  letter-spacing: $type-eyebrow-ui-tracking;
+  text-transform: uppercase;
+}
+
+$type-lead-block-font-size:   $font-size-lg;
+$type-lead-block-line-height: 1.7;
+$type-lead-block-color:       $gray-800;
+
+$type-lead-accent-font-size:   clamp($font-size-lg, 2.2vw, $font-size-lead-max);
+$type-lead-accent-line-height: 1.55;
+
+$type-article-font-size:   $font-size-lg;
+$type-article-line-height: 1.75;
+$type-article-color:       $gray-800;
+$type-article-column-max-width: 680px;
+
+// Body systems — .page (markdown), .section-intro (lead), .project-about-lead (intro band), .article-body (longform)
+$type-body-copy-color:       $gray-800;
+$type-body-copy-line-height: $line-height;
+$type-body-relaxed-line-height: $type-lead-block-line-height;
+$type-intro-max-width:       660px;
+$type-prose-paragraph-gap:   $space-5;
+$type-prose-list-indent:    $space-5;
+
+$type-caption-font-size:   $font-size-sm;
+$type-caption-line-height: 1.45;
+
+$type-hero-subtitle-font-size: $font-size-2xl;
+$type-hero-acronym-font-size:  clamp(1rem, 2.5vw, $font-size-2xl);
+
+@mixin type-display-italic-emphasis {
+  line-height: 1.6;
+  font-style: italic;
+
+  strong {
+    font-weight: 800;
+    font-style: normal;
+  }
+}

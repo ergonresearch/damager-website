@@ -3,30 +3,29 @@
 // ─────────────────────────────────────────────
 
 // ────────────────────────────────────
-// 1. About — extended intro (mockup concordato)
+// About — extended intro
 // ────────────────────────────────────
 .project-about-lead {
-  // Full width of `.container` — same band as `.engine-gifs` and `.about-cards` below
   margin-bottom: $space-12;
-  line-height: 1.7;
-  color: $gray-800;
+  line-height: $type-body-relaxed-line-height;
+  color: $type-body-copy-color;
 
   p {
-    margin: 0 0 $space-5;
+    font-size: $font-size-base;
+    margin: 0 0 $type-prose-paragraph-gap;
     color: inherit;
 
     &:last-child { margin-bottom: 0; }
   }
 
-  // Prime due righe introduttive: stessa scala del sottotitolo Home (`.home-what-is__intro-lead`)
   &__subtitle {
-    font-size: clamp($font-size-lg, 2.2vw, 1.25rem);
-    line-height: 1.55;
+    font-size: $type-lead-accent-font-size;
+    line-height: $type-lead-accent-line-height;
   }
 
   &__list {
     margin: $space-5 0;
-    padding-left: 1.25rem;
+    padding-left: $type-prose-list-indent;
     color: inherit;
 
     li { margin-bottom: $space-3; }

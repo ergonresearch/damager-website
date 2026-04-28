@@ -1,11 +1,11 @@
 # FASE 5 — Partners Page
 
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.3 | **Data:** Aprile 2026  
+**Versione:** 2.4 | **Data:** Aprile 2026  
 **Prerequisiti:** FASE 1–4 completate  
 **Obiettivo:** Implementare la pagina Partners (`/partners`) con tutte le sezioni previste nelle specifiche
 
-> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 5**. Le evoluzioni **FASE 8** (**F8.C** Home partner, **F8.E** pagina Partners: [`data/partners.yaml`](../../data/partners.yaml), `partners-page-rows.html`, testi `description_partners`, bullet razzo in SCSS) sono descritte in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicate qui.
+> **Nota:** questo file resta uno **snapshot** al completamento della **FASE 5**. Le evoluzioni **FASE 8** (**F8.C** Home partner, **F8.E** pagina Partners: data/partners.yaml, `partners-page-rows.html`, testi `description_partners`, bullet razzo in SCSS) sono descritte in [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) e **non** vengono replicate qui. Tipografia (liste, `$space-7` bullet): [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6 e **F8.G**.
 
 ---
 

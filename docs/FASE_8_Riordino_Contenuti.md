@@ -1,7 +1,7 @@
 # FASE 8 — Riordino contenuti (Home, Project, Partners)
 
-> **Versione:** 2.0 | **Data:** Aprile 2026  
-> **Stato:** **Home (F8.A–C)**, **Project About (F8.D)**, **Partners — Our Partners (F8.E)** e **Reveal sezioni (F8.F)** completate in codice. Restano eventuali evoluzioni redazionali sui testi in `data/partners.yaml`.  
+> **Versione:** 2.2 | **Data:** Aprile 2026  
+> **Stato:** **Home (F8.A–C)**, **Project About (F8.D)**, **Partners — Our Partners (F8.E)**, **Reveal sezioni (F8.F)** completate in codice; **F8.G** — inventario ruoli tipografici e consolidamento in `assets/scss/_typography.scss` e `assets/scss/_variables.scss` (eyebrow sezione/UI, sistemi di corpo, liste, token), sintesi in [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6. Restano eventuali evoluzioni redazionali sui testi in `data/partners.yaml`.  
 > **Branch:** develop
 
 ---
@@ -18,36 +18,38 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 |---------|------|
 | Mockup contenuti Home | Testi e struttura concordati (pilastri, What is DAMAGER, partner) |
 | Mockup contenuti Project — About | Testi e struttura concordati (intro About, sei card sotto il motore) |
-| Project attuale | [`layouts/project/list.html`](../layouts/project/list.html) |
-| Stili Project | [`assets/scss/_project.scss`](../assets/scss/_project.scss) |
-| Drop-line motore | [`assets/js/main.js`](../assets/js/main.js) — `initEngineDroplines` |
-| Home attuale | [`layouts/index.html`](../layouts/index.html) |
-| Partners attuale | [`layouts/partners/list.html`](../layouts/partners/list.html) |
-| Stili Home | [`assets/scss/_home.scss`](../assets/scss/_home.scss) |
-| Stili Partners | [`assets/scss/_partners.scss`](../assets/scss/_partners.scss) |
-| Stili card condivise (mixin rilievo) | [`assets/scss/_components.scss`](../assets/scss/_components.scss) — `card-base` |
-| Reveal sezioni (logica JS) | [`assets/js/main.js`](../assets/js/main.js) — `initSectionReveal()` |
-| Reveal sezioni (stili globali) | [`assets/scss/_base.scss`](../assets/scss/_base.scss) |
-| Hook early class reveal | [`layouts/_default/baseof.html`](../layouts/_default/baseof.html) — classe `has-reveal` in `<head>` |
-| Partial pilastri | [`layouts/partials/home-pillars.html`](../layouts/partials/home-pillars.html) |
-| Partial What is DAMAGER | [`layouts/partials/home-what-is-damager.html`](../layouts/partials/home-what-is-damager.html) |
-| Dati partner | [`data/partners.yaml`](../data/partners.yaml) — unica fonte: URL, logo, `description_home` / `description_partners`, ecc. (vedi **F8.E**) |
-| Partial Home partner | [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html) — griglia `.card-grid` multi-colonna; `range` + `partners-card-inner` con `variant: home`; chiamata con `sectionAlt` true |
-| Partial Partners «Our Partners» | [`layouts/partials/partners-page-rows.html`](../layouts/partials/partners-page-rows.html) — sezione dedicata pagina `/partners`; griglia **`.partners-page-rows__grid`** (1 colonna); `variant: partners` |
-| Partial card singola | [`layouts/partials/partners-card-inner.html`](../layouts/partials/partners-card-inner.html) — corpo `.card-partner`; descrizione via **`markdownify`** (liste Markdown per i contributi DAMAGER sulla variante Partners) |
+| Project attuale | layouts/project/list.html |
+| Stili Project | assets/scss/_project.scss |
+| Drop-line motore | assets/js/main.js — `initEngineDroplines` |
+| Home attuale | layouts/index.html |
+| Partners attuale | layouts/partners/list.html |
+| Stili Home | assets/scss/_home.scss |
+| Stili Partners | assets/scss/_partners.scss |
+| Stili card condivise (mixin rilievo) | assets/scss/_components.scss — `card-base` |
+| Reveal sezioni (logica JS) | assets/js/main.js — `initSectionReveal()` |
+| Reveal sezioni (stili globali) | assets/scss/_base.scss |
+| Hook early class reveal | layouts/_default/baseof.html — classe `has-reveal` in `<head>` |
+| Partial pilastri | layouts/partials/home-pillars.html |
+| Partial What is DAMAGER | layouts/partials/home-what-is-damager.html |
+| Dati partner | data/partners.yaml — unica fonte: URL, logo, `description_home` / `description_partners`, ecc. (vedi **F8.E**) |
+| Partial Home partner | layouts/partials/partners-card-grid.html — griglia `.card-grid` multi-colonna; `range` + `partners-card-inner` con `variant: home`; chiamata con `sectionAlt` true |
+| Partial Partners «Our Partners» | layouts/partials/partners-page-rows.html — sezione dedicata pagina `/partners`; griglia **`.partners-page-rows__grid`** (1 colonna); `variant: partners` |
+| Partial card singola | layouts/partials/partners-card-inner.html — corpo `.card-partner`; descrizione via **`markdownify`** (liste Markdown per i contributi DAMAGER sulla variante Partners) |
 | Immagine UAV Home | `static/images/home/uav-sweden-concept.webp` |
 | Documento master indice fasi | [`PROGETTO_DAMAGER_WEBSITE.md`](PROGETTO_DAMAGER_WEBSITE.md) |
+| Specifiche sito (tipografia § 1.6 + F8.G) | [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6; tabella ruoli **F8.G** (qui sotto) |
+| Token tipografici condivisi | assets/scss/_typography.scss (import dopo `_variables.scss` in `main.scss`) |
 
 ### Sintesi implementativa (Home)
 
 - **Sfondi alternati** dopo l’hero: pilastri `section--alt` (grigio) → What is DAMAGER bianco → Our Partners `section--alt` sulla sola Home → timeline bianca → eventi `section--alt` → contact blueprint. La pagina **Partners** (`/partners`): sezione «Our Partners» con **layout dedicato** (una riga per partner), non la stessa sezione della Home — vedi **F8.E**.
 - **Rilievo schede:** celle pilastri (`.home-pillars__cell`) e celle concetti (`.home-what-is__concept-cell`) usano `@include card-base` come le `.card-partner`.
-- **What is DAMAGER:** nessun eyebrow (solo `<h2>`); **testo sopra l’immagine:** blocco intro a **larghezza piena** del contenitore (allineato all’immagine); prima frase in **`.home-what-is__intro-lead`** tutta in grassetto (`font-weight: 700`), dimensione intro `$font-size-lg`.
+- **What is DAMAGER:** nessun eyebrow (solo `<h2>`); **testo sopra l’immagine:** blocco intro a **larghezza piena** del contenitore (allineato all’immagine); prima frase in **`.home-what-is__intro-lead`** tutta in grassetto (`font-weight: 700`), scala intro da sottotitolo (`clamp` con `$type-lead-accent-font-size` / `$font-size-lead-max` in `_typography.scss` / `_variables.scss`).
 - **Partner card:** riga `.card-partner__footer` con *Visit website* a sinistra e *LinkedIn* a destra (`justify-content: space-between`).
 
 ### Sintesi specifica (Project — mockup About concordato)
 
-- **Intro «About the Project»:** blocco **`.project-about-lead`** in [`layouts/project/list.html`](../layouts/project/list.html) — paragrafi con **`<strong>`** sulle frasi guida, due liste **`.project-about-lead__list`** (criticità e tecnologie abilitanti), paragrafo finale di chiusura; sostituisce la tagline unica storica (*Study of additive manufacturing…*).
+- **Intro «About the Project»:** blocco **`.project-about-lead`** in layouts/project/list.html — paragrafi con **`<strong>`** sulle frasi guida, due liste **`.project-about-lead__list`** (criticità e tecnologie abilitanti), paragrafo finale di chiusura; sostituisce la tagline unica storica (*Study of additive manufacturing…*).
 - **Collegamenti motore → card (SVG):** linee tratteggiate generate da JavaScript dagli anchor alle card media. Coordinate **attuali** nel markup: `#dot-compressor` **`left: 17%; top: 70%`**, `#dot-combustor` **53% / 86%**, `#dot-turbine` **76% / 78%** (ritocchi futuri solo sugli `style` inline degli anchor).
 - **Card sotto il motore:** **sei** `.about-card` con una sola **`<h3 class="about-card__title about-card__title--standalone">`** per cella (testo verbatim del mockup); griglia in `_project.scss` (1 colonna mobile, 2 da `md`, 3 da `lg`).
 
@@ -82,7 +84,7 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
    - **Non** mostrare alcun link di riferimento accanto all’immagine in pagina.
 3. **Didascalia** sotto l’immagine (testo letterale concordato):  
    `Concept photo of GKN Aerospace’s UAV. Photo: GKN Aerospace`
-4. **Nome esteso / acronimo DAMAGER:** stesso schema della hero (`hero__subtitle` con lettere evidenziate in `<strong>`), come in [`layouts/index.html`](../layouts/index.html) (classe `.home-what-is__acronym`).
+4. **Nome esteso / acronimo DAMAGER:** stesso schema della hero (`hero__subtitle` con lettere evidenziate in `<strong>`), come in layouts/index.html (classe `.home-what-is__acronym`).
 5. **Griglia 8 concetti** (2 righe × 4 colonne da breakpoint `md`/`lg`; impilamento su mobile), testi esatti concordati:
    - Low-cost, high-performance turbojet propulsion for future UAV platforms  
    - Scalable solutions for mass deployment and rapid manufacturing  
@@ -99,9 +101,9 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 ## F8.C — Home: «Our Partners» + LinkedIn
 
-**Markup di partenza (F5 / prima di F8):** sezione *Partner Cards* inline in [`layouts/partners/list.html`](../layouts/partners/list.html) (eyebrow «Consortium Members», titolo «Our Partners», `card-grid`, cinque `card-partner`). **Oggi:** la Home usa [`partners-card-grid.html`](../layouts/partials/partners-card-grid.html); `/partners` usa [`partners-page-rows.html`](../layouts/partials/partners-page-rows.html); `list.html` include solo il partial, non duplica il markup delle cinque card.
+**Markup di partenza (F5 / prima di F8):** sezione *Partner Cards* inline in layouts/partners/list.html (eyebrow «Consortium Members», titolo «Our Partners», `card-grid`, cinque `card-partner`). **Oggi:** la Home usa layouts/partials/partners-card-grid.html; `/partners` usa layouts/partials/partners-page-rows.html; `list.html` include solo il partial, non duplica il markup delle cinque card.
 
-**Implementazione attuale (Home):** griglia in [`layouts/partials/partners-card-grid.html`](../layouts/partials/partners-card-grid.html), inclusa dalla Home con `sectionAlt` true.
+**Implementazione attuale (Home):** griglia in layouts/partials/partners-card-grid.html, inclusa dalla Home con `sectionAlt` true.
 
 **Pagina `/partners` (F8.E):** la sezione «Our Partners» usa il partial dedicato **`partners-page-rows.html`** (non `partners-card-grid.html`). Home e Partners condividono **`data/partners.yaml`** e **`partners-card-inner.html`**. Gli URL **LinkedIn** in tabella restano la fonte di verità (duplicati nel YAML).
 
@@ -121,12 +123,12 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 **Ambito:** modifiche richieste e discusse per la sezione About (testo introduttivo lungo + sei blocchi descrittivi sotto lo schema motore), da riflettere nel template senza citare percorsi o file sorgente esterni.
 
-**Obiettivo:** aggiornare solo la prima sezione della pagina [`/project`](../layouts/project/list.html) (`About the Project` su `bg-blueprint`), lasciando invariate (salvo necessità redazionale futura) **Project Details**, **Timeline** e il resto del template.
+**Obiettivo:** aggiornare solo la prima sezione della pagina layouts/project/list.html (`About the Project` su `bg-blueprint`), lasciando invariate (salvo necessità redazionale futura) **Project Details**, **Timeline** e il resto del template.
 
 ### D1 — Introduttivo prima del blocco motore
 
 - **Posizione:** tra il titolo `About the Project` e `<div class="engine-block">`.
-- **Implementazione:** wrapper **`.project-about-lead`** in [`layouts/project/list.html`](../layouts/project/list.html) — paragrafi con **`<strong>`** sulle frasi guida, due **`<ul class="project-about-lead__list">`**, paragrafo finale senza grassetto; stili in `_project.scss` (larghezza piena del contenitore, allineata a griglia engine + `about-cards`; tipografia).
+- **Implementazione:** wrapper **`.project-about-lead`** in layouts/project/list.html — paragrafi con **`<strong>`** sulle frasi guida, due **`<ul class="project-about-lead__list">`**, paragrafo finale senza grassetto; stili in `_project.scss` (larghezza piena del contenitore, allineata a griglia engine + `about-cards`; tipografia).
 - **Sostituisce:** il vecchio `section-intro` a una riga (*Study of additive manufacturing for low-cost…*).
 
 ### D2 — Engine block e linee di collegamento
@@ -144,11 +146,11 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 | File | Modifica |
 |------|----------|
-| [`layouts/project/list.html`](../layouts/project/list.html) | `.project-about-lead`, anchor motore (incl. compressore 17%/70%), sei `about-card` |
-| [`assets/scss/_project.scss`](../assets/scss/_project.scss) | Griglia `.about-cards`; `.gif-card` / `.about-card` con `@include card-base`; `about-card__title--standalone` |
+| layouts/project/list.html | `.project-about-lead`, anchor motore (incl. compressore 17%/70%), sei `about-card` |
+| assets/scss/_project.scss | Griglia `.about-cards`; `.gif-card` / `.about-card` con `@include card-base`; `about-card__title--standalone` |
 | [`docs/SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) | § Project — About (allineato alla specifica F8.D) |
 
-**Stato:** implementazione allineata al mockup in [`layouts/project/list.html`](../layouts/project/list.html) + [`assets/scss/_project.scss`](../assets/scss/_project.scss) — intro `.project-about-lead`, anchor come sopra, sei card standalone in grassetto, hover rilievo su `.gif-card` e `.about-card`.
+**Stato:** implementazione allineata al mockup in layouts/project/list.html + assets/scss/_project.scss — intro `.project-about-lead`, anchor come sopra, sei card standalone in grassetto, hover rilievo su `.gif-card` e `.about-card`.
 
 ---
 
@@ -206,7 +208,7 @@ flowchart TB
 | **`layouts/partners/list.html`** | Blocco B: `partners-page-rows.html` (non `partners-card-grid.html`). |
 | **SCSS** | `_partners.scss`: **`.partners-page-rows__grid`**; bullet elenchi descrizione Partners — **`🚀`** via **`::before`** su **`ul li`** dentro **`.partners-page-rows .card-partner__desc`**. `_components.scss`: annidamento **`p` / `ul` / `li`** sotto **`.card-partner__desc`**. |
 
-**Schema YAML** (il file [`data/partners.yaml`](../data/partners.yaml) è una **lista radice** di mappe — `site.Data.partners` in Hugo; ogni voce: `id`, `name`, `coordinator`, `country_label`, `country_flag_alt`, `flag`, `logo`, `logo_alt`, `role_home`, `description_home`, `role_partners`, `description_partners` con blocco letterale `|` per testi lunghi e liste Markdown, `website`, `linkedin`).
+**Schema YAML** (il file data/partners.yaml è una **lista radice** di mappe — `site.Data.partners` in Hugo; ogni voce: `id`, `name`, `coordinator`, `country_label`, `country_flag_alt`, `flag`, `logo`, `logo_alt`, `role_home`, `description_home`, `role_partners`, `description_partners` con blocco letterale `|` per testi lunghi e liste Markdown, `website`, `linkedin`).
 
 **Implementazione (completata):** dati centralizzati; partial inner + griglia Home + righe Partners; `list.html` aggiornato; `description_partners` allineato al mockup Partners; elenchi con marcatori razzo in CSS sulla sola pagina Partners.
 
@@ -236,6 +238,43 @@ flowchart TB
 
 ---
 
+## F8.G — Inventario ruoli tipografici e sistema token
+
+**Panoramica d’uso:** [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6. **Mappatura tecnica:** classi e token nel codice sorgente del sito (percorsi relativi alla radice del repository nella tabella sotto).
+
+Tabella di **mappatura semantica → implementazione attuale** (classi / blocchi SCSS). I mixin e le variabili condivise sono in `assets/scss/_typography.scss`; la scala font/spacing estesa è in `assets/scss/_variables.scss`.
+
+| Ruolo semantico | Descrizione breve | Classi / selettori principali | File SCSS di riferimento |
+|-----------------|-------------------|-------------------------------|---------------------------|
+| **DisplayTitle** | Titolo hero ad altissima visibilità (logo / sottotitolo / acronimo) | `.hero__logo`, `.hero__subtitle`, `.home-what-is__acronym` — mixin `type-display-italic-emphasis`, token `$type-hero-*` | assets/scss/_home.scss, assets/scss/_typography.scss |
+| **SectionTitle** | Titolo di sezione marketing (h1/h2 sotto eyebrow o in testata pagina) | `.section-title` — `@include type-section-title` | assets/scss/_base.scss, assets/scss/_typography.scss |
+| **PageTitle** | Titolo principale pagine Markdown (privacy, cookie, contenuti lunghi) | `.page h1` — stesso mixin `type-section-title` | assets/scss/_base.scss, assets/scss/_typography.scss |
+| **SectionHeading** | Sottosezioni dentro pagina contenuto | `.page h2`, `.page h3` | assets/scss/_base.scss |
+| **Eyebrow** | Etichetta sezione uppercase (tracking più aperto) | `.section-eyebrow` — `@include type-eyebrow-section` | assets/scss/_base.scss, assets/scss/_typography.scss |
+| **EyebrowUI** | Etichette compatte (nav, tab, progress, mese evento) | `.main-nav a`, `.mobile-nav a`, `.progress-header h3`, `.event-card__month`, `.tab-nav__item` — `@include type-eyebrow-ui` | assets/scss/_header.scss, assets/scss/_components.scss, assets/scss/_typography.scss |
+| **Lead** | Primo blocco di ingresso dopo il titolo di sezione (più grande del corpo) | `.section-intro` (`$type-lead-block-*`); `.home-what-is__intro-lead`; `.project-about-lead__subtitle` (`$type-lead-accent-*`) | assets/scss/_base.scss, assets/scss/_home.scss, assets/scss/_project.scss, assets/scss/_typography.scss |
+| **Body** | Paragrafi standard e copy nelle sezioni | `body` (`$font-size-root` su `html`); `.home-what-is__intro`; `.project-about-lead p`; testi card — token `$type-body-copy-*` dove applicato | assets/scss/_base.scss, assets/scss/_home.scss, assets/scss/_project.scss, assets/scss/_components.scss, assets/scss/_typography.scss |
+| **BodyProse** | Contenuto lungo Markdown generico | `.page p`, `.page ul` / `ol` | assets/scss/_base.scss, assets/scss/_typography.scss |
+| **BodyArticle** | Corpo articolo news (scala dedicata) | `.article-body` — `$type-article-*`, `$type-article-column-max-width` | assets/scss/_media.scss, assets/scss/_typography.scss |
+| **CardTitle** | Titolo dentro card lista / eventi | `.card-news__title`, `.event-card__title` (spesso `$line-height-snug`) | assets/scss/_components.scss, assets/scss/_variables.scss |
+| **CardTitleCompact** | Titolo card “standalone” (es. about sotto motore) | `.about-card__title--standalone` | assets/scss/_project.scss |
+| **Caption** | Didascalie, meta, date secondarie | `.home-what-is__caption` (`$type-caption-*`); `.card-news__date`; `.event-card__location` | assets/scss/_home.scss, assets/scss/_components.scss, assets/scss/_typography.scss |
+| **MonoLabel** | Etichette tecniche monospace (componenti motore, fallback) | `.gif-label`, `.gif-fallback` | assets/scss/_project.scss |
+| **AccentLine** | *(ruolo assorbito in DisplayTitle / Home)* | `.home-what-is__acronym` | vedi **DisplayTitle** |
+| **PillarCell** | Titolo + tagline + corpo nelle celle pilastri | `.home-pillars__title`, `__tagline`, `__body` | assets/scss/_home.scss |
+| **ListPage** | Elenco risorse (Media list, tag, ecc.) | `.list-item h2`, `.list-item p` | assets/scss/_base.scss |
+| **Brand wordmark** | Testo logo header (se usato accanto a SVG) | `.logo` — `$font-size-logo`, tracking sezione | assets/scss/_header.scss, assets/scss/_variables.scss |
+
+**Note operative (stato attuale)**
+
+- **SectionTitle / PageTitle:** stessa scala tramite **`type-section-title`**; differenza solo in margini e contesto layout.
+- **Lead:** `.section-intro` = pattern intro sotto titolo; Home/Project usano classi dedicate + token accent condivisi per le prime righe in evidenza.
+- **Eyebrow / EyebrowUI:** due livelli di letter-spacing e mixin distinti; niente più varianti “orfane” non allineate.
+- **Corpo (.page / lead / Project / articolo):** token **`$type-body-copy-*`**, **`$type-body-relaxed-line-height`**, **`$type-prose-paragraph-gap`**, **`$type-prose-list-indent`**, **`$type-intro-max-width`**, **`$type-article-column-max-width`** — vedi § 1.6 delle Specifiche.
+- **Micro-tipografia:** `$font-size-2xs`, `$font-size-micro`, `$line-height-snug`, `$space-7`, ecc. in `_variables.scss`.
+
+---
+
 ## Ordine sezioni Home (risultato atteso)
 
 ```
@@ -262,6 +301,7 @@ Hero
 - [x] **F8.E-spec** Specifica **F8.E**: Partners «Our Partners» distinta dalla Home, una riga per partner, testi mockup Partners, architettura dati + partial (documentato qui e in `SPECIFICHE_SITO.md`)  
 - [x] **F8.E-code** Implementazione **F8.E**: `data/partners.yaml`, `partners-card-inner.html`, `partners-page-rows.html`, refactor `partners-card-grid.html`, `_partners.scss` (griglia a una colonna + bullet razzo), `partners-card-inner` + `markdownify` e annidamento in `_components.scss`  
 - [x] **F8.F** Reveal graduale sezioni (on-load + on-scroll), hero inclusa con sfondo nero immediato e animazione sui contenuti interni, supporto `prefers-reduced-motion`
+- [x] **F8.G** Inventario ruoli tipografici: tabella ruolo → classi in questo documento; consolidamento SCSS (`_typography.scss`, `_variables.scss`: eyebrow sezione/UI, sistemi di corpo, indent liste, variabili micro-tipografiche); riepilogo funzionale in [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6  
 
 ---
 
@@ -271,4 +311,4 @@ Con l’introduzione di questa FASE 8, nel documento master **Deploy e Go-Live**
 
 ---
 
-*FASE 8 — Riordino contenuti | DAMAGER Website v2.2 | Aprile 2026*
+*FASE 8 — Riordino contenuti | DAMAGER Website v2.4 | Aprile 2026*

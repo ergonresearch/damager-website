@@ -1,6 +1,6 @@
 # 🏗️ ARCHITETTURA TECNICA — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.6 | **Data:** Aprile 2026  
+**Versione:** 1.7 | **Data:** Aprile 2026  
 **Destinatari:** Sviluppatori, Responsabile tecnico  
 **Obiettivo:** Descrivere stack tecnologico, architettura, CMS, hosting e sicurezza
 
@@ -221,8 +221,9 @@ damager-website/
 ├── assets/
 │   ├── scss/
 │   │   ├── main.scss              # Entry point — importa tutti i partial
-│   │   ├── _variables.scss        # Palette colori, font, spacing, breakpoints
-│   │   ├── _base.scss             # Reset, tipografia, container, helper
+│   │   ├── _variables.scss        # Palette, scala font, spacing, breakpoint (+ token tipografici aggiuntivi)
+│   │   ├── _typography.scss       # Mixin/token tipografici condivisi (import subito dopo _variables)
+│   │   ├── _base.scss             # Reset, layout sezioni, tipografia pagina, reveal sezioni
 │   │   ├── _header.scss           # Header sticky, menu desktop, hamburger mobile
 │   │   ├── _footer.scss           # Footer EU disclaimer, link legali
 │   │   ├── _components.scss       # Card (news, doc, partner), bottoni, form, progress bar, tab nav
@@ -568,5 +569,5 @@ git checkout develop          # tornare su develop
 
 ---
 
-*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.4 | Aprile 2026*  
-**File correlato:** `docs/SPECIFICHE_SITO.md` — identità visiva, struttura pagine, contenuti
+*Documento Architettura Tecnica — Progetto DAMAGER Website | Versione 1.7 | Aprile 2026*  
+**File correlati:** [`SPECIFICHE_SITO.md`](SPECIFICHE_SITO.md) § 1.6 — sistema tipografico (token + mixin); [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — **F8.G** (mappatura ruoli → classi; percorsi SCSS come nella tabella di quel documento).

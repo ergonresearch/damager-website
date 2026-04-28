@@ -25,8 +25,17 @@ $font-size-2xl:  1.75rem;    // 28px
 $font-size-3xl:  2.5rem;     // 40px
 $font-size-4xl:  3.25rem;    // 52px
 
-$line-height:      1.65;
+$font-size-2xs:     0.6875rem; // 11px — compact UI (tab count badge)
+$font-size-micro:   0.65rem;   // tiny uppercase tags on cards
+$font-size-logo:    1.3rem;    // header wordmark (text placeholder)
+$font-size-lead-max: 1.25rem;  // lead clamp upper bound; small block icons
+$font-size-icon-xl: 3rem;      // 48px — large placeholder / map icons
+
+$line-height:       1.65;
 $line-height-tight: 1.2;
+$line-height-snug:  1.3;       // multi-line titles in dense cards/lists
+
+$font-size-root: 16px;        // html rem basis
 
 // Spacing scale
 $space-1:  0.25rem;
@@ -35,6 +44,7 @@ $space-3:  0.75rem;
 $space-4:  1rem;
 $space-5:  1.25rem;
 $space-6:  1.5rem;
+$space-7:  1.75rem;
 $space-8:  2rem;
 $space-10: 2.5rem;
 $space-12: 3rem;
