@@ -124,6 +124,7 @@ abbr[title="required"] {
 // Coordinator info card
 // ────────────────────────────────────
 .coordinator-card {
+  @include card-base;
   background: $white;
   border: $border;
   padding: $space-8;
@@ -339,10 +340,10 @@ abbr[title="required"] {
   &__concept-cell {
     @include card-base;
     padding: $space-5 $space-4;
-    font-size: $font-size-sm;
     font-weight: 700;
     line-height: 1.45;
     text-align: center;
+    align-content: center;
     color: $black;
   }
 }

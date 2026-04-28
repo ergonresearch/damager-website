@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: $font-size-2xl;
   font-weight: 900;
   letter-spacing: -0.02em;
-  margin-bottom: $space-4;
+  margin-bottom: $space-10;
 
   @media (min-width: $bp-md) { font-size: $font-size-3xl; }
 }

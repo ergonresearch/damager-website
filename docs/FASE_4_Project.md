@@ -185,7 +185,7 @@ Classi definite:
 | `.gif-media` | Area media 16:9; `img` → `object-fit: contain`; `video` → `object-fit: cover` |
 | `.gif-label` | Label monospace uppercase sotto il media |
 | `.about-cards` | Griglia 2 colonne (≥768px) / 1 colonna (mobile) |
-| `.about-card` | Card descrittiva: bordo 0.5px, `border-radius: 2px`, hover con `box-shadow` + `translateY(-1px)` |
+| `.about-card` | Card descrittiva: bordo 0.5px, `border-radius: 2px`, hover con `box-shadow` + `translateY(-1px)` + leggero `scale` |
 | `.about-card__num` | Numero progressivo (01–04): monospace, grigio, uppercase |
 | `.about-card__title` | Titolo card: 18px, font-weight 700 |
 | `.about-card__body` | Testo card: 16px, `$gray-600` |

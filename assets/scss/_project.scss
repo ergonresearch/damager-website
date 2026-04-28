@@ -161,6 +161,8 @@
   border: 0.5px solid $gray-400;
   border-radius: $radius-sm;
   padding: $space-8;
+  align-content: center;
+  text-align: center;
 
   &__title {
     font-size: $font-size-lg;
