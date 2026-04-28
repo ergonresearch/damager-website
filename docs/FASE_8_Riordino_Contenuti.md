@@ -44,7 +44,7 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 - **Sfondi alternati** dopo l’hero: pilastri `section--alt` (grigio) → What is DAMAGER bianco → Our Partners `section--alt` sulla sola Home → timeline bianca → eventi `section--alt` → contact blueprint. La pagina **Partners** (`/partners`): sezione «Our Partners» con **layout dedicato** (una riga per partner), non la stessa sezione della Home — vedi **F8.E**.
 - **Rilievo schede:** celle pilastri (`.home-pillars__cell`) e celle concetti (`.home-what-is__concept-cell`) usano `@include card-base` come le `.card-partner`.
-- **What is DAMAGER:** nessun eyebrow (solo `<h2>`); **testo sopra l’immagine:** blocco intro a **larghezza piena** del contenitore (allineato all’immagine); prima frase in **`.home-what-is__intro-lead`** tutta in grassetto (`font-weight: 700`), scala intro da sottotitolo (`clamp` con `$type-lead-accent-font-size` / `$font-size-lead-max` in `_typography.scss` / `_variables.scss`).
+- **What is DAMAGER:** nessun eyebrow (solo `<h2>`); **testo sopra l’immagine:** blocco intro a **larghezza piena** del contenitore (allineato all’immagine); prima frase con classe **`.lead-accent`** (stile condiviso con Project About), scala da sottotitolo (`clamp` con `$type-lead-accent-font-size` / `$font-size-lead-max`).
 - **Partner card:** riga `.card-partner__footer` con *Visit website* a sinistra e *LinkedIn* a destra (`justify-content: space-between`).
 
 ### Sintesi specifica (Project — mockup About concordato)
@@ -77,7 +77,7 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 
 **Ordine dei blocchi:**
 
-1. Testo introduttivo dal mockup concordato (finanziamento EC / European Defence Fund, bisogni, paragrafi su swarm/larger UAV, ecc.). La **prima frase** è resa in grassetto intero (`.home-what-is__intro-lead`); il blocco intro ha la **stessa larghezza** dell’immagine sotto (full width del `.container`). Includere il blocco **«To answer these challenges…»** con le **quattro aree tecnologiche** (coppie titolo + continuazione «to improve…» / «to reduce…» / ecc.) e la chiusura su modellazione numerica e test sperimentali, come sul mockup.
+1. Testo introduttivo dal mockup concordato (finanziamento EC / European Defence Fund, bisogni, paragrafi su swarm/larger UAV, ecc.). La **prima frase** usa la classe **`.lead-accent`** (stesso stile dei due paragrafi introduttivi in Project About); il blocco intro ha la **stessa larghezza** dell’immagine sotto (full width del `.container`). Includere il blocco **«To answer these challenges…»** con le **quattro aree tecnologiche** (coppie titolo + continuazione «to improve…» / «to reduce…» / ecc.) e la chiusura su modellazione numerica e test sperimentali, come sul mockup.
 2. **Immagine** (formato wide ~2:1).  
    - **Sorgente file:** `https://nextgendefense.com/wp-content/uploads/2025/12/uav-sweden-concept.webp`  
    - In repository: copiare l’asset sotto `static/images/home/` (nome stabile, es. `uav-sweden-concept.webp`) per indipendenza dal CDN esterno.  
@@ -252,7 +252,7 @@ Tabella di **mappatura semantica → implementazione attuale** (classi / blocchi
 | **SectionHeading** | Sottosezioni dentro pagina contenuto | `.page h2`, `.page h3` | assets/scss/_base.scss |
 | **Eyebrow** | Etichetta sezione uppercase (tracking più aperto) | `.section-eyebrow` — `@include type-eyebrow-section` | assets/scss/_base.scss, assets/scss/_typography.scss |
 | **EyebrowUI** | Etichette compatte (nav, tab, progress, mese evento) | `.main-nav a`, `.mobile-nav a`, `.progress-header h3`, `.event-card__month`, `.tab-nav__item` — `@include type-eyebrow-ui` | assets/scss/_header.scss, assets/scss/_components.scss, assets/scss/_typography.scss |
-| **Lead** | Primo blocco di ingresso dopo il titolo di sezione (più grande del corpo) | `.section-intro` (`$type-lead-block-*`); `.home-what-is__intro-lead`; `.project-about-lead__subtitle` (`$type-lead-accent-*`) | assets/scss/_base.scss, assets/scss/_home.scss, assets/scss/_project.scss, assets/scss/_typography.scss |
+| **Lead** | Primo blocco di ingresso dopo il titolo di sezione (più grande del corpo) | `.section-intro` (`$type-lead-block-*`); accenti intro **`.lead-accent`** (Home What is + prime righe Project About; token `$type-lead-accent-*`) | assets/scss/_base.scss, assets/scss/_home.scss, assets/scss/_project.scss, assets/scss/_typography.scss |
 | **Body** | Paragrafi standard e copy nelle sezioni | `body` (`$font-size-root` su `html`); `.home-what-is__intro`; `.project-about-lead p`; testi card — token `$type-body-copy-*` dove applicato | assets/scss/_base.scss, assets/scss/_home.scss, assets/scss/_project.scss, assets/scss/_components.scss, assets/scss/_typography.scss |
 | **BodyProse** | Contenuto lungo Markdown generico | `.page p`, `.page ul` / `ol` | assets/scss/_base.scss, assets/scss/_typography.scss |
 | **BodyArticle** | Corpo articolo news (scala dedicata) | `.article-body` — `$type-article-*`, `$type-article-column-max-width` | assets/scss/_media.scss, assets/scss/_typography.scss |

@@ -10,17 +10,14 @@
   line-height: $type-body-relaxed-line-height;
   color: $type-body-copy-color;
 
-  p {
+  // Match Home `.home-what-is__intro`: body `p` excluded when `.lead-accent` (see `_typography.scss`)
+  p:not(.lead-accent) {
     font-size: $font-size-base;
+    line-height: $type-body-copy-line-height;
     margin: 0 0 $type-prose-paragraph-gap;
     color: inherit;
 
     &:last-child { margin-bottom: 0; }
-  }
-
-  &__subtitle {
-    font-size: $type-lead-accent-font-size;
-    line-height: $type-lead-accent-line-height;
   }
 
   &__list {

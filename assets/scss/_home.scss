@@ -249,22 +249,14 @@ abbr[title="required"] {
     width: 100%;
     max-width: none;
 
-    p:not(.home-what-is__intro-lead) {
+    p:not(.lead-accent) {
       font-size: $font-size-base;
       color: $type-body-copy-color;
       line-height: $type-body-copy-line-height;
-      margin: 0 0 $space-6;
+      margin: 0 0 $type-prose-paragraph-gap;
 
       &:last-child { margin-bottom: 0; }
     }
-  }
-
-  &__intro-lead {
-    font-size: $type-lead-accent-font-size;
-    font-weight: 700;
-    line-height: $type-lead-accent-line-height;
-    color: $gray-800;
-    margin: 0 0 $space-6;
   }
 
   &__tech-list {

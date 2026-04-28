@@ -49,6 +49,23 @@ $type-intro-max-width:       660px;
 $type-prose-paragraph-gap:   $space-5;
 $type-prose-list-indent:    $space-5;
 
+// Shared lead accent (sub-title under section body) — Home What is + Project About
+.lead-accent {
+  font-size: $type-lead-accent-font-size;
+  font-weight: 700;
+  line-height: $type-lead-accent-line-height;
+  color: $type-body-copy-color;
+  margin: 0 0 $type-prose-paragraph-gap;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    font-weight: 800;
+  }
+}
+
 $type-caption-font-size:   $font-size-sm;
 $type-caption-line-height: 1.45;
 

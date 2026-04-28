@@ -95,10 +95,10 @@ Il lavoro di allineamento tipografico è **implementato in codice** e riassunto 
 |----------|----------------|---------------|
 | **Markdown / pagine legali** | `.page` (`p`, liste, tabelle) | Corpo **base** 16px, colore e interlinea da **`$type-body-copy-*`**; liste con `padding-left` più largo (`$space-6`). |
 | **Intro sotto titolo di sezione** | `.section-intro` | Scala **lead blocco** (`$type-lead-block-*`), **`$type-intro-max-width`**. |
-| **Fascia About Project** | `.project-about-lead` | Paragrafi base + interlinea rilassata **`$type-body-relaxed-line-height`**; sottotitolo prime righe con **`$type-lead-accent-*`**; liste con **`$type-prose-list-indent`**. |
+| **Fascia About Project** | `.project-about-lead` | Paragrafi base + interlinea rilassata **`$type-body-relaxed-line-height`**; prime righe intro con classe **`.lead-accent`** (stile in `_typography.scss`); liste con **`$type-prose-list-indent`**. |
 | **Articolo news** | `.article-body` | Corpo **articolo** (`$type-article-*`), colonna **`$type-article-column-max-width`**, spazio tra paragrafi **`$type-prose-paragraph-gap`**. |
 
-Il blocco «What is DAMAGER» (Home) usa gli stessi token **copy** per i paragrafi standard e per la lista tecnica, in coerenza con il sistema sopra.
+Il blocco «What is DAMAGER» (Home) usa **`.lead-accent`** per la prima riga introduttiva (come in About the Project) e gli stessi token **copy** per i paragrafi standard e per la lista tecnica, in coerenza con il sistema sopra.
 
 #### 1.6.5 Liste e micro-dimensioni
 
