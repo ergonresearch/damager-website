@@ -1,7 +1,7 @@
 # FASE 8 — Riordino contenuti (Home, Project, Partners)
 
-> **Versione:** 1.9 | **Data:** Aprile 2026  
-> **Stato:** **Home (F8.A–C)**, **Project About (F8.D)** e **Partners — Our Partners (F8.E)** completate in codice. Restano eventuali evoluzioni redazionali sui testi in `data/partners.yaml`.  
+> **Versione:** 2.0 | **Data:** Aprile 2026  
+> **Stato:** **Home (F8.A–C)**, **Project About (F8.D)**, **Partners — Our Partners (F8.E)** e **Reveal sezioni (F8.F)** completate in codice. Restano eventuali evoluzioni redazionali sui testi in `data/partners.yaml`.  
 > **Branch:** develop
 
 ---
@@ -26,6 +26,9 @@ Riallineare il sito ai **mockup contenutistici** concordati in fase di progetto:
 | Stili Home | [`assets/scss/_home.scss`](../assets/scss/_home.scss) |
 | Stili Partners | [`assets/scss/_partners.scss`](../assets/scss/_partners.scss) |
 | Stili card condivise (mixin rilievo) | [`assets/scss/_components.scss`](../assets/scss/_components.scss) — `card-base` |
+| Reveal sezioni (logica JS) | [`assets/js/main.js`](../assets/js/main.js) — `initSectionReveal()` |
+| Reveal sezioni (stili globali) | [`assets/scss/_base.scss`](../assets/scss/_base.scss) |
+| Hook early class reveal | [`layouts/_default/baseof.html`](../layouts/_default/baseof.html) — classe `has-reveal` in `<head>` |
 | Partial pilastri | [`layouts/partials/home-pillars.html`](../layouts/partials/home-pillars.html) |
 | Partial What is DAMAGER | [`layouts/partials/home-what-is-damager.html`](../layouts/partials/home-what-is-damager.html) |
 | Dati partner | [`data/partners.yaml`](../data/partners.yaml) — unica fonte: URL, logo, `description_home` / `description_partners`, ecc. (vedi **F8.E**) |
@@ -209,6 +212,30 @@ flowchart TB
 
 ---
 
+## F8.F — Comparsa graduale sezioni (on-load + on-scroll)
+
+**Obiettivo:** introdurre una transizione di comparsa graduale delle sezioni all'ingresso in viewport, mantenendo comportamento coerente sia all'apertura pagina sia durante lo scroll.
+
+### Implementazione tecnica
+
+- **Selettore target:** tutte le `section` dentro `main` (hero inclusa).
+- **Stato iniziale/visibile:** definito in `assets/scss/_base.scss` con transizione `opacity + translateY` e delay progressivo tramite variabile CSS `--reveal-delay`.
+- **Trigger viewport:** `IntersectionObserver` in `initSectionReveal()` (`assets/js/main.js`), con reveal una sola volta per sezione (`unobserve` dopo attivazione).
+- **Prime sezioni visibili al load:** rilevate subito e attivate dopo il primo paint (doppio `requestAnimationFrame`) per applicare la stessa durata della comparsa anche in cima pagina.
+- **No flash bianco iniziale:** classe `has-reveal` applicata già in `<head>` (`layouts/_default/baseof.html`) prima del caricamento CSS, così lo stato iniziale è coerente dal primo frame.
+
+### Comportamento specifico hero
+
+- La **sezione hero** resta con sfondo subito visibile (nero), senza transizione sulla superficie della sezione.
+- La comparsa graduale è applicata ai **contenuti interni** della hero (`.hero > *`), per evitare l'effetto di apertura su sfondo bianco.
+
+### Accessibilità / fallback
+
+- Se `prefers-reduced-motion: reduce` è attivo, le animazioni vengono disabilitate e il contenuto resta immediatamente visibile.
+- In assenza di `IntersectionObserver`, le sezioni vengono mostrate subito (fallback progressivo).
+
+---
+
 ## Ordine sezioni Home (risultato atteso)
 
 ```
@@ -234,6 +261,7 @@ Hero
 - [x] **F8.7** Implementazione codice pagina Project secondo **F8.D** (intro `.project-about-lead`, 6 card, griglia SCSS)  
 - [x] **F8.E-spec** Specifica **F8.E**: Partners «Our Partners» distinta dalla Home, una riga per partner, testi mockup Partners, architettura dati + partial (documentato qui e in `SPECIFICHE_SITO.md`)  
 - [x] **F8.E-code** Implementazione **F8.E**: `data/partners.yaml`, `partners-card-inner.html`, `partners-page-rows.html`, refactor `partners-card-grid.html`, `_partners.scss` (griglia a una colonna + bullet razzo), `partners-card-inner` + `markdownify` e annidamento in `_components.scss`  
+- [x] **F8.F** Reveal graduale sezioni (on-load + on-scroll), hero inclusa con sfondo nero immediato e animazione sui contenuti interni, supporto `prefers-reduced-motion`
 
 ---
 
@@ -243,4 +271,4 @@ Con l’introduzione di questa FASE 8, nel documento master **Deploy e Go-Live**
 
 ---
 
-*FASE 8 — Riordino contenuti | DAMAGER Website v2.1 | Aprile 2026*
+*FASE 8 — Riordino contenuti | DAMAGER Website v2.2 | Aprile 2026*

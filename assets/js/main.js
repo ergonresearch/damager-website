@@ -172,12 +172,69 @@
     });
   }
 
+  // ── Section reveal on scroll
+  // Adds a gradual fade/slide-in effect when sections enter the viewport.
+  function initSectionReveal() {
+    var sections = document.querySelectorAll('main section');
+    if (!sections.length) return;
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    var initiallyVisible = [];
+
+    function isInitiallyVisible(section) {
+      var rect = section.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < viewportHeight * 0.96;
+    }
+
+    sections.forEach(function (section, index) {
+      section.style.setProperty('--reveal-delay', Math.min(index * 60, 180) + 'ms');
+      if (isInitiallyVisible(section)) {
+        initiallyVisible.push(section);
+      }
+    });
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      sections.forEach(function (section) {
+        section.classList.add('is-visible');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && entry.intersectionRatio <= 0) return;
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    }, {
+      root: null,
+      threshold: 0,
+      rootMargin: '0px 0px -4% 0px'
+    });
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+
+    // Reveal sections already in view on first load with the same timing effect.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        initiallyVisible.forEach(function (section) {
+          section.classList.add('is-visible');
+          observer.unobserve(section);
+        });
+      });
+    });
+  }
+
   // ── Init on DOM ready
   document.addEventListener('DOMContentLoaded', function () {
     initProgressBar();
     initTimeline();
     initTabs();
     initEngineDroplines();
+    initSectionReveal();
   });
 
 }());

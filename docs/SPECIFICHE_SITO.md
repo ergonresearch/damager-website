@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 1.9 | **Data:** Aprile 2026  
+**Versione:** 2.0 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -185,6 +185,16 @@ Form di contatto con i campi:
 - Implementazione: Netlify Forms (nessun server necessario)
 - Anti-spam: campo honeypot nascosto
 - Messaggio di conferma: *"Thank you! Your message has been sent to the project coordinator."*
+
+---
+
+### I) Comparsa graduale sezioni (Reveal on load/scroll)
+
+- Tutte le sezioni `main section` usano una comparsa graduale (`opacity + translateY`) con timing progressivo.
+- Trigger via `IntersectionObserver` in `assets/js/main.js` (`initSectionReveal()`), con attivazione una sola volta per sezione.
+- Anche le sezioni già parzialmente visibili all'apertura pagina vengono animate con lo stesso timing (attivazione post-paint), evitando discrepanze tra on-load e on-scroll.
+- **Hero:** sfondo nero visibile subito; la transizione è applicata ai contenuti interni della hero per evitare flash iniziale su fondo chiaro.
+- Accessibilità: con `prefers-reduced-motion: reduce` il reveal viene disattivato (contenuti visibili senza animazione).
 
 ---
 
