@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 5.0 | **Data:** Maggio 2026  
+**Versione:** 5.1 | **Data:** Maggio 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore (Grant Agreement):** HIT09 SRL (Italy)  
 **Communication / dissemination, realizzazione e manutenzione del sito, registrazione dominio `damager.eu`:** Ergon Research SRL (Italy)
@@ -65,7 +65,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
 | [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners (F8.E), reveal (F8.F), tipografia **F8.G** in codice (`_typography.scss`, `_variables.scss`) | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
 | [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio `damager.eu` (intestazione Ergon Research, acquisto ≥5 anni, registrar), DNS, testing | 📝 Bozza *(Maggio 2026)* |
-| `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
+| [`FASE_10_Formazione.md`](FASE_10_Formazione.md) | Formazione editor: Identity, guida Decap CMS (News/Documents/Publications), training, screenshot | ✅ Documento creato *(attività F10.1–F10.3 da svolgere al go-live / post-deploy)* |
 
 > **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali. Dopo la FASE 7, la **FASE 8** (riordino contenuti Home / Project / Partners) aggiorna layout e testi senza modificare la numerazione delle fasi 0-7 già completate.
 
@@ -197,7 +197,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ### FASE 10 — Formazione editor
 
-- [ ] **F10.1** Guida utente CMS (screenshots passo-passo)
+> Specifica dettagliata, guide operative e agenda training: [`FASE_10_Formazione.md`](FASE_10_Formazione.md)
+
+- [ ] **F10.1** Guida utente CMS (screenshot passo-passo integrati dopo il primo training — vedi § F10.1 nel file di fase)
 - [ ] **F10.2** Invito editor tramite Netlify Identity
 - [ ] **F10.3** Sessione training
 
@@ -272,5 +274,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v5.0 | Maggio 2026*  
+*Progetto DAMAGER Website — Documento Master v5.1 | Maggio 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*
