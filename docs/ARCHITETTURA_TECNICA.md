@@ -431,7 +431,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 ### 4.1 Registrazione `damager.eu`
 
 - Registrante: **HIT09 SRL** (coordinatore del progetto, sede in Italia ✅)
-- Registrar consigliato: **OVH** (~9-11€/anno) o **Aruba** (~10-13€/anno, supporto IT)
+- Registrar consigliato: **OVHcloud** (~9-11€/anno al 2026, confermare listino) o **Aruba** (~10-13€/anno, supporto IT); confronto esteso, multi-anno e requisito **≥ 5 anni** in [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
 - Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-il-tuo-eu/
 
 

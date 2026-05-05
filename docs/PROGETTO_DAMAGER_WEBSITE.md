@@ -1,5 +1,5 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.8 | **Data:** Aprile 2026  
+**Versione:** 4.9 | **Data:** Maggio 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
 **Coordinatore:** HIT09 SRL (Italy)
 
@@ -63,7 +63,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
 | [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners (F8.E), reveal (F8.F), tipografia **F8.G** in codice (`_typography.scss`, `_variables.scss`) | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
-| `FASE_9_Deploy.md` | Go-live, dominio, DNS, testing | ⏳ Da creare |
+| [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio (acquisto ≥5 anni, confronto registrar), DNS, testing | 📝 Bozza *(Maggio 2026)* |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
 > **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali. Dopo la FASE 7, la **FASE 8** (riordino contenuti Home / Project / Partners) aggiorna layout e testi senza modificare la numerazione delle fasi 0-7 già completate.
@@ -183,7 +183,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ### FASE 9 — Deploy e Go-Live
 
-- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar OVH/Aruba, a nome HIT09 SRL)
+> Specifica operativa e confronto registrar (incluso requisito **≥ 5 anni** di registrazione): [`FASE_9_Deploy.md`](FASE_9_Deploy.md)
+
+- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar consigliato: OVHcloud; alternativa Aruba — vedi FASE 9; **Cloudflare Registrar non supporta `.eu`**), a nome HIT09 SRL, durata **≥ 5 anni** o equivalente (multi-anno + auto-renew)
 - [ ] **F9.1** DNS configurato (`damager.eu` → Netlify)
 - [ ] **F9.2** HTTPS attivato (automatico)
 - [ ] **F9.3** Test cross-browser (Chrome, Firefox, Safari, Edge)
@@ -269,5 +271,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.8 | Aprile 2026*  
+*Progetto DAMAGER Website — Documento Master v4.9 | Maggio 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*
