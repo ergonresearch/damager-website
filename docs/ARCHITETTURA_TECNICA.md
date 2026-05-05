@@ -276,7 +276,7 @@ damager-website/
 - **URL:** `https://damager.eu/admin`
 - **Autenticazione:** Netlify Identity (email + password)
 - **Nessun account GitHub richiesto** per gli editor
-- **Invito:** il coordinatore HIT09 invita gli editor via email dal pannello Netlify
+- **Invito:** chi amministra Netlify Identity per il sito (tipicamente Ergon Research / communication) invita gli editor via email dal pannello Netlify
 
 ### 2.2 Configurazione `static/admin/config.yml`
 
@@ -430,7 +430,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 ### 4.1 Registrazione `damager.eu`
 
-- Registrante: **HIT09 SRL** (coordinatore del progetto, sede in Italia ✅)
+- Registrante: **Ergon Research SRL** (sede in Italia ✅; partner per communication/dissemination e gestione del sito). Il coordinatore del Grant Agreement resta **HIT09 SRL** — vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
 - Registrar consigliato: **OVHcloud** (~9-11€/anno al 2026, confermare listino) o **Aruba** (~10-13€/anno, supporto IT); confronto esteso, multi-anno e requisito **≥ 5 anni** in [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
 - Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-il-tuo-eu/
 
@@ -472,6 +472,8 @@ Il form di contatto sulla home (`layouts/index.html`) usa **Netlify Forms**. Olt
 | **Akismet (predefinito)** | Tutte le submission vengono analizzate. Quelle segnate come spam compaiono in **Spam submissions** nel pannello Netlify; le altre in **Verified submissions**. Non richiede configurazione nel repository. |
 | **Honeypot** | Il markup usa `data-netlify-honeypot="bot-field"` e un campo nascosto `bot-field`. Se compilato, la submission viene **rifiutata silenziosamente** (non compare nemmeno tra lo spam). |
 | **Notifiche email** | Le notifiche configurabili in *Project configuration → Notifications → Form submission notifications* riguardano le **submission verificate**, non lo stream separato gestito da Akismet come spam. |
+
+**Destinatario notifiche (progetto DAMAGER):** l’indirizzo **definitivo** per le submission del form home è **`info@hit09.com`** (coordinatore HIT09), anche se account Netlify e gestione sito sono a cura di **Ergon Research** — vedi [`content/privacy-policy.md`](../content/privacy-policy.md) § 2.1 e [`docs/FASE_3_Home.md`](FASE_3_Home.md) § F3.5.
 
 **Opzionale — ulteriore barriera:** Netlify supporta **reCAPTCHA 2** integrato (`data-netlify-recaptcha="true"` sul `<form>` e elemento placeholder nel form) oppure reCAPTCHA custom con variabili d'ambiente `SITE_RECAPTCHA_KEY` / `SITE_RECAPTCHA_SECRET`. Valutare impatto UX e privacy (terza parte, eventuale aggiornamento Cookie/Privacy Policy) prima di abilitarlo.
 

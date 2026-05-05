@@ -1,6 +1,6 @@
 # 🚀 FASE 9 — Deploy e Go-Live
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 0.91 (bozza) | **Data:** Maggio 2026  
+**Versione:** 0.93 (bozza) | **Data:** Maggio 2026  
 **Prerequisiti:** FASI 1–8 completate; sito stabile su staging Netlify  
 **Obiettivo:** Acquistare e blindare il dominio `damager.eu`, collegarlo a Netlify, verificare HTTPS e i flussi critici in produzione
 
@@ -10,7 +10,7 @@
 
 | ID | Attività | Stato |
 |----|----------|-------|
-| **F9.0** | Acquisto dominio `damager.eu` (intestazione **HIT09 SRL**) + copertura **≥ 5 anni** dalla registrazione | ⏳ |
+| **F9.0** | Acquisto dominio `damager.eu` (intestazione **Ergon Research SRL**) + copertura **≥ 5 anni** dalla registrazione | ⏳ |
 | **F9.1** | DNS: `damager.eu` e `www` puntano al sito Netlify di produzione | ⏳ |
 | **F9.2** | HTTPS attivo (certificato Netlify / Let's Encrypt) | ⏳ |
 | **F9.3** | Test cross-browser (Chrome, Firefox, Safari, Edge) | ⏳ |
@@ -34,13 +34,15 @@ Per il sito DAMAGER si richiede che il nome `damager.eu` resti **registrato e ri
 
 > **Nota:** «Disponibile per 5 anni» non significa che il dominio sia *riservato* senza pagamento: significa che la **registrazione resta attiva** (pagando i periodi successivi o anticipandoli all’acquisto).
 
-### Idoneità al `.eu` per HIT09 SRL
+### Idoneità al `.eu` per Ergon Research SRL
 
-Il `.eu` è riservato a cittadini/residenti o imprese/organizzazioni stabilite nell’UE (e Spazio economico europeo, con le eccezioni note, es. post-Brexit). **HIT09 SRL**, coordinatore italiano del progetto, rientra nei criteri ([EURid — Get your .eu](https://www.eurid.eu/en/get-your-eu/), [guida Aruba su requisiti .eu](https://guide.aruba.it/hosting-e-domini/gestione-domini/acquisto-e-rinnovo/acquisto-registrazione/dominio-eu)).
+Il `.eu` è riservato a cittadini/residenti o imprese/organizzazioni stabilite nell’UE (e Spazio economico europeo, con le eccezioni note, es. post-Brexit). **Ergon Research SRL** (società italiana, partner del consorzio e responsabile per communication/dissemination, nonché soggetto che realizza e mantiene il sito) rientra nei criteri ([EURid — Get your .eu](https://www.eurid.eu/en/get-your-eu/), [guida Aruba su requisiti .eu](https://guide.aruba.it/hosting-e-domini/gestione-domini/acquisto-e-rinnovo/acquisto-registrazione/dominio-eu)).
+
+> **Ruoli progetto:** il **coordinatore** del progetto DAMAGER finanziato dall’EDF resta **HIT09 SRL**; la **registrazione del dominio** e la **gestione operativa del sito** sono documentate a carico di **Ergon Research SRL**, in linea con il ruolo di communication/dissemination e con la titolarità del trattamento sul sito (vedi [`content/privacy-policy.md`](../content/privacy-policy.md)).
 
 ### Intestazione e dati WHOIS
 
-- **Registrant (intestatario):** **HIT09 SRL**, con dati societari corretti e P.IVA coerente con la documentazione del progetto.
+- **Registrant (intestatario):** **Ergon Research SRL**, con dati societari corretti e P.IVA coerente con la documentazione aziendale e di progetto.
 - **Email di registrant:** casella **monitorata** (EURid e il registrar inviano avvisi di scadenza, verifica identità, problemi di pagamento).  
 - Dopo la registrazione, **EURid** può avviare una **verifica dei dati** anti-abuso: in tal caso possono richiedere documentazione in pochi giorni; finché la pratica è aperta il dominio può restare in stato non operativo (`Server Hold` secondo la documentazione di alcuni registrar). Pianificare un referente che risponda rapidamente ([guida Aruba — convalida EURid](https://guide.aruba.it/hosting-e-domini/gestione-domini/acquisto-e-rinnovo/whois-privacy/convalida-dati-dominio-eu)).
 
@@ -61,12 +63,12 @@ Criteri usati per DAMAGER: **supporto al `.eu` con durata ≥ 5 anni**, **traspa
 ### Raccomandazione operativa per DAMAGER
 
 1. **Scelta primaria consigliata: OVHcloud** — combinazione documentata di **multi-anno fino a 10 anni**, prezzi di rinnovo dichiarati, DNS adatto a puntare al load balancer Netlify, contesto europeo. Allineata alla nota già presente in architettura (~9–11 €/anno come ordine di grandezza, aggiornabile al listino corrente).
-2. **Scelta alternativa sensata: Aruba** se HIT09 ha già **tutti** i domini e la fatturazione centralizzati lì, accettando il confronto prezzi sul **totale 5 anni** e confermando la durata massima selezionabile per `.eu`.
+2. **Scelta alternativa sensata: Aruba** se Ergon Research ha già **tutti** i domini e la fatturazione centralizzati lì, accettando il confronto prezzi sul **totale 5 anni** e confermando la durata massima selezionabile per `.eu`.
 
 **Passi operativi minimi (indipendentemente dal registrar):**
 
 1. Verificare disponibilità su [EURid](https://www.eurid.eu/it/ottieni-il-tuo-eu/) o sul motore del registrar scelto.
-2. Registrare **a nome HIT09 SRL** con dati verificabili.
+2. Registrare **a nome Ergon Research SRL** con dati verificabili.
 3. Nel carrello, selezionare **durata 5 anni** (o **10 anni** se il budget lo consente e si vuole massima continuità oltre il minimo richiesto).
 4. Abilitare **rinnovo automatico** e conservare una **copia delle fatture** e della conferma d’ordine nel fascicolo progetto EDF.
 5. Annotare in calendario interno la **data di scadenza** e il referente DNS anche oltre il quinto anno (gestione del patrimonio dominio).
@@ -97,7 +99,7 @@ Eseguire i test dall’URL **di produzione** (`https://damager.eu`), non solo da
 |----|-----------------|------|
 | **F9.3** | Chrome, Firefox, Safari, Edge — home, navigazione menu, Media (tab), Project (animazioni leggere) | Controllare anche `www` se attivo |
 | **F9.4** | Layout mobile, menu, mappa (dopo consenso cookie funzionali), form | Dispositivi reali preferibili agli emulatori |
-| **F9.5** | Form contatto: invio, redirect a `/contact-success/`, email a `info@hit09.com` | Notifiche solo su submission **verificate** (filtro spam Netlify) — vedi [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 5.1 |
+| **F9.5** | Form contatto: invio, redirect a `/contact-success/`, notifica a **`info@hit09.com`** (scelta progettuale: casella coordinatore; vedi Privacy Policy § 2.1) | Notifiche solo su submission **verificate** (filtro spam Netlify) — vedi [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 5.1 |
 | **F9.6** | Login `/admin`, pubblicazione bozza news, caricamento PDF in una collezione Media | Git Gateway attivo; stesso flusso già validato su staging |
 | **F9.7** | Banner cookie, modifica preferenze, blocco/sblocco mappa e eventuali script analitici | Coerente con [`FASE_7_Cookie.md`](FASE_7_Cookie.md) |
 
@@ -113,4 +115,4 @@ Eseguire i test dall’URL **di produzione** (`https://damager.eu`), non solo da
 
 ---
 
-*DAMAGER Website — FASE 9 Deploy (bozza v0.91) | Maggio 2026. I prezzi dei registrar sono indicativi e vanno confermati al momento dell’ordine.*
+*DAMAGER Website — FASE 9 Deploy (bozza v0.93) | Maggio 2026. I prezzi dei registrar sono indicativi e vanno confermati al momento dell’ordine.*

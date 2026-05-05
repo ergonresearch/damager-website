@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "Privacy Policy of the DAMAGER project website — information on data processing under GDPR."
 ---
 
-*Last updated: March 2026*
+*Last updated: May 2026*
 
 ---
 
@@ -11,12 +11,13 @@ description: "Privacy Policy of the DAMAGER project website — information on d
 
 The data controller for this website is:
 
-**HIT09 SRL**  
-Via dell'Elettricità 3/d  
-35028 Piove di Sacco (PD), Italy  
-E-mail: info@hit09.com
+**Ergon Research SRL**  
+Italy  
+Full registered address and company identifiers: see the official **Contacts** / legal information on [www.ergonresearch.it](https://www.ergonresearch.it/it/).
 
-HIT09 SRL is the project coordinator of the **DAMAGER** research project (Grant Agreement No. 101224541), funded by the European Defence Fund (EDF).
+**Ergon Research SRL** is a consortium partner in the **DAMAGER** research project (Grant Agreement No. 101224541), funded by the European Defence Fund (EDF). It leads **communication and dissemination** for the project, develops and operates this website, and registers the domain **damager.eu** on behalf of the consortium.
+
+**HIT09 SRL** remains the **project coordinator** under the Grant Agreement (technical and administrative lead of the consortium). For consortium or grant matters unrelated to this website’s personal data processing, contact the coordinator through the channels published by the DAMAGER project.
 
 ---
 
@@ -30,7 +31,7 @@ When you use the **contact form** on this website, you provide:
 - Your e-mail address
 - The content of your message
 
-This data is transmitted to and stored by **Netlify** (our hosting provider) via Netlify Forms, and forwarded to the project coordinator by e-mail. It is used solely to respond to your enquiry.
+This data is transmitted to and stored by **Netlify** (our hosting provider) via Netlify Forms, and forwarded by e-mail to **info@hit09.com** (mailbox of **HIT09 SRL**, project coordinator). The website and Netlify are operated by **Ergon Research SRL**; the consortium has chosen this address so that enquiries reach the coordinator’s public project inbox. The data is used solely to respond to your enquiry.
 
 **Legal basis:** Article 6(1)(f) GDPR — legitimate interest in responding to unsolicited enquiries from stakeholders.
 
@@ -83,7 +84,7 @@ Under the GDPR and Italian D.Lgs. 196/2003 (as amended by D.Lgs. 101/2018), you 
 - **Portability** — receive your data in a structured, machine-readable format
 - **Withdrawal of consent** — at any time, without affecting the lawfulness of prior processing
 
-To exercise any of these rights, contact us at **info@hit09.com**.
+To exercise any of these rights, contact **Ergon Research SRL** using the official contact details published on [www.ergonresearch.it](https://www.ergonresearch.it/it/) (or the dedicated DAMAGER communication address, once published on this site).
 
 You also have the right to lodge a complaint with the Italian data protection authority:
 

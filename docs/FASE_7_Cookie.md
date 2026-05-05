@@ -145,7 +145,7 @@ Contenuto: `content/privacy-policy.md`
 Layout: `layouts/_default/single.html` (default Hugo)
 
 Sezioni:
-1. Titolare del trattamento (HIT09 SRL)
+1. Titolare del trattamento (Ergon Research SRL — communication/dissemination e gestione sito; HIT09 resta coordinatore GA)
 2. Dati raccolti (form contatto, analytics)
 3. Servizi di terze parti (tabella: Netlify, GA4, Maps, Fonts)
 4. Tempi di conservazione

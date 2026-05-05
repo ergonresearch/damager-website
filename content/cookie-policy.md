@@ -3,7 +3,7 @@ title: "Cookie Policy"
 description: "Cookie Policy of the DAMAGER project website — list of cookies used and how to manage them."
 ---
 
-*Last updated: March 2026*
+*Last updated: May 2026*
 
 ---
 
@@ -88,7 +88,7 @@ Map tile requests go to `tile.openstreetmap.org`. OpenStreetMap does not set tra
 
 For any questions regarding this Cookie Policy, please contact:
 
-**HIT09 SRL** — info@hit09.com
+**Ergon Research SRL** — use the contact details published on [www.ergonresearch.it](https://www.ergonresearch.it/it/) (data controller for this website; see the [Privacy Policy](/privacy-policy/) § 1).
 
 ---
 

@@ -1,7 +1,8 @@
 # 📋 PROGETTO DAMAGER WEBSITE — Documento Master
-**Versione:** 4.9 | **Data:** Maggio 2026  
+**Versione:** 5.0 | **Data:** Maggio 2026  
 **Progetto:** DAMAGER — European Defence Fund (EDF) 2024  
-**Coordinatore:** HIT09 SRL (Italy)
+**Coordinatore (Grant Agreement):** HIT09 SRL (Italy)  
+**Communication / dissemination, realizzazione e manutenzione del sito, registrazione dominio `damager.eu`:** Ergon Research SRL (Italy)
 
 ---
 
@@ -63,7 +64,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
 | [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners (F8.E), reveal (F8.F), tipografia **F8.G** in codice (`_typography.scss`, `_variables.scss`) | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
-| [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio (acquisto ≥5 anni, confronto registrar), DNS, testing | 📝 Bozza *(Maggio 2026)* |
+| [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio `damager.eu` (intestazione Ergon Research, acquisto ≥5 anni, registrar), DNS, testing | 📝 Bozza *(Maggio 2026)* |
 | `FASE_10_Formazione.md` | Guida utente CMS per editor | ⏳ Da creare |
 
 > **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali. Dopo la FASE 7, la **FASE 8** (riordino contenuti Home / Project / Partners) aggiorna layout e testi senza modificare la numerazione delle fasi 0-7 già completate.
@@ -185,7 +186,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > Specifica operativa e confronto registrar (incluso requisito **≥ 5 anni** di registrazione): [`FASE_9_Deploy.md`](FASE_9_Deploy.md)
 
-- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar consigliato: OVHcloud; alternativa Aruba — vedi FASE 9; **Cloudflare Registrar non supporta `.eu`**), a nome HIT09 SRL, durata **≥ 5 anni** o equivalente (multi-anno + auto-renew)
+- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar consigliato: OVHcloud; alternativa Aruba — vedi FASE 9; **Cloudflare Registrar non supporta `.eu`**), a nome **Ergon Research SRL** (communication/dissemination e gestione sito), durata **≥ 5 anni** o equivalente (multi-anno + auto-renew)
 - [ ] **F9.1** DNS configurato (`damager.eu` → Netlify)
 - [ ] **F9.2** HTTPS attivato (automatico)
 - [ ] **F9.3** Test cross-browser (Chrome, Firefox, Safari, Edge)
@@ -243,7 +244,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | Caricare PDF (documenti, publications) | Editor non tecnico | `damager.eu/admin` → CMS |
 | Modificare testi | Editor non tecnico | `damager.eu/admin` → CMS |
 | Modificare design/template | Sviluppatore | VS Code → git push → deploy auto |
-| Rinnovo dominio | Coordinatore | Registrar (~10-15€/anno) |
+| Rinnovo dominio | Ergon Research (gestione dominio) | Registrar (~10-15€/anno) |
 
 ---
 
@@ -258,8 +259,8 @@ La documentazione di progetto è suddivisa in file specializzati:
 | 4 | URL ufficiale COMOTI | Partners | ✅ https://comoti.ro/en/home-2/ |
 | 5 | Indirizzo fisico HIT09 SRL | Partners (mappa) | ⏳ Da fornire |
 | 6 | Indirizzo fisico Ergon Research SRL | Partners (mappa) | ⏳ Da fornire |
-| 7 | P.IVA/CF HIT09 SRL | Privacy Policy | ⏳ Da fornire |
-| 8 | Email contatto pubblico progetto | Form contatto + Privacy Policy | ✅ info@hit09.com *(configurare in Netlify dashboard → Form notifications)* |
+| 7 | P.IVA/CF Ergon Research SRL | Privacy Policy (titolare sito) | ⏳ Da fornire |
+| 8 | Email notifiche form / contatto pubblico progetto | Form contatto + Privacy Policy | ✅ **`info@hit09.com`** (coordinatore HIT09) — indirizzo definitivo; Netlify Form notifications configurate di conseguenza *(gestione sito/Netlify: Ergon Research)* |
 | 9 | LinkedIn progetto DAMAGER | Header/Footer | ✅ https://www.linkedin.com/company/damager-edf-project/posts/ |
 | 10 | Descrizioni ufficiali partner approvate | Partners | ⏳ Da approvare |
 | 11 | Publications scientifiche già disponibili | Media → Publications | ⏳ Da fornire |
@@ -271,5 +272,5 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 ---
 
-*Progetto DAMAGER Website — Documento Master v4.9 | Maggio 2026*  
+*Progetto DAMAGER Website — Documento Master v5.0 | Maggio 2026*  
 *Tutti i costi si basano sui piani gratuiti disponibili a marzo 2026.*

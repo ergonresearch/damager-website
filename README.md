@@ -17,6 +17,7 @@ Funded by the European Defence Fund (EDF) — Grant Agreement No. 101224541
 | Programme | European Defence Fund (EDF) 2024 |
 | Duration | 48 months (01/12/2025 – 30/11/2029) |
 | Coordinator | HIT09 SRL (Italy) |
+| Communication, dissemination, website & `damager.eu` registration | Ergon Research SRL (Italy) |
 | Website | https://damager.eu |
 
 ## Tech Stack

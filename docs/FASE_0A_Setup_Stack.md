@@ -359,7 +359,7 @@ Pannello Netlify → "Site settings" → "Build & deploy" → "Branches" → "Pr
 
 - https://www.netlify.com → "Sign up with GitHub"
 
-> **Email da usare:** preferire un'email di progetto condivisa (es. email HIT09) per garantire accesso continuato indipendentemente dal responsabile tecnico.
+> **Email da usare:** per **account Netlify** e per il **registrant** del dominio, preferire un’email di progetto condivisa (communication / Ergon Research o casella dedicata DAMAGER), distinta dalle **notifiche del form contatto**, che restano su **`info@hit09.com`** (coordinatore HIT09 — scelta progettuale documentata in Privacy Policy e FASE 3).
 
 **2. Importare il repository**
 
@@ -443,7 +443,7 @@ Alternative se `damager.eu` fosse occupato: `damager-project.eu`, `damager-edf.e
 | **Aruba** | ~10-13€ | IT | Supporto telefonico italiano |
 | **Gandi** | ~15-18€ | IT, EN | WHOIS privacy inclusa |
 
-Il dominio va registrato a nome di **HIT09 SRL** (coordinatore del progetto). Dettagli nel documento **FASE 9 — Deploy e Go-Live** (file `FASE_9_Deploy.md` da creare al momento del go-live).
+Il dominio va registrato a nome di **Ergon Research SRL** (partner responsabile di communication/dissemination e di realizzazione/manutenzione del sito). Il coordinatore del progetto EU resta **HIT09 SRL**. Dettagli nel documento **FASE 9 — Deploy e Go-Live** ([`FASE_9_Deploy.md`](FASE_9_Deploy.md)).
 
 ---
 

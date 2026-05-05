@@ -1,7 +1,7 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
 **Versione:** 2.4 | **Data:** Aprile 2026  
-**Destinatari:** Committente (HIT09), Designer, Sviluppatore  
+**Destinatari:** Coordinatore progetto (HIT09), Ergon Research (communication/dissemination e gestione sito), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
 ---
@@ -218,7 +218,7 @@ Form di contatto con i campi:
 | Message | Textarea | ✅ |
 | Send Message | Button | — |
 
-- I messaggi vengono inviati a: **info@hit09.com** (Netlify Forms — configurare notifica in dashboard Netlify → Form notifications)
+- I messaggi vengono notificati a: **`info@hit09.com`** (casella coordinatore **HIT09 SRL**; indirizzo **definitivo** anche con gestione Netlify/sito affidata a Ergon Research). Netlify Forms — notifica in dashboard Netlify → Form notifications.
 - **Referente:** Rita Ponza — Project Coordinator
 - **LinkedIn coordinatore:** https://www.linkedin.com/company/hit09-srl
 - Implementazione: Netlify Forms (nessun server necessario)
