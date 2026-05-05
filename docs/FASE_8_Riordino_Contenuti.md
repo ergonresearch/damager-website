@@ -246,7 +246,7 @@ Tabella di **mappatura semantica → implementazione attuale** (classi / blocchi
 
 | Ruolo semantico | Descrizione breve | Classi / selettori principali | File SCSS di riferimento |
 |-----------------|-------------------|-------------------------------|---------------------------|
-| **DisplayTitle** | Titolo hero ad altissima visibilità (logo / sottotitolo / acronimo) | `.hero__logo`, `.hero__subtitle`, `.home-what-is__acronym` — mixin `type-display-italic-emphasis`, token `$type-hero-*` | assets/scss/_home.scss, assets/scss/_typography.scss |
+| **DisplayTitle** | Titolo hero ad altissima visibilità (logo / sottotitolo / acronimo) | `.hero__logo`, `.hero__subtitle`, `.home-what-is__acronym` — mixin `type-display-italic-emphasis`, token `$type-hero-*`, `$type-display-strong-track-start` su `<strong>` | assets/scss/_home.scss, assets/scss/_typography.scss |
 | **SectionTitle** | Titolo di sezione marketing (h1/h2 sotto eyebrow o in testata pagina) | `.section-title` — `@include type-section-title` | assets/scss/_base.scss, assets/scss/_typography.scss |
 | **PageTitle** | Titolo principale pagine Markdown (privacy, cookie, contenuti lunghi) | `.page h1` — stesso mixin `type-section-title` | assets/scss/_base.scss, assets/scss/_typography.scss |
 | **SectionHeading** | Sottosezioni dentro pagina contenuto | `.page h2`, `.page h3` | assets/scss/_base.scss |

@@ -72,6 +72,9 @@ $type-caption-line-height: 1.45;
 $type-hero-subtitle-font-size: $font-size-2xl;
 $type-hero-acronym-font-size:  clamp(1rem, 2.5vw, $font-size-2xl);
 
+// Hair gap before each <strong> letter in hero subtitle + What is acronym (inline padding)
+$type-display-strong-track-start: 0.25rem;
+
 @mixin type-display-italic-emphasis {
   line-height: 1.6;
   font-style: italic;
@@ -79,5 +82,6 @@ $type-hero-acronym-font-size:  clamp(1rem, 2.5vw, $font-size-2xl);
   strong {
     font-weight: 800;
     font-style: normal;
+    padding-inline-start: $type-display-strong-track-start;
   }
 }

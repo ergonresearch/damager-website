@@ -1,6 +1,6 @@
 # 🎨 SPECIFICHE DEL SITO — DAMAGER Website
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 2.3 | **Data:** Aprile 2026  
+**Versione:** 2.4 | **Data:** Aprile 2026  
 **Destinatari:** Committente (HIT09), Designer, Sviluppatore  
 **Obiettivo:** Definire identità visiva, struttura di navigazione e contenuti di ogni pagina
 
@@ -76,13 +76,13 @@ Il lavoro di allineamento tipografico è **implementato in codice** e riassunto 
 | File | Ruolo |
 |------|--------|
 | `assets/scss/_variables.scss` | Palette, scala font base (`$font-size-xs` … `$font-size-4xl`), variabili aggiuntive per micro-dimensioni e spacing: `$font-size-2xs`, `$font-size-micro`, `$font-size-logo`, `$font-size-lead-max`, `$font-size-icon-xl`, `$line-height-snug`, `$font-size-root`, `$space-7`, … |
-| `assets/scss/_typography.scss` | Token e mixin condivisi: titolo sezione (`type-section-title`), eyebrow sezione/UI, lead (blocco + accent), corpo articolo, caption, display hero (italic), gap paragrafi / indent liste prose |
+| `assets/scss/_typography.scss` | Token e mixin condivisi: titolo sezione (`type-section-title`), eyebrow sezione/UI, lead (blocco + accent), corpo articolo, caption, display hero (italic + `$type-display-strong-track-start` su `<strong>` nelle lettere acronimo), gap paragrafi / indent liste prose |
 | `assets/scss/main.scss` | Ordine import: `_variables` → **`_typography`** → `_base` → … |
 
 #### 1.6.2 Titoli e display
 
 - **Titoli di sezione marketing** (`.section-title`, anche `<h1>` in testate pagina e `<h2>` in Home) e **titolo principale pagine Markdown** (`.page h1`): stessa scala tramite **`@mixin type-section-title`**; differiscono margini e contesto (vedi F8.G).
-- **Hero Home:** logo SVG; sottotitolo e riga acronimo DAMAGER condividono **`@mixin type-display-italic-emphasis`** e variabili `$type-hero-subtitle-font-size` / `$type-hero-acronym-font-size`.
+- **Hero Home:** logo SVG; sottotitolo (`.hero__subtitle`) e riga acronimo in What is (`.home-what-is__acronym`) condividono **`@mixin type-display-italic-emphasis`**, `$type-hero-subtitle-font-size`, `$type-hero-acronym-font-size` e **`$type-display-strong-track-start`** (`padding-inline-start` su ogni `<strong>` che marca le lettere dell’acronimo).
 
 #### 1.6.3 Eyebrow (due livelli)
 
@@ -459,5 +459,5 @@ Inizialmente vuota: *"Publications will appear here as they are accepted and cle
 
 ---
 
-*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 2.3 | Aprile 2026*  
+*Documento Specifiche Sito — Progetto DAMAGER Website | Versione 2.4 | Aprile 2026*  
 **File correlato:** [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) — stack, CMS, hosting, sicurezza; [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) — F8.G (mappatura ruoli → classi)
