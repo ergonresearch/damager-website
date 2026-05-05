@@ -162,6 +162,12 @@ Attributi Netlify Forms:
 
 Dopo l'invio Netlify redirige a `/contact-success/`.
 
+### Anti-spam (stack Netlify)
+
+Oltre all’honeypot nel markup, Netlify applica **Akismet** a tutte le submission: le classificate spam restano consultabili in pannello sotto *Spam submissions*; le legittime in *Verified submissions*. Le **notifiche email** del form sono configurate per le submission **verificate** ([spam filters](https://docs.netlify.com/manage/forms/spam-filters/), [notifications](https://docs.netlify.com/manage/forms/notifications/)). Il sito **non** include reCAPTCHA: è un’opzione Netlify documentata nella stessa pagina spam filters, da valutare solo se il rumore in inbox resta alto.
+
+Dettaglio architetturale e tabella riepilogativa: [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) — § 5.1.
+
 ### Coordinator Card (colonna destra)
 
 Card `.coordinator-card` con sfondo bianco e bordo:
@@ -221,5 +227,5 @@ Classi definite:
 ## Note tecniche
 
 - **`fileExists`**: funzione Hugo che controlla l'esistenza di un file nel filesystem del progetto. Usata per il logo EU: `{{ if fileExists "static/images/eu-logo/eu-funded.svg" }}`.
-- **Netlify Forms**: il form viene rilevato da Netlify durante il deploy statico. Non è necessario un server backend. Le submission sono visibili nel pannello Netlify → Forms.
+- **Netlify Forms**: il form viene rilevato da Netlify durante il deploy statico. Non è necessario un server backend. Le submission sono visibili nel pannello Netlify → Forms (elenchi *Verified* / *Spam* oltre al honeypot che scarta senza traccia).
 - **Progress Bar**: il calcolo JS usa date UTC (`T00:00:00Z`) per evitare offset di fuso orario.

@@ -459,9 +459,23 @@ Automatico via **Let's Encrypt** — Netlify gestisce il certificato SSL senza c
 | XSS | Mitigato da assenza di PHP e rendering server-side |
 | Accesso CMS | Netlify Identity + password — "Invite only" |
 | File upload | Solo tramite CMS autenticato → commit firmato su GitHub |
-| Form spam | Honeypot nascosto nel form HTML |
+| Form spam | Vedi [§ 5.1](#51-anti-spam-netlify-forms) |
 | Credenziali | Mai nel codice — variabili d'ambiente Netlify |
 | Aggiornamenti | Nessun software da aggiornare (no WordPress, no PHP, no plugin) |
+
+### 5.1 Anti-spam (Netlify Forms)
+
+Il form di contatto sulla home (`layouts/index.html`) usa **Netlify Forms**. Oltre al codice del sito, Netlify applica questi meccanismi (documentazione ufficiale: [Spam filters](https://docs.netlify.com/manage/forms/spam-filters/), [Form notifications](https://docs.netlify.com/manage/forms/notifications/)):
+
+| Livello | Comportamento |
+|---------|----------------|
+| **Akismet (predefinito)** | Tutte le submission vengono analizzate. Quelle segnate come spam compaiono in **Spam submissions** nel pannello Netlify; le altre in **Verified submissions**. Non richiede configurazione nel repository. |
+| **Honeypot** | Il markup usa `data-netlify-honeypot="bot-field"` e un campo nascosto `bot-field`. Se compilato, la submission viene **rifiutata silenziosamente** (non compare nemmeno tra lo spam). |
+| **Notifiche email** | Le notifiche configurabili in *Project configuration → Notifications → Form submission notifications* riguardano le **submission verificate**, non lo stream separato gestito da Akismet come spam. |
+
+**Opzionale — ulteriore barriera:** Netlify supporta **reCAPTCHA 2** integrato (`data-netlify-recaptcha="true"` sul `<form>` e elemento placeholder nel form) oppure reCAPTCHA custom con variabili d'ambiente `SITE_RECAPTCHA_KEY` / `SITE_RECAPTCHA_SECRET`. Valutare impatto UX e privacy (terza parte, eventuale aggiornamento Cookie/Privacy Policy) prima di abilitarlo.
+
+**Operativo:** controllare periodicamente in Netlify **Forms** il rapporto tra verified e spam; se molte submission sospette restano «verificate», si può valutare reCAPTCHA o revisione manuale.
 
 ---
 

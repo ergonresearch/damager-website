@@ -399,6 +399,8 @@ Netlify assegna automaticamente un URL tipo `random-name-123456.netlify.app`:
 
 Si attiva automaticamente al primo deploy con form HTML annotati con `data-netlify="true"`. Nessuna configurazione manuale necessaria.
 
+Lato Netlify, le submission sono anche filtrate da **Akismet** (spam vs verified nel pannello); nel markup del sito è previsto **honeypot** (`data-netlify-honeypot`). Dettaglio: [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 5.1.
+
 ---
 
 ### ⚠️ Punti aperti F0A.2

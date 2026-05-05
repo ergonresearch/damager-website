@@ -25,7 +25,7 @@ Funded by the European Defence Fund (EDF) — Grant Agreement No. 101224541
 - CMS: [Decap CMS](https://decapcms.org/) — accessible at `/admin`
 - Hosting: [Netlify](https://www.netlify.com/) (free tier)
 - Authentication: Netlify Identity
-- Forms: Netlify Forms
+- Forms: Netlify Forms (honeypot nel markup; filtro spam Akismet e notifiche su submission verificate lato Netlify — vedi [`docs/ARCHITETTURA_TECNICA.md`](docs/ARCHITETTURA_TECNICA.md) § 5.1)
 - Cookie Consent: [Vanilla Cookie Consent](https://cookieconsent.orestbida.com/)
 
 ## Local Development

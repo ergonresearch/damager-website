@@ -222,7 +222,11 @@ Form di contatto con i campi:
 - **Referente:** Rita Ponza — Project Coordinator
 - **LinkedIn coordinatore:** https://www.linkedin.com/company/hit09-srl
 - Implementazione: Netlify Forms (nessun server necessario)
-- Anti-spam: campo honeypot nascosto
+- Anti-spam (stack Netlify, senza backend proprio):
+  - **Akismet** — filtro automatico su ogni submission; lo spam finisce nell’elenco *Spam submissions* nel pannello Netlify, le altre in *Verified submissions* ([documentazione](https://docs.netlify.com/manage/forms/spam-filters/)).
+  - **Honeypot** — campo nascosto `bot-field` con `data-netlify-honeypot`; se compilato, Netlify rifiuta la richiesta senza registrarla.
+  - **Notifiche email** (es. verso `info@hit09.com`) legate alle **submission verificate**, non allo stream spam filtrato da Akismet ([notifiche](https://docs.netlify.com/manage/forms/notifications/)).
+  - **Opzionale:** reCAPTCHA 2 fornito o custom da Netlify, se in futuro servisse un ulteriore ostacolo ai bot ([stessa pagina spam filters](https://docs.netlify.com/manage/forms/spam-filters/)).
 - Messaggio di conferma: *"Thank you! Your message has been sent to the project coordinator."*
 
 ---
