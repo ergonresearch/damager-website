@@ -15,7 +15,7 @@ Contiene le istruzioni per configurare tutti gli strumenti tecnici necessari all
 
 - **F0A.1** — Configurazione repository GitHub e Git locale (credenziali, .gitignore, README, init, remote, branch)
 - **F0A.2** — Creazione account Netlify e collegamento al repository GitHub
-- **F0A.3** — Pre-verifica disponibilità dominio `damager.eu` *(acquisto differito alla FASE 9 — Deploy)*
+- **F0A.3** — Pre-verifica disponibilità dominio `damager.eu` *(acquisto completato in FASE 9 su Aruba — [`FASE_9_Deploy.md`](FASE_9_Deploy.md))*
 - **F0A.4** — Installazione Hugo Extended
 
 → [Apri FASE_0A_Setup_Stack.md](FASE_0A_Setup_Stack.md)

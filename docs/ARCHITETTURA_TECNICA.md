@@ -123,7 +123,7 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 ├──────────────────────┼──────────────────────────────────────────────┤
 │ Font                 │ Google Fonts — Inter                         │
 ├──────────────────────┼──────────────────────────────────────────────┤
-│ Dominio              │ damager.eu (~10-15€/anno) — acquisto FASE 9  │
+│ Dominio              │ damager.eu (Aruba registrar; DNS Netlify)   │
 └──────────────────────┴──────────────────────────────────────────────┘
 ```
 
@@ -135,7 +135,7 @@ L'unico limite: le modifiche ai contenuti richiedono un rebuild (1-2 minuti). Pe
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano (hugo server) |
 | **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity, Maps |
-| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 9 — Deploy) |
+| **Produzione** | `https://damager.eu` | Sito pubblico (FASE 9 — DNS e HTTPS completati) |
 
 
 Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify (non in locale).  
@@ -263,7 +263,7 @@ damager-website/
     ├── FASE_6_Media.md
     ├── FASE_7_Cookie.md
     ├── FASE_8_Riordino_Contenuti.md
-    ├── FASE_9_Deploy.md          # da creare (go-live)
+    ├── FASE_9_Deploy.md          # go-live (dominio, DNS, HTTPS, test)
     └── FASE_10_Formazione.md     # da creare (CMS editor)
 ```
 
@@ -425,24 +425,28 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 ## 4. CONFIGURAZIONE DOMINIO E DNS
 
-> ⏸️ **Acquisto differito alla FASE 9 (Deploy).** Il sito si sviluppa e testa su `damager-website.netlify.app`.
+> ✅ **Produzione attiva (FASE 9).** **`damager.eu`** è registrato presso **Aruba**; **DNS** delegato a **Netlify** e **HTTPS** operativi — vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.1–F9.2. Lo staging `damager-website.netlify.app` resta utile per prove prima del merge su `main`.
 
 
 ### 4.1 Registrazione `damager.eu`
 
 - Registrante: **Ergon Research SRL** (sede in Italia ✅; partner per communication/dissemination e gestione del sito). Il coordinatore del Grant Agreement resta **HIT09 SRL** — vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
-- Registrar consigliato: **OVHcloud** (~9-11€/anno al 2026, confermare listino) o **Aruba** (~10-13€/anno, supporto IT); confronto esteso, multi-anno e requisito **≥ 5 anni** in [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
-- Pre-verifica disponibilità: https://www.eurid.eu/it/ottieni-il-tuo-eu/
+- Registrar effettivo: **Aruba**. Copertura **≥ 5 anni** tramite **rinnovo automatico annuale** e checklist post-acquisto: [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.0
+- Lookup EURid / WHOIS (stato pubblico dominio `.eu`): https://www.eurid.eu/it/ottieni-il-tuo-eu/
 
 
 ### 4.2 Record DNS → Netlify
 
-```
-Tipo    Nome    Valore
-A       @       75.2.60.5
-CNAME   www     damager-website.netlify.app
+Se la **zona DNS** è sul registrar (nameserver del provider di dominio), usare tipicamente record del tipo seguente — **valori aggiornabili** secondo [documentazione Netlify su domini](https://docs.netlify.com/manage/domains/overview/) (non versionare qui indirizzi IP o hostname di nameserver specifici del tuo account).
 
 ```
+Tipo    Nome    Valore
+A       @       <IP apex Netlify indicato dalla doc / pannello>
+CNAME   www     <sottodominio *.netlify.app del sito>
+
+```
+
+Se invece si usa **Netlify DNS** (nameserver del dominio puntati a Netlify, come in [`FASE_9_Deploy.md`](FASE_9_Deploy.md) § F9.1), i record effettivi si gestiscono nel **pannello Netlify**; la tabella sopra è solo il modello «DNS esterno».
 
 ### 4.3 HTTPS
 

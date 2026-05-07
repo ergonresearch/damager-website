@@ -13,7 +13,7 @@
 
 - [x] F0A.2 — Account Netlify e collegamento GitHub ✅
 
-- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 9 — Deploy)*
+- [x] F0A.3 — Verifica disponibilità dominio `damager.eu` ✅ *(disponibile in origine — acquisto eseguito in FASE 9 su **Aruba** — vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md))*
 
 - [x] F0A.4 — Installazione Hugo Extended ✅ (`v0.158.0+extended`)
 - [x] Verifica finale ✅
@@ -348,7 +348,7 @@ Pannello Netlify → "Site settings" → "Build & deploy" → "Branches" → "Pr
 |----------|-----|---------------|
 | **Locale** | `http://localhost:1313` | Sviluppo quotidiano |
 | **Staging** | `https://damager-website.netlify.app` | Test CMS, form, Identity |
-| **Produzione** | `https://damager.eu` | Solo quando il sito è stabile (FASE 9 — Deploy) |
+| **Produzione** | `https://damager.eu` | DNS/HTTPS attivi (FASE 9); test produzione F9.3–F9.7 da checklist |
 
 
 > Il form di contatto e il pannello CMS funzionano **solo** sull'ambiente Netlify, non in locale.
@@ -422,9 +422,11 @@ Account Netlify creato e collegato al repository `ergonresearch/damager-website`
 
 ---
 
-## F0A.3 — Dominio `damager.eu` *(DIFFERITO)*
+## F0A.3 — Dominio `damager.eu` *(DIFFERITO all’avvio; acquisto completato in FASE 9)*
 
-> ⏸️ **Acquisto differito alla FASE 9 (Deploy e Go-Live).** Non è necessario alcun acquisto per iniziare lo sviluppo. Il sito viene sviluppato e testato completamente sull'URL di staging gratuito.
+> ⏸️ **All’inizio del progetto l’acquisto era differito alla FASE 9 (Deploy e Go-Live).** Lo sviluppo è avvenuto su staging Netlify senza dominio dedicato.
+>
+> **Aggiornamento (Maggio 2026):** `damager.eu` è stato **registrato tramite Aruba**; **DNS e HTTPS** di produzione su Netlify completati — dettaglio e checklist in [`FASE_9_Deploy.md`](FASE_9_Deploy.md).
 
 ### Pre-verifica da fare ora
 
@@ -435,15 +437,15 @@ Verificare subito la disponibilità per evitare sorprese al momento del go-live:
 
 Alternative se `damager.eu` fosse occupato: `damager-project.eu`, `damager-edf.eu`, `project-damager.eu`.
 
-### Registrar consigliati (per il futuro acquisto)
+### Registrar *(riferimento storico; acquisto effettuato)*
 
 | Registrar | Prezzo/anno | Supporto | Note |
 |-----------|-------------|----------|------|
-| **OVH** | ~9-11€ | IT, EN | Miglior rapporto qualità/prezzo |
-| **Aruba** | ~10-13€ | IT | Supporto telefonico italiano |
+| **OVH** | ~9-11€ | IT, EN | Alternativa documentata nel confronto FASE 9 |
+| **Aruba** | ~10-13€ | IT | **Scelta effettiva** per `damager.eu` (vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md)) |
 | **Gandi** | ~15-18€ | IT, EN | WHOIS privacy inclusa |
 
-Il dominio va registrato a nome di **Ergon Research SRL** (partner responsabile di communication/dissemination e di realizzazione/manutenzione del sito). Il coordinatore del progetto EU resta **HIT09 SRL**. Dettagli nel documento **FASE 9 — Deploy e Go-Live** ([`FASE_9_Deploy.md`](FASE_9_Deploy.md)).
+Il dominio è intestato a **Ergon Research SRL** (partner responsabile di communication/dissemination e di realizzazione/manutenzione del sito). Il coordinatore del progetto EU resta **HIT09 SRL**. Dettaglio operativo: **FASE 9 — Deploy e Go-Live** ([`FASE_9_Deploy.md`](FASE_9_Deploy.md)).
 
 ---
 
@@ -515,7 +517,7 @@ Per controllo preciso della versione (consigliato per stabilità a lungo termine
 - [x] Account Netlify creato e collegato al repository ✅
 - [x] URL staging Netlify: `https://damager-website.netlify.app` ✅
 - [x] Netlify Identity abilitato in modalità "Invite only" ✅
-- [x] Disponibilità `damager.eu` verificata ✅ *(dominio disponibile)*
+- [x] Disponibilità `damager.eu` verificata ✅ *(in FASE 9: dominio acquistato su **Aruba** — vedi [`FASE_9_Deploy.md`](FASE_9_Deploy.md))*
 - [x] Hugo Extended installato: `hugo v0.158.0+extended windows/amd64` ✅
 - [x] Versione Hugo annotata: **0.158.0** ✅
 

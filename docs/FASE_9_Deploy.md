@@ -1,8 +1,9 @@
 # 🚀 FASE 9 — Deploy e Go-Live
 **Documento di sviluppo DAMAGER Website**  
-**Versione:** 0.93 (bozza) | **Data:** Maggio 2026  
+**Versione:** 0.96 (bozza) | **Data:** Maggio 2026  
 **Prerequisiti:** FASI 1–8 completate; sito stabile su staging Netlify  
-**Obiettivo:** Acquistare e blindare il dominio `damager.eu`, collegarlo a Netlify, verificare HTTPS e i flussi critici in produzione
+**Obiettivo:** Completare il go-live su `damager.eu` (registrato tramite **Aruba**): DNS verso Netlify, HTTPS e test dei flussi critici in produzione *(F9.1–F9.2 completati; restano i test F9.3–F9.7)*  
+**Nota privacy:** non annotare in questi file credenziali, token, indirizzi di fatturazione o altri dati riservati del registrar o di Netlify; basta lo stato delle attività e riferimenti ai pannelli ufficiali.
 
 ---
 
@@ -10,14 +11,23 @@
 
 | ID | Attività | Stato |
 |----|----------|-------|
-| **F9.0** | Acquisto dominio `damager.eu` (intestazione **Ergon Research SRL**) + copertura **≥ 5 anni** dalla registrazione | ⏳ |
-| **F9.1** | DNS: `damager.eu` e `www` puntano al sito Netlify di produzione | ⏳ |
-| **F9.2** | HTTPS attivo (certificato Netlify / Let's Encrypt) | ⏳ |
+| **F9.0** | Acquisto dominio `damager.eu` (intestazione **Ergon Research SRL**) + continuità **≥ 5 anni** (rinnovo **automatico annuale** Aruba attivo) — **Registrar: Aruba** (`damager.eu` registrato) | ✅ |
+| **F9.1** | DNS: `damager.eu` (e `www` se previsto) risolve verso il sito Netlify di produzione | ✅ |
+| **F9.2** | HTTPS attivo (certificato Netlify / Let's Encrypt) | ✅ |
 | **F9.3** | Test cross-browser (Chrome, Firefox, Safari, Edge) | ⏳ |
 | **F9.4** | Test mobile (iOS, Android) | ⏳ |
 | **F9.5** | Test form di contatto (email di notifica ricevuta) | ⏳ |
 | **F9.6** | Test CMS (news, upload PDF) su URL di produzione | ⏳ |
 | **F9.7** | Test cookie consent (categorie, preferenze, mappa condizionale) | ⏳ |
+
+---
+
+### Decisione registrar e stato registrazione
+
+- **Registrar scelto:** **Aruba** (EURid-accreditato).
+- **Stato:** il dominio **`damager.eu`** risulta **registrato ufficialmente** (Maggio 2026).
+- **Rinnovo:** **automatico**, con ciclo **annuale** (adeguato al requisito progetto **≥ 5 anni** tramite leva *rinnovo automatico + pagamento valido* — vedi § F9.0).
+- **DNS e HTTPS** (F9.1–F9.2) risultano **completati**; il sito pubblico è raggiungibile su produzione. Restano i **test di produzione** (F9.3–F9.7).
 
 ---
 
@@ -28,7 +38,7 @@
 Per il sito DAMAGER si richiede che il nome `damager.eu` resti **registrato e rinnovabile** per un orizzonte minimo di **5 anni** a partire dall’acquisto. In pratica si possono combinare due leve (non esclusive):
 
 1. **Registrazione iniziale multi-anno** — pagare subito più anni di registrazione (es. 5 o 10 anni), così la data di scadenza slitta in avanti e si riduce il rischio di dimenticanze nei primi anni del progetto.
-2. **Rinnovo automatico + metodo di pagamento valido** — con durata iniziale anche a 1 anno, purché il rinnovo sia garantito (auto-renew attivo, carta/SEPA non in scadenza, email di fatturazione monitorate).
+2. **Rinnovo automatico + metodo di pagamento valido** — con periodo di registrazione **annuale**, purché la registrazione **si rinnovi ogni anno** senza interruzioni (rinnovo automatico attivo, carta/SEPA non in scadenza, email di fatturazione monitorate). **Per DAMAGER su Aruba** è impostato proprio questo schema: **rinnovo automatico annuale**.
 
 **Politica tecnica del TLD `.eu`:** il registro **EURid** gestisce il ciclo di vita; i singoli **registrar** accreditati offrono durate e prezzi diversi. Per **OVHcloud** (Italia), la scheda tecnica del TLD `.eu` indica esplicitamente registrazione e rinnovo per **1, 2, … fino a 10 anni** ([pagina TLD .eu OVHcloud Italia](https://www.ovhcloud.com/it/domains/tld/eu/)). Per altri registrar occorre verificare nel carrello quanti anni sono selezionabili per `.eu`.
 
@@ -53,41 +63,49 @@ Criteri usati per DAMAGER: **supporto al `.eu` con durata ≥ 5 anni**, **traspa
 | Registrar | Registrazione multi-anno `.eu` | Indicazione economica (indicativa, Maggio 2026) | Punti di forza | Limiti / attenzioni |
 |-----------|-------------------------------|-----------------------------------------------|----------------|---------------------|
 | **OVHcloud** (Italia) | Sì: **1–10 anni** (scheda TLD ufficiale) | Primo anno **9,14 € IVA incl.**; rinnovo **10,48 € IVA incl./anno** ([fonte](https://www.ovhcloud.com/it/domains/tld/eu/)) | Prezzi pubblicati per primo anno e rinnovo; DNS, DNSSEC, protezione trasferimento; consolidamento con altri servizi OVH se già clienti | UI e supporto non sempre al livello “consumer semplice”; verificare totale carrello per 5 anni (il promo può applicarsi solo al primo anno) |
-| **Aruba** | Da confermare nel flusso d’ordine (Aruba supporta `.eu` con verifica EURid) | Listino spesso intorno a **11,99 € + IVA/anno** per estensioni di massa (controllare listino aggiornato) | Supporto in italiano molto diffuso; molte PMI italiane già clienti | Prezzo e **anni massimi selezionabili** vanno verificati al momento dell’ordine; attenzione alle verifiche EURid post-registrazione |
+| **Aruba** | Supporta `.eu` con verifica EURid — **registrar effettivo per DAMAGER** (Maggio 2026); rinnovo **automatico annuale** configurato | Listino spesso intorno a **11,99 € + IVA/anno** per estensioni di massa (controllare listino aggiornato) | Supporto in italiano molto diffuso; molte PMI italiane già clienti; pannello DNS per delega a Netlify | Attenzione alle verifiche EURid post-registrazione; mantenere **pagamento e contatti** aggiornati per il rinnovo ricorrente |
 | **Altri (Namecheap, Ionos, Register.it, …)** | Variabile | Spesso promo bassa al primo anno e rinnovo più alto | Utili se già in uso in azienda | Confrontare **sempre** prezzo al **quinto anno** e politica privacy/transfer |
 
-> **Cloudflare Registrar:** la registrazione e il trasferimento del TLD **`.eu` non sono supportati** (verifica effettuata su dashboard / documentazione Cloudflare, Maggio 2026). **Non** è quindi un’opzione per acquistare `damager.eu`. Eventuale uso di **Cloudflare solo come DNS** (zona delegata da un altro registrar) resta tecnicamente possibile ma non è necessario per questo progetto: la configurazione minima documentata è DNS presso **OVHcloud**, **Aruba** o registrar equivalente.
+> **Cloudflare Registrar:** la registrazione e il trasferimento del TLD **`.eu` non sono supportati** (verifica effettuata su dashboard / documentazione Cloudflare, Maggio 2026). **Non** è quindi un’opzione per acquistare `damager.eu`. Eventuale uso di **Cloudflare solo come DNS** (zona delegata da un altro registrar) resta tecnicamente possibile ma non è in uso per DAMAGER. **Configurazione attuale:** registrar **Aruba**; **zona DNS autoritativa** gestita da **Netlify** (nameserver delegati da Aruba secondo il wizard Netlify — i valori esatti restano solo nei rispettivi pannelli, non in questo documento).
 
 **Acquisto tramite Netlify:** Netlify consente di collegare domini **già posseduti** oppure di acquistare alcuni TLD tramite il flusso “Buy a new domain”; l’elenco dei TLD acquistabili è **ristretto** e **non** assume che `.eu` sia disponibile per acquisto diretto. Per DAMAGER la strada documentata resta: **registrar esterno + DNS verso Netlify** (come in [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 4).
 
-### Raccomandazione operativa per DAMAGER
+### Scelta effettiva per DAMAGER
 
-1. **Scelta primaria consigliata: OVHcloud** — combinazione documentata di **multi-anno fino a 10 anni**, prezzi di rinnovo dichiarati, DNS adatto a puntare al load balancer Netlify, contesto europeo. Allineata alla nota già presente in architettura (~9–11 €/anno come ordine di grandezza, aggiornabile al listino corrente).
-2. **Scelta alternativa sensata: Aruba** se Ergon Research ha già **tutti** i domini e la fatturazione centralizzati lì, accettando il confronto prezzi sul **totale 5 anni** e confermando la durata massima selezionabile per `.eu`.
+**Registrar in uso:** **Aruba.** La registrazione di **`damager.eu`** è stata completata nel rispetto del piano progetto (intestazione **Ergon Research SRL**). Il vincolo **≥ 5 anni** di continuità registrazionale è coperto dal percorso **rinnovo automatico annuale** (leva 2 sopra), non da un acquisto multi-anno unico: occorre mantenere **rinnovo automatico**, **metodo di pagamento valido** e **posta del registrant** monitorata per tutta la durata del progetto.
 
-**Passi operativi minimi (indipendentemente dal registrar):**
+Il confronto storico tra **OVHcloud** e **Aruba** (tabella sopra e note su Cloudflare Registrar) resta utile come riferimento. Per **record del sito** (`damager.eu`, `www`, certificato) la configurazione operativa avviene nel **pannello Netlify** del progetto; su **Aruba** restano registrazione dominio, **nameserver** e rinnovo (§ F9.1).
 
-1. Verificare disponibilità su [EURid](https://www.eurid.eu/it/ottieni-il-tuo-eu/) o sul motore del registrar scelto.
-2. Registrare **a nome Ergon Research SRL** con dati verificabili.
-3. Nel carrello, selezionare **durata 5 anni** (o **10 anni** se il budget lo consente e si vuole massima continuità oltre il minimo richiesto).
-4. Abilitare **rinnovo automatico** e conservare una **copia delle fatture** e della conferma d’ordine nel fascicolo progetto EDF.
-5. Annotare in calendario interno la **data di scadenza** e il referente DNS anche oltre il quinto anno (gestione del patrimonio dominio).
+**Passi operativi (check post-acquisto, da tenere aggiornati):**
+
+1. ~~Verificare disponibilità~~ *(completato; dominio acquisito).*
+2. ~~Registrare **a nome Ergon Research SRL**~~ *(completato su Aruba).*
+3. ~~Copertura tecnica del requisito **≥ 5 anni**~~ *(soddisfatta tramite **rinnovo automatico annuale** Aruba; nessun ordine multi-anno obbligatorio nel modello scelto).*
+4. **Rinnovo automatico annuale** confermato nel pannello Aruba; **copia fatture** / conferma ordine nel fascicolo progetto EDF; verificare periodicamente che carta/SEPA e dati di fatturazione restino validi *(manutenzione continua)*.
+5. **Data di scadenza** e referente DNS annotati anche oltre il quinto anno *(manutenzione del patrimonio dominio)*.
+
+Se **EURid** richiedesse **convalida dati** post-registrazione, gestire la pratica dal pannello Aruba senza ritardi ([guida convalida](https://guide.aruba.it/hosting-e-domini/gestione-domini/acquisto-e-rinnovo/whois-privacy/convalida-dati-dominio-eu)).
 
 ---
 
 ## F9.1 — DNS: `damager.eu` → Netlify
 
-Procedura di alto livello (dettaglio record in [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 4.2):
+**Stato:** completato — il dominio punta al deploy Netlify di produzione.
 
-1. Nel pannello Netlify del sito di produzione: **Domain management** → aggiungere `damager.eu` (e, se usato, `www.damager.eu`) come dominio di produzione.
-2. Presso il **registrar** che ospita la zona DNS (o il **provider DNS** esterno, solo se i nameserver del dominio sono delegati fuori dal registrar): creare i record indicati in architettura (**record A** sull’apex `@` verso l’IP Netlify corrente; **CNAME** per `www` verso `damager-website.netlify.app`, salvo aggiornamenti documentati da Netlify).
-3. Attendere la propagazione DNS; rimuovere record **AAAA** o **A** conflittuali sull’apex se causano errori di provisioning SSL (vedi [troubleshooting SSL Netlify](https://docs.netlify.com/manage/domains/troubleshooting/troubleshoot-ssl-and-https/)).
+Due modelli possibili (documentati per chi rilegge in futuro); per DAMAGER è stato usato il **primo**:
+
+1. **Delega DNS a Netlify** — Nel sito Netlify: **Domain management** / flusso DNS; presso **Aruba**: sezione **Name server**, sostituzione con i nameserver indicati dal wizard Netlify (copiarli dal pannello al momento dell’operazione; **non** versionare hostname o screenshot con dati account in questo repository). In fase guidata Aruba può chiedere come gestire **MX** sul DNS esterno: allineare la scelta alla presenza o assenza di posta su `@damager.eu`.
+2. **Zona DNS sul registrar** — Senza cambiare nameserver: creare in zona i record descritti in [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 4.2 (**A** su apex, **CNAME** per `www` verso il sottodominio Netlify del sito, salvo aggiornamenti documentati da Netlify).
+
+Dopo ogni modifica: attendere la **propagazione DNS**; in caso di errori sul certificato, seguire [troubleshooting SSL Netlify](https://docs.netlify.com/manage/domains/troubleshooting/troubleshoot-ssl-and-https/) (record **AAAA** / **A** conflittuali sull’apex, ecc.).
 
 ---
 
 ## F9.2 — HTTPS
 
-Dopo propagazione DNS corretta, Netlify provvede al certificato **Let's Encrypt** in automatico. Verificare in **Domain management** che il dominio risulti **“HTTPS enabled”** senza errori di mixed content (il sito è statico; le risorse esterne sono già HTTPS nel template).
+**Stato:** completato insieme alla risoluzione DNS corretta.
+
+Netlify emette il certificato **Let's Encrypt** in automatico. Verifiche occasionali: in **Domain management** il dominio deve restare **HTTPS** senza mixed content (il sito è statico; le risorse esterne del template sono già servite in HTTPS).
 
 ---
 
@@ -115,4 +133,4 @@ Eseguire i test dall’URL **di produzione** (`https://damager.eu`), non solo da
 
 ---
 
-*DAMAGER Website — FASE 9 Deploy (bozza v0.93) | Maggio 2026. I prezzi dei registrar sono indicativi e vanno confermati al momento dell’ordine.*
+*DAMAGER Website — FASE 9 Deploy (bozza v0.96) | Maggio 2026. Registrar **Aruba**; rinnovo **automatico annuale**; DNS di produzione su **Netlify**. I prezzi nella tabella comparativa sono indicativi (listino al momento dell’ordine).*

@@ -28,7 +28,7 @@ Realizzare il sito web ufficiale del progetto di ricerca DAMAGER, gestibile da p
 |----------|-----|-------|
 | Locale | `http://localhost:1313` | Sviluppo quotidiano |
 | Staging | `https://damager-website.netlify.app` | Test e validazione ✅ |
-| Produzione | `https://damager.eu` | Go-live dopo stabilizzazione |
+| Produzione | `https://damager.eu` | Go-live DNS/HTTPS (F9.1–F9.2) ✅ — test F9.3–F9.7 da completare |
 
 
 ---
@@ -64,7 +64,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 | [`FASE_6_Media.md`](FASE_6_Media.md) | Media page (tab News/Documents/Publications + CMS) | ✅ Completata |
 | [`FASE_7_Cookie.md`](FASE_7_Cookie.md) | Cookie consent + Privacy policy | ✅ Completata |
 | [`FASE_8_Riordino_Contenuti.md`](FASE_8_Riordino_Contenuti.md) | Riordino Home (F8.A–C), Project (F8.D), Partners (F8.E), reveal (F8.F), tipografia **F8.G** in codice (`_typography.scss`, `_variables.scss`) | ✅ Completata *(eventuali ritocchi testuali in `data/partners.yaml`)* |
-| [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio `damager.eu` (intestazione Ergon Research, acquisto ≥5 anni, registrar), DNS, testing | 📝 Bozza *(Maggio 2026)* |
+| [`FASE_9_Deploy.md`](FASE_9_Deploy.md) | Go-live, dominio `damager.eu` (Aruba; Netlify DNS/HTTPS), testing | 📝 Bozza *(Maggio 2026 — F9.0–F9.2 ✅)* |
 | [`FASE_10_Formazione.md`](FASE_10_Formazione.md) | Formazione editor: Identity, guida Decap CMS (News/Documents/Publications), training, screenshot | ✅ Documento creato *(attività F10.1–F10.3 da svolgere al go-live / post-deploy)* |
 
 > **Nota sull'ordine di esecuzione:** le FASI 3-6 vengono sviluppate come un unico blocco ("struttura iniziale sito") usando asset placeholder. La raccolta degli asset definitivi (FASE 0B) avviene dopo il blocco 3-6, sostituendo i placeholder con i file reali. Dopo la FASE 7, la **FASE 8** (riordino contenuti Home / Project / Partners) aggiorna layout e testi senza modificare la numerazione delle fasi 0-7 già completate.
@@ -78,7 +78,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 - [x] **F0A.1** Repository GitHub creato (`ergonresearch/damager-website`, pubblico) ✅
 - [x] **F0A.2** Account Netlify + URL staging (`damager-website.netlify.app`) ✅
 
-- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile — acquisto differito alla FASE 9 — Deploy)*
+- [x] **F0A.3** Verifica disponibilità `damager.eu` ✅ *(disponibile in origine — acquisto FASE 9 su **Aruba** — [`FASE_9_Deploy.md`](FASE_9_Deploy.md))*
 - [x] **F0A.4** Hugo Extended installato ✅ (`v0.158.0+extended`)
 
 
@@ -186,9 +186,9 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 > Specifica operativa e confronto registrar (incluso requisito **≥ 5 anni** di registrazione): [`FASE_9_Deploy.md`](FASE_9_Deploy.md)
 
-- [ ] **F9.0** Acquisto dominio `damager.eu` (registrar consigliato: OVHcloud; alternativa Aruba — vedi FASE 9; **Cloudflare Registrar non supporta `.eu`**), a nome **Ergon Research SRL** (communication/dissemination e gestione sito), durata **≥ 5 anni** o equivalente (multi-anno + auto-renew)
-- [ ] **F9.1** DNS configurato (`damager.eu` → Netlify)
-- [ ] **F9.2** HTTPS attivato (automatico)
+- [x] **F9.0** Acquisto dominio `damager.eu` tramite **Aruba** (**Cloudflare Registrar non supporta `.eu`** — vedi FASE 9), a nome **Ergon Research SRL** (communication/dissemination e gestione sito), continuità **≥ 5 anni** tramite **rinnovo automatico annuale** (pagamento e contatti mantenuti nel tempo) ✅
+- [x] **F9.1** DNS configurato (`damager.eu` → Netlify) ✅
+- [x] **F9.2** HTTPS attivato (automatico) ✅
 - [ ] **F9.3** Test cross-browser (Chrome, Firefox, Safari, Edge)
 - [ ] **F9.4** Test mobile (iOS, Android)
 - [ ] **F9.5** Test form di contatto (email ricevuta)
