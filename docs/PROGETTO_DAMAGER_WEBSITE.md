@@ -160,7 +160,7 @@ La documentazione di progetto è suddivisa in file specializzati:
 
 - [x] **F7.1** Vanilla Cookie Consent v3 integrato (CDN jsDelivr)
 - [x] **F7.2** Categorie: necessari / analitici (GA4) / funzionali (Maps)
-- [x] **F7.3** Google Analytics 4 condizionale (ID da impostare in `hugo.toml` quando disponibile)
+- [x] **F7.3** Google Analytics 4 condizionale (Measurement ID: variabile **`GA_MEASUREMENT_ID`** su Netlify; opzionale `googleAnalyticsId` in `hugo.toml` solo per locale)
 - [x] **F7.4** Mappa consorzio condizionale (Leaflet.js + OpenStreetMap, 5 marker con etichette permanenti)
 - [x] **F7.5** Privacy Policy scritta → `content/privacy-policy.md`
 - [x] **F7.6** Cookie Policy scritta → `content/cookie-policy.md`

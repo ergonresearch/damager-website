@@ -39,7 +39,7 @@
     }
   </script>
 </head>
-<body data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
+<body data-ga-id="{{ or (os.Getenv "GA_MEASUREMENT_ID") (.Site.Params.googleAnalyticsId | default "") }}">
   {{ partial "header.html" . }}
 
   <main id="main-content">

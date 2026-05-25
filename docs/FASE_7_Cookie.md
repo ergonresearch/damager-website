@@ -56,16 +56,18 @@ Le preferenze vengono salvate per **12 mesi** nel cookie `cc_cookie`.
 
 ### Google Analytics 4 (F7.3)
 
-GA4 viene caricato dinamicamente via JavaScript solo dopo che l'utente ha accettato la categoria `analytics`. Il Measurement ID è configurabile in `hugo.toml`:
+GA4 viene caricato dinamicamente via JavaScript solo dopo che l'utente ha accettato la categoria `analytics`. Il **Measurement ID** in produzione non va committato nel repository: si imposta la variabile d'ambiente **`GA_MEASUREMENT_ID`** (es. `G-XXXXXXXXXX`) nel pannello Netlify (**Site configuration → Environment variables**), disponibile al build. Opzionale in locale: stessa variabile nel shell oppure fallback in `hugo.toml`:
 
 ```toml
 [params]
-  googleAnalyticsId = ""  # Impostare con "G-XXXXXXXXXX" quando disponibile
+  googleAnalyticsId = ""  # Solo override locale opzionale; produzione → GA_MEASUREMENT_ID su Netlify
 ```
+
+In `hugo.toml` è anche consentita l'esposizione di `GA_MEASUREMENT_ID` ai template Hugo (`[security.funcs] getenv`).
 
 Funzionamento in `layouts/_default/baseof.html`:
 
-- Il tag `<body>` espone il parametro tramite un attributo `data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}"` (approccio HTML, evita problemi di escaping nel contesto `<script>`)
+- Il tag `<body>` espone `data-ga-id` da `os.Getenv "GA_MEASUREMENT_ID"` con fallback a `googleAnalyticsId` (approccio HTML, evita problemi di escaping nel contesto `<script>`)
 - Lo script VCC legge `document.body.dataset.gaId` a runtime
 - La funzione `loadGA4()` viene chiamata nelle callback `onConsent` e `onChange`
 - IP anonymisation abilitata di default: `gtag('config', gaId, { anonymize_ip: true })`
@@ -123,7 +125,7 @@ In `layouts/partials/footer.html` il link "Cookie Preferences" è implementato c
 
 | File | Tipo | Modifiche |
 |------|------|-----------|
-| `hugo.toml` | Config | Aggiunto `googleAnalyticsId` in `[params]` |
+| `hugo.toml` | Config | `googleAnalyticsId` opzionale (locale); `GA_MEASUREMENT_ID` su Netlify; whitelist `getenv` in `[security.funcs]` |
 | `layouts/_default/baseof.html` | Layout | CSS VCC in `<head>`; attributo `data-ga-id` su `<body>`; Leaflet lazy-load + VCC JS + script init inline a fine `<body>` |
 | `layouts/partials/footer.html` | Partial | Aggiunto `<a href="#" onclick="CookieConsent.showPreferences(); return false;">Cookie Preferences</a>` — identico agli altri link del footer |
 | `layouts/partners/list.html` | Layout | Aggiunto `id="map-embed"` al div placeholder; pulsante "Enable Map" → `<a href="#">` che apre modale VCC |
@@ -173,12 +175,10 @@ Quando il progetto sarà live e il GA4 Measurement ID sarà disponibile:
 
 1. Accedere a [analytics.google.com](https://analytics.google.com) e creare una proprietà GA4
 2. Copiare il Measurement ID (formato: `G-XXXXXXXXXX`)
-3. In `hugo.toml`, impostare:
-   ```toml
-   googleAnalyticsId = "G-XXXXXXXXXX"
-   ```
-4. Verificare che IP anonymisation sia attiva (già configurata nello script)
-5. Testare il funzionamento con il browser in modalità incognito (nessun cookie presente)
+3. In Netlify: **Site configuration → Environment variables** → aggiungere **`GA_MEASUREMENT_ID`** con quel valore. Assegnare lo scope **Production** (o tutti i contesti, se preferite includere anche branch/preview nello stesso stream GA). Non committare l'ID nel repository.
+4. Opzionale in locale: esportare `GA_MEASUREMENT_ID` prima di `hugo` / `hugo server`, oppure impostare temporaneamente `googleAnalyticsId` in `hugo.toml` (solo macchina di sviluppo, non in commit).
+5. Verificare che IP anonymisation sia attiva (già configurata nello script)
+6. Dopo deploy, testare con browser in incognito: accettare analytics e controllare **Report → Tempo reale**; nel sorgente HTML, `data-ga-id` deve contenere il `G-…`
 
 ---
 

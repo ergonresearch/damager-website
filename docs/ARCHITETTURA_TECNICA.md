@@ -409,7 +409,7 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 |-----------|-----------|------|
 | `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build |
 
-> **Nota GA4:** il Measurement ID è attualmente configurato nel parametro `googleAnalyticsId` di `hugo.toml`. Essendo un identificatore pubblico (non una chiave segreta), questa soluzione è accettabile. Prima del go-live è possibile spostarlo in una variabile d'ambiente Netlify e leggerlo con `{{ os.Getenv "GA_MEASUREMENT_ID" }}` nel template per maggiore coerenza con le best practice.
+> **Nota GA4:** il Measurement ID è iniettato al **build** da `GA_MEASUREMENT_ID` (Netlify) con fallback opzionale a `googleAnalyticsId` in `hugo.toml` per sviluppo locale. Hugo 0.158 richiede che `GA_MEASUREMENT_ID` sia elencata in `[security.funcs] getenv` in `hugo.toml` (già configurato). L'identificatore resta pubblico nell'HTML generato; l'obiettivo è non versionarlo nel Git.
 
 ### 3.4 Limiti piano gratuito Netlify
 
@@ -506,10 +506,10 @@ VCC v3 è caricato **sincrono** (senza `defer`) a fine `<body>` per garantire ch
 </script>
 ```
 
-**Iniezione parametri Hugo:** il valore `googleAnalyticsId` configurato in `hugo.toml` viene esposto tramite attributo `data-ga-id` sul tag `<body>` — non tramite `{{ ... | jsonify }}` nel contesto script, che causava double-encoding in Hugo v0.158.
+**Iniezione parametri Hugo:** `data-ga-id` sul tag `<body>` è `{{ or (os.Getenv "GA_MEASUREMENT_ID") (.Site.Params.googleAnalyticsId | default "") }}` — non tramite `{{ ... | jsonify }}` nel contesto script, che causava double-encoding in Hugo v0.158.
 
 ```html
-<body data-ga-id="{{ .Site.Params.googleAnalyticsId | default "" }}">
+<body data-ga-id="{{ or (os.Getenv "GA_MEASUREMENT_ID") (.Site.Params.googleAnalyticsId | default "") }}">
 ```
 
 Il tema B&W del banner è definito in `assets/scss/_cookie-consent.scss` tramite CSS custom properties (`--cc-btn-primary-bg`, `--cc-toggle-on-bg`, ecc.).
