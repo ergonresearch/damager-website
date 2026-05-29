@@ -1,6 +1,6 @@
 # FASE 7 — Cookie Consent e Privacy
 
-> **Versione:** 1.0 | **Data:** Marzo 2026  
+> **Versione:** 1.4 | **Data:** Maggio 2026  
 > **Stato:** ✅ Completata  
 > **Branch:** develop
 
@@ -16,7 +16,7 @@ Implementare il sistema di gestione dei consensi cookie in conformità GDPR (Reg
 
 - [x] **F7.1** Vanilla Cookie Consent v3 integrato (CDN)
 - [x] **F7.2** Categorie: necessari / analitici (GA4) / funzionali (Maps)
-- [x] **F7.3** Google Analytics 4 — caricato solo dopo consenso `analytics`
+- [x] **F7.3** Google Analytics 4 — caricato solo dopo consenso `analytics`; proprietà GA4 creata; **`GA_MEASUREMENT_ID`** impostata su Netlify (maggio 2026)
 - [x] **F7.4** Mappa consorzio — condizionata al consenso `functional`
 - [x] **F7.5** Privacy Policy scritta e pubblicata (`/privacy-policy/`)
 - [x] **F7.6** Cookie Policy scritta e pubblicata (`/cookie-policy/`)
@@ -169,16 +169,21 @@ Sezioni:
 
 ---
 
-## Configurazione GA4 (pendente)
+## Configurazione GA4
 
-Quando il progetto sarà live e il GA4 Measurement ID sarà disponibile:
+| Passo | Stato |
+|-------|-------|
+| Proprietà GA4 creata su [analytics.google.com](https://analytics.google.com) | ✅ |
+| Variabile **`GA_MEASUREMENT_ID`** in Netlify (**Site configuration → Environment variables**) | ✅ (maggio 2026; valore non versionato nel repository) |
+| IP anonymisation nello script (`anonymize_ip: true`) | ✅ |
+| Deploy produzione con ID iniettato in `data-ga-id` | ⏳ dopo il prossimo build su `main` |
+| Verifica end-to-end (F9.7): consenso analytics, **Report → Tempo reale** GA4, assenza script GA se rifiutati | ⏳ |
 
-1. Accedere a [analytics.google.com](https://analytics.google.com) e creare una proprietà GA4
-2. Copiare il Measurement ID (formato: `G-XXXXXXXXXX`)
-3. In Netlify: **Site configuration → Environment variables** → aggiungere **`GA_MEASUREMENT_ID`** con quel valore. Assegnare lo scope **Production** (o tutti i contesti, se preferite includere anche branch/preview nello stesso stream GA). Non committare l'ID nel repository.
-4. Opzionale in locale: esportare `GA_MEASUREMENT_ID` prima di `hugo` / `hugo server`, oppure impostare temporaneamente `googleAnalyticsId` in `hugo.toml` (solo macchina di sviluppo, non in commit).
-5. Verificare che IP anonymisation sia attiva (già configurata nello script)
-6. Dopo deploy, testare con browser in incognito: accettare analytics e controllare **Report → Tempo reale**; nel sorgente HTML, `data-ga-id` deve contenere il `G-…`
+**Impostazioni Netlify usate:** chiave `GA_MEASUREMENT_ID`, valore `G-…` (formato Measurement ID GA4), scope **All scopes** sul piano attuale (accettabile: staging/preview inviano allo stesso stream solo se la variabile è presente anche lì).
+
+**Opzionale in locale:** esportare `GA_MEASUREMENT_ID` prima di `hugo` / `hugo server`, oppure impostare temporaneamente `googleAnalyticsId` in `hugo.toml` (solo macchina di sviluppo, non in commit).
+
+**Verifica post-deploy:** browser in incognito su `https://damager.eu` → accettare analytics → nel sorgente HTML `data-ga-id` deve contenere il `G-…`; in GA4 **Report → Tempo reale** deve comparire almeno una sessione di prova.
 
 ---
 
@@ -197,5 +202,5 @@ Quando il progetto sarà live e il GA4 Measurement ID sarà disponibile:
 
 ---
 
-*Documento FASE 7 — Progetto DAMAGER Website | Versione 1.3 | Marzo 2026*  
+*Documento FASE 7 — Progetto DAMAGER Website | Versione 1.4 | Maggio 2026*  
 **File correlato:** `docs/ARCHITETTURA_TECNICA.md` — stack, CMS, hosting, sicurezza

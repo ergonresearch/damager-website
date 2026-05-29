@@ -407,9 +407,10 @@ Configurate nel pannello Netlify → "Site settings" → "Environment variables"
 
 | Variabile | Contenuto | Note |
 |-----------|-----------|------|
-| `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build |
+| `HUGO_VERSION` | `0.158.0` | Versione Hugo da usare in build (anche in `netlify.toml`) |
+| `GA_MEASUREMENT_ID` | `G-…` (Measurement ID GA4) | ✅ Configurata nel pannello Netlify (maggio 2026). Non committare nel repository. Iniettata in `data-ga-id` al build via `os.Getenv` in `baseof.html`. |
 
-> **Nota GA4:** il Measurement ID è iniettato al **build** da `GA_MEASUREMENT_ID` (Netlify) con fallback opzionale a `googleAnalyticsId` in `hugo.toml` per sviluppo locale. Hugo 0.158 richiede che `GA_MEASUREMENT_ID` sia elencata in `[security.funcs] getenv` in `hugo.toml` (già configurato). L'identificatore resta pubblico nell'HTML generato; l'obiettivo è non versionarlo nel Git.
+> **Nota GA4:** il Measurement ID è iniettato al **build** da `GA_MEASUREMENT_ID` (Netlify) con fallback opzionale a `googleAnalyticsId` in `hugo.toml` per sviluppo locale. Hugo 0.158 richiede che `GA_MEASUREMENT_ID` sia elencata in `[security.funcs] getenv` in `hugo.toml` (già configurato). L'identificatore resta pubblico nell'HTML generato; l'obiettivo è non versionarlo nel Git. Dopo ogni modifica alla variabile su Netlify occorre un **nuovo deploy** perché Hugo la legge solo in fase di build.
 
 ### 3.4 Limiti piano gratuito Netlify
 

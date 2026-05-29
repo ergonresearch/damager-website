@@ -119,7 +119,7 @@ Eseguire i test dall’URL **di produzione** (`https://damager.eu`), non solo da
 | **F9.4** | Layout mobile, menu, mappa (dopo consenso cookie funzionali), form | Dispositivi reali preferibili agli emulatori |
 | **F9.5** | Form contatto: invio, redirect a `/contact-success/`, notifica a **`info@hit09.com`** (scelta progettuale: casella coordinatore; vedi Privacy Policy § 2.1) | Notifiche solo su submission **verificate** (filtro spam Netlify) — vedi [`ARCHITETTURA_TECNICA.md`](ARCHITETTURA_TECNICA.md) § 5.1 |
 | **F9.6** | Login `/admin`, pubblicazione bozza news, caricamento PDF in una collezione Media | Git Gateway attivo; stesso flusso già validato su staging |
-| **F9.7** | Banner cookie, modifica preferenze, blocco/sblocco mappa e eventuali script analitici | Coerente con [`FASE_7_Cookie.md`](FASE_7_Cookie.md) |
+| **F9.7** | Banner cookie, modifica preferenze, blocco/sblocco mappa e script GA4 | Con **`GA_MEASUREMENT_ID`** su Netlify: dopo deploy, verificare `data-ga-id` nel sorgente, assenza di `googletagmanager.com` se analytics rifiutati, presenza in **GA4 → Tempo reale** dopo “Accept all”. Vedi [`FASE_7_Cookie.md`](FASE_7_Cookie.md) § Configurazione GA4 |
 
 ---
 
